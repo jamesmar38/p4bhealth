@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+
+<meta charset="utf-8" />
+
+<!-- Set the viewport width to device width for mobile -->
+
+
+
+<title>Partners for Better Health</title>
+<meta name='keywords' content='' />
+<meta name='description' content='' />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="/assets/css/bootstrap-responsive.css" rel="stylesheet">
+<link href="/assets/css/bootstrap.css" rel="stylesheet">
+<link href="/assets/css/screen.css" rel="stylesheet">
+
+<!-- IE Fix for HTML5 Tags -->
+<!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+</head>
+
+
+<body id="home"  class='t-index tg-home ' >
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+  <script type="text/javascript">
+    (function() {
+      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+      po.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+  </script>
+
+
+    <div class="container">
+  
+</div>
+
+<div id="wrap">
+  <header id="masthead" class="container">
+		<div class="row-fluid">
+			<div class="span5">
+				<a href="http://p4bhealth.org/P4bhealth/Home.html" class="logo">Partners for Better Health</a>
+			</div>
+			<div class="span7">
+				<nav>
+            <ul class="nav nav-pills pull-right">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Get Involved</a></li>
+                    <li><a href="#">Randall Lewis Fellowship</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact</a></li>
+                  </ul>
+           
+				</nav>
+			</div>
+  </header>
+
+<div id="content">
+{exp:channel:entries channel="homepage" limit="1" dynamic="no" }
+  
+  <!-- Begin Page Content -->
+  
+  <div id="homepage" class="container">
+    <div id="homepage-top" class="row">
+      <div class="span12">
+                
+        <div id="carousel" class="carousel slide">
+          <ol class="carousel-indicators">
+             {jumbotron}
+            <li data-target="#carousel" data-slide-to="{field_row_index}" {if row_count == "1"} class="active"{/if}></li>
+         
+             {/jumbotron}
+          </ol>
+          <!-- Carousel items -->
+          <div class="carousel-inner">
+            {jumbotron}
+            <div class="item {if row_count == "1"} active {/if}" >
+              <a href="{link}"><img src="{image}" width="945" height="360" alt="{alt}" /></a>
+            </div> 
+            {/jumbotron}
+          </div>
+          <!-- Carousel nav -->
+          <a class="carousel-control left" href="#carousel" data-slide="prev">&lsaquo;</a>
+          <a class="carousel-control right" href="#carousel" data-slide="next">&rsaquo;</a>
+        </div>
+              
+                <div id="homepage-promos" class="row">
+          
+          <div class="span4">
+            <h4>MEDIA</h4>
+            <a href="" class="thumbnail first">
+                              <img src="assets/img/media-promo.png" width="282"height="135" alt="" /> 
+                                                  
+            </a>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</p>
+          </div>
+          
+          <div class="span4">
+            <h4>NEWS & EVENTS</h4>
+            <a href="" class="thumbnail first">
+                              <img src="assets/img/news-promo.png" width="282" height="135" alt="" /> 
+                            
+            </a>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</p>
+          </div>
+          
+          <div class="span4">
+            <h4>SUCCESS STORIES</h4>
+            <a href="" class="thumbnail first">
+                    <img src="assets/img/success-promo.png" width="282" height="135" alt="" /> 
+                            
+            </a>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</p>
+          </div>
+          
+        </div><!-- end #homepage-promos -->      </div><!-- end .span12 -->
+    </div><!-- end #homepage-top.row -->
+    
+    
+    <div id="homepage-bottom" class="row">
+      <div class="span12">
+        
+        
+        </div><!-- end .tabbable -->
+        
+        
+      </div><!-- end .span12 -->
+    </div><!-- end #homepage-bottom.row -->
+  </div><!-- end .container -->
+  
+  <!-- End Page Content -->
+  {/exp:channel:entries}
+  
+</div>
+  
+</div><!-- End #wrap -->
+
+<div id="copyright">
+  <div class="container">
+    <div class="row">
+      <div class="span9">
+        <nav>
+          <ul class="link-list">
+    					<li><a href="">Home</a></li>
+  						<li><a href="">About</a></li>
+  						<li><a href="">Get Involved</a></li>
+  						<li><a href="">Randall Lewis Fellowship</a></li>
+  						<li><a href="">Blog</a></li>
+  						<li><a href="">Contact</a></li>
+  						
+          </ul>
+        </nav>
+        <p>&copy; 2013 Partners for Better Health. All rights reserved.</p>
+      </div>
+      <div class="span3">
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<script>
+  $(document).ready(function() {
+  $('.carousel').carousel()
+  });
+</script>
+
+<script type="text/javascript" src="/js/retina.js"></script>
+</body>
+</html>

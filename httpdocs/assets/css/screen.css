@@ -1,0 +1,149 @@
+h4 {font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;}
+
+#masthead .span7{
+  margin-top: 90px;
+  width: 500px;}
+  
+#masthead .logo{
+  text-indent: -119988px;
+  margin-top: 25px;
+  overflow: hidden;
+  text-align: left;
+  background: url("../img/pbh-logo.png") no-repeat left top;
+  width: 168px;
+  height: 101px;
+  display: block;
+}
+
+.carousel-control {margin-top: 0px;}
+.carousel {margin-bottom: 45px;}
+.carousel:after{ position: absolute;
+      width: 94%;
+      height: 5%;
+      left: 3%;
+      border-radius: 50%;
+      z-index: -1;
+      bottom: 0%;
+      content: "";
+      box-shadow: 0 7px 16px rgba(0,0,0,0.7)}
+
+.breadcrumb {
+  font-size: 10px;
+  background-color: #fff;
+  border-bottom: solid 1px #e5e5e5;
+  border-top: solid 1px #e5e5e5;
+}
+  
+.breadcrumb > li { 
+  text-shadow: none;
+}
+  
+.side-nav a {color: #000;}
+
+.side-nav a:hover{
+  color: #f59326;
+  text-decoration: none;
+}
+
+.side-nav li {
+  list-style: none;
+  border-bottom: solid 1px #ababab;
+  padding: 10px 0 10px 20px;
+  background: url("../img/side-nav-bullet.png") no-repeat left 12px;
+}
+
+.span3 {width: 175px;}
+
+.span4 p {
+  padding-top: 10px;
+  font-size: 12px;}
+
+.span9 {margin-left: 40px;}
+.span9 h1 {margin-bottom: 25px;}
+.span9 p {
+  padding-top: 12px;
+  border-top: solid 2px #f59326;
+}
+  
+  .span9 p > img {
+    margin: 10px 20px 20px 0;}
+
+.span9 h4{
+  color: #fff;
+  background-color: #f59326;
+  padding: 5px;
+  font-weight: normal;
+  margin-top: 5px;
+  margin-bottom: -2px;
+  width: 175px;
+  
+}
+
+.p-left{float: left; margin: 5px;}
+  
+.span7 {
+  width: 600px;
+  float: right;  
+}
+
+
+.nav-pills > .active > a,
+.nav-pills > .active > a:hover,
+.nav-pills > .active > a:focus {
+  color: #c5c5c5;
+  background-color: #ffffff;
+}
+
+.nav-pills > li > a {
+  color: #f59326;
+  font-size: 12px;}
+
+.nav li { 
+   border-right: solid 1px #bebebe;
+  }
+   
+.nav li:last-child { border: 0px; }
+
+.nav > li > a:hover,
+.nav > li > a:focus {
+  text-decoration: none;
+  background-color: #fff;
+  color: #c5c5c5;
+}
+
+#homepage-promos h4{color: #f59326;}
+
+.thumbnail {
+  border-radius: 0px;
+  background-color: #eeeeee;
+}
+
+.thumbnail > img {
+  padding: 0px;}
+
+.thumbnails .span4 {width: 150px;}
+
+.thumbnails p {
+  font-size: 10.5px;
+  border-top: none;
+  color: #373737;
+  padding: 5px;
+  line-height: 1.4em;}
+  
+  .thumbnails > p > span {font-weight: bold;}
+
+
+#copyright {
+border-top: solid 10px #e5e5e5;  
+background: #414141;
+background-image: url("../img/bg-img.jpg");
+color: #bebebe;
+padding: 11px 0;
+margin-top: 44px;
+font-size: 11px;
+}
+
+#copyright a {color: #bebebe;}
+#copyright ul{list-style: none;}
+#copyright .span9 p {border: none;}
+
