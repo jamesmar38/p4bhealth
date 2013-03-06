@@ -33,7 +33,7 @@
       
           <section id="static-page-content" class="row">
             <div class="span9">
-              {if segment_2 == ""}
+              {if segment_3 == ""}
               <h1>Team</h1>
       
             
@@ -84,8 +84,8 @@
               </ul>
               {/if}
             
-              {if segment_2 != ""}
-              {exp:channel:entries channel="people" url_title="{segment_2}" }
+              {if segment_3 != ""}
+              {exp:channel:entries channel="people" url_title="{segment_3}" }
               <h3>{title}</h3>
               <p><img src="{team-pic}" class="p-left" />{team_bio}</p>
               {/exp:channel:entries}
