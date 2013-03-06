@@ -1,30 +1,4 @@
-
-<!DOCTYPE html>
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
-<head>
-
-<meta charset="utf-8" />
-
-<!-- Set the viewport width to device width for mobile -->
-
-
-
-<title>Partners for Better Health</title>
-<meta name='keywords' content='' />
-<meta name='description' content='' />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="/assets/css/bootstrap-responsive.css" rel="stylesheet">
-<link href="/assets/css/bootstrap.css" rel="stylesheet">
-<link href="/assets/css/screen.css" rel="stylesheet">
-
-<!-- IE Fix for HTML5 Tags -->
-<!--[if lt IE 9]>
-  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-</head>
+{embed="global/header"}
 
 
 <body id="home"  class='t-index tg-home ' >
@@ -56,19 +30,7 @@
 			<div class="span5">
 				<a href="http://p4bhealth.org/P4bhealth/Home.html" class="logo">Partners for Better Health</a>
 			</div>
-			<div class="span7">
-				<nav>
-            <ul class="nav nav-pills pull-right">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Get Involved</a></li>
-                    <li><a href="#">Randall Lewis Fellowship</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Contact</a></li>
-                  </ul>
-           
-				</nav>
-			</div>
+			{embed="global/main_nav"}
   </header>
 
 <div id="content">
@@ -91,7 +53,7 @@
           <div class="carousel-inner">
             {jumbotron}
             <div class="item {if row_count == "1"} active {/if}" >
-              <a href="{link}"><img src="{image}" width="945" height="360" alt="{alt}" /></a>
+              <a href="{link}"><img src="{slide}" width="945" height="360" alt="{alt}" /></a>
             </div> 
             {/jumbotron}
           </div>
@@ -102,32 +64,15 @@
               
                 <div id="homepage-promos" class="row">
           
-          <div class="span4">
-            <h4>MEDIA</h4>
-            <a href="" class="thumbnail first">
-                              <img src="assets/img/media-promo.png" width="282"height="135" alt="" /> 
-                                                  
-            </a>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</p>
+         
+              {promo_boxes} <div class="span4">
+              <h4>{title}</h4>
+              <a href="{link}"><img src="{image}" width="282" height="135" alt="{alt}" /></a><p>{text}</p>
+         
+                              
+        
           </div>
-          
-          <div class="span4">
-            <h4>NEWS & EVENTS</h4>
-            <a href="" class="thumbnail first">
-                              <img src="assets/img/news-promo.png" width="282" height="135" alt="" /> 
-                            
-            </a>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</p>
-          </div>
-          
-          <div class="span4">
-            <h4>SUCCESS STORIES</h4>
-            <a href="" class="thumbnail first">
-                    <img src="assets/img/success-promo.png" width="282" height="135" alt="" /> 
-                            
-            </a>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</p>
-          </div>
+                {/promo_boxes}  
           
         </div><!-- end #homepage-promos -->      </div><!-- end .span12 -->
     </div><!-- end #homepage-top.row -->
@@ -151,29 +96,7 @@
   
 </div><!-- End #wrap -->
 
-<div id="copyright">
-  <div class="container">
-    <div class="row">
-      <div class="span9">
-        <nav>
-          <ul class="link-list">
-    					<li><a href="">Home</a></li>
-  						<li><a href="">About</a></li>
-  						<li><a href="">Get Involved</a></li>
-  						<li><a href="">Randall Lewis Fellowship</a></li>
-  						<li><a href="">Blog</a></li>
-  						<li><a href="">Contact</a></li>
-  						
-          </ul>
-        </nav>
-        <p>&copy; 2013 Partners for Better Health. All rights reserved.</p>
-      </div>
-      <div class="span3">
-        
-      </div>
-    </div>
-  </div>
-</div>
+{embed="global/footer"}
 
 
 
@@ -185,5 +108,6 @@
 </script>
 
 <script type="text/javascript" src="/js/retina.js"></script>
+
 </body>
 </html>

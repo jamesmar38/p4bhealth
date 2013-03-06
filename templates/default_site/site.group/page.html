@@ -1,30 +1,4 @@
-
-<!DOCTYPE html>
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
-<head>
-
-<meta charset="utf-8" />
-
-<!-- Set the viewport width to device width for mobile -->
-
-
-
-<title>Partners for Better Health</title>
-<meta name='keywords' content='' />
-<meta name='description' content='' />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="/assets/css/bootstrap-responsive.css" rel="stylesheet">
-<link href="/assets/css/bootstrap.css" rel="stylesheet">
-<link href="/assets/css/screen.css" rel="stylesheet">
-
-<!-- IE Fix for HTML5 Tags -->
-<!--[if lt IE 9]>
-  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-</head>
+{embed="global/header"}
 
 
 <body id="home"  class='t-index tg-home ' >
@@ -54,21 +28,11 @@
   <header id="masthead" class="container">
 		<div class="row">
 			<div class="span5">
-				<a href="http://p4bhealth.org/P4bhealth/Home.html" class="logo">Partners for Better Health</a>
+				<a href="{homepage}" class="logo">Partners for Better Health</a>
 			</div>
-			<div class="span7">
-				<nav>
-            <ul class="nav nav-pills pull-right">
-                    <li><a href="#">Home</a></li>
-                    <li class="active"><a href="#">About</a></li>
-                    <li><a href="#">Get Involved</a></li>
-                    <li><a href="#">Randall Lewis Fellowship</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Contact</a></li>
-                  </ul>
-           
-				</nav>
-			</div>
+			
+      {embed="global/main_nav"}
+
   </header>
 
   <div id="content" class="container">
@@ -84,8 +48,8 @@
         <nav>
           
           <ul class="side-nav">
-            <li><a href="" title="">Team</a></li>  
-            <li><a href="" title="">Partners</a></li>
+            <li class="{if segment_1 == 'team'}active{/if}"><a href="/team" >Team</a></li>
+            <li class="{if segment_1 == 'partners'}active{/if}"><a href="/partners" >Partners</a></li>
           
           </ul>
         </nav>
@@ -118,29 +82,8 @@
   
   </div><!-- End #wrap -->
 
-<div id="copyright">
-  <div class="container">
-    <div class="row">
-      <div class="span9">
-        <nav>
-          <ul class="link-list">
-    					<li><a href="">Home</a></li>
-  						<li><a href="">About</a></li>
-  						<li><a href="">Get Involved</a></li>
-  						<li><a href="">Randall Lewis Fellowship</a></li>
-  						<li><a href="">Blog</a></li>
-  						<li><a href="">Contact</a></li>
-  						
-          </ul>
-        </nav>
-        <p>&copy; 2013 Partners for Better Health. All rights reserved.</p>
-      </div>
-      <div class="span3">
-        
-      </div>
-    </div>
-  </div>
-</div>
+{embed="global/footer"}
+
 <script src="/assets/js/libs.js?1360364606"></script>
 <script src="/assets/js/app.js?1360349127"></script>
 

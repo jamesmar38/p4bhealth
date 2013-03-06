@@ -1,4 +1,4 @@
-h4 {font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;}
+h1, h2, h4 {font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;}
 
 #masthead .span7{
   margin-top: 90px;
@@ -9,7 +9,7 @@ h4 {font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
   margin-top: 25px;
   overflow: hidden;
   text-align: left;
-  background: url("../img/pbh-logo.png") no-repeat left top;
+  background: url("../img/pbh-logo.png") no-repeat;
   width: 168px;
   height: 101px;
   display: block;
@@ -56,7 +56,8 @@ h4 {font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
 
 .span4 p {
   padding-top: 10px;
-  font-size: 12px;}
+  font-size: 12px;
+  padding-right: 10px;}
 
 .span9 {margin-left: 40px;}
 .span9 h1 {margin-bottom: 25px;}
@@ -94,15 +95,15 @@ h4 {font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
   background-color: #ffffff;
 }
 
+
+
 .nav-pills > li > a {
   color: #f59326;
   font-size: 12px;}
 
-.nav li { 
-   border-right: solid 1px #bebebe;
-  }
+.nav li {border-left: solid 1px #c5c5c5;} 
+.nav li:first-child { border: 0px; }
    
-.nav li:last-child { border: 0px; }
 
 .nav > li > a:hover,
 .nav > li > a:focus {
@@ -112,27 +113,53 @@ h4 {font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
 }
 
 #homepage-promos h4{color: #f59326;}
+#homepage-promos img {
+  padding: 2px;
+  border: solid thin #c5c5c5;}
+
+#homepage-promos img:hover {border: solid thin #004c8e;}
 
 .thumbnail {
   border-radius: 0px;
   background-color: #eeeeee;
+  border: solid thin #c5c5c5;
 }
 
 .thumbnail > img {
   padding: 0px;}
 
-.thumbnails .span4 {width: 150px;}
+.thumbnails .span4 {
+  width: 150px;}
 
 .thumbnails p {
   font-size: 10.5px;
   border-top: none;
   color: #373737;
-  padding: 5px;
-  line-height: 1.4em;}
+  padding-right: 15px;
+  line-height: 1.4em;
+  margin-top: -15px;
+}
+
+.thumbnails img:hover {background-color: #000; opacity: 0.8;}
+
+
   
   .thumbnails > p > span {font-weight: bold;}
 
-
+  input {width: 400px; margin-left: 66px;}
+  textarea{width: 400px; height: 200px; margin-left: 48px;}
+  #subject {margin-left: 87px;}
+ input[type="submit"] {margin-left: 450px;}
+  
+  article, aside, details, figcaption, figure, footer, header, hgroup, nav, section {
+  margin-left: -25px;}
+  
+  label {
+    display: inline-block;
+  }
+  
+#contact_form >p > label {text-align: top;}
+  
 #copyright {
 border-top: solid 10px #e5e5e5;  
 background: #414141;

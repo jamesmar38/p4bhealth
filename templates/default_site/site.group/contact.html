@@ -1,0 +1,80 @@
+{embed="global/header"}
+
+
+<body id="home"  class='t-index tg-home ' >
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+  <script type="text/javascript">
+    (function() {
+      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+      po.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+  </script>
+
+
+    
+
+<div id="wrap">
+  <header id="masthead" class="container">
+		<div class="row-fluid">
+			<div class="span5">
+				<a href="{homepage}" class="logo">Partners for Better Health</a>
+			</div>
+			{embed="global/main_nav"}
+  </header>
+
+<div id="content" class="container">
+<ul class="breadcrumb">
+    	      <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="" itemprop="url"><span class="nopad" itemprop="title">Home</span></a> <span class="divider">/</span></li>
+              
+              <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="active"><a href="" itemprop="url"><span class="nopad">Contact</span></a></li>
+        </ul>
+  {exp:email:contact_form user_recipients="no" recipients="ron@maven20.com" charset="utf-8"}
+          <h2>Contact Us</h2>
+	  <p>Nullam quis risus eget urna mollis ornare vel eu leo. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Sed posuere consectetur est at lobortis.</p>
+	  <p><img src="/assets/img/border.png" /></p>
+          <p>
+                  <label for="from">Your Email:</label>
+                  <input type="text" id="from" name="from" size="40" maxlength="35" value="{member_email}" />
+          </p>
+          <p>
+                  <label for="subject">Subject:</label>
+                  <input type="text" id="subject" name="subject" size="40" value="General Information" />
+          </p>
+          <p>
+                  <label for="message">Your Message:</label><textarea id="message" name="message" rows="18" cols="40">
+                          Support Email from: {member_name}
+                          Sent at:  {current_time format="%Y %m %d"}
+                  </textarea>
+          </p>
+          <p>
+                  <input name="submit" type='submit' value='Submit Form' />
+          </p>
+  {/exp:email:contact_form}
+  
+</div>
+  
+</div><!-- End #wrap -->
+
+{embed="global/footer"}
+
+
+
+
+<script>
+  $(document).ready(function() {
+  $('.carousel').carousel()
+  });
+</script>
+
+<script type="text/javascript" src="/js/retina.js"></script>
+</body>
+</html>
