@@ -12,10 +12,8 @@
     </header>
 
     <div id="content" class="container">
-      <ul class="breadcrumb">
-        <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="" itemprop="url"><span class="nopad" itemprop="title">Home</span></a> <span class="divider">/</span></li>          
-        <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="active"><a href="" itemprop="url"><span class="nopad">Contact</span></a></li>
-      </ul>
+      {embed="global/breadcrumbs"}
+      
       {exp:email:contact_form user_recipients="no" recipients="ron@maven20.com" charset="utf-8"}
       <h2>Contact Us</h2>
       <p>Nullam quis risus eget urna mollis ornare vel eu leo. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Sed posuere consectetur est at lobortis.</p>
