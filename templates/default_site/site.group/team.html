@@ -2,198 +2,112 @@
 
 
 <body id="home"  class='t-index tg-home ' >
-  <div id="fb-root"></div>
-  <script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));</script>
-  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-  <script type="text/javascript">
-    (function() {
-      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-      po.src = 'https://apis.google.com/js/plusone.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-    })();
-  </script>
+  <div id="wrap">
+    <header id="masthead" class="container">
+  		<div class="row">
+  			<div class="span5">
+  				<a href="{homepage}" class="logo">Partners for Better Health</a>
+  			</div>
+  			{embed="global/main_nav"}
+    </header>
 
-
-    <div class="container">
+    <div id="content" class="container">
+      <ul class="breadcrumb">
+        <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="" itemprop="url"><span class="nopad" itemprop="title">Home</span></a> <span class="divider">/</span></li>
+        <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="" itemprop="url"><span class="nopad">About Us</span></a> <span class="divider">/</span></li>
+        <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="active"><a href="" itemprop="url"><span class="nopad">Team</span></a></li>
+      </ul>
   
-</div>
-
-<div id="wrap">
-  <header id="masthead" class="container">
-		<div class="row">
-			<div class="span5">
-				<a href="{homepage}" class="logo">Partners for Better Health</a>
-			</div>
-			{embed="global/main_nav"}
-  </header>
-
-  <div id="content" class="container">
-    <ul class="breadcrumb">
-    <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="" itemprop="url"><span class="nopad" itemprop="title">Home</span></a> <span class="divider">/</span></li>
-              <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="" itemprop="url"><span class="nopad">About Us</span></a> <span class="divider">/</span></li>
-              <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="active"><a href="" itemprop="url"><span class="nopad">Team</span></a></li>
-        </ul>
-  
-    <!-- Begin Page Content -->
-    <section id="static-page" class="row page-content">
-          <aside id="section-nav" class="span3">
-        <nav>
+      <!-- Begin Page Content -->
+      <section id="static-page" class="row page-content">
+            <aside id="section-nav" class="span3">
+          <nav>
           
-          <ul class="side-nav">
-            <li><a href="" title="" class="active">Team</a></li>  
-            <li><a href="" title="">Partners</a></li>
+            <ul class="side-nav">
+              <li><a href="" title="" class="active">Team</a></li>  
+              <li><a href="" title="">Partners</a></li>
           
-          </ul>
-        </nav>
+            </ul>
+          </nav>
         
           
         
-      </aside>
-      <div id="static-page-content" class="span9">
+        </aside>
+        <div id="static-page-content" class="span9">
       
-        <section id="static-page-content" class="row">
-          <div class="span9">
-            {if segment_2 == ""}
-            <h1>Team</h1>
+          <section id="static-page-content" class="row">
+            <div class="span9">
+              {if segment_2 == ""}
+              <h1>Team</h1>
       
             
-            <h4>Staff</h4>
-            <p></p>
-            <ul class="thumbnails">
-              {exp:channel:entries channel="people" dynamic="no" category="1"}
-              <li class="span4">
-               <a href="/team/{url_title}" class="thumbnails">
-               <img src="{team-pic}" width="150" height="160"/>
-               </a>
-               <p>{title}{if team-position}, {team-position}{/if}</p>
-              </li>
-              {/exp:channel:entries}
-            </ul>
+              <h4>Staff</h4>
+              <p></p>
+              <ul class="thumbnails">
+                {exp:channel:entries channel="people" dynamic="no" category="1"}
+                <li class="span4">
+                 <a href="/team/{url_title}" class="thumbnails">
+                 <img src="{team-pic}" width="150" height="160"/>
+                 </a>
+                 <p>{title}{if team-position}, {team-position}{/if}</p>
+                </li>
+                {/exp:channel:entries}
+              </ul>
         
               
           
     
             
-            <h4>Board of Directors</h4>
-            <p></p>
-            <ul class="thumbnails">
-              {exp:channel:entries channel="people" dynamic="no" category="2"}
-              <li class="span4">
-               <a href="/team/{url_title}" class="thumbnails">
-               <img src="{team-pic}" />
-               </a>
-               <p>{title}{if team-position}, {team-position}{/if}</p>
-              </li>
-              {/exp:channel:entries}
+              <h4>Board of Directors</h4>
+              <p></p>
+              <ul class="thumbnails">
+                {exp:channel:entries channel="people" dynamic="no" category="2"}
+                <li class="span4">
+                 <a href="/team/{url_title}" class="thumbnails">
+                 <img src="{team-pic}" />
+                 </a>
+                 <p>{title}{if team-position}, {team-position}{/if}</p>
+                </li>
+                {/exp:channel:entries}
               
-            </ul>
+              </ul>
          
             
             
-            <h4>Advisory Board</h4>
-            <p></p>
-            <ul class="thumbnails">
-              {exp:channel:entries channel="people" dynamic="no" category="3"}
-              <li class="span4">
-               <a href="/team/{url_title}" class="thumbnails">
-               <img src="{team-pic}" />
-               </a>
-               <p>{title}{if team-position}, {team-position}{/if}</p>
-              </li>
-              {/exp:channel:entries}
-            </ul>
-            {/if}
+              <h4>Advisory Board</h4>
+              <p></p>
+              <ul class="thumbnails">
+                {exp:channel:entries channel="people" dynamic="no" category="3"}
+                <li class="span4">
+                 <a href="/team/{url_title}" class="thumbnails">
+                 <img src="{team-pic}" />
+                 </a>
+                 <p>{title}{if team-position}, {team-position}{/if}</p>
+                </li>
+                {/exp:channel:entries}
+              </ul>
+              {/if}
             
-            {if segment_2 != ""}
-            {exp:channel:entries channel="people" url_title="{segment_2}" }
-            <h3>{title}</h3>
-            <p><img src="{team-pic}" class="p-left" />{team_bio}</p>
-            {/exp:channel:entries}
-            {/if}
+              {if segment_2 != ""}
+              {exp:channel:entries channel="people" url_title="{segment_2}" }
+              <h3>{title}</h3>
+              <p><img src="{team-pic}" class="p-left" />{team_bio}</p>
+              {/exp:channel:entries}
+              {/if}
 
-          </div>
-        </section>
+            </div>
+          </section>
       
       
-                  </div>
-        </section>
+        </div>
+      </section>
   
-    <!-- End Page Content -->
+      <!-- End Page Content -->
 
-  </div>
+    </div>
   
   </div><!-- End #wrap -->
 
 {embed="global/footer"}
-
-<script src="/assets/js/libs.js?1360364606"></script>
-<script src="/assets/js/app.js?1360349127"></script>
-
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD4tY_VXQ5xo4WMPhZkQ2i1vc_fojr92X8&sensor=false"></script>
-<script>
-  function initializeSideMap() {
-    var mapOptions = {
-      center: new google.maps.LatLng(33.911215, -117.422778),
-      zoom: 14,
-      mapTypeId: google.maps.MapTypeId.ROADMAP,
-      mapTypeControl: false,
-      zoomControl: true,
-      zoomControlOptions: {
-        style: google.maps.ZoomControlStyle.SMALL
-      }
-              
-    };
-    var map = new google.maps.Map(document.getElementById("map-sidebar"),
-        mapOptions);
-  }
-  $(function() {
-    var tabHoverConfig = { over: showTabContent, timeout: 500, out: nothing };
-    function showTabContent(){
-      if($(this).hasClass('hoverblock'))
-        return;
-      else
-        $(this).find('a').tab('show');
-    };
-    function nothing(){};
-    
-    
-    initializeSideMap();
-    $('#jumbotron').carousel();
-    
-    if (Modernizr.touch){
-      // TOUCH SCREENS
-      $("#jumbotron img").swipe( {
-        swipeLeft:function(event, direction, distance, duration, fingerCount) {$("#jumbotron").carousel('pause').carousel('next');},
-        swipeRight:function(event, direction, distance, duration, fingerCount) {$("#jumbotron").carousel('pause').carousel('prev');},
-        threshold:0
-      });
-    } else {
-      // DESKTOPS
-      
-      $('.nav-tabs > li ').hoverIntent(tabHoverConfig);
-    };
-    
-    $('.nav-tabs > li').find('a').click( function(){$(this).parent().siblings().addClass('hoverblock');});
-    
-    
-  });
-</script>
-
-<script>
-  $(document).ready(function() {
-    var nextService = $.parseJSON('{"id":"27","weekday":"Saturday","start_time":"09:30:00","video_start_time":"09:20:00","video_end_time":"10:40:00","type":"SIM","ignore":false,"video_length":"3600","secs_until_start":600,"streams":[],"days":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"next_instance_ts":1349913000,"next_instance_date":"20130216092000","seconds_until_next_instance":"399479","seconds_until_next_instance_end":"403079"}'
-
-);
-    mronline.timer.init(nextService,$("#player"),$("#slider"),$("#video"),$("#countdown"),$("#counter"));    
-  });
-</script>
-
-<script type="text/javascript" src="/js/retina.js"></script>
 </body>
 </html>

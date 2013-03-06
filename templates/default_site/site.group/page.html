@@ -2,28 +2,6 @@
 
 
 <body id="home"  class='t-index tg-home ' >
-  <div id="fb-root"></div>
-  <script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));</script>
-  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-  <script type="text/javascript">
-    (function() {
-      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-      po.src = 'https://apis.google.com/js/plusone.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-    })();
-  </script>
-
-
-    <div class="container">
-  
-</div>
-
 <div id="wrap">
   <header id="masthead" class="container">
 		<div class="row">
@@ -84,68 +62,5 @@
 
 {embed="global/footer"}
 
-<script src="/assets/js/libs.js?1360364606"></script>
-<script src="/assets/js/app.js?1360349127"></script>
-
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD4tY_VXQ5xo4WMPhZkQ2i1vc_fojr92X8&sensor=false"></script>
-<script>
-  function initializeSideMap() {
-    var mapOptions = {
-      center: new google.maps.LatLng(33.911215, -117.422778),
-      zoom: 14,
-      mapTypeId: google.maps.MapTypeId.ROADMAP,
-      mapTypeControl: false,
-      zoomControl: true,
-      zoomControlOptions: {
-        style: google.maps.ZoomControlStyle.SMALL
-      }
-              
-    };
-    var map = new google.maps.Map(document.getElementById("map-sidebar"),
-        mapOptions);
-  }
-  $(function() {
-    var tabHoverConfig = { over: showTabContent, timeout: 500, out: nothing };
-    function showTabContent(){
-      if($(this).hasClass('hoverblock'))
-        return;
-      else
-        $(this).find('a').tab('show');
-    };
-    function nothing(){};
-    
-    
-    initializeSideMap();
-    $('#jumbotron').carousel();
-    
-    if (Modernizr.touch){
-      // TOUCH SCREENS
-      $("#jumbotron img").swipe( {
-        swipeLeft:function(event, direction, distance, duration, fingerCount) {$("#jumbotron").carousel('pause').carousel('next');},
-        swipeRight:function(event, direction, distance, duration, fingerCount) {$("#jumbotron").carousel('pause').carousel('prev');},
-        threshold:0
-      });
-    } else {
-      // DESKTOPS
-      
-      $('.nav-tabs > li ').hoverIntent(tabHoverConfig);
-    };
-    
-    $('.nav-tabs > li').find('a').click( function(){$(this).parent().siblings().addClass('hoverblock');});
-    
-    
-  });
-</script>
-
-<script>
-  $(document).ready(function() {
-    var nextService = $.parseJSON('{"id":"27","weekday":"Saturday","start_time":"09:30:00","video_start_time":"09:20:00","video_end_time":"10:40:00","type":"SIM","ignore":false,"video_length":"3600","secs_until_start":600,"streams":[],"days":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"next_instance_ts":1349913000,"next_instance_date":"20130216092000","seconds_until_next_instance":"399479","seconds_until_next_instance_end":"403079"}'
-
-);
-    mronline.timer.init(nextService,$("#player"),$("#slider"),$("#video"),$("#countdown"),$("#counter"));    
-  });
-</script>
-
-<script type="text/javascript" src="/js/retina.js"></script>
 </body>
 </html>

@@ -2,112 +2,73 @@
 
 
 <body id="home"  class='t-index tg-home ' >
-  <div id="fb-root"></div>
-  <script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));</script>
-  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-  <script type="text/javascript">
-    (function() {
-      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-      po.src = 'https://apis.google.com/js/plusone.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-    })();
-  </script>
+  <div id="wrap">
+    <header id="masthead" class="container">
+  		<div class="row-fluid">
+  			<div class="span5">
+  				<a href="http://p4bhealth.org/P4bhealth/Home.html" class="logo">Partners for Better Health</a>
+  			</div>
+  			{embed="global/main_nav"}
+    </header>
 
-
-    <div class="container">
+    <div id="content">
+    {exp:channel:entries channel="homepage" limit="1" dynamic="no" }
   
-</div>
-
-<div id="wrap">
-  <header id="masthead" class="container">
-		<div class="row-fluid">
-			<div class="span5">
-				<a href="http://p4bhealth.org/P4bhealth/Home.html" class="logo">Partners for Better Health</a>
-			</div>
-			{embed="global/main_nav"}
-  </header>
-
-<div id="content">
-{exp:channel:entries channel="homepage" limit="1" dynamic="no" }
+      <!-- Begin Page Content -->
   
-  <!-- Begin Page Content -->
-  
-  <div id="homepage" class="container">
-    <div id="homepage-top" class="row">
-      <div class="span12">
+      <div id="homepage" class="container">
+        <div id="homepage-top" class="row">
+          <div class="span12">
                 
-        <div id="carousel" class="carousel slide">
-          <ol class="carousel-indicators">
-             {jumbotron}
-            <li data-target="#carousel" data-slide-to="{field_row_index}" {if row_count == "1"} class="active"{/if}></li>
+            <div id="carousel" class="carousel slide">
+              <ol class="carousel-indicators">
+                 {jumbotron}
+                <li data-target="#carousel" data-slide-to="{field_row_index}" {if row_count == "1"} class="active"{/if}></li>
          
-             {/jumbotron}
-          </ol>
-          <!-- Carousel items -->
-          <div class="carousel-inner">
-            {jumbotron}
-            <div class="item {if row_count == "1"} active {/if}" >
-              <a href="{link}"><img src="{slide}" width="945" height="360" alt="{alt}" /></a>
-            </div> 
-            {/jumbotron}
-          </div>
-          <!-- Carousel nav -->
-          <a class="carousel-control left" href="#carousel" data-slide="prev">&lsaquo;</a>
-          <a class="carousel-control right" href="#carousel" data-slide="next">&rsaquo;</a>
-        </div>
-              
-                <div id="homepage-promos" class="row">
-          
-         
-              {promo_boxes} <div class="span4">
-              <h4>{title}</h4>
-              <a href="{link}"><img src="{image}" width="282" height="135" alt="{alt}" /></a><p>{text}</p>
-         
-                              
-        
-          </div>
-                {/promo_boxes}  
-          
-        </div><!-- end #homepage-promos -->      </div><!-- end .span12 -->
-    </div><!-- end #homepage-top.row -->
+                 {/jumbotron}
+              </ol>
+              <!-- Carousel items -->
+              <div class="carousel-inner">
+                {jumbotron}
+                <div class="item {if row_count == "1"} active {/if}" >
+                  <a href="{link}"><img src="{slide}" width="945" height="360" alt="{alt}" /></a>
+                </div> 
+                {/jumbotron}
+              </div>
+              <!-- Carousel nav -->
+              <a class="carousel-control left" href="#carousel" data-slide="prev">&lsaquo;</a>
+              <a class="carousel-control right" href="#carousel" data-slide="next">&rsaquo;</a>
+            </div>
+            <div id="homepage-promos" class="row">
+              {promo_boxes}
+              <div class="span4">
+                <h4>{title}</h4>
+                <a href="{link}"><img src="{image}" width="282" height="135" alt="{alt}" /></a><p>{text}</p>
+              </div>
+              {/promo_boxes}  
+            </div><!-- end #homepage-promos -->
+          </div><!-- end .span12 -->
+        </div><!-- end #homepage-top.row -->
     
     
-    <div id="homepage-bottom" class="row">
-      <div class="span12">
+        <div id="homepage-bottom" class="row">
+          <div class="span12">
         
         
-        </div><!-- end .tabbable -->
+            </div><!-- end .tabbable -->
         
         
-      </div><!-- end .span12 -->
-    </div><!-- end #homepage-bottom.row -->
-  </div><!-- end .container -->
+          </div><!-- end .span12 -->
+        </div><!-- end #homepage-bottom.row -->
+      </div><!-- end .container -->
   
-  <!-- End Page Content -->
-  {/exp:channel:entries}
+      <!-- End Page Content -->
+      {/exp:channel:entries}
   
-</div>
+    </div>
   
-</div><!-- End #wrap -->
+  </div><!-- End #wrap -->
 
 {embed="global/footer"}
-
-
-
-
-<script>
-  $(document).ready(function() {
-  $('.carousel').carousel()
-  });
-</script>
-
-<script type="text/javascript" src="/js/retina.js"></script>
-
 </body>
 </html>
