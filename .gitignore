@@ -1,0 +1,21 @@
+!empty
+.DS_Store
+Thumbs.db
+
+# Images
+httpdocs/images/avatars/uploads
+httpdocs/images/captchas
+httpdocs/images/member_photos
+httpdocs/images/signature_attachments
+httpdocs/images/pm_attachments
+httpdocs/images/made
+httpdocs/images/remote
+httpdocs/assets/img/sized
+httpdocs/images/uploads
+
+# Caches
+.sass-cache/*
+sized/
+thumbs/
+_thumbs/
+*/expressionengine/cache/*

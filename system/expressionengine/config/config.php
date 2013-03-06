@@ -22,8 +22,15 @@ $config['allow_extensions'] = 'y';
 $config['site_label'] = 'Partners for Better Health';
 $config['cookie_prefix'] = '';
 
+$config['comment_word_censoring'] = "y";
+$config['comment_moderation_override'] = "n";
+$config['comment_edit_time_limit'] = "";
+
+$config['admin_session_type'] = "c";
+$config['cookie_domain'] = '';  
 
 // END EE config items
+
 
 /*
 |--------------------------------------------------------------------------
@@ -48,7 +55,7 @@ $config['base_url']	= '';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = "";
 
 /*
 |--------------------------------------------------------------------------
@@ -323,6 +330,43 @@ $config['rewrite_short_tags'] = TRUE;
 |
 */
 $config['proxy_ips'] = "";
+
+
+/* Custom Timeout - Implemented 9/30/12 by Mike Stecker */
+$config['user_session_ttl'] = 86400; /* User session Logout Interval in seconds */
+$config['cp_session_ttl'] = 7200; /* Control Panel Logout Interval in seconds */
+
+
+
+/*
+|--------------------------------
+| CE Image Advanced Config Items
+|--------------------------------
+*/
+$config['ce_image_unique'] = 'filename';
+$config['ce_image_auto_cache'] = 'sized';
+$config['ce_image_image_permissions'] = 0644;
+$config['ce_image_dir_permissions'] = 0775;
+/*
+| Amazon S3 settings and optional headers. For use with the option AWS
+| extension. See the installation instructions for more details on how
+| to install the extension.
+*/
+$config['ce_image_aws_key'] = '';
+$config['ce_image_aws_secret_key'] = '';
+$config['ce_image_bucket'] = '';
+$config['ce_image_aws_request_headers'] = array();
+$config['ce_image_aws_request_headers']['Cache-Control'] = 'max-age=' . (30 * 24 * 60 * 60);
+$config['ce_image_aws_request_headers']['Expires'] = gmdate("D, d M Y H:i:s T", strtotime('+1 month') );
+$config['ce_image_aws_storage_class'] = 'STANDARD';
+// END CE Image advanced config items
+
+
+
+/**
+ * Require the Focus Lab, LLC Master Config file
+ */
+require $_SERVER['DOCUMENT_ROOT'] . '/../config/config.master.php';
 
 
 /* End of file config.php */
