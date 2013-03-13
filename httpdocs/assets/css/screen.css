@@ -80,8 +80,8 @@ h1, h2, h4 {font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, san
   
 }
 
-.p-left{float: left; margin: 5px;}
-  
+.p-left {float: left; margin: 5px;}
+
 .span7 {
   width: 600px;
   float: right;  
@@ -142,12 +142,14 @@ h1, h2, h4 {font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, san
 
 .thumbnails img:hover {background-color: #000; opacity: 0.8;}
 
+.thumbnails > p > span {font-weight: bold;}
 
-  
-  .thumbnails > p > span {font-weight: bold;}
+
+form {float: right;}
+.tiny-text {font-size: 11px;}
 
   input {width: 400px; margin-left: 66px;}
-  textarea{width: 400px; height: 200px; margin-left: 48px;}
+  textarea{width: 400px; height: 200px; margin-left: 44px;}
   #subject {margin-left: 87px;}
  input[type="submit"] {margin-left: 450px;}
   
@@ -174,3 +176,30 @@ font-size: 11px;
 #copyright ul{list-style: none;}
 #copyright .span9 p {border: none;}
 
+ul.link-list li {
+             display: inline;
+              list-style-type: none;
+              margin: 5px;
+              padding: 2px;
+              border-right: solid 1px #bebebe;
+              
+}
+
+ul.link-list li:last-child{border:0;}
+
+ul.link-list a {padding-right: 12px;}
+
+.partners li {
+  padding-bottom: 5px;
+}
+
+ul.partners
+{
+  list-style-type: square;
+
+}
+
+.indent {
+  list-style: none;
+  margin-left: 10px;
+}
