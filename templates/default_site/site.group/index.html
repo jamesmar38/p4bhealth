@@ -1,7 +1,7 @@
-{embed="global/header"}
+{embed="global/head"}
 
 <body id="home"  class='t-index tg-home ' >
-  {embed="global/main_nav"}
+  {embed="global/header"}
   
   {exp:channel:entries channel="homepage" limit="1" dynamic="no"}
   <div id="homepage" class="row">
@@ -21,7 +21,7 @@
         {promo_boxes}
         <div class="large-4 columns">
           <h4><span>{title}</span></h4>
-          <a href="{link}"><img src="{image}" width="282" height="135" alt="{alt}" /></a><p>{text}</p>
+          <a href="{link}"><img src="{image}" alt="{alt}" /></a><p>{text}</p>
         </div>
         {/promo_boxes}
       </div><!-- End #homepage-promos -->

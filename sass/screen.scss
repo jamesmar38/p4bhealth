@@ -8,22 +8,57 @@
 @import "vendor/foundation";
 @import "mixins/all";
 
+body {
+  border-top: 4px solid #444;
+}
 
-h1, h2, h4 {font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;}
-
-#masthead {
-  .large-9{
-    margin-top: 90px;
-  }
-  .logo{
+.top-bar, #masthead {
+  .logo {
+    background-repeat: no-repeat;
     text-indent: -119988px;
-    margin-top: 25px;
     overflow: hidden;
     text-align: left;
-    background: url("../img/pbh-logo.png") no-repeat;
-    width: 168px;
-    height: 101px;
     display: block;
+  }
+}
+
+.top-bar {
+  border-bottom: 1px solid #eee;
+  .logo{
+    @include background-image-retina(/assets/img/pbh-logo-wide,png,80px,44px);
+  }
+}
+#masthead {
+  h1 {margin-bottom: 0;}
+  .logo{
+    margin: 0;
+    @include background-image-retina(/assets/img/pbh-logo,png,168px,101px);
+    height: 100px;
+  }
+  ul {
+    li {
+      margin-left: 2em;
+      font-family: $header-font-family;
+      font-size: 0.875em;
+      line-height: 6.125em;
+      text-transform: uppercase;
+      &:first-child { border: 0px; }
+    }
+    a {
+      padding-top: 20px;
+      border-top: 4px solid transparent;
+      &:hover, &:focus {
+        text-decoration: none;
+        color: $secondary-color;
+        border-top: 4px solid $secondary-color;
+      }
+    }
+    .active > a {
+      &, &:hover, &:focus {
+        border-top: 4px solid $secondary-color;
+        color: $secondary-color;
+      }
+    }
   }
 }
   
@@ -102,12 +137,13 @@ h1, h2, h4 {font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, san
     font-weight: normal;
     padding-bottom: 2px;
     margin: 5px 0 12px 0;
-    border-bottom: solid 2px #f59326;
+    border-bottom: solid 2px $secondary-color;
     
     span {
       color: #fff;
-      background-color: #f59326;
-      padding: 5px;
+      background-color: $secondary-color;
+      padding: 5px 10px;
+      border-radius: 5px 5px 0 0;
     }
   }
   
@@ -119,37 +155,15 @@ h1, h2, h4 {font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, san
 
 .p-left {float: left; margin: 5px;}
 
-
-.nav-pills > .active > a,
-.nav-pills > .active > a:hover,
-.nav-pills > .active > a:focus {
-  color: #c5c5c5;
-  background-color: #ffffff;
-}
+#give ol {list-style: none;}
 
 
-
-.nav-pills > li > a {
-  color: #f59326;
-  font-size: 12px;}
-
-.nav li {border-left: solid 1px #c5c5c5;} 
-.nav li:first-child { border: 0px; }
-   
-
-.nav > li > a:hover,
-.nav > li > a:focus {
-  text-decoration: none;
-  background-color: #fff;
-  color: #c5c5c5;
-}
-
-#homepage-promos h4{color: #f59326;}
+#homepage-promos h4{color: $secondary-color;}
 #homepage-promos img {
   padding: 2px;
   border: solid thin #c5c5c5;}
 
-#homepage-promos img:hover {border: solid thin #004c8e;}
+#homepage-promos img:hover {border: solid thin $primary-color;}
 
 .thumbnail {
   border-radius: 0px;
