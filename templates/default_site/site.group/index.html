@@ -1,72 +1,34 @@
 {embed="global/header"}
 
 <body id="home"  class='t-index tg-home ' >
-  <div id="wrap">
-    <header id="masthead" class="container">
-  		<div class="row-fluid">
-  			<div class="span5">
-  				<a href="http://p4bhealth.org/P4bhealth/Home.html" class="logo">Partners for Better Health</a>
-  			</div>
-  			{embed="global/main_nav"}
-    </header>
-
-    <div id="content">
-    {exp:channel:entries channel="homepage" limit="1" dynamic="no"}
-      <!-- Begin Page Content -->
+  {embed="global/main_nav"}
   
-      <div id="homepage" class="container">
-        <div id="homepage-top" class="row">
-          <div class="span12">
-                
-            <div id="carousel" class="carousel slide">
-              <ol class="carousel-indicators">
-                 {jumbotron}
-                <li data-target="#carousel" data-slide-to="{field_row_index}" {if row_count == "1"} class="active"{/if}></li>
-         
-                 {/jumbotron}
-              </ol>
-              <!-- Carousel items -->
-              <div class="carousel-inner">
-                {jumbotron}
-                <div class="item {if row_count == "1"} active {/if}" >
-                  <a href="{link}"><img src="{slide}" width="945" height="360" alt="{alt}" /></a>
-                </div> 
-                {/jumbotron}
-              </div>
-              <!-- Carousel nav -->
-              <a class="carousel-control left" href="#carousel" data-slide="prev">&lsaquo;</a>
-              <a class="carousel-control right" href="#carousel" data-slide="next">&rsaquo;</a>
-            </div>
-            <div id="homepage-promos" class="row-fluid">
-              {promo_boxes}
-              <div class="span4">
-                <h4>{title}</h4>
-                <a href="{link}"><img src="{image}" width="282" height="135" alt="{alt}" /></a><p>{text}</p>
-              </div>
-              {/promo_boxes}  
-            </div><!-- end #homepage-promos -->
-          </div><!-- end .span12 -->
-        </div><!-- end #homepage-top.row -->
-    
-    
-        <div id="homepage-bottom" class="row">
-          <div class="span12">
-        
-        
-            </div><!-- end .tabbable -->
-        
-        
-          </div><!-- end .span12 -->
-        </div><!-- end #homepage-bottom.row -->
-      </div><!-- end .container -->
-  
-      <!-- End Page Content -->
-      {/exp:channel:entries}
-  
+  {exp:channel:entries channel="homepage" limit="1" dynamic="no"}
+  <div id="homepage" class="row">
+    <div class="large-12 columns">
+      <div id="homepage-top" class="row">
+        <div id="jumbotron" class="large-12 columns">
+          <ul data-orbit>
+            {jumbotron}
+            <li>
+              <a href="{link}"><img src="{slide}" alt="{alt}" /></a>
+            </li> 
+            {/jumbotron}
+          </ul>
+        </div>
+      </div><!-- End #homepage-top -->
+      <div id="homepage-promos" class="row">
+        {promo_boxes}
+        <div class="large-4 columns">
+          <h4><span>{title}</span></h4>
+          <a href="{link}"><img src="{image}" width="282" height="135" alt="{alt}" /></a><p>{text}</p>
+        </div>
+        {/promo_boxes}
+      </div><!-- End #homepage-promos -->
     </div>
-  
-  </div><!-- End #wrap -->
+  </div><!-- End #homepage -->
+  {/exp:channel:entries}
 
-{embed="global/footer"}
+  {embed="global/footer"}
 </body>
 </html>

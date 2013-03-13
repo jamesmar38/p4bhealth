@@ -1,44 +1,74 @@
 {embed="global/header"}
 
 
-<body id="home"  class='t-index tg-home ' >
-  <div id="wrap">
-    <header id="masthead" class="container">
-  		<div class="row-fluid">
-  			<div class="span5">
-  				<a href="{site_url}" class="logo">Partners for Better Health</a>
-  			</div>
-  			{embed="global/main_nav"}
-    </header>
+<body id="{segment_1}"  class='t-index tg-home ' >
+  {embed="global/main_nav"}
+    
+  {embed="global/breadcrumbs"}
 
-    <div id="content" class="container">
-      {embed="global/breadcrumbs"}
-      
+  <section id="static-page" class="row page-content">
+    <!-- Main Content Section -->
+    <!-- This has been source ordered to come first in the markup (and on small devices) but to be to the right of the nav on larger screens -->
+    <section id="static-page-content" class="large-12 columns">
       {exp:email:contact_form user_recipients="no" recipients="ron@maven20.com" charset="utf-8"}
       <h2>Contact Us</h2>
       <p>Nullam quis risus eget urna mollis ornare vel eu leo. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Sed posuere consectetur est at lobortis.</p>
-      <p><img src="/assets/img/border.png" /></p>
-      <p>
-        <label for="from">Your Email:</label>
-        <input type="text" id="from" name="from" size="40" maxlength="35" value="{member_email}" />
-      </p>
-      <p>
-        <label for="subject">Subject:</label>
-        <input type="text" id="subject" name="subject" size="40" value="General Information" />
-      </p>
-      <p>
-        <label for="message">Your Message:</label>
-        <textarea id="message" name="message" rows="18" cols="40"></textarea>
-      </p>
-      <p>
-        <input name="submit" type='submit' value='Submit Form' />
-      </p>
+      
+      
+      <div class="row">
+        <div class="small-8">
+          <div class="row">
+            <div class="small-3 columns">
+              <label for="from" class="right inline">Your Email:</label>
+            </div>
+            <div class="small-9 columns">
+              <input type="text" id="from" name="from" value="{member_email}" placeholder="johnny.appleseed@apple.com" />
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="small-8">
+          <div class="row">
+            <div class="small-3 columns">
+              <label for="subject" class="right inline">Your Subject:</label>
+            </div>
+            <div class="small-9 columns">
+              <input type="text" id="subject" name="subject" value="General Information" placeholder="Your Subject" />
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="small-8">
+          <div class="row">
+            <div class="small-3 columns">
+              <label for="message" class="right inline">Your Message:</label>
+            </div>
+            <div class="small-9 columns">
+              <textarea id="message" name="message" placeholder="Your message"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="small-8">
+          <div class="row">
+            <div class="small-9 push-3 columns">
+              <input name="submit" type='submit' value='Submit Form' class="button" />
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
       {/exp:email:contact_form}
-  
-    </div>
-  
-  </div><!-- End #wrap -->
+    </section>
+  </section>
 
-{embed="global/footer"}
+  {embed="global/footer"}
 </body>
 </html>

@@ -1,5 +1,9 @@
-<ul class="breadcrumb">
-{exp:crumbly:breadcrumbs}
-  <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="{breadcrumb_url}"><span class="nopad" itemprop="title">{breadcrumb_title}</span></a> {if total_results != count}<span class="divider">/</span>{/if}</li>
-{/exp:crumbly:breadcrumbs}
-</ul>
+<div class="row">
+  <div class="large-12 columns">
+    <ul class="breadcrumbs">
+      {exp:crumbly:breadcrumbs}
+        <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"{if count == total_results} class="current"{/if}>{if count == total_results}<span>{if:else}<a href="{breadcrumb_url}">{/if}{breadcrumb_title}{if count == total_results}</span>{if:else}</a>{/if}</li>
+      {/exp:crumbly:breadcrumbs}
+    </ul>
+  </div>
+</div>

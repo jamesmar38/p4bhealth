@@ -1,63 +1,33 @@
 {embed="global/header"}
 
-
-<body id="home"  class='t-index tg-home ' >
-<div id="wrap">
-  <header id="masthead" class="container">
-		<div class="row">
-			<div class="span5">
-				<a href="{site_url}" class="logo">Partners for Better Health</a>
-			</div>
-			
-      {embed="global/main_nav"}
-
-  </header>
-
-  <div id="content" class="container">
-    {embed="global/breadcrumbs"}
-  
-    <!-- Begin Page Content -->
-    <section id="static-page" class="row page-content">
-
-          <aside id="section-nav" class="span3">
-        <nav>
-          
-          <ul class="side-nav">
-            <li class="{if segment_1 == 'team'}active{/if}"><a href="/team" >Team</a></li>
-            <li class="{if segment_1 == 'partners'}active{/if}"><a href="/partners" >Partners</a></li>
-          
-          </ul>
-        </nav>
-        
-          
-        
-      </aside>
+<body id="{segment_1}"  class='t-index tg-home ' >
+  {embed="global/main_nav"}
     
-      <div id="static-page-content" class="span9">
-  
-        <section id="static-page-content" class="row">
-          <div class="span9">
-            
-            {exp:channel:entries channel="static_pages" limit="1"}
-             <h1>{title}</h1>
-             {body}
-            {/exp:channel:entries}
+  {embed="global/breadcrumbs"}
 
-          </div>
-        </section>
-      
-      
-                  </div>
-       
-        </section>
-  
-    <!-- End Page Content -->
-
-  </div>
-  
-  </div><!-- End #wrap -->
-
-{embed="global/footer"}
-
+  <section id="static-page" class="row page-content">
+    <!-- Main Content Section -->
+    <!-- This has been source ordered to come first in the markup (and on small devices) but to be to the right of the nav on larger screens -->
+    <section id="static-page-content" class="{if segment_1 == "about"}large-9 push-3{if:else}large-12{/if} columns">
+      {if segment_1 == "about" AND segment_2 == "team"}
+        {embed="site/_about_team"}
+      {if:else}
+        {exp:channel:entries channel="static_pages" limit="1"}
+         <h1>{title}</h1>
+         {body}
+        {/exp:channel:entries}
+      {/if}
+    </section>
+    <!-- Nav Sidebar -->
+    {if segment_1 == "about"}
+    <aside id="section-nav" class="large-3 pull-9 columns">
+      <ul class="side-nav">
+        <li class="{if segment_2 == 'team'}active{/if}"><a href="/about/team" >Team</a></li>
+        <li class="{if segment_2 == 'partners'}active{/if}"><a href="/about/partners" >Partners</a></li>
+      </ul>
+    </aside>{/if}
+  </section>
+  <!-- End Page Content -->
+  {embed="global/footer"}
 </body>
 </html>
