@@ -14,11 +14,7 @@
 $config['app_version'] = '255';
 $config['install_lock'] = "";
 $config['license_number'] = '';
-$config['debug'] = '1';
-$config['cp_url'] = 'http://local.p4bhealth.org/admin.php';
 $config['doc_url'] = 'http://ellislab.com/expressionengine/user-guide/';
-$config['is_system_on'] = 'y';
-$config['allow_extensions'] = 'y';
 $config['site_label'] = 'Partners for Better Health';
 $config['cookie_prefix'] = '';
 

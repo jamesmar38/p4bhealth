@@ -10,16 +10,16 @@
  * @author     Focus Lab, LLC <dev@focuslabllc.com>
  */
 
-$env_db['hostname'] = '70.32.105.29';
-$env_db['username'] = 'cirruswebdb';
-$env_db['password'] = 'eFut7FeQv8vCqh';
-$env_db['database'] = 'cirrusweb';
+$env_db['hostname'] = '64.207.152.11';
+$env_db['username'] = 'db-p4bhealth';
+$env_db['password'] = 'KJRwUhg6wE8tLj';
+$env_db['database'] = 'p4bhealth_ee';
 
 $env_config['webmaster_email'] = 'noreply@p4bhealth.org';
 
 // Sample global variable for Production only
 // Can be used in templates like "{global:google_analytics}"
-$env_global['global:google_analytics'] = 'UA-179204-57';
+// $env_global['global:google_analytics'] = 'UA-179204-57';
 
 /* End of file config.prod.php */
 /* Location: ./config/config.prod.php */

@@ -1,9 +1,9 @@
-set :application, "cirrusdynamics"
+set :application, "p4bhealth"
 set :stages, %w(development staging production)
 set :default_stage, 'staging' 
 require 'capistrano/ext/multistage'
 
-set :repository,  "git@github.com:maven20/CirrusDynamics.git"
+set :repository,  "git@github.com:maven20/PBH.git"
 set :server_root, "/var/www/vhosts/p4bhealth.org"
 
 set :deploy_via, :remote_cache
@@ -44,12 +44,9 @@ namespace :deploy do
     run "mkdir -p #{server_root}/#{shared_dir}/logs"
     
     # Custom Upload directories
-    run "mkdir -p #{server_root}/#{shared_dir}/images/uploads/downloads"
     run "mkdir -p #{server_root}/#{shared_dir}/images/uploads/home"
-    run "mkdir -p #{server_root}/#{shared_dir}/images/uploads/home/jumbo"
-    run "mkdir -p #{server_root}/#{shared_dir}/images/uploads/home/promo"
-    run "mkdir -p #{server_root}/#{shared_dir}/images/uploads/partner_logos"
-    run "mkdir -p #{server_root}/#{shared_dir}/images/uploads/staff"
+    run "mkdir -p #{server_root}/#{shared_dir}/images/uploads/people-img"
+    run "mkdir -p #{server_root}/#{shared_dir}/images/uploads/general"
   end
 
   desc "This is here to override the original :restart"

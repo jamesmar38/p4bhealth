@@ -10,10 +10,10 @@
  * @author     Focus Lab, LLC <dev@focuslabllc.com>
  */
 
-$env_db['hostname'] = '205.186.165.42';
-$env_db['username'] = 'admin-cirrusprod';
-$env_db['password'] = 'fTB638pY6zecHT';
-$env_db['database'] = 'cirrus-prod';
+$env_db['hostname'] = '64.207.152.11';
+$env_db['username'] = 'db-p4bhealth';
+$env_db['password'] = 'KJRwUhg6wE8tLj';
+$env_db['database'] = 'p4bhealth_ee';
 
 $env_config['webmaster_email'] = 'noreply@p4bhealth.org';
 
