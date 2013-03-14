@@ -53,7 +53,7 @@ body {
         border-top: 4px solid $secondary-color;
       }
     }
-    .active > a {
+    .active > a, .here > a {
       &, &:hover, &:focus {
         border-top: 4px solid $secondary-color;
         color: $secondary-color;

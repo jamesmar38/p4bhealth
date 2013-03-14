@@ -1,71 +1,86 @@
-
 <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 
 <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width" />
 
-<!-- Set the viewport width to device width for mobile -->
+		<title>{Title}{block:PostTitle} — {PostTitle}{/block:PostTitle}</title>
+		    	{block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
+		    <meta name="text:Disqus Shortname" content="" />
+		    <link rel="icon" href="{Favicon}"/>
+		    <link rel="alternate" type="application/rss+xml" title="RSS" href="{RSS}"/>
 
-    <title>{Title}{block:PostTitle} — {PostTitle}{/block:PostTitle}</title>
-		{block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
-    <meta name="text:Disqus Shortname" content="" />
-    <link rel="icon" href="{Favicon}"/>
-    <link rel="alternate" type="application/rss+xml" title="RSS" href="{RSS}"/>
-
-		<!-- Default colours -->
-		<meta name="color:Top Border" content="#333" />
-		<meta name="color:Site Title" content="#D53C2E" />
-		<meta name="color:Link" content="#333" />
-		<meta name="color:Link Hover" content="#D53C2E" />
-		<meta name="color:Button" content="#bbbbbb" />
-		<meta name="color:Button Hover" content="#D53C2E" />
-		<meta name="color:Post Title" content="#333" />
-		<meta name="color:Post Title Link" content="#D53C2E" />
+				<!-- Default colours -->
+				<meta name="color:Top Border" content="#333" />
+				<meta name="color:Site Title" content="#D53C2E" />
+				<meta name="color:Link" content="#333" />
+				<meta name="color:Link Hover" content="#D53C2E" />
+				<meta name="color:Button" content="#bbbbbb" />
+				<meta name="color:Button Hover" content="#D53C2E" />
+				<meta name="color:Post Title" content="#333" />
+				<meta name="color:Post Title Link" content="#D53C2E" />
 		
-		<!-- Default social link text -->
-		<meta name="text:Website Address" content="" />
-		<meta name="text:Blog Address" content="" />
-		<meta name="text:Flickr Username" content="" />
-		<meta name="text:Twitter Username" content="" />
-		<meta name="text:Facebook Username" content="" />
-		<meta name="text:YouTube Username" content="" />
-		<meta name="text:Lastfm Username" content="" />
-		<meta name="text:Delicious Username" content="" />
-		<meta name="text:FriendFeed Username" content="" />
+				<!-- Default social link text -->
+				<meta name="text:Website Address" content="" />
+				<meta name="text:Blog Address" content="" />
+				<meta name="text:Flickr Username" content="" />
+				<meta name="text:Twitter Username" content="" />
+				<meta name="text:Facebook Username" content="" />
+				<meta name="text:YouTube Username" content="" />
+				<meta name="text:Lastfm Username" content="" />
+				<meta name="text:Delicious Username" content="" />
+				<meta name="text:FriendFeed Username" content="" />
 		
-		<!-- Google Analytics -->
-		<meta name="text:Google Analytics ID" content="" />
-      
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="http://local.p4bhealth.org/assets/css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="http://local.p4bhealth.org/assets/css/bootstrap.css" rel="stylesheet">
-    <link href="http://local.p4bhealth.org/assets/css/screen.css" rel="stylesheet">
-      
-		<!-- Vignelli v1.3.3 -->
+				<!-- Google Analytics -->
+				<meta name="text:Google Analytics ID" content="" />
+        
+<link href="http://staging.p4bhealth.org/assets/css/screen.css" rel="stylesheet">
+<script src="http://staging.p4bhealth.org/assets/js/vendor/custom.modernizr.js"></script>
+
 
     <style type="text/css">
 
+			.clearfix:after {
+				content: ".";
+				display: block;
+				clear: both;
+				visibility: hidden;
+				line-height: 0;
+				height: 0;
+			}
+ 
+			.clearfix {
+				display: inline-block;
+			}
+ 
+			html[xmlns] .clearfix {
+				display: block;
+			}
+ 
+			* html .clearfix {
+				height: 1%;
+			}
+			
+			
 			/*
 			-----------------------------------------------
 			Form styles
 			-----------------------------------------------
 			*/
 
-			form {
+			.main form {
 				font-size: 100%;
 				position: relative;
 				text-align: left;
 			}
-			form fieldset {
+			.main form fieldset {
 				margin: 0;
 				padding: 0;
 				width: 100%;
 			}
-			form fieldset legend {
+			.main form fieldset legend {
 				border: 0;
 				border-bottom: 1px solid #ccc;
 				float: left;
@@ -76,58 +91,58 @@
 				padding: 0 0 3px;
 				white-space: normal;
 			}
-			legend span {
+			.main legend span {
 				display: block;
 				width: 461px;
 			}
-			.field label,
-			.field .label,
-			form label {
+			.main .field label,
+			.main .field .label,
+			.main form label {
 				float: left;
 				margin-right: 1em;
 				width: 12em;
 			}
 
-			.introduction {
+			.main .introduction {
 				font-size: 110%;
 				padding-bottom: 1.5em;
 			}
 
-			.field {
+			.main .field {
 				clear: left;
 				margin: 0.75em 0;
 				padding: 0.2em;
 			}
-			.text input,
-			.textarea textarea,
-			.password input,
-			.email input,
-			.url input,
-			.decimal input,
-			.integer input,
-			.select input,
-			input[type="text"],
-			input[type="textarea"] {
+			.main .text input,
+			.main .textarea textarea,
+			.main .password input,
+			.main .email input,
+			.main .url input,
+			.main .decimal input,
+			.main .integer input,
+			.main .select input,
+			.main input[type="text"],
+			.main input[type="textarea"] {
 				border: 1px solid #999;
 				color: #333;
 				font-size: 100%;
 				height: 1.2em;
 				padding: 0.15em;
 			}
-			.decimal input,
-			.integer input {
+			.main .decimal input,
+			.main .integer input {
 				width: 4em;
 			}
-			.textarea textarea,
-			input[type="textarea"] {
+			.main .textarea textarea,
+			.main input[type="textarea"] {
 				height: 7.5em;
 				width: 24em;
 			}
-			form .field input,
-			form .textarea textarea,
-			form .select select,
-			input[type="text"],
-			input[type="textarea"] {
+			.main form .field input,
+			.main form .textarea textarea,
+			.main form .select select,
+			.main input[type="text"],
+			.main input[type="textarea"] {
 				background: #fff url(../images/core/forms_fieldbg.gif) repeat-x 0 0;
 				border-bottom: 1px solid #dadada;
 				border-left: 1px solid #b4b4b4;
@@ -137,52 +152,52 @@
 				padding: 3px;
 				width: 50%;
 			}
-			form .select select,
-			select{
+			.main form .select select,
+			.main select{
 				padding: 2px;
 				width: auto;
 			}
-			form .postcode input {
+			.main form .postcode input {
 				width: 20%;
 			}
-			form .telephone input,
-			form .mobile input,
-			form .fax input {
+			.main form .telephone input,
+			.main form .mobile input,
+			.main form .fax input {
 				width: 30%;
 			}
-			form .help {
+			.main form .help {
 				color: #888;
 				font-size: 0.8em;
 				line-height: 1.8em;
 				margin-left: 16.25em;
 				padding-bottom: 0;
 			}
-			.field.required .required,
-			.introduction .required {
+			.main .field.required .required,
+			.main .introduction .required {
 				color: #c12;
 			}
-			.field .optional,
-			.introduction .optional {
+			.main .field .optional,
+			.main .introduction .optional {
 				color: #888;
 			}
-			.field.error input,
-			.select.error select,
-			.textarea.error textarea {
+			.main .field.error input,
+			.main .select.error select,
+			.main .textarea.error textarea {
 				background: #FFF1ED;
 				border: 2px solid #ED2F07;
-			}
+			.main }
 			form .required label span,
-			.required_info span {
+			.main .required_info span {
 				color: #cc0000;
 				font-size: 1.143em;
 				font-weight: bold;
 				line-height: 120%;
 			}
-			.errors {
+			.main .errors {
 				color: #E9602A;
 				font-weight: bold;
 			}
-			.error_summary {
+			.main .error_summary {
 				background: #FFEBEB;
 				border: 1px solid #FFCCCC;
 				color: #b12;
@@ -190,18 +205,18 @@
 				margin-top: -2px;
 				padding: 0.375em;
 			}
-			.error_summary p {
+			.main .error_summary p {
 				padding: 0;
 			}
-			.field.error .errors {
+			.main .field.error .errors {
 				color: #b12;
 				margin-left: 13em;
 			}
-			.error_summary li {
+			.main .error_summary li {
 				list-style: disc;
 				margin-left: 2em;
 			}
-			.required_info {
+			.main .required_info {
 				color: #666;
 				font-size: 0.929em;
 				padding-left: 10px;
@@ -210,59 +225,59 @@
 				text-align: right;
 				top: 0;
 			}
-			.date_dropdowns,
-			.date_dropdowns div {
+			.main .date_dropdowns,
+			.main .date_dropdowns div {
 				float: left;
 			}
-			.date_dropdowns div label {
+			.main .date_dropdowns div label {
 				color: #888;
 				font-size: 0.8em;
 				line-height: 1.8em;
 			}
-			.date_dropdowns .day {
+			.main .date_dropdowns .day {
 				width: 4em;
 			}
-			.date_dropdowns .month {
+			.main .date_dropdowns .month {
 				width: 4em;
 			}
-			.date_dropdowns .year {
+			.main .date_dropdowns .year {
 				width: 4em;
 			}
 
-			.checkboxes_widget,
-			.radios_widget,
-			.boolean_widget {
+			.main .checkboxes_widget,
+			.main .radios_widget,
+			.main .boolean_widget {
 				margin-left: 13em;
 			}
-			.checkboxes_widget li label,
-			.radios_widget li label {
+			.main .checkboxes_widget li label,
+			.main .radios_widget li label {
 				float: none;
 			}
-			.boolean_widget li label {
+			.main .boolean_widget li label {
 				width: 5em;
 			}
-			.checkboxes_widget li label input,
-			.radios_widget li label input,
-			.boolean_widget li label input {
+			.main .checkboxes_widget li label input,
+			.main .radios_widget li label input,
+			.main .boolean_widget li label input {
 				float: none;
 				margin-right: 0.5em;
 			}
 
 			/* Right Aligned */
-			.form_rightaligned .field label,
-			.form_rightaligned .field .label {
+			.main .form_rightaligned .field label,
+			.main .form_rightaligned .field .label {
 				text-align: right;
 			}
-			.form_rightaligned .field .optional,
-			.form_rightaligned .introduction .optional {
+			.main .form_rightaligned .field .optional,
+			.main .form_rightaligned .introduction .optional {
 				display: block;
 			}
 
 			/* Top Aligned */
-			.form_topaligned .field label,
-			.form_topaligned .field .label,
-			.form_topaligned .textarea label,
-			.form_topaligned .textarea .label {
+			.main .form_topaligned .field label,
+			.main .form_topaligned .field .label,
+			.main .form_topaligned .textarea label,
+			.main .form_topaligned .textarea .label {
 				display: block;
 				float: none;
 				line-height: 120%;
@@ -270,14 +285,14 @@
 				padding-bottom: 0.15em;
 				width: 100%;
 			}
-			.form_topaligned .field .help {
+			.main .form_topaligned .field .help {
 				margin-left: 0;
 			}
-			.form_topaligned .field {
+			.main .form_topaligned .field {
 				margin: 0;
 				padding: 0 0 0.375em 0;
 			}
-			.form_topaligned .dropdown {
+			.main .form_topaligned .dropdown {
 				margin-bottom: 0.7em;
 			}
 			.form_topaligned .field .help,
@@ -285,26 +300,26 @@
 				margin: 0;
 				padding-top: 0.3em;
 			}
-			.form_topaligned .button,
-			.form_topaligned input.button {
+			.main .form_topaligned .button,
+			.main .form_topaligned input.button {
 				margin-left: 0;
 			}
 
 			/* Specific Cases */
-			.checklist_column {
+			.main .checklist_column {
 				float: left;
 				margin-bottom: 1em;
 				width: 140px;
 			}
-			.checklist_item {
+			.main .checklist_item {
 				display: block;
 				padding-bottom: 5px;
 			}
-			.form_topaligned .checklist_column .checklist_item label {
+			.main .form_topaligned .checklist_column .checklist_item label {
 				display: inline;
 				vertical-align: middle;
 			}
-			.form_topaligned .checklist_column .checklist_item input {
+			.main .form_topaligned .checklist_column .checklist_item input {
 				margin-right: 3px;
 				vertical-align: middle;
 			}
@@ -321,7 +336,7 @@
 
 			
 			
-			#grid {
+			.main #grid {
 				/* Thanks to the guys at Analog for the Hashgrid — http://hashgrid.com/ */
 				left: 50%;
 				margin-left: -470px;
@@ -329,7 +344,7 @@
 				top: 0;
 				width: 941px;
 			}
-			#grid .horiz {
+			.main #grid .horiz {
 				/* 22px line height */
 				border-bottom: 1px dotted #aaa;
 				height: 21px;
@@ -337,23 +352,23 @@
 				padding: 0;
 			}
 			/* 
-			#grid {
+			.main #grid {
 				z-index: 0;
 			}
 			*/
 			/* 1.1 Accessibility
 			----------------------------------------------- */
-			.accessibility {display: none;}
-			#access {position: absolute; top: -1000em;}
+			.main .accessibility {display: none;}
+			.main #access {position: absolute; top: -1000em;}
 
 
 			/* 1.2 Headings
 			----------------------------------------------- */
-			h1,
-			h2,
-			h3,
-			h4,
-			h5 {
+			.main h1,
+			.main h2,
+			.main h3,
+			.main h4,
+			.main h5 {
 				color: #999;
 				font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
 				font-weight: bold;
@@ -362,123 +377,124 @@
 				filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src=hIEfix.png,sizingMethod=crop);
 				zoom: 1;
 			}
-			h1 {
+			.main h1 {
 				font-size: 34px;
 				letter-spacing: -0.02em;
 				margin: 29px 0 -5px 0;
 			}
-			h2 {
+			.main h2 {
 				font-size: 24px;
 				letter-spacing: -0.02em;
 			}
-			h3 {
+			.main h3 {
 				font-size: 20px;
 			}
-			h4 {
+			.main h4 {
 				font-size: 20px;
 			}
-			h5 {
+			.main h5 {
 				font-size: 17px;
 			}
-			.page_title {
+			.main .page_title {
 				color: #bbb;
 				font-size: 1.8em;
 				margin-left: 160px;
 				margin-top: 0;
 			}
-			h1 .subtitle,
-			h2 .subtitle,
-			h3 .subtitle {
+			.main h1 .subtitle,
+			.main h2 .subtitle,
+			.main h3 .subtitle {
 				color: #bbb;
 				font: italic 0.615em/1.38em "Palatino","Times New Roman",Times,serif;
 			}
-			h1 a:hover .subtitle,
-			h2 a:hover .subtitle,
-			h3 a:hover .subtitle {
+			.main h1 a:hover .subtitle,
+			.main h2 a:hover .subtitle,
+			.main h3 a:hover .subtitle {
 				color: #999;
 			}
 
 			/* 1.3 Text Elements
 			--------------------------------------------- */
-			p,
+			.main p,
 			.main ul,
 			.main ol,
-			ol.posts > li,
-			pre {
+			.main ol.posts > li,
+			.main pre {
 				margin-bottom: 1.575em;
 			}
 			.main .posts ul li,
 			.main .posts ol li {
 				margin-bottom: 0.5em;
 			}
-			code {
+			.main code {
 				font: normal 1em "Monaco","Courier New",Courier,sans-serif;
 				margin: 0;
 				padding: 0;
 			}
-			blockquote,
-			.blockquote {
+			.main blockquote,
+			.main .blockquote {
 				color: #9B9B9B;
 				font: italic 1.2em/1.31em "Palatino","Times New Roman",Times,serif;
 				margin: 0 auto;
 				padding: 0	;
 			}
-			.blockquote.short {
+			.main .blockquote.short {
 				font-size: 26px;
 			}
-			.blockquote.long {
+			.main .blockquote.long {
 				font-size: 18px;
 			}
-			.cite {
+			.main .cite {
 				color: #999;
 				font: normal 12px/12px "Helvetica Neue",Arial,Helvetica,sans-serif;
 				margin-bottom: 10px
 			}
-			.cite a,
-			.cite a:visited {
+			.main .cite a,
+			.main .cite a:visited {
 				color: #888;
 			}
-			.ampersand {
+			.main .ampersand {
 				font: italic 130% Baskerville,"Goudy Old Style","Palatino","Book Antiqua",serif;
 			}
 
 			/* 1.4 Links and Lists
 			----------------------------------------------- */
-			a,
-			a:visited,
-			.main .pagination a,
-			.main .pagination a:visited {
+			.main a,
+			.main a:visited,
+			.main .main .pagination a,
+			.main .main .pagination a:visited {
 				color: {color:Link};
 				font-weight: bold;
 				text-decoration: none;
 			}
-			a:hover,
-			a:focus,
-			a:active,
-			.main a:visited:hover {color: {color:Link Hover};}
-			a:active {
+			.main a:hover,
+			.main a:focus,
+			.main a:active,
+			.main .main a:visited:hover {color: {color:Link Hover};}
+			.main a:active {
 				outline: 0;
 				position: relative;
 				top: 1px;
 				text-decoration: none;
 				text-shadow: 0 0 2px #999;
 			}
-			li {
+			.main li {
 				display: list-item;
+                list-style: none;
 			}
-			ol li {
+			.main ol li {
 				list-style: decimal outside;
 			}
-			ul li {
+			.main ul li {
 				list-style: disc outside;
 			}
-			dl {
+			.main dl {
 				margin-top: 22px;
 			}
-			dd {
+			.main dd {
 				margin-bottom: 22px;
 			}
-			.notes li {
+			.main .notes li {
 				list-style: none;
 				margin-bottom: 0.5em;
 			}
@@ -486,76 +502,76 @@
 
 			/* 1.5 Forms
 			----------------------------------------------- */
-			form .field input,
-			form .textarea textarea,
-			form .select select,
-			input[type="text"],
-			input[type="textarea"],
-			.tags li a {
+			.main form .field input,
+			.main form .textarea textarea,
+			.main form .select select,
+			.main input[type="text"],
+			.main input[type="textarea"],
+			.main .tags li a {
 				-moz-border-radius: 2px;
 				-webkit-border-radius: 2px;
 				border-radius: 2px;
 			}
-			input:focus {
+			.main input:focus {
 				border: 1px solid #444;
 			}
-			form label {
+			.main form label {
 				font-weight: bold;
 			}
-			.form_topaligned .field {
+			.main .form_topaligned .field {
 				padding: 0 0 9px 0;
 				position: relative;
 			}
-			.field.error input,
-			.select.error select,
-			.textarea.error textarea {
+			.main .field.error input,
+			.main .select.error select,
+			.main .textarea.error textarea {
 				-moz-box-shadow: 0 0 3px #888;
 				-webkit-box-shadow: 0 0 3px #888;
 				box-shadow: 0 0 3px #888;
 			}
-			.form_topaligned .field label,
-			.form_topaligned .field .label,
-			.form_topaligned .textarea label,
-			.form_topaligned .textarea .label {
+			.main .form_topaligned .field label,
+			.main .form_topaligned .field .label,
+			.main .form_topaligned .textarea label,
+			.main .form_topaligned .textarea .label {
 				width: auto;
 			}
-			#respond .error input,
-			#respond .error textarea {
+			.main #respond .error input,
+			.main #respond .error textarea {
 				opacity: 1;
 			}
 
 
 			/* 1.6 Columns and Rows
 			----------------------------------------------- */
-			.column {
+			.main .column {
 				display: inline;
 				float: left;
 				margin: 0 20px 20px 0;
 				position: relative;
 				width: 205px;
 			}
-			.column.last {
+			.main .column.last {
 				border-right: 0;
 				margin-right: 0;
 			}
-			.row .column {
+			.main .row .column {
 				margin-bottom: 0;
 			}
-			.column.half {
+			.main .column.half {
 				width: 470px;
 			}
-			.column.quarter {
+			.main .column.quarter {
 				width: 225px;
 			}
-			.column.last {
+			.main .column.last {
 				margin-right: 0;
 			}
-			.row {
+			.main .row {
 				display: block;
 				float: left;
 				margin: 0 0 20px 0;
 			}
-			.row.last {
+			.main .row.last {
 				border-bottom: 0;
 				margin-bottom: 0;
 				padding-bottom: 0;
@@ -564,16 +580,16 @@
 
 			/* 1.7 Puffs and Boxes
 			----------------------------------------------- */
-			.puff {
+			.main .puff {
 				border: 0;
 				display: inline;
 				padding: 0;
 			}
-			.puff.right {
+			.main .puff.right {
 				float: right;
 				margin: 0 0 10px 20px;
 			}
-			.puff.left {
+			.main .puff.left {
 				float: left;
 				margin: 0 20px 10px 0;
 			}
@@ -581,13 +597,13 @@
 
 			/* 1.8 Buttons
 			----------------------------------------------- */
-			button,
-			form input.button,
-			.submit input,
-			.button,
-			input[type="submit"],
-			.prev_next a,
-			.rss_link {
+			.main button,
+			.main form input.button,
+			.main .submit input,
+			.main .button,
+			.main input[type="submit"],
+			.main .prev_next a,
+			.main .rss_link {
 				background: {color:Button};
 				border: 0;
 				-moz-border-radius: 2px;
@@ -602,71 +618,71 @@
 				text-align: center;
 				width: auto;
 			}
-			button:hover,
-			button:focus,
+			.main button:hover,
+			.main button:focus,
 			button:active,
-			form input.button:hover,
-			form input.button:focus,
-			form input.button:active,
-			.submit input:hover,
-			.submit input:focus,
-			.submit input:active,
-			.button:hover,
-			.button:active,
-			input[type="submit"]:hover,
-			input[type="submit"]:focus,
-			input[type="submit"]:active,
-			.prev_next a:hover,
-			.rss_link:hover {
+			.main form input.button:hover,
+			.main form input.button:focus,
+			.main form input.button:active,
+			.main .submit input:hover,
+			.main .submit input:focus,
+			.main .submit input:active,
+			.main .button:hover,
+			.main .button:active,
+			.main input[type="submit"]:hover,
+			.main input[type="submit"]:focus,
+			.main input[type="submit"]:active,
+			.main .prev_next a:hover,
+			.main .rss_link:hover {
 				background: {color:Button Hover};
 				color: #fff;
 				text-decoration: none;
 			}
-			.prev_next a,
-			.utility_links li a,
-			.button {
+			.main .prev_next a,
+			.main .utility_links li a,
+			.main .button {
 				-moz-border-radius: 2px;
 				-webkit-border-radius: 2px;
 				border-radius: 2px;
 			}
-			.form_topaligned .button,
-			.form_topaligned input.button {
+			.main .form_topaligned .button,
+			.main .form_topaligned input.button {
 				padding-left: auto;
 			}
-			form button,
-			form .button {
+			.main form button,
+			.main form .button {
 				margin-top: 1em;
 			}
 
 			/* 1.9 Tables
 			----------------------------------------------- */
-			table {
+			.main table {
 				line-height: 110%;
 				margin: 0;
 			}
-			table th {
+			.main table th {
 				font-size: 1.143em;
 				font-weight: bold;
 				padding-bottom: 20px;
 			}
-			table td {
+			.main table td {
 				border-top: 1px solid red;
 				padding: 0.245em 14px 0.245em 0;
 			}
-			table tbody {
+			.main table tbody {
 				font-size: 13px;
 			}
-			table span {
+			.main table span {
 				color: #585245;
 				font-weight: bold;
 			}
-			table .alt {
+			.main table .alt {
 				background: #fbfbfb;
 			}
-			.wp_syntax table {
+			.main .wp_syntax table {
 				margin: 0;
 			}
-			table caption {
+			.main table caption {
 				color: #9B9B9B;
 				font: italic 1em "Palatino","Times New Roman",Times,serif;
 				margin: 3px 0 5px 0;
@@ -703,152 +719,6 @@
 			/*
 			2. TOP LEVEL ELEMENTS
 			------------------------------------------------------------------- */
-
-			/* 2.0 Wrapper
-			----------------------------------------------- */
-			#wrapper:after {
-				content: ".";
-				clear: both;  
-				display: block; 
-				height: 0; 
-				visibility: hidden;
-			}
-			#wrapper {
-				display: inline-block;
-			}
-			/* \*/
-			* html #wrapper {
-				height: 1%;
-			}
-			#wrapper {
-				display: block;
-				margin: 0 auto;
-				padding: 16px 10px 30px 10px;
-				position: relative;
-				width: 940px;
-			}
-			a.rss_link,
-			a.rss_link:visited {
-				background-position: 4px 3px;
-				-moz-border-radius-bottomright: 2px;
-				-moz-border-radius-bottomleft: 2px;
-				-webkit-border-bottom-right-radius: 2px;
-				-webkit-border-bottom-left-radius: 2px;
-				border-bottom-right-radius: 2px;
-				border-bottom-left-radius: 2px;
-				color: #ddd;
-				font: bold 0.875em "Helvetica Neue",Arial,Helvetica,sans-serif;
-				padding: 3px 6px 4px 26px;
-				position: absolute;
-				right: 9px;
-				text-align: right;
-				top: -3px;
-			}
-			a.rss_link:hover {
-				box-shadow: none;
-				-moz-box-shadow: none;
-				-webkit-box-shadow: none;
-				color: #fff;
-			}
-
-
-			/* 2.1 Header
-			----------------------------------------------- */
-			#header {
-				float: left;
-				min-height: 70px;
-				margin-bottom: 30px;
-				position: relative;
-				width: 100%;
-			}
-			#branding {
-				display: inline;
-				float: left;
-				font-size: 1em;
-				margin: 3px 20px 0 0;
-				padding: 0;
-				width: 140px;
-			}
-			#branding a,
-			#branding a:visited {
-				color: {color:Site Title};
-				display: block;
-				outline: 0;
-			}
-			.about {
-				display: inline;
-				float: right;
-				font-size: 0.938em;
-				height: 90px;
-				overflow: hidden;
-				width: 220px;
-			}
-			.about p {
-				line-height: 22px;
-				margin-bottom: 0;
-			}
-			.about img {
-				border: 4px solid #DDDDDD;
-				display: inline;
-				float: left;
-				margin-left: -82px;
-				margin-right: 10px;
-			}
-
-			/* 2.2 Masthead
-			----------------------------------------------- */
-			#masthead {}
-
-
-			/* 2.3 Navigation
-			----------------------------------------------- */
-			.navigation {
-				float: left;
-				font: bold 0.938em "Helvetica Neue",Arial,Helvetica,sans-serif;
-				margin-top: 0;
-				padding: 0;
-				text-align: left;
-				width: 140px;
-			}
-			.navigation li {
-				line-height: 21px;
-				list-style: none;
-				padding: 0;
-				width: 140px;
-			}
-			#nav li#nav_port {
-				margin-bottom: 0;
-			}
-			#nav li#nav_serv {
-				margin-bottom: 2px;
-			}
-			#nav li#nav_cont {
-				margin-bottom: 0;
-			}
-			.nav li a {
-				height: 18px;
-				padding: 4px 10px 4px 0;
-			}
-			.nav li a:hover {
-				background: none;
-				color: #D53C2E;
-			}
-			.nav li a.active {
-				background: #333;
-				-moz-border-radius: 2px;
-				-webkit-border-radius: 2px;
-				border-radius: 2px;
-				color: #fff;
-				margin: 3px 0;
-				padding: 2px 7px;
-			}
-			.nav li a.active:hover {
-				background: #D53C2E;
-				border: 0;
-				color: #fff;
-				margin: 0;
-				padding: 2px 7px;
-			}
 
 
 			/* 2.4 Main content
@@ -952,10 +822,6 @@
 			}
 
 
-			/* 2.5 Footer
-			----------------------------------------------- */
-
-
 			/*
 			3. SPECIFIC MODULES
 			------------------------------------------------------------------- */
@@ -987,22 +853,6 @@
 				font-size: 30px;
 				line-height: 120%;
 				margin: -15px 0 0.3em 0;
-			}
-			h1 a,
-			h1.title a,
-			h2 a,
-			h3 a {
-				color: {color:Post Title Link};
-			}
-			h1 a:hover,
-			h1 a:visited:hover,
-			h1.title a:hover,
-			h1.title a:visited:hover,
-			h2 a:hover,
-			h2 a:visited:hover,
-			h3 a:hover,
-			h3 a:visited:hover {
-				color: {color:Link};
 			}
 			.article_header .date {
 				left: 0;
@@ -1430,9 +1280,6 @@
 
 			/* 3.2 Archive listing
 			----------------------------------------------- */
-			body.template_archive #header {
-				margin-bottom: 29px;
-			}
 			body.template_archive .article_header {
 				float: left;
 				margin-bottom: 23px;
@@ -1566,6 +1413,33 @@
         	.tag:after, .search_query:after { content:'”'; }
             
 			{CustomCSS}
+            
+            #masthead {border-bottom: 1px solid #e5e5e5;}
+            .main {margin: 50px 0 0 100px;}
+            
+            ul li{
+                list-style: none;
+                padding-left: 10px;}
+                
+            h1, h2, h4 {font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif; color: #000;}
+            
+            h2 {margin-left: 25px;}
+            
+            
+            .tags li a:hover{background-color: #f59326;}
+            
+            .posts h2 {margin-left: 0px;}
+            .post_content a {color: #f59326;}
+
+            h1.title a {color: #f59326;}
+            .post_content li {list-style-type: square;}
+            
+            input {margin: 20px 0 0 40px;}
+            
+            #searchform button {margin: -70px 0 0 200px;}
+            #searchform button a:hover {color: #000;}
+      
+            
     </style>
     
     {block:IfGoogleAnalyticsID}
@@ -1588,249 +1462,304 @@
     <!--[if lt IE 9]>
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    
-  </head>
-  
-  <body id="{PostID}" class="{TagsAsClasses}">
-    <div id="wrap">
-      <header id="masthead" class="container">
-    		<div class="row-fluid">
-    			<div class="span5">
-    				<a href="http://local.p4bhealth.org/" class="logo">Partners for Better Health</a>
-    			</div>
-    			<div class="span7">
-  	<nav>
-              <ul class="nav nav-pills pull-right">
-                      <li class=""><a href="http://local.p4bhealth.org/" >Home</a></li>
-  		    <li class=""><a href="http://local.p4bhealth.org/about" >About</a></li>
-                      <li class=""><a href="http://local.p4bhealth.org/get_involved" >Get Involved</a></li>
-                      <li class=""><a href="http://local.p4bhealth.org/rl_fellowship" >Randall Lewis Fellowship</a></li>
-                      <li class="active"><a href="http://local.p4bhealth.org/blog" >Blog</a></li>
-                      <li class=""><a href="http://local.p4bhealth.org/contact" >Contact</a></li>
-              </ul>
-           
-  	</nav>
+
+
+</head>
+
+<body id="{PostID}" class="{TagsAsClasses}">
+  <div class="contain-to-grid hide-for-medium-up">
+    <nav class="top-bar">
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="http://staging.p4bhealth.org/" class="logo">Partners for Better Health</a></h1>
+        </li>
+        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+        <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+      </ul>
+
+      <section class="top-bar-section">
+        <!-- Left Nav Section -->
+        <ul id="nav-sub" class="right">
+<li class="first"><a href="http://staging.p4bhealth.org/about">About Us</a></li>
+<li><a href="http://staging.p4bhealth.org/get-involved">Get Involved</a></li>
+<li><a href="http://staging.p4bhealth.org/rl_fellowship">Randall Lewis Fellowship</a></li>
+<li class="here"><a href="http://staging.p4bhealth.org/blog">Blog</a></li>
+<li class="last"><a href="http://staging.p4bhealth.org/contact">Contact</a></li>
+</ul>
+      </section>
+    </nav>
   </div>
-      </header>
-				
-				<div class="main container clearfix" id="content">
 
-            {block:SearchPage}
-     					{block:NoSearchResults}
-     						<h3 class="result_title">{lang:No search results for SearchQuery 2}.</h3>
-     					{/block:NoSearchResults}
+  <header id="masthead" class="row hide-for-small">
+    <div class="large-3 columns">
+      <h1><a href="http://staging.p4bhealth.org/" class="logo">Partners for Better Health</a></h1>
+    </div>
+    <div class="large-9 columns">
+      <ul id="nav-sub" class="inline-list right">
+<li class="first"><a href="http://staging.p4bhealth.org/about">About Us</a></li>
+<li><a href="http://staging.p4bhealth.org/get-involved">Get Involved</a></li>
+<li><a href="http://staging.p4bhealth.org/rl_fellowship">Randall Lewis Fellowship</a></li>
+<li class="here"><a href="http://staging.p4bhealth.org/blog">Blog</a></li>
+<li class="last"><a href="http://staging.p4bhealth.org/contact">Contact</a></li>
+</ul>
+    </div>
+  </header>
 
-     				    {block:SearchResults}
-     					    <h3 class="result_title">{lang:SearchResultCount results for SearchQuery 2}:</h3>
-     					{/block:SearchResults}
-     		    {/block:SearchPage}
+  <div class="row hide-for-small">
+  <div class="large-12 columns">
+    <ul class="breadcrumbs">
+      <li><a href="http://staging.p4bhealth.org">Home</a></li><li class="last"><span>Blog</span></li>
+    </ul>
+  </div>
+</div>
 
-					<ol class="posts">
-						{block:Posts}
-						<li>
+  <section id="static-page" class="row page-content">
+    <!-- Main Content Section -->
+    <!-- This has been source ordered to come first in the markup (and on small devices) but to be to the right of the nav on larger screens -->
+    <section id="static-page-content" class="large-12 columns clearfix">
+              
+         
+		 
+ 				<div class="main" id="content">
+
+             {block:SearchPage}
+      					{block:NoSearchResults}
+      						<h3 class="result_title">{lang:No search results for SearchQuery 2}.</h3>
+      					{/block:NoSearchResults}
+
+      				    {block:SearchResults}
+      					    <h3 class="result_title">{lang:SearchResultCount results for SearchQuery 2}:</h3>
+      					{/block:SearchResults}
+      		    {/block:SearchPage}
+                 
+                   <h2>Partners for Better Health Blog</h2><br />
+
+ 					<ol class="posts">
+ 						{block:Posts}
+ 						<li>
 						
-						<div id="aside">
-							{block:Date}
-							<a href="{Permalink}"><span class="date">{DayOfMonth} {Month} {Year}</span></a>
-							{/block:Date}
+ 						<div id="aside">
+ 							{block:Date}
+ 							<a href="{Permalink}"><span class="date">{DayOfMonth} {Month} {Year}</span></a>
+ 							{/block:Date}
 
-							{block:NoteCount}
-		          <p><a href="{Permalink}">{NoteCountWithLabel}</a></p>
-		          {/block:NoteCount}
+ 							{block:NoteCount}
+ 		          <p><a href="{Permalink}">{NoteCountWithLabel}</a></p>
+ 		          {/block:NoteCount}
 		
-							{block:IfDisqusShortname}
-		          <p><a href="{Permalink}#disqus_thread">Comments</a></p>
-			        {/block:IfDisqusShortname}
+ 							{block:IfDisqusShortname}
+ 		          <p><a href="{Permalink}#disqus_thread">Comments</a></p>
+ 			        {/block:IfDisqusShortname}
 			
-		          {block:SearchPage}
-		            <p><a href="{Permalink}">{NoteCountWithLabel}</a></p>
-		          {/block:SearchPage}
+ 		          {block:SearchPage}
+ 		            <p><a href="{Permalink}">{NoteCountWithLabel}</a></p>
+ 		          {/block:SearchPage}
 		
-		          {block:RebloggedFrom}
-								<p>{lang:Reblogged from} <br /><a href="{ReblogParentURL}">{ReblogRootName}</a></p>
-							{/block:RebloggedFrom}
+ 		          {block:RebloggedFrom}
+ 								<p>{lang:Reblogged from} <br /><a href="{ReblogParentURL}">{ReblogRootName}</a></p>
+ 							{/block:RebloggedFrom}
 		
-							{block:HasTags}
-							<ul class="tags">
-								{block:Tags}
-								<li>
-									<a href="{TagURL}">{Tag}</a>
-								</li>
-								{/block:Tags}
-							</ul>
-							{/block:HasTags}
+ 							{block:HasTags}
+ 							<ul class="tags">
+ 								{block:Tags}
+ 								<li>
+ 									<a href="{TagURL}">{Tag}</a>
+ 								</li>
+ 								{/block:Tags}
+ 							</ul>
+ 							{/block:HasTags}
 							
-						</div>
+ 						</div>
 		
-	        	{block:Regular}
-						<div class="post_content">
-		          {block:Title}<h1 class="title"><a href="{Permalink}">{Title}</a></h1>{/block:Title}
-		          <p style="regular_post_body">{Body}</p>							
-						</div>
-		        {/block:Regular}
+ 	        	{block:Regular}
+ 						<div class="post_content">
+ 		          {block:Title}<h1 class="title"><a href="{Permalink}">{Title}</a></h1>{/block:Title}
+ 		          <p style="regular_post_body">{Body}</p>							
+ 						</div>
+ 		        {/block:Regular}
 
-		        {block:Photo}
-						<div class="post_content">
-		          <span class="photo">{LinkOpenTag}<img src="{PhotoURL-500}" alt="{PhotoAlt}" title="{PhotoAlt}">{LinkCloseTag}</span>
-		          <p>{Caption}</p>
-						</div>
-		        {/block:Photo}
+ 		        {block:Photo}
+ 						<div class="post_content">
+ 		          <span class="photo">{LinkOpenTag}<img src="{PhotoURL-500}" alt="{PhotoAlt}" title="{PhotoAlt}">{LinkCloseTag}</span>
+ 		          <p>{Caption}</p>
+ 						</div>
+ 		        {/block:Photo}
 
-		        {block:Quote}
-						<div class="post_content">
-		          <p><span class="blockquote {Length}">{Quote}</span></p>
-		          {block:Source}<p>&mdash;&nbsp;{Source}</p>{/block:Source}
-						</div>
-		        {/block:Quote}
+ 		        {block:Quote}
+ 						<div class="post_content">
+ 		          <p><span class="blockquote {Length}">{Quote}</span></p>
+ 		          {block:Source}<p>&mdash;&nbsp;{Source}</p>{/block:Source}
+ 						</div>
+ 		        {/block:Quote}
 
-		        {block:Video}
-						<div class="post_content">
-		          {Video-500}
-		          <p>{Caption}</p>
-						</div>
-		        {/block:Video}
+ 		        {block:Video}
+ 						<div class="post_content">
+ 		          {Video-500}
+ 		          <p>{Caption}</p>
+ 						</div>
+ 		        {/block:Video}
 
-		        {block:Audio}
-						<div class="post_content">
-		          {AudioPlayerGrey}
-		          <p>{Caption}</p>
-						</div>
-		        {/block:Audio}
+ 		        {block:Audio}
+ 						<div class="post_content">
+ 		          {AudioPlayerGrey}
+ 		          <p>{Caption}</p>
+ 						</div>
+ 		        {/block:Audio}
 
-		        {block:Link}
-						<div class="post_content">
-		          <h2><a href="{URL}" {Target}>{Name}</a>&nbsp;&rarr;</h2>
-		          {block:Description}<p>{Description}</p>{/block:Description}
-						</div>
-		        {/block:Link}
+ 		        {block:Link}
+ 						<div class="post_content">
+ 		          <h2><a href="{URL}" {Target}>{Name}</a>&nbsp;&rarr;</h2>
+ 		          {block:Description}<p>{Description}</p>{/block:Description}
+ 						</div>
+ 		        {/block:Link}
 
-		        {block:Conversation}
-						<div class="post_content">
-		          {block:Title}<h2>{Title}</h2>{/block:Title}
-		          <p>
-		          {block:Lines}
-		          {block:Label}<strong>{Label}</strong>{/block:Label} {Line}<br />
-		          {/block:Lines}
-		          </p>
-						</div>
-		        {/block:Conversation}
+ 		        {block:Conversation}
+ 						<div class="post_content">
+ 		          {block:Title}<h2>{Title}</h2>{/block:Title}
+ 		          <p>
+ 		          {block:Lines}
+ 		          {block:Label}<strong>{Label}</strong>{/block:Label} {Line}<br />
+ 		          {/block:Lines}
+ 		          </p>
+ 						</div>
+ 		        {/block:Conversation}
 
-						</li>
-	        	{/block:Posts}
-					</ol>
+ 						</li>
+ 	        	{/block:Posts}
+ 					</ol>
 					
 					
-					{block:Pagination}
-					<div class="pagination">
-						{block:PreviousPage}
-						<a class="prev" rel="prev" href="{PreviousPage}">&larr; {lang:Previous page}</a>
-		        {/block:PreviousPage}
-						{block:NextPage}
-						<a class="next" rel="next" href="{NextPage}">{lang:Next page} &rarr;</a>
-		        {/block:NextPage}
-					</div>
-					{/block:Pagination}
+ 					{block:Pagination}
+ 					<div class="pagination">
+ 						{block:PreviousPage}
+ 						<a class="prev" rel="prev" href="{PreviousPage}">&larr; {lang:Previous page}</a>
+ 		        {/block:PreviousPage}
+ 						{block:NextPage}
+ 						<a class="next" rel="next" href="{NextPage}">{lang:Next page} &rarr;</a>
+ 		        {/block:NextPage}
+ 					</div>
+ 					{/block:Pagination}
 					
 
-	        {block:PermalinkPage}
+ 	        {block:PermalinkPage}
 	
-	        {block:PostNotes}
-	        <div class="post">
-	          <h3>{lang:Notes}</h3>
-	          <p>{PostNotes}</p>
-	        </div>
-	        {/block:PostNotes}
+ 	        {block:PostNotes}
+ 	        <div class="post">
+ 	          <h3>{lang:Notes}</h3>
+ 	          <p>{PostNotes}</p>
+ 	        </div>
+ 	        {/block:PostNotes}
         
-	        {block:IfDisqusShortname}
-	        <div id="comments">
-	            <div id="disqus_thread"></div>
-	            <script type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/embed.js"></script>
-	            <noscript><a href="http://{text:Disqus Shortname}.disqus.com/?url=ref">{lang:View the discussion thread}</a></noscript>
-	        </div>
-	        {/block:IfDisqusShortname}
-	        {/block:PermalinkPage}
+ 	        {block:IfDisqusShortname}
+ 	        <div id="comments">
+ 	            <div id="disqus_thread"></div>
+ 	            <script type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/embed.js"></script>
+ 	            <noscript><a href="http://{text:Disqus Shortname}.disqus.com/?url=ref">{lang:View the discussion thread}</a></noscript>
+ 	        </div>
+ 	        {/block:IfDisqusShortname}
+ 	        {/block:PermalinkPage}
 
-	      </div>
+ 	      </div>
 	      
-				<div id="sidebar">
+ 				<div id="sidebar">
 					
-					<div class="blog_nav">
+ 					<div class="blog_nav">
 						
-						{block:Pagination}
-						<div class="prev_next">
-							{block:PreviousPage}
-							<a rel="prev" href="{PreviousPage}">&laquo; {lang:Prev}</a>
-			        {/block:PreviousPage}
-							{block:NextPage}
-							<a rel="next" href="{NextPage}">{lang:Next} &raquo;</a>
-			        {/block:NextPage}
-						</div>
-						{/block:Pagination}
+ 						{block:Pagination}
+ 						<div class="prev_next">
+ 							{block:PreviousPage}
+ 							<a rel="prev" href="{PreviousPage}">&laquo; {lang:Prev}</a>
+ 			        {/block:PreviousPage}
+ 							{block:NextPage}
+ 							<a rel="next" href="{NextPage}">{lang:Next} &raquo;</a>
+ 			        {/block:NextPage}
+ 						</div>
+ 						{/block:Pagination}
 	
-	        {block:PermalinkPagination}
-					<div class="prev_next">
-						{block:PreviousPost}
-		        <a rel="prev" href="{PreviousPost}">&laquo; {lang:Prev}</a>
-		        {/block:PreviousPost}
-		        {block:NextPost}
-		        <a rel="prev" href="{PreviousPost}">{lang:Next} &raquo;</a>
-		        {/block:NextPost}
-	        </div>
-					{/block:PermalinkPagination}
+ 	        {block:PermalinkPagination}
+ 					<div class="prev_next">
+ 						{block:PreviousPost}
+ 		        <a rel="prev" href="{PreviousPost}">&laquo; {lang:Prev}</a>
+ 		        {/block:PreviousPost}
+ 		        {block:NextPost}
+ 		        <a rel="prev" href="{PreviousPost}">{lang:Next} &raquo;</a>
+ 		        {/block:NextPost}
+ 	        </div>
+ 					{/block:PermalinkPagination}
 	
-					<form role="search" method="get" id="searchform" action="/search">
-						<div class="field fld_name required input">
-							<input type="text" name="q" value="{SearchQuery}"/>
-							<button id="searchsubmit" type="submit">{lang:Search}</button>
-						</div>
-					</form>
+ 					<form role="search" method="get" id="searchform" action="/search">
+ 						<div class="field fld_name required input">
+ 							<input type="text" name="q" value="{SearchQuery}"/>
+ 							<button id="searchsubmit" type="submit">{lang:Search}</button>
+ 						</div>
+ 					</form>
 	
-	    </div>
+ 	    </div>
     
-	    {block:IfDisqusShortname}
-	    <script type="text/javascript">
-	    //<![CDATA[
-	    (function() {
-	        var links = document.getElementsByTagName('a');
-	        var query = '?';
-	        for(var i = 0; i < links.length; i++) {
-	        if(links[i].href.indexOf('#disqus_thread') >= 0) {
-	            query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
-	        }
-	        }
-	        document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/get_num_replies.js' + query + '"></' + 'script>');
-	    })();
-	    //]]>
-	    </script>
-	    {/block:IfDisqusShortname}
+ 	    {block:IfDisqusShortname}
+ 	    <script type="text/javascript">
+ 	    //<![CDATA[
+ 	    (function() {
+ 	        var links = document.getElementsByTagName('a');
+ 	        var query = '?';
+ 	        for(var i = 0; i < links.length; i++) {
+ 	        if(links[i].href.indexOf('#disqus_thread') >= 0) {
+ 	            query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+ 	        }
+ 	        }
+ 	        document.write('<script charset="utf-8" type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/get_num_replies.js' + query + '"></' + 'script>');
+ 	    })();
+ 	    //]]>
+ 	    </script>
+ 	    {/block:IfDisqusShortname}
     
-		</div>
-    
-    <div id="copyright">
-      <div class="container">
-        <div class="row">
-          <div class="span9">
-            <nav>
-              <ul class="link-list">
-                <li><a href="http://local.p4bhealth.org/" >Home</a></li>
-            		<li><a href="http://local.p4bhealth.org/about" >About</a></li>
-            		<li><a href="http://local.p4bhealth.org/get_involved" >Get Involved</a></li>
-            		<li><a href="http://local.p4bhealth.org/rl_fellowship" >Randall Lewis Fellowship</a></li>
-            		<li><a href="http://local.p4bhealth.org/blog" >Blog</a></li>
-            		<li><a href="http://local.p4bhealth.org/contact" >Contact</a></li>
-              </ul>
-            </nav>
-            <p>&copy; 2013 Partners for Better Health. All rights reserved.</p>
-          </div>
-          <div class="span3">
+ 		</div>
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
         
-          </div>
+	  </section>
+	</section>
+  <!-- End Page Content -->
+  <div id="copyright">
+  <footer class="row">
+    <div class="large-12 columns">
+      <div class="row">
+        <div class="large-12 columns">
+          <ul class="inline-list">
+            <li><a href="http://staging.p4bhealth.org/">Home</a></li>
+            <li class="first"><a href="http://staging.p4bhealth.org/about">About Us</a></li>
+<li><a href="http://staging.p4bhealth.org/get-involved">Get Involved</a></li>
+<li class="here"><a href="http://staging.p4bhealth.org/rl_fellowship">Randall Lewis Fellowship</a></li>
+<li><a href="http://staging.p4bhealth.org/blog">Blog</a></li>
+<li class="last"><a href="http://staging.p4bhealth.org/contact">Contact</a></li>
+
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 columns">
+          <p>&copy; 2010-2013 Partners for Better Health. All rights reserved.</p>
         </div>
       </div>
     </div>
-
-    <script type="text/javascript" src="http://local.p4bhealth.org/assets/js/jquery.min.js"></script>
-
-    <script type="text/javascript" src="http://local.p4bhealth.org/assets/js/retina.js"></script>
-  </body>
+  </footer>
+</div>
+<script type="text/javascript" src="http://staging.p4bhealth.org/assets/js/libs.js"></script>
+<script>
+  $(document).foundation();
+</script>
+</body>
 </html>
