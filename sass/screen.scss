@@ -150,13 +150,18 @@ body {
     margin: 10px 20px 20px 0;
   }
   
+  ul {
+    margin: 0 15px;
+  }
+  
 }
 
 .p-left {float: left; margin: 5px;}
 
-#give ol {list-style: none;}
-
-
+#give ol {
+  list-style: none;
+  li {margin-top: 40px;}
+}
 #homepage-promos h4{color: $secondary-color;}
 #homepage-promos img {
   padding: 2px;

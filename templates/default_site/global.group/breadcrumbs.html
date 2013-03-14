@@ -1,9 +1,7 @@
 <div class="row hide-for-small">
   <div class="large-12 columns">
     <ul class="breadcrumbs">
-      {exp:crumbly:breadcrumbs}
-        <li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"{if count == total_results} class="current"{/if}>{if count == total_results}<span>{if:else}<a href="{breadcrumb_url}">{/if}{breadcrumb_title}{if count == total_results}</span>{if:else}</a>{/if}</li>
-      {/exp:crumbly:breadcrumbs}
+      {exp:structure:breadcrumb wrap_each="li" inc_separator="no" here_as_title="yes" wrap_here="span "}
     </ul>
   </div>
 </div>

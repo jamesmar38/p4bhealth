@@ -4,13 +4,14 @@
       <div class="row">
         <div class="large-12 columns">
           <ul class="inline-list">
-            {embed="global/global_nav"}
+            <li><a href="{site_url}">Home</a></li>
+            {exp:structure:nav start_from="/" max_depth="1" include_ul="no"}
           </ul>
         </div>
       </div>
       <div class="row">
         <div class="large-12 columns">
-          <p>&copy; 2013 Partners for Better Health. All rights reserved.</p>
+          <p>&copy; 2010-{current_time format="%Y"} {site_name}. All rights reserved.</p>
         </div>
       </div>
     </div>

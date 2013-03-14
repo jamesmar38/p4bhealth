@@ -1,20 +1,33 @@
-{embed="global/head"}
+{html_head}
 
+{metatags}
 
-<body id="{segment_1}"  class='t-index tg-home ' >
-  {embed="global/header"}
-    
+{exp:seo_lite use_last_segment="yes"}
+
+{stylesheets}
+{js_head}
+{html_head_end}
+
+{embed="global/header"
+  entry_id="{structure:page:entry_id}"
+  url_title="{last_segment_absolute}"
+  template="contact"
+  template_group="site"
+}
   {embed="global/breadcrumbs"}
 
   <section id="static-page" class="row page-content">
     <!-- Main Content Section -->
     <!-- This has been source ordered to come first in the markup (and on small devices) but to be to the right of the nav on larger screens -->
     <section id="static-page-content" class="large-12 columns">
-      {exp:email:contact_form user_recipients="no" recipients="ron@maven20.com" charset="utf-8"}
-      <h2>Contact Us</h2>
-      <p>Nullam quis risus eget urna mollis ornare vel eu leo. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Sed posuere consectetur est at lobortis.</p>
-      
-      
+      {exp:channel:entries channel="static_pages" limit="1"}
+        <h1>{title}</h1>
+        {if body}
+          {body}
+          <hr />
+        {/if}
+      {/exp:channel:entries}
+      {exp:email:contact_form user_recipients="no" recipients="ron@maven20.com" charset="utf-8"}      
       <div class="row">
         <div class="small-8">
           <div class="row">

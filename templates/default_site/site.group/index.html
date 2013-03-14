@@ -1,7 +1,19 @@
-{embed="global/head"}
+{html_head}
 
-<body id="home"  class='t-index tg-home ' >
-  {embed="global/header"}
+{metatags}
+
+{exp:seo_lite use_last_segment="yes"}
+
+{stylesheets}
+{js_head}
+{html_head_end}
+
+{embed="global/header"
+  entry_id="{structure:page:entry_id}"
+  url_title="{last_segment_absolute}"
+  template="index"
+  template_group="site"
+}
   
   {exp:channel:entries channel="homepage" limit="1" dynamic="no"}
   <div id="homepage" class="row">

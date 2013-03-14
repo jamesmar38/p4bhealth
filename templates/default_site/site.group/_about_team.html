@@ -1,5 +1,10 @@
 {if segment_3 == ""}
-  <h1>Team</h1>
+  {exp:channel:entries channel="static_pages" limit="1"}
+    <h1>{title}</h1>
+    {if body}
+      {body}
+    {/if}
+  {/exp:channel:entries}
        
   <h4><span>Staff</span></h4>
   <p></p>
