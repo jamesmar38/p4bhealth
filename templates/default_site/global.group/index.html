@@ -1,0 +1,27 @@
+{www_html_head}
+
+{www_metatags}
+
+{exp:seo_lite use_last_segment="yes"}
+
+{www_stylesheets}
+{www_js_head}
+{www_html_head_end}
+
+{embed="global/.header"
+  entry_id="{last_segment_absolute_id}"
+  url_title="{last_segment_absolute}"
+  template="index"
+  template_group="page"
+  channel_name="pages"
+  body_class="sub-page"
+}
+
+{!-- PAGE BODY HERE --}
+
+
+
+
+{embed="global/.footer"}
+{www_js_foot}
+{www_body_html_end}
