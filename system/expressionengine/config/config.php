@@ -15,7 +15,6 @@ $config['app_version'] = '261';
 $config['install_lock'] = "";
 $config['license_number'] = 'CORE LICENSE';
 $config['debug'] = '1';
-$config['cp_url'] = 'http://local.p4bhealth.org/admin.php';
 $config['doc_url'] = 'http://ellislab.com/expressionengine/user-guide/';
 $config['is_system_on'] = 'y';
 $config['allow_extensions'] = 'y';
@@ -324,6 +323,11 @@ $config['rewrite_short_tags'] = TRUE;
 */
 $config['proxy_ips'] = "";
 
+
+/**
+ * Require the Focus Lab, LLC Master Config file
+ */
+require $_SERVER['DOCUMENT_ROOT'] . '/../config/config.master.php';
 
 /* End of file config.php */
 /* Location: ./system/expressionengine/config/config.php */
