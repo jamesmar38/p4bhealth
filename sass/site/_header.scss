@@ -1,0 +1,20 @@
+#header {
+	width:100%;
+//	background-size:cover;
+	height:660px;
+	display:block;
+	overflow:visible;
+	#topbar {
+		background-color:#222222;
+		filter: alpha(opacity=40);
+		-moz-opacity:.40;
+		opacity:.40;
+		width:100%;
+		height:$topbar-height;
+		display:inline-block;
+	}
+	nav {
+		color:#FFF;
+		display:inline;
+	}
+}

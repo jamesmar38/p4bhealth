@@ -1,8 +1,31 @@
 <body class="{exp:nsm_body_class return='class_attr'} {if logged_in} logged-in{/if}{if logged_out} not-logged-in{/if}">
-  <!--[if lt IE 7]>
-    <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
-  <![endif]-->
-  <div id="skip-link">
-    <a href="#main-content" class="invisible focusable">Skip to main content</a>
-  </div>
-  
+	<!--[if lt IE 7]>
+	<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+	<![endif]-->
+	<!--<div id="skip-link">
+	<a href="#main-content" class="invisible focusable">Skip to main content</a>
+	</div>-->
+	{exp:channel:entries channel="homepage"}
+	<div id="header" style="background: url('{hp_header_image}')no-repeat fixed center;">
+		<div id="topbar">
+		...
+		</div>	<div class="container">
+				<div class="row">
+					<div class="col-6">
+						<img src="/assets/img/logo.png">
+					</div>
+					<div class="col-6">
+						<nav>
+							<ul>
+								<li>Get Involved</li>
+								<li>Projects</li>
+								<li>Success Stories</li>
+								<li>Give</li>
+								<li>About us</li>				
+							</ul>
+						</nav>
+					</div>
+				<div>
+			<div>
+	</div><div class="clearall">...</div><br><br><br><p>dfdf
+	{/exp:channel:entries}
