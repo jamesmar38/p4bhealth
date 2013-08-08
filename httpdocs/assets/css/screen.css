@@ -3624,8 +3624,10 @@ body {
     margin-top: 54px;
     margin-bottom: 54px; }
   #process-scene h3 {
-    margin-top: 100px; }
+    margin-top: 50px; }
   #process-scene .icons {
+    margin-left: auto;
+    margin-right: auto;
     height: 270px;
     width: 270px;
     background-color: white;

@@ -106,12 +106,14 @@
 		margin-bottom:54px;	
 	}
 	h3 {
-		margin-top: 100px;
+		margin-top: 50px;
 	}
 	font-size: 22px;
 	line-height:1em;
 	@include text-shadow(0px 2px 0px rgba(0, 0, 0, 0.2));
 	.icons {
+		margin-left: auto;
+		margin-right: auto;
 		height: 270px;
 		width: 270px;
 		background-color: $pbh-white;
