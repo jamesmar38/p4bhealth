@@ -1,20 +1,33 @@
 #header {
 	width:100%;
-//	background-size:cover;
 	height:660px;
 	display:block;
-	overflow:visible;
+
+	overflow:hidden;
+	margin:0 auto;
 	#topbar {
-		background-color:#222222;
-		filter: alpha(opacity=40);
-		-moz-opacity:.40;
-		opacity:.40;
+		background:rgba(0,0,0,0.3);
 		width:100%;
 		height:$topbar-height;
-		display:inline-block;
+	
 	}
-	nav {
+	nav {	
+
 		color:#FFF;
 		display:inline;
+		font-size:18px;
+		font-weight:bold;
+		width: 100%;
+		ul {
+			display: table;
+			list-style-type:none;
+			margin-top:$topbar-height/2 - 10px;
+			padding:0;
+			li {				
+			    display: table-cell;
+			@include text-shadow(1px 1px 1px rgba(0,0,0,.2));
+				display:inline;
+			}
+		}
 	}
 }
