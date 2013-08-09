@@ -64,6 +64,14 @@ h2 {
 			background:rgba(0,0,0,0.3);
 			width:230px;
 			height:140px;
+			fill:blue;
+			.svg {
+				margin-top:30px;
+				margin-bottom:30px;
+				color:#FFF;
+				fill:#FFF;
+				stroke:blue;
+			}
 		}
 	}
 }
