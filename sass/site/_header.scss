@@ -4,7 +4,7 @@
 	background:url("/assets/img/section-banner.png") no-repeat center;
 	padding-top:17px;
 	font-size:18px;
-	font-weight:800;
+	font-weight:700;
 	text-transform:uppercase;
 	color:$pbh-white;
 	@include text-shadow(0px 2px 0px rgba(0, 0, 0, 0.2));
@@ -91,7 +91,7 @@
 	}
 }
 #process-scene {
-	background: url("/assets/img/site/process-scene.jpg");
+	background: url("/assets/img/site/process-scene.jpg") no-repeat fixed center;
 	background-size: cover;
 	padding-top:60px;	
 	width: 100%;
@@ -120,6 +120,24 @@
 		color: $pbh-orange;
 		font-size: 8em;
 		@include border-radius(999px);
-		
+	}
+}
+#partners-scene {
+	background-color: $pbh-white;
+	color: #949494;
+	font-size: 22px;
+	
+	min-height: 715px;
+	padding-top:60px;
+	h2 {
+		color:$pbh-orange;
+		margin-top:54px;
+		margin-bottom:14px;
+		font-size:36px;
+	}
+	.icons {
+		margin: 0 auto 20px auto;
+		color: $pbh-orange;
+		font-size: 6em;
 	}
 }
