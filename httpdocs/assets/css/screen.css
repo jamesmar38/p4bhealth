@@ -3695,6 +3695,7 @@ h2 {
 
 #partners-scene {
   background-color: white;
+  width: 100%;
   color: #949494;
   font-size: 22px;
   min-height: 715px;
@@ -3713,9 +3714,11 @@ h2 {
 
 #projects-scene {
   background: url("/assets/img/site/projects-scene.jpg") no-repeat fixed center;
+  background-size: cover;
   min-height: 715px;
   padding-top: 60px;
-  padding-bottom: 60px; }
+  padding-bottom: 60px;
+  width: 100%; }
 
 #participate-scene {
   background-color: #f78f1e;
