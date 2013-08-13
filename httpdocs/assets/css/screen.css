@@ -4583,7 +4583,7 @@ body {
   #header #topbar {
     background: rgba(0, 0, 0, 0.3);
     width: 100%;
-    height: 125px; }
+    min-height: 125px; }
     #header #topbar .vertical-center {
       margin-top: 22.5px; }
   #header nav {
@@ -4597,10 +4597,19 @@ body {
       list-style-type: none;
       margin-top: 54.5px; }
       #header nav ul li {
+        z-index: 10;
         width: auto;
         margin: 0 22.5px 0 22.5px;
         text-shadow: 1px 1.732px 0px rgba(0, 0, 0, 0.2);
         display: inline; }
+        #header nav ul li .banner {
+          position: absolute;
+          top: 0;
+          display: inline;
+          width: 30px;
+          z-index: 0; }
+        #header nav ul li .topper {
+          z-index: 1000; }
 
 #footer {
   font-size: 12px;

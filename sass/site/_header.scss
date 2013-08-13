@@ -8,7 +8,7 @@
 		
 		background:rgba(0,0,0,0.3);
 		width:100%;
-		height:$topbar-height;
+		min-height:$topbar-height;
 		.vertical-center {
 			margin-top:$topbar-height/2 - 40px;
 		}
@@ -23,11 +23,22 @@
 		ul {
 			list-style-type:none;
 			margin-top:$topbar-height/2 - 8px;
-			li {			
+			li {		
+				z-index: 10;
 				width: auto;              
 				margin: 0 (45px/2) 0 (45px/2); 	
 				@include text-shadow(1px 1.732px 0px rgba(0, 0, 0, 0.2));
 				display:inline;
+				.banner {
+					position: absolute;
+					top: 0;
+					display: inline;
+					width: 30px;
+					z-index: 0;
+				}
+				.topper{
+					z-index:1000;
+				}
 			}
 		}
 	}
