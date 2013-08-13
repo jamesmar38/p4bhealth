@@ -1,3 +1,15 @@
 @media screen and (max-width: 568px) {
-	
+	#process-scene .icons {
+		height: 130px !important;
+		width: 130px !important;
+		font-size: 6em !important;
+		line-height: (130px / 2) !important;	
+	}
 }
+@media screen and (max-width: 868px) {
+	.grid li {
+		width:100%;
+	}
+}
+
+
