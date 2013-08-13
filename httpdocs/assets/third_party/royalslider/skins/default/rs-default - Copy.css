@@ -11,7 +11,7 @@
 *    7. Preloader
 *    8. Caption
 *    
-*  Sprite: '/assets/third_party/royalslider/skins/default/rs-default.png'
+*  Sprite: 'rs-default.png'
 *  Feel free to edit anything
 *  If you don't some part - just delete it
 * 
@@ -37,7 +37,7 @@
 
 .rsDefault .rsArrow {
 	height: 100%;
-	width: 344px;
+	width: 44px;
 	position: absolute;
 	display: block;
 	cursor: pointer;
@@ -64,14 +64,16 @@
 
 	position: absolute;	
 	cursor: pointer;	
-	background: url('/assets/third_party/royalslider/skins/default/rs-default.png');
+	background: url('rs-default.png');
 
-
+	background-color: #000;
+	background-color: rgba(0,0,0,0.75);
+	*background-color: #000;
 	
-	border-radius: 999px;
+	border-radius: 2px;
 }
 .rsDefault .rsArrowIcn:hover {
-	background-color: rgba(0,0,0,0.5);
+	background-color: rgba(0,0,0,0.9);
 }
 
 .rsDefault.rsHor .rsArrowLeft .rsArrowIcn { background-position: -64px -32px; }
@@ -93,11 +95,13 @@
 	position: absolute;
 	z-index: 35;
 	left: 0;
-	bottom: 10%;
+	bottom: 0;
 	width: 100%;
 	height: auto;
 	margin: 0 auto; 
 
+	background: #000;
+	background: rgba(0,0,0,0.75);
 
 	text-align: center;
 	line-height: 8px;
@@ -105,7 +109,7 @@
 }
 .rsDefault .rsBullet {
 	width: 8px;
-	height: 18px;
+	height: 8px;
 	display: inline-block;
 	*display:inline; 
 	*zoom:1;
@@ -224,7 +228,7 @@
 	margin-left: -8px;
 	position: absolute;	
 	cursor: pointer;	
-	background: url('/assets/third_party/royalslider/skins/default/rs-default.png');
+	background: url('rs-default.png');
 }
 
 .rsDefault.rsWithThumbsHor .rsThumbsArrowLeft .rsThumbsArrowIcn { background-position: -128px -32px; }
@@ -346,7 +350,7 @@
 	width: 32px;
 	height: 32px;
 
-	background: url('/assets/third_party/royalslider/skins/default/rs-default.png') 0 0;
+	background: url('rs-default.png') 0 0;
 	background-color: #000;
 	background-color: rgba(0,0,0,0.75);
 	*background-color: #000;
@@ -389,7 +393,7 @@
 	-moz-transition: .3s;
 	transition: .3s;
 
-	background:url('/assets/third_party/royalslider/skins/default/rs-default.png') no-repeat 0 -32px;
+	background:url(rs-default.png) no-repeat 0 -32px;
 	background-color: #000;
 	background-color: rgba(0,0,0,0.75);
 	*background-color: #000;
@@ -423,7 +427,7 @@
 	margin: 6px;
 	width: 32px;
 	height: 32px;
-	background: url('/assets/third_party/royalslider/skins/default/rs-default.png') -64px 0;
+	background: url('rs-default.png') -64px 0;
 	background-color: #000;
 	background-color: rgba(0,0,0,0.75);
 	*background-color: #000;
@@ -443,7 +447,7 @@
 .rsDefault .rsPreloader {
 	width:20px;
 	height:20px;
-	background-image:url('/assets/third_party/royalslider/skins/preloaders/preloader-white.gif');
+	background-image:url(../preloaders/preloader-white.gif);
 
 	left:50%;
 	top:50%;
