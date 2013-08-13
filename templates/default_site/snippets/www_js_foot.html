@@ -1,36 +1,8 @@
 <!-- JS and analytics only. -->
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<!-- backbone
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.10/backbone-min.js"></script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.3/underscore-min.js"></script>
--->
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-<script src="/assets/js/lib.js"></script>
-<script src="/assets/js/app.js"></script>
 
-
-<!-- Livereload code (http://livereload.com/) -->
-<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
-
-<!-- Y Axis Loader -->
-<script src="/assets/js/gridloading/masonry.pkgd.min.js"></script>
-<script src="/assets/js/gridloading/imagesloaded.js"></script>
-<script src="/assets/js/gridloading/classie.js"></script>
-<script src="/assets/js/gridloading/AnimOnScroll.js"></script>
+<!-- Slider. For some reason, it doesn't load correctly if placed below other scripts here-->
 <script>
-	new AnimOnScroll( document.getElementById( 'grid' ), {
-		minDuration : 0.4,
-		maxDuration : 0.7,
-		viewportFactor : 0.2
-	} );
-</script>
-
-<!-- Slider -->
-<script>
-	jQuery(document).ready(function($) {
+    jQuery(document).ready(function($) {
 	$('#full-width-slider').royalSlider({
 		arrowsNav: true,
 		loop: false,
@@ -49,12 +21,41 @@
 		transitionType:'move',
 		globalCaption: true,
 		deeplinking: {
-		  enabled: true,
-		  change: false
+			enabled: true,
+			change: false
 		},
 		/* size of all images http://help.dimsemenov.com/kb/royalslider-jquery-plugin-faq/adding-width-and-height-properties-to-images */
 		imgWidth: 1400,
 		imgHeight: 680
-	  });
+		});
 	});
+</script>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<!-- backbone
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.10/backbone-min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.3/underscore-min.js"></script>
+-->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script src="/assets/js/lib.js"></script>
+<script src="/assets/js/app.js"></script>
+
+<!-- Livereload code (http://livereload.com/) -->
+<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+
+
+<!-- Y Axis Loader -->
+<script src="/assets/js/gridloading/masonry.pkgd.min.js"></script>
+<script src="/assets/js/gridloading/imagesloaded.js"></script>
+<script src="/assets/js/gridloading/classie.js"></script>
+<script src="/assets/js/gridloading/AnimOnScroll.js"></script>
+<script>
+	new AnimOnScroll( document.getElementById( 'grid' ), {
+		minDuration : 0.4,
+		maxDuration : 0.7,
+		viewportFactor : 0.2
+	} );
 </script>

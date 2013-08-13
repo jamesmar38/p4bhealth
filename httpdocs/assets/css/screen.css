@@ -3799,7 +3799,7 @@ td.visible-print {
   top: 5%; }
 
 .infoBlock {
-  position: absolute;
+  text-align: center;
   top: 30px;
   right: 30px;
   left: auto;
@@ -4731,8 +4731,7 @@ h2 {
     margin-top: 105px; }
 
 #projects-scene {
-  background: url("/assets/img/site/projects-scene.jpg") no-repeat fixed center;
-  background-size: cover;
+  background-color: black;
   min-height: 715px;
   padding-top: 60px;
   padding-bottom: 60px;
