@@ -37,7 +37,7 @@
 
 .rsDefault .rsArrow {
 	height: 100%;
-	width: 344px;
+	width: 44*2px;
 	position: absolute;
 	display: block;
 	cursor: pointer;
@@ -55,16 +55,16 @@
 .rsDefault.rsHor .rsArrowRight { right: 0; top:0; }
 
 .rsDefault .rsArrowIcn {		
-	width: 32px;
-	height: 32px;
+	width: 32px*3;
+	height: 32px*3;
 	top: 50%;
 	left: 50%;
 	margin-top:-16px;	
-	margin-left: -16px;
+	margin-left: -44px;
 
 	position: absolute;	
 	cursor: pointer;	
-	background: url('/assets/third_party/royalslider/skins/default/rs-default.png');
+	background: url('/assets/third_party/royalslider/skins/default/arrows.png');
 
 
 	
@@ -74,11 +74,11 @@
 	background-color: rgba(0,0,0,0.5);
 }
 
-.rsDefault.rsHor .rsArrowLeft .rsArrowIcn { background-position: -64px -32px; }
-.rsDefault.rsHor .rsArrowRight .rsArrowIcn { background-position: -64px -64px; }
+.rsDefault.rsHor .rsArrowLeft .rsArrowIcn { background-position: (-64px * 3) (-32px * 3); }
+.rsDefault.rsHor .rsArrowRight .rsArrowIcn { background-position: (-64px * 3) (-64px * 3); }
 
-.rsDefault.rsVer .rsArrowLeft .rsArrowIcn { background-position: -96px -32px; }
-.rsDefault.rsVer .rsArrowRight .rsArrowIcn { background-position: -96px -64px; }
+.rsDefault.rsVer .rsArrowLeft .rsArrowIcn { background-position: (-96px * 3) (-32px * 3); }
+.rsDefault.rsVer .rsArrowRight .rsArrowIcn { background-position: (-96px * 3) (-64px * 3); }
 
 .rsDefault .rsArrowDisabled .rsArrowIcn { opacity: .2; filter: alpha(opacity=20);  *display: none; }
 

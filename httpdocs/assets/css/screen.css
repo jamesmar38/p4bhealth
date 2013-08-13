@@ -4047,7 +4047,7 @@ img.rsImg {
 ****************/
 .rsDefault .rsArrow {
   height: 100%;
-  width: 344px;
+  width: 88px;
   position: absolute;
   display: block;
   cursor: pointer;
@@ -4074,31 +4074,31 @@ img.rsImg {
   top: 0; }
 
 .rsDefault .rsArrowIcn {
-  width: 32px;
-  height: 32px;
+  width: 96px;
+  height: 96px;
   top: 50%;
   left: 50%;
   margin-top: -16px;
-  margin-left: -16px;
+  margin-left: -44px;
   position: absolute;
   cursor: pointer;
-  background: url("/assets/third_party/royalslider/skins/default/rs-default.png");
+  background: url("/assets/third_party/royalslider/skins/default/arrows.png");
   border-radius: 999px; }
 
 .rsDefault .rsArrowIcn:hover {
   background-color: rgba(0, 0, 0, 0.5); }
 
 .rsDefault.rsHor .rsArrowLeft .rsArrowIcn {
-  background-position: -64px -32px; }
+  background-position: -192px -96px; }
 
 .rsDefault.rsHor .rsArrowRight .rsArrowIcn {
-  background-position: -64px -64px; }
+  background-position: -192px -192px; }
 
 .rsDefault.rsVer .rsArrowLeft .rsArrowIcn {
-  background-position: -96px -32px; }
+  background-position: -288px -96px; }
 
 .rsDefault.rsVer .rsArrowRight .rsArrowIcn {
-  background-position: -96px -64px; }
+  background-position: -288px -192px; }
 
 .rsDefault .rsArrowDisabled .rsArrowIcn {
   opacity: .2;
@@ -4461,6 +4461,24 @@ img.rsImg {
   font-size: 12px;
   border-radius: 2px; }
 
+@media screen and (min-width: 960px) and (min-height: 660px) {
+  .heroSlider .rsOverflow,
+  .royalSlider.heroSlider {
+    height: 520px !important; } }
+@media screen and (min-width: 960px) and (min-height: 1000px) {
+  .heroSlider .rsOverflow,
+  .royalSlider.heroSlider {
+    height: 660px !important; } }
+@media screen and (min-width: 0px) and (max-width: 800px) {
+  .royalSlider.heroSlider,
+  .royalSlider.heroSlider .rsOverflow {
+    height: 500px !important; }
+
+  .infoBlock h1 {
+    font-size: 32px; }
+
+  .infoBlock p {
+    font-size: 15px !important; } }
 @font-face {
   font-family: "Entypo";
   src: url("/assets/css/fonts/entypo.eot");
@@ -4558,7 +4576,8 @@ h2 {
   font-weight: 700;
   text-transform: uppercase;
   color: white;
-  text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.2); }
+  text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.2);
+  display: block; }
 
 #header {
   width: 100%;
@@ -4678,7 +4697,7 @@ h2 {
     margin-top: 105px; }
 
 #projects-scene .infoBlock {
-  margin-top: 8%;
+  margin-top: 120px;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
