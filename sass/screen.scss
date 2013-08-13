@@ -5,12 +5,13 @@
 
 @import "variables";
 @import "vendor/bootstrap3/bootstrap";
-@import "vendor/gridloading/component";		//Y Axis Grid-loading effect
-@import "vendor/slider/style";				//Parallax Slider effect
-
-@import "responsive/responsive-entypo";
+@import "vendor/gridloading/component";		//Y Axis Loading effect
+@import "vendor/slider/royalslider";		//Slider Effect
+@import "vendor/slider/rs-default";			//Slider Theme
 
 @import "compass/css3";
+
+@import "responsive/responsive-entypo";
 
 @import "site/fonts";
 @import "site/buttons";
