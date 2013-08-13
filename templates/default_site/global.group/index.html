@@ -18,9 +18,10 @@
 }
 
 {!-- PAGE BODY HERE --}
-{embed="pages/_homepage"}
-
-
+{if structure:child_ids != '' OR segment_2 != ''}
+	{!-- Templates --}
+{if:else}
+	{embed="pages/_homepage"}
 
 {embed="global/.footer"}
 {www_js_foot}
