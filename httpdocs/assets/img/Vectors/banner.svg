@@ -4,5 +4,19 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="69.75px" height="145.75px" viewBox="2.667 1.667 69.75 145.75" enable-background="new 2.667 1.667 69.75 145.75"
 	 xml:space="preserve">
+	 <filter id="dropshadow" height="130%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/> 
+      <feOffset dx="2" dy="2" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.8"/>
+      </feComponentTransfer>
+      <feMerge> 
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/> 
+      </feMerge>
+    </filter>
 <polygon fill="#f78f1e" points="72.417,147.417 37.667,135.167 2.667,147.417 2.667,1.667 72.417,1.667 "/>
+
+<!-- Add  filter="url(#dropshadow)" for dropshadow. I disabled it because I can't figure out why 
+ the drop shadow is being cut off. I tried messing with the height but that affects the positioning -->
 </svg>
