@@ -9,6 +9,7 @@ $pbh-orange:			#f78f1e;
 $pbh-white:				#fff;
 $pbh-gray:				#949494;
 $pbh-darkgray:			#353535;
+$pbh-blue:				#428BCA;
 
 // Global values
 // --------------------------------------------------
@@ -26,7 +27,7 @@ $gray-lighter:           lighten(#000, 93.5%) !default; // #eee
 // -------------------------
 
 
-$brand-primary:         #428bca !default;
+$brand-primary:         $pbh-blue !default;
 $brand-success:         #5cb85c !default;
 $brand-warning:         #f0ad4e !default;
 $brand-danger:          #d9534f !default;

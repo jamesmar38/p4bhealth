@@ -9,22 +9,28 @@
 {www_html_head_end}
 
 {embed="global/_header"
-  entry_id="{last_segment_absolute_id}"
-  url_title="{last_segment_absolute}"
-  template="index"
-  template_group="page"
-  channel_name="pages"
-  body_class="sub-page"
+	entry_id="{last_segment_absolute_id}"
+	url_title="{last_segment_absolute}"
+	template="index"
+	template_group="page"
+	channel_name="pages"
+	body_class="sub-page"
+	header_image="/assets/img/site/process-scene.jpg"
 }
 
 {!-- PAGE BODY HERE --}
-{if structure:child_ids != '' OR segment_2 != ''}
+{if segment_1 != '' OR segment_2 != ''}
 	{if segment_1 == "give"}
 		{embed="pages/_give"}
 	{/if}
+	{if segment_1 == "projects"}
+		{embed="pages/_projects"}
+	{/if}	
+	
 	{if:else}
 		{embed="pages/_homepage"}
 {/if}
+
 {embed="global/_footer"}
 {www_js_foot}
 {www_body_html_end}

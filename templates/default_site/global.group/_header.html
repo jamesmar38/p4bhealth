@@ -4,25 +4,23 @@
 	<![endif]-->
 	<!--<div id="skip-link">
 	<a href="#main-content" class="invisible focusable">Skip to main content</a>
-	</div>-->
-	{exp:channel:entries channel="homepage"}
-	<div id="header" style="background: url('{hp_header_image}') no-repeat fixed center;background-size:cover;">
+	</div>-->	
+	<div id="header" style="background: url('{embed:header_image}') no-repeat fixed center;background-size:cover;">
 		<div id="topbar">
 			<div class="container">
 				<div class="pull-left">
-					<img class="vertical-center" src="/assets/img/logo.png">
+					<a href="/"><img class="vertical-center" src="/assets/img/logo.png"></a>
 				</div>
 				<div class="pull-right">
 					<nav>
-						<ul>
-							<li>Get Involved</li>
-							<li>Projects</li>
-							<li>Success Stories</li>
-							<li><div class="banner"><object  data="/assets/img/vectors/banner.svg" type="image/svg+xml">sdsd</object></div><span class="topper">Give</span></li>
-							<li>About Us</li>				
+						<ul class="nav nav-pills">
+							<li><a href="#">Get Involved</a></li>
+							<li><a href="/projects">Projects</a></li>
+							<li><a href="#">Success Stories</a></li>
+							<li><div class="banner"><object  data="/assets/img/vectors/banner.svg" type="image/svg+xml"></object></div><a href="/give"><span class="topper">Give</span></a></li>
+							<li><a href="#">About Us</a></li>				
 						</ul>
 					</nav>
 				</div>
 			</div>	
 		</div>
-	{/exp:channel:entries}
