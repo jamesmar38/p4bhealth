@@ -8,7 +8,7 @@
 {www_js_head}
 {www_html_head_end}
 
-{embed="global/.header"
+{embed="global/_header"
   entry_id="{last_segment_absolute_id}"
   url_title="{last_segment_absolute}"
   template="index"
@@ -19,10 +19,12 @@
 
 {!-- PAGE BODY HERE --}
 {if structure:child_ids != '' OR segment_2 != ''}
-	{!-- Templates --}
-{if:else}
-	{embed="pages/_homepage"}
-
-{embed="global/.footer"}
+	{if segment_1 == "give"}
+		{embed="pages/_give"}
+	{/if}
+	{if:else}
+		{embed="pages/_homepage"}
+{/if}
+{embed="global/_footer"}
 {www_js_foot}
 {www_body_html_end}
