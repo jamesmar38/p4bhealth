@@ -4631,6 +4631,20 @@ body {
     font-weight: normal;
     margin-bottom: 1.5em; }
 
+.get-involved hr {
+  display: block;
+  height: 6px;
+  border: 0;
+  border-top: 6px solid #f78f1e;
+  margin: 0.8em 0;
+  padding: 0; }
+.get-involved p {
+  font-size: 16px; }
+.get-involved h2 {
+  color: #353535;
+  text-align: center;
+  font-weight: bold; }
+
 .yellowbar-scene {
   height: 40px;
   background-color: #f78f1e; }

@@ -80,6 +80,22 @@ body{
 		margin-bottom: 1.5em;
 	}
 }
+.get-involved {
+		hr {
+			display: block; 
+			height: 6px;
+			border: 0; border-top: 6px solid $pbh-orange;
+			margin: 0.8em 0; padding: 0; 
+		}
+		p {
+			font-size: 16px;
+		}
+		h2 {
+			color: $pbh-darkgray;
+			text-align: center;
+			font-weight: bold;
+		}
+}
 .yellowbar-scene {
 	height: 40px;
 	background-color: $pbh-orange;
