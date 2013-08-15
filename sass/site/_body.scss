@@ -10,6 +10,20 @@ body{
 	h2 {
 		font-size: 36px;
 	}
+	h3 {
+		font-size: 22px;
+		color: $pbh-orange;
+		font-weight: 700;
+	}
+}
+hr {
+	display: block; 
+	height: 6px;
+	border: 0; border-top: 6px solid $pbh-orange;
+	margin: 0.8em 0; padding: 0; 
+}
+p {
+	font-size: 16px;
 }
 .single-scene {
 	min-height: 600px;
@@ -80,21 +94,25 @@ body{
 		margin-bottom: 1.5em;
 	}
 }
-.get-involved {
-		hr {
-			display: block; 
-			height: 6px;
-			border: 0; border-top: 6px solid $pbh-orange;
-			margin: 0.8em 0; padding: 0; 
+.get-involved, .about {
+	h2 {
+		color: $pbh-darkgray;
+		text-align: center;
+		font-weight: bold;
+	}
+}
+.about {
+	.nav {
+		margin-bottom: 40px;	//Spacing under nav for responsive
+		a {
+			font-size: 18px;
+			font-weight: 600;
+			color: $pbh-gray;
 		}
-		p {
-			font-size: 16px;
-		}
-		h2 {
-			color: $pbh-darkgray;
-			text-align: center;
-			font-weight: bold;
-		}
+	}
+	h2 {
+		text-align: left;
+	}
 }
 .yellowbar-scene {
 	height: 40px;
