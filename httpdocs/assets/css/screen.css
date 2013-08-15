@@ -4488,6 +4488,10 @@ img.rsImg {
 
   .infoBlock p {
     font-size: 15px !important; } }
+@media screen and (max-width: 868px) {
+  #header p {
+    width: 90% !important;
+    font-size: 18px !important; } }
 @font-face {
   font-family: "Entypo";
   src: url("/assets/css/fonts/entypo.eot");
@@ -4573,6 +4577,21 @@ body {
     text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.2); }
   body h2 {
     font-size: 36px; }
+  body h3 {
+    font-size: 22px;
+    color: #f78f1e;
+    font-weight: 700; }
+
+hr {
+  display: block;
+  height: 6px;
+  border: 0;
+  border-top: 6px solid #f78f1e;
+  margin: 0.8em 0;
+  padding: 0; }
+
+p {
+  font-size: 16px; }
 
 .single-scene {
   min-height: 600px;
@@ -4631,19 +4650,19 @@ body {
     font-weight: normal;
     margin-bottom: 1.5em; }
 
-.get-involved hr {
-  display: block;
-  height: 6px;
-  border: 0;
-  border-top: 6px solid #f78f1e;
-  margin: 0.8em 0;
-  padding: 0; }
-.get-involved p {
-  font-size: 16px; }
-.get-involved h2 {
+.get-involved h2, .about h2 {
   color: #353535;
   text-align: center;
   font-weight: bold; }
+
+.about .nav {
+  margin-bottom: 40px; }
+  .about .nav a {
+    font-size: 18px;
+    font-weight: 600;
+    color: #949494; }
+.about h2 {
+  text-align: left; }
 
 .yellowbar-scene {
   height: 40px;
@@ -4698,6 +4717,18 @@ body {
         #header nav ul li .topper {
           position: relative;
           z-index: 10; }
+      #header nav ul #nav-sub-give {
+        /*			background: url("/assets/img/vectors/banner.svg") no-repeat center;
+        			
+        			//position: absolute;
+        			top: -5px;
+        			overflow: visible;
+        			display: inline;
+        			width: 69.75px;
+        			margin-right: 40px;
+        			height: 145.75px;
+        			z-index: 20;
+        			line-height: $topbar-height + 22px;*/ }
     #header nav .nav-pills a {
       color: white;
       z-index: 10; }
@@ -4714,7 +4745,7 @@ body {
       margin: 35px auto;
       width: 230px; }
     #header #header-scene p {
-      width: 570px;
+      width: 50%;
       margin-left: auto;
       margin-right: auto;
       font-size: 22px;
