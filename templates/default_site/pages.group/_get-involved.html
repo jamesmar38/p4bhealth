@@ -31,7 +31,9 @@
 						<h2>{headline}</h2>
 						<hr>
 						<p>{content}</p>
-						<button type="button" class="btn btn-primary btn-lg btn-orange">Learn More</button>
+						{if button_text}
+							<a href="{link}"><button type="button" class="btn btn-primary btn-lg btn-orange btn-entypo"><span class="entypo">&#128229;</span> {button_text}</button></a>
+						{/if}
 					</div>
 				</div>	
 			{/get-involved_content}

@@ -4510,6 +4510,7 @@ img.rsImg {
   font-family: 'Entypo';
   font-style: normal;
   font-weight: normal;
+  font-size: 2em;
   line-height: 1;
   -webkit-font-smoothing: antialiased; }
 
@@ -4566,6 +4567,12 @@ img.rsImg {
   font-weight: 700;
   padding-left: 45px;
   padding-right: 45px; }
+
+.btn-entypo {
+  height: 2.5em;
+  padding-top: 0; }
+  .btn-entypo .entypo {
+    line-height: 0.7 !important; }
 
 body {
   background: url("/assets/img/site/process-scene.jpg") no-repeat fixed;
