@@ -1,10 +1,7 @@
 //
 // Variables
 // --------------------------------------------------
-$fallback-bg:			"/assets/img/site/process-scene.jpg";
-$topbar-height:			125px;
-
-
+$fallback-bg:			"/assets/img/site/process-scene.jpg";	//Header img
 
 $pbh-orange:			#f78f1e;
 $pbh-white:				#fff;
@@ -13,9 +10,12 @@ $pbh-darkgray:			#353535;
 $pbh-blue:				#428BCA;
 
 // Pills
-$nav-pills-active-link-hover-bg:            $pbh-orange !default;
-$nav-pills-active-link-hover-color:         $pbh-orange !default;
+$nav-pills-active-link-hover-bg:            $pbh-gray !default;
+$nav-pills-active-link-hover-color:         $pbh-white !default;
 
+////////////////////////////////////////////////////
+// Below are Bootstrap defaults //
+////////////////////////////////////////////////////
 // Global values
 // --------------------------------------------------
 
