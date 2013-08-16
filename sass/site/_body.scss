@@ -27,6 +27,15 @@ hr {
 p {
 	font-size: 16px;
 }
+.margin-top-small {
+	margin-top: 30px;
+}
+.margin-top-large {
+	margin-top: 80px;
+}
+.margin-bottom-small {
+	margin-bottom: 30px;
+}
 .single-scene {
 	background-color: $pbh-white;
 	min-height: 600px;
@@ -34,13 +43,7 @@ p {
 	padding-bottom:60px;
 	font-size: 22px;
 	font-weight: 600;
-	line-height: 1.091;
-	.margin-top-projects {
-		margin-top: 30px;
-	}
-	.margin-top-80 {
-		margin-top: 80px;
-	}	
+	line-height: 1.091;	
 	.filter {
 		float:left;
 		width:100%;
