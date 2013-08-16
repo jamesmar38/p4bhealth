@@ -4611,98 +4611,6 @@ p {
 .margin-bottom-small {
   margin-bottom: 30px; }
 
-.single-scene {
-  background-color: white;
-  min-height: 600px;
-  padding-top: 60px;
-  padding-bottom: 60px;
-  font-size: 22px;
-  font-weight: 600;
-  line-height: 1.091; }
-  .single-scene .filter {
-    float: left;
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    margin-bottom: 60px; }
-    .single-scene .filter ul {
-      clear: left;
-      float: left;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      position: relative;
-      left: 50%;
-      text-align: center;
-      color: #949494;
-      font-size: 16px;
-      font-weight: 600; }
-      .single-scene .filter ul li {
-        display: block;
-        float: left;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        position: relative;
-        right: 50%; }
-        .single-scene .filter ul li a {
-          color: #949494;
-          display: block;
-          margin: 0 0 0 1px;
-          padding: 3px 10px; }
-          .single-scene .filter ul li a:hover {
-            color: #f78f1e; }
-  .single-scene .thumb-270 {
-    height: 270px;
-    width: 270px;
-    overflow: hidden; }
-  .single-scene h2 {
-    color: #f78f1e;
-    margin-top: 0%; }
-  .single-scene p {
-    color: #949494;
-    font-size: 22px;
-    font-weight: normal;
-    margin-bottom: 1.5em; }
-
-.get-involved h2, .about h2 {
-  color: #353535;
-  text-align: center;
-  font-weight: bold; }
-
-.about .nav {
-  margin-bottom: 40px; }
-  .about .nav a {
-    font-size: 18px;
-    font-weight: 600;
-    color: #949494; }
-.about h2 {
-  text-align: left; }
-
-.yellowbar-scene {
-  height: 40px;
-  background-color: #f78f1e; }
-
-.section-banner {
-  width: 100%;
-  height: 57px;
-  background: url("/assets/img/section-banner.png") no-repeat center;
-  font-size: 18px;
-  font-weight: 700;
-  text-transform: uppercase;
-  text-align: center;
-  padding-top: 1em;
-  color: white;
-  text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.2);
-  margin-bottom: 60px; }
-
-#about_content h1, #about_content h2, #about_content h3 {
-  font-size: 22px;
-  color: #f78f1e;
-  font-weight: 700;
-  text-align: left;
-  text-shadow: 0px 0px 0px rgba(0, 0, 0, 0); }
-
 #header {
   width: 100%;
   min-height: 460px;
@@ -4920,3 +4828,95 @@ p {
 
 #spacing-scene {
   height: 200px; }
+
+.single-scene {
+  background-color: white;
+  min-height: 600px;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.091; }
+  .single-scene .filter {
+    float: left;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 60px; }
+    .single-scene .filter ul {
+      clear: left;
+      float: left;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      left: 50%;
+      text-align: center;
+      color: #949494;
+      font-size: 16px;
+      font-weight: 600; }
+      .single-scene .filter ul li {
+        display: block;
+        float: left;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        right: 50%; }
+        .single-scene .filter ul li a {
+          color: #949494;
+          display: block;
+          margin: 0 0 0 1px;
+          padding: 3px 10px; }
+          .single-scene .filter ul li a:hover {
+            color: #f78f1e; }
+  .single-scene .thumb-270 {
+    height: 270px;
+    width: 270px;
+    overflow: hidden; }
+  .single-scene h2 {
+    color: #f78f1e;
+    margin-top: 0%; }
+  .single-scene p {
+    color: #949494;
+    font-size: 22px;
+    font-weight: normal;
+    margin-bottom: 1.5em; }
+
+.get-involved h2, .about h2 {
+  color: #353535;
+  text-align: center;
+  font-weight: bold; }
+
+.about .nav {
+  margin-bottom: 40px; }
+  .about .nav a {
+    font-size: 18px;
+    font-weight: 600;
+    color: #949494; }
+.about h2 {
+  text-align: left; }
+
+.yellowbar-scene {
+  height: 40px;
+  background-color: #f78f1e; }
+
+.section-banner {
+  width: 100%;
+  height: 57px;
+  background: url("/assets/img/section-banner.png") no-repeat center;
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  padding-top: 1em;
+  color: white;
+  text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.2);
+  margin-bottom: 60px; }
+
+#about_content h1, #about_content h2, #about_content h3 {
+  font-size: 22px;
+  color: #f78f1e;
+  font-weight: 700;
+  text-align: left;
+  text-shadow: 0px 0px 0px rgba(0, 0, 0, 0); }
