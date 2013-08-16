@@ -1,7 +1,7 @@
 //
 // Variables
 // --------------------------------------------------
-$fallback-bg:			"/assets/img/site/process-scene.jpg";	//Header img
+$fallback-bg:			"/assets/img/site/process-scene.jpg";	//Fallback for header img
 
 $pbh-orange:			#f78f1e;
 $pbh-white:				#fff;
@@ -12,6 +12,7 @@ $pbh-blue:				#428BCA;
 // Pills
 $nav-pills-active-link-hover-bg:            $pbh-gray !default;
 $nav-pills-active-link-hover-color:         $pbh-white !default;
+			
 
 ////////////////////////////////////////////////////
 // Below are Bootstrap defaults //
@@ -53,7 +54,7 @@ $link-hover-color:      darken($link-color, 15%) !default;
 // Typography
 // -------------------------
 
-$font-family-sans-serif:  "Maven Pro", sans-serif,"Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$font-family-sans-serif:  "Maven Pro", "times new roman", sans-serif,"Helvetica Neue", Helvetica, Arial, sans-serif !default;
 $font-family-serif:       Georgia, "Times New Roman", Times, serif !default;
 $font-family-monospace:   Monaco, Menlo, Consolas, "Courier New", monospace !default;
 $font-family-base:        $font-family-sans-serif !default;

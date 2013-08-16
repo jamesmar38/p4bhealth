@@ -258,7 +258,7 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 
 body {
-  font-family: "Maven Pro", sans-serif, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Maven Pro", "times new roman", sans-serif, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.42857;
   color: #333333;
@@ -355,7 +355,7 @@ cite {
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-  font-family: "Maven Pro", sans-serif, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Maven Pro", "times new roman", sans-serif, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
   line-height: 1.1; }
   h1 small, h2 small, h3 small, h4 small, h5 small, h6 small,
@@ -4467,7 +4467,7 @@ img.rsImg {
     width: 130px !important;
     font-size: 6em !important;
     line-height: 65px !important; } }
-@media screen and (max-width: 868px) {
+@media screen and (max-width: 768px) {
   .grid li {
     width: 100%; } }
 @media screen and (min-width: 960px) and (min-height: 660px) {
@@ -4488,23 +4488,43 @@ img.rsImg {
 
   .infoBlock p {
     font-size: 15px !important; } }
-@media screen and (max-width: 868px) {
+@media screen and (max-width: 768px) {
   #header p {
     width: 90% !important;
     font-size: 18px !important; } }
+@media screen and (max-width: 768px) {
+  body h1 {
+    font-size: 40px !important; } }
+@media screen and (max-width: 768px) {
+  #partners-scene {
+    font-size: 17px !important; } }
 @font-face {
   font-family: "Entypo";
-  src: url("/assets/css/fonts/entypo.eot");
-  src: url("/assets/css/fonts/entypo.eot?#iefix") format("eot"), url("/assets/css/fonts/entypo.woff") format("woff"), url("/assets/css/fonts/entypo.ttf") format("truetype"), url("/assets/css/fonts/entypo.svg") format("svg");
+  src: url("/assets/fonts/entypo.eot");
+  src: url("/assets/fonts/entypo.eot?#iefix") format("eot"), url("/assets/fonts/entypo.woff") format("woff"), url("/assets/fonts/entypo.ttf") format("truetype"), url("/assets/fonts/entypo.svg") format("svg");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: "Entypo Social";
-  src: url("/assets/css/fonts/entypo-social.eot");
-  src: url("/assets/css/fonts/entypo-social.eot?#iefix") format("eot"), url("/assets/css/fonts/entypo-social.woff") format("woff"), url("/assets/css/fonts/entypo-social.ttf") format("truetype"), url("/assets/css/fonts/entypo-social.svg") format("svg");
+  src: url("/assets/fonts/entypo-social.eot");
+  src: url("/assets/fonts/entypo-social.eot?#iefix") format("eot"), url("/assets/fonts/entypo-social.woff") format("woff"), url("/assets/fonts/entypo-social.ttf") format("truetype"), url("/assets/fonts/entypo-social.svg") format("svg");
   font-weight: normal;
   font-style: normal; }
+
+@font-face {
+  font-family: 'Maven Pro';
+  src: url("/assets/fonts/MavenProRegular.eot?") format("eot"), url("/assets/fonts/MavenProRegular.otf") format("opentype"), url("/assets/fonts/MavenProRegular.woff") format("woff"), url("/assets/fonts/MavenProRegular.ttf") format("truetype"), url("/assets/fonts/MavenProRegular.svg#MavenProRegular") format("svg"); }
+
+@font-face {
+  font-family: 'Maven Pro';
+  src: url("/assets/fonts/MavenProBold.eot?") format("eot"), url("/assets/fonts/MavenProBold.otf") format("opentype"), url("/assets/fonts/MavenProBold.woff") format("woff"), url("/assets/fonts/MavenProBold.ttf") format("truetype"), url("/assets/fonts/MavenProBold.svg#MavenProBold") format("svg");
+  font-weight: bold; }
+
+@font-face {
+  font-family: 'Maven Pro';
+  src: url("/assets/fonts/MavenProMedium.eot?") format("eot"), url("/assets/fonts/MavenProMedium.otf") format("opentype"), url("/assets/fonts/MavenProMedium.woff") format("woff"), url("/assets/fonts/MavenProMedium.ttf") format("truetype"), url("/assets/fonts/MavenProMedium.svg#MavenProMedium") format("svg");
+  font-weight: 600; }
 
 .entypo {
   font-family: 'Entypo';
@@ -4577,7 +4597,7 @@ img.rsImg {
 body {
   background: url("/assets/img/site/process-scene.jpg") no-repeat fixed;
   background-size: cover;
-  font-family: "Maven Pro", sans-serif, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Maven Pro", "times new roman", sans-serif, "Helvetica Neue", Helvetica, Arial, sans-serif;
   min-height: 100%;
   color: white; }
   body h1 {
