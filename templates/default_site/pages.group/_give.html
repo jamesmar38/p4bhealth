@@ -1,3 +1,4 @@
+{exp:channel:entries channel="give"}
 {embed="global/_header"
 	entry_id="{last_segment_absolute_id}"
 	url_title="{last_segment_absolute}"
@@ -10,8 +11,8 @@
 	<div id="header-scene">
 		<div class="container">
 			<div class="row text-center">	
-				<h1>How You Can Give</h1>
-				<p>Please join us in creating a healthier future with a donation. We have provided a safe and cost efficient means for you to give to Partners for Better Health (P4bHealth.) </p>					
+				<h1>{give_header_headline}</h1>
+				<p>{give_header_content}</p>					
 			</div>
 			<div class="row text-center">		
 				<div id="button">
@@ -24,32 +25,19 @@
 <div class="yellowbar-scene"></div>
 <div class="single-scene">
 	<div class="container">
-		<div class="section-banner">Other ways to give</div>
-		<div class="row margin-top-80">
-			<div class="col-lg-4">
-				<img class="img-responsive" src="/assets/img/site/10219_1business_group.jpg">
+		<div class="section-banner">{give_body_headline}</div>
+		{give_content}
+			<div class="row margin-top-80">
+				<div class="col-lg-4">
+					<img class="img-responsive" src="{img}">
+				</div>
+				<div class="col-lg-8">
+					<h2>{headline}</h2>
+					<p>{content}</p>
+					<a href="{link}"><button type="button" class="btn btn-primary btn-lg btn-orange">Give Now</button></a>
+				</div>
 			</div>
-			<div class="col-lg-8">
-				<h2>Randall Lewis Health Policy Fellowship</h2>
-				<p>Your donation to the Partners for Better Health Policy Fellowships will help us create a better future in the 
-Inland Empire.</p>
-
-				<p>We are now seeking applications for The Randall Lewis Health Policy Fellowship for the 2011-2012 academic year. This prestigious and competitive fellowship is the first of its kind in the Inland Empire and will provide a unique opportunity to work directly with local communities in improving residents' health.  Five to seven applicants will be selected to serve as interns in cities within the Inland Empire.   Fellows will develop the skills required to successfully influence local and regional health policy.  We will have a direct influence on shaping the little p in health policy to make a difference in our communities.between the communities and the health sector. </p>
-				<button type="button" class="btn btn-primary btn-lg btn-orange">Give Now</button>
-			</div>
-		</div>
-		<div class="row margin-top-80">
-			<div class="col-lg-4">
-				<img class="img-responsive" src="/assets/img/site/10219_1business_group.jpg">
-			</div>
-			<div class="col-lg-8">
-				<h2>Randall Lewis Health Policy Fellowship</h2>
-				<p>Your donation to the Partners for Better Health Policy Fellowships will help us create a better future in the 
-Inland Empire.</p>
-
-				<p>We are now seeking applications for The Randall Lewis Health Policy Fellowship for the 2011-2012 academic year. This prestigious and competitive fellowship is the first of its kind in the Inland Empire and will provide a unique opportunity to work directly with local communities in improving residents' health.  Five to seven applicants will be selected to serve as interns in cities within the Inland Empire.   Fellows will develop the skills required to successfully influence local and regional health policy.  We will have a direct influence on shaping the little p in health policy to make a difference in our communities.between the communities and the health sector. </p>
-				<button type="button" class="btn btn-primary btn-lg btn-orange">Give Now</button>
-			</div>
-		</div>		
+		{/give_content}
 	</div>
 </div>	
+{/exp:channel:entries}
