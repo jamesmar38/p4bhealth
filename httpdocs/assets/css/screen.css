@@ -4568,6 +4568,8 @@ img.rsImg {
   padding-right: 45px; }
 
 body {
+  background: url("/assets/img/site/process-scene.jpg") no-repeat fixed;
+  background-size: cover;
   font-family: "Maven Pro", sans-serif, "Helvetica Neue", Helvetica, Arial, sans-serif;
   min-height: 100%;
   color: white; }
@@ -4594,6 +4596,7 @@ p {
   font-size: 16px; }
 
 .single-scene {
+  background-color: white;
   min-height: 600px;
   padding-top: 60px;
   padding-bottom: 60px;
@@ -4769,7 +4772,10 @@ p {
   width: auto;
   height: auto;
   z-index: -1000;
-  overflow: hidden; }
+  overflow: hidden;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  filter: blur(5px); }
 
 #intro-scene {
   margin-top: 120px;

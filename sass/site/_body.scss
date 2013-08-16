@@ -1,4 +1,6 @@
 body{
+	background: url($fallback-bg) no-repeat fixed;	//Fallback image
+	background-size: cover;
 	font-family:$font-family-sans-serif;
 	min-height:100%;
 	color:$pbh-white;
@@ -26,6 +28,7 @@ p {
 	font-size: 16px;
 }
 .single-scene {
+	background-color: $pbh-white;
 	min-height: 600px;
 	padding-top:60px;
 	padding-bottom:60px;
