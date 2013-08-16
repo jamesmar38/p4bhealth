@@ -1,3 +1,5 @@
+<video id="video_background" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0">
+<source src="/assets/video/beach.mp4" type="video/mp4"> Video not supported </video>
 {exp:channel:entries channel="homepage"}
 {embed="global/_header"
 	entry_id="{last_segment_absolute_id}"
@@ -6,7 +8,7 @@
 	template_group="page"
 	channel_name="pages"
 	body_class="sub-page"
-	header_image="{hp_header_image}"
+	header_image=""
 }
 	<div id="intro-scene">
 		<div class="container">
@@ -45,7 +47,10 @@
 		</div>
 	</div>
 </div>
-<div id="process-scene" style="background: url('{hp_header_image}') no-repeat fixed center;background-size:cover;">
+
+
+<!--<div id="process-scene" style="background: url('{hp_header_image}') no-repeat fixed center;background-size:cover;">-->
+<div id="process-scene">
 	<div class="container">
 		<div class="row text-center">
 			<div class="section-banner">Our Process</div>
