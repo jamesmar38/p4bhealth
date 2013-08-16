@@ -1,3 +1,5 @@
+{exp:channel:entries channel="about"}
+{exp:structure:first_child_redirect}
 {embed="global/_header"
 	entry_id="{last_segment_absolute_id}"
 	url_title="{last_segment_absolute}"
@@ -5,13 +7,13 @@
 	template_group="page"
 	channel_name="pages"
 	body_class="sub-page"
-	header_image="{hp_header_image}"
+	header_image="{about_header_image}"
 }	
 	<div id="header-scene">
 		<div class="container">
 			<div class="row text-center">	
-				<h1>About Us</h1>
-				<p>Please join us in creating a healthier future with a donation. We have provided a safe and cost efficient means for you to give to Partners for Better Health (P4bHealth.)</p>					
+				<h1>{about_header_headline}</h1>
+				<p>{about_header_content}</p>					
 			</div>			
 		</div>
 	</div>
@@ -26,14 +28,12 @@
 			</div>
 			<div class="col-lg-9">
 				<div class="about">
-					<h2 style="text-align: left">Partners & Organizations</h2>
+					<h2 style="text-align: left">{about_body_headline}</h2>
 					<hr>
-					<h3>What Is P4B Health?</h3>
-					<p>Partners for Better Health (P4bHealth) is a not-for-profit 501 (C) (3) public benefit corporation in formation with the purpose and healthcare design and development to meet the health needs of our local communities. We will not directly provide health services but work with existing agencies to develop appropriate health services.</p>
-					<h3>Vision</h3>
-					<p>To assist communities throughout the United States in developing a population-based health system that reflects the health needs and preferences of the segments of our community, with service and access solutions that are appropriate in scale and cost, developed through collaboration and cooperation between the communities and the health sector.</p>
+					<div id="about_content">{about_body_content}</div>
 				</div>
 			</div>			
 		</div>
 	</div>
 </div>	
+{/exp:channel:entries}
