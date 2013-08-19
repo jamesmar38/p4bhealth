@@ -6,6 +6,7 @@
 	$('#full-width-slider').royalSlider({
 		arrowsNav: true,
 		loop: true,
+		
 		keyboardNavEnabled: true,
 		controlsInside: false,
 		imageScaleMode: 'fill',
@@ -14,10 +15,15 @@
 		autoScaleSliderWidth: false,     
 		autoScaleSliderHeight: false,
 		controlNavigation: 'bullets',
-		thumbsFitInViewport: true,
+		thumbsFitInViewport: false,
 		navigateByClick: true,
 		startSlideId: 0,
-		autoPlay: true,
+		autoPlay: {
+    		// autoplay options go gere
+    		enabled: true,
+    		pauseOnHover: false,
+			delay: 4000
+    	},
 		transitionType:'move',
 		globalCaption: true,
 		deeplinking: {
@@ -25,8 +31,7 @@
 			change: false
 		},
 		/* size of all images http://help.dimsemenov.com/kb/royalslider-jquery-plugin-faq/adding-width-and-height-properties-to-images */
-		imgWidth: 1400,
-		imgHeight: 715
+		
 		});
 	});
 </script>

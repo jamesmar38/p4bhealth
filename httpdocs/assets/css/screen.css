@@ -3778,8 +3778,6 @@ td.visible-print {
 /* v1.0.5 */
 /* Core RS CSS file. 95% of time you shouldn't change anything here. */
 .royalSlider {
-  width: 600px;
-  height: 400px;
   position: relative;
   direction: ltr; }
 
@@ -4640,9 +4638,6 @@ p {
 .margin-bottom-large {
   margin-bottom: 80px; }
 
-.row {
-  overflow: hidden; }
-
 #header {
   width: 100%;
   min-height: 460px;
@@ -4820,26 +4815,29 @@ p {
   #partners-scene #partners-btn {
     margin-top: 105px; }
 
-#projects-scene .infoBlock {
-  margin-top: 120px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-  padding-bottom: 0;
-  overflow: hidden;
-  padding: 20px; }
-#projects-scene .infoBlockLeftBlack {
-  color: #FFF;
-  width: 700px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  margin-left: auto;
-  margin-right: auto; }
-#projects-scene h1 {
-  text-transform: uppercase;
-  font-weight: bold; }
-#projects-scene p {
-  font-size: 24px; }
+#projects-scene {
+  background-color: black;
+  overflow: hidden; }
+  #projects-scene .infoBlock {
+    margin-top: 120px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    padding-bottom: 0;
+    overflow: hidden;
+    padding: 20px; }
+  #projects-scene .infoBlockLeftBlack {
+    color: #FFF;
+    width: 700px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto; }
+  #projects-scene h1 {
+    text-transform: uppercase;
+    font-weight: bold; }
+  #projects-scene p {
+    font-size: 24px; }
 
 #participate-scene {
   background-color: #f78f1e;
