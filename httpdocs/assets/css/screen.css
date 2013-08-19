@@ -4632,6 +4632,9 @@ p {
 .margin-bottom-small {
   margin-bottom: 30px; }
 
+.row {
+  overflow: hidden; }
+
 #header {
   width: 100%;
   min-height: 460px;
@@ -4852,6 +4855,7 @@ p {
 
 .single-scene {
   background-color: white;
+  color: #949494;
   min-height: 600px;
   padding-top: 60px;
   padding-bottom: 60px;
@@ -4941,3 +4945,5 @@ p {
   font-weight: 700;
   text-align: left;
   text-shadow: 0px 0px 0px rgba(0, 0, 0, 0); }
+#about_content li {
+  line-height: 1.5; }
