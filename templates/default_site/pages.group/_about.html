@@ -9,17 +9,36 @@
 	body_class="sub-page"
 	header_image="{about_header_image}"
 }	
+
 	<div id="header-scene">
 		<div class="container">
 			<div class="row text-center">	
-				<h1>{about_header_headline}</h1>
-				<p>{about_header_content}</p>					
+				{if about_header_headline}
+					{exp:channel:entries channel="about"}
+					<h1>{about_header_headline}</h1>
+					{/exp:channel:entries}
+				{if:else}
+					{exp:channel:entries entry_id="15"}
+					<h1>{about_header_headline}</h1>
+					{/exp:channel:entries}
+				{/if}
+				{if about_header_content}
+					{exp:channel:entries channel="about"}
+					<p>{about_header_content}</p>
+					{/exp:channel:entries}
+				{if:else}
+					{exp:channel:entries entry_id="15"}
+					<p>{about_header_content}</p>
+					{/exp:channel:entries}
+				{/if}								
 			</div>			
 		</div>
 	</div>
 </div>
+{/exp:channel:entries}
 <div class="yellowbar-scene"></div>
 <div class="single-scene">
+{exp:channel:entries channel="about"}
 	<div class="container">
 			<div class="col-lg-3">
 				<div class="about">
