@@ -1,7 +1,9 @@
 @media screen and (max-width: $screen-tablet) {
 	body {
-		h1 {
-			font-size: 40px !important;
-		}
+		h1 {font-size: 40px !important;}
+		p {font-size: 18px !important;}
+	}
+	.get-involved, .stories {
+		p {font-size: 16px !important;}
 	}
 }
