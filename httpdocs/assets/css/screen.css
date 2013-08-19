@@ -4528,7 +4528,7 @@ img.rsImg {
 @font-face {
   font-family: 'Maven Pro';
   src: url("/assets/fonts/MavenProMedium.eot?") format("eot"), url("/assets/fonts/MavenProMedium.otf") format("opentype"), url("/assets/fonts/MavenProMedium.woff") format("woff"), url("/assets/fonts/MavenProMedium.ttf") format("truetype"), url("/assets/fonts/MavenProMedium.svg#MavenProMedium") format("svg");
-  font-weight: 600; }
+  font-weight: 700; }
 
 .entypo {
   font-family: 'Entypo';
@@ -4624,7 +4624,8 @@ hr {
   padding: 0; }
 
 p {
-  font-size: 16px; }
+  font-size: 16px;
+  font-weight: normal; }
 
 .margin-top-small {
   margin-top: 30px; }
@@ -4868,13 +4869,13 @@ p {
   font-size: 22px;
   font-weight: 600;
   line-height: 1.091; }
-  .single-scene .filter {
+  .single-scene #filter {
     float: left;
     width: 100%;
     overflow: hidden;
     position: relative;
     margin-bottom: 60px; }
-    .single-scene .filter ul {
+    .single-scene #filter ul {
       clear: left;
       float: left;
       list-style: none;
@@ -4886,7 +4887,7 @@ p {
       color: #949494;
       font-size: 16px;
       font-weight: 600; }
-      .single-scene .filter ul li {
+      .single-scene #filter ul li {
         display: block;
         float: left;
         list-style: none;
@@ -4894,12 +4895,12 @@ p {
         padding: 0;
         position: relative;
         right: 50%; }
-        .single-scene .filter ul li a {
+        .single-scene #filter ul li a {
           color: #949494;
           display: block;
           margin: 0 0 0 1px;
           padding: 3px 10px; }
-          .single-scene .filter ul li a:hover {
+          .single-scene #filter ul li a:hover {
             color: #f78f1e; }
   .single-scene .thumb-270 {
     height: 270px;
@@ -4937,7 +4938,7 @@ p {
   height: 57px;
   background: url("/assets/img/section-banner.png") no-repeat center;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: bold;
   text-transform: uppercase;
   text-align: center;
   padding-top: 1em;
@@ -4948,7 +4949,7 @@ p {
 #about_content h1, #about_content h2, #about_content h3 {
   font-size: 22px;
   color: #f78f1e;
-  font-weight: 700;
+  font-weight: 600;
   text-align: left;
   text-shadow: 0px 0px 0px rgba(0, 0, 0, 0); }
 #about_content li {
@@ -4958,6 +4959,29 @@ p {
   font-size: 28px; }
 .stories p {
   font-size: 14px;
-  font-weight: regular; }
+  font-weight: 600; }
 .stories .block-videos {
   min-height: 2em; }
+
+#filter-container {
+  display: block;
+  overflow: hidden;
+  width: 830px;
+  margin: 0 auto; }
+
+#filter-container li {
+  float: left;
+  height: 100px;
+  list-style: none outside none;
+  margin: 6px;
+  position: relative;
+  width: 125px;
+  -webkit-box-shadow: 0 0 5px black;
+  -moz-box-shadow: 0 0 5px black;
+  box-shadow: 0 0 5px black; }
+
+#filter-container ul {
+  overflow: hidden; }
+
+#filter-container ul.hidden {
+  display: none; }
