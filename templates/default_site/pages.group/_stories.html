@@ -1,3 +1,4 @@
+{exp:channel:entries channel="stories"}
 {embed="global/_header"
 	entry_id="{last_segment_absolute_id}"
 	url_title="{last_segment_absolute}"
@@ -5,13 +6,13 @@
 	template_group="page"
 	channel_name="pages"
 	body_class="sub-page"
-	header_image="{hp_header_image}"
+	header_image="{stories_header_image}"
 }
 	<div id="header-scene">
 		<div class="container">
 			<div class="row text-center">	
-				<h1>Listen and Watch Our Stories</h1>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, pellentesque pulvinar urna.</p>					
+				<h1>{stories_header_headline}</h1>
+				<p>{stories_header_content}</p>					
 			</div>			
 		</div>
 	</div>
@@ -20,12 +21,14 @@
 <div class="single-scene">
 	<div class="container">
 		<div class="row">
+			{exp:channel_videos:videos entry_id="{entry_id}" embed_width="100%" }
 			<div class="col-lg-6">
-				<img src="/assets/img/site/chicago.jpg" height="270">
+				{video:embed_code}
+				<h3>{video:title}</h3>
+				{video:description}
 			</div>
-			<div class="col-lg-6">
-				<img src="/assets/img/site/chicago.jpg" height="270">
-			</div>			
+			{/exp:channel_videos:videos}		
 		</div>
 	</div>
 </div>	
+{/exp:channel:entries}
