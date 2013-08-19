@@ -4957,4 +4957,7 @@ p {
 .stories h3 {
   font-size: 28px; }
 .stories p {
-  font-size: 20px; }
+  font-size: 14px;
+  font-weight: regular; }
+.stories .block-videos {
+  min-height: 2em; }

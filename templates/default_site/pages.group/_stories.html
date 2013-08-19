@@ -21,12 +21,14 @@
 <div class="single-scene">
 	<div class="container">
 		<div class="row">
-			{exp:channel_videos:videos entry_id="{entry_id}" embed_width="100%" }
+{exp:channel_videos:videos entry_id="{entry_id}" embed_width="100%" }			
 			<div class="col-lg-6 margin-bottom-small">
 				<div class="stories">
 					{video:embed_code}
 					<h3>{video:title}</h3>
-					<p>{video:description}</p>
+					<div class="block-videos">
+						<p>{video:description}</p>
+					</div>
 				</div>
 			</div>
 			{/exp:channel_videos:videos}		

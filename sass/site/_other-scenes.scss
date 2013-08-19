@@ -112,7 +112,10 @@
 		line-height: 1.5;
 	}
 }
-.stories {
+.stories { 
 	h3 { font-size: 28px; }
-	p { font-size: 20px; }
+	p { font-size: 14px; font-weight: regular;}
+	.block-videos {
+		min-height: 2em;
+	}
 }
