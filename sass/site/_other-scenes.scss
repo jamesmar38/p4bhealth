@@ -7,7 +7,7 @@
 	font-size: 22px;
 	font-weight: 600;
 	line-height: 1.091;	
-	#filter {
+	.filter {
 		float:left;
 		width:100%;
 		overflow:hidden;
@@ -92,7 +92,7 @@
 	height:57px;
 	background:url("/assets/img/section-banner.png") no-repeat center;
 	font-size:18px;
-	font-weight:bold;
+	font-weight:700;
 	text-transform: uppercase;
 	text-align: center;
 	padding-top:1em;
@@ -104,7 +104,7 @@
 	h1,h2,h3 {
 		font-size: 22px;
 		color: $pbh-orange;
-		font-weight: 600;
+		font-weight: 700;
 		text-align: left;
 		@include text-shadow(0px 0px 0px rgba(0, 0, 0, 0));
 	}
@@ -114,29 +114,8 @@
 }
 .stories { 
 	h3 { font-size: 28px; }
-	p { font-size: 14px; font-weight: 600;}
+	p { font-size: 14px; font-weight: regular;}
 	.block-videos {
 		min-height: 2em;
 	}
-}
-#filter-container{
-	display:block;
-	overflow:hidden;
-	width: 830px;
-	margin:0 auto;
-}
-#filter-container li{
-	float: left;
-	height: 100px;
-	list-style: none outside none;
-	margin: 6px;
-	position: relative;
-	width: 125px;
-	@include box-shadow(0 0 5px #000);
-}
-#filter-container ul{
-	overflow:hidden;
-}
-#filter-container ul.hidden{
-	display:none;
 }
