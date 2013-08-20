@@ -1,46 +1,9 @@
-body{
-	background: url($fallback-bg) no-repeat fixed;	//Fallback image
-	background-size: cover;
-	font-family:$font-family-sans-serif;
-	min-height:100%;
-	color:$pbh-white;
-	h1 {
-		font-size: 64px;
-		text-align: center;
-		@include text-shadow(0px 3px 0px rgba(0, 0, 0, 0.2));
-	}
-	h2 {
-		font-size: 36px;
-	}
-	h3 {
-		font-size: 22px;
-		color: $pbh-orange;
-		font-weight: 700;
-	}
-}
-hr {
-	display: block; 
-	height: 6px;
-	border: 0; border-top: 6px solid $pbh-orange;
-	margin: 0.8em 0; padding: 0; 
-}
-p {
-	font-size: 16px;
-}
-.margin-top-small {
-	margin-top: 30px;
-}
-.margin-top-large {
-	margin-top: 80px;
-}
-.margin-bottom-small {
-	margin-bottom: 30px;
-}
-.margin-bottom-large {
-	margin-bottom: 80px;
-}
 /* Start: Recommended Isotope styles */
+#container {
+  /* either of these will work for horizontal Isotope layouts */
 
+
+}
 /**** Isotope Filtering ****/
 
 .isotope-item {

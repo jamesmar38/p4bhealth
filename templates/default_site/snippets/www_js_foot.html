@@ -51,6 +51,59 @@
 <!-- Livereload code (http://livereload.com/) -->
 <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 
+<!-- Filtering -->
+<script src="/assets/js/filtering.js"></script>
+ <script>
+    $(function(){
+      
+      var $container = $('#container');
+
+      $container.isotope({
+        itemSelector : '.element',
+		layoutMode : 'fitRows'
+      });
+      $('#container').isotope({
+  layoutMode: 'cellsByRow',
+  cellsByRow: {
+    columnWidth: 278,
+    rowHeight: 190
+  }
+});
+      
+      var $optionSets = $('#options .option-set'),
+          $optionLinks = $optionSets.find('a');
+
+      $optionLinks.click(function(){
+        var $this = $(this);
+        // don't proceed if already selected
+        if ( $this.hasClass('selected') ) {
+          return false;
+        }
+        var $optionSet = $this.parents('.option-set');
+        $optionSet.find('.selected').removeClass('selected');
+        $this.addClass('selected');
+  
+        // make option object dynamically, i.e. { filter: '.my-filter-class' }
+        var options = {},
+            key = $optionSet.attr('data-option-key'),
+            value = $this.attr('data-option-value');
+        // parse 'false' as false boolean
+        value = value === 'false' ? false : value;
+        options[ key ] = value;
+        if ( key === 'layoutMode' && typeof changeLayoutMode === 'function' ) {
+          // changes in layout modes need extra logic
+          changeLayoutMode( $this, options )
+        } else {
+          // otherwise, apply new options
+          $container.isotope( options );
+        }
+        
+        return false;
+      });
+
+      
+    });
+  </script>
 
 <!-- Y Axis Loader -->
 <script src="/assets/js/gridloading/masonry.pkgd.min.js"></script>
@@ -58,6 +111,8 @@
 <script src="/assets/js/gridloading/classie.js"></script>
 <script src="/assets/js/gridloading/AnimOnScroll.js"></script>
 <script>
+
+
 	new AnimOnScroll( document.getElementById( 'grid' ), {
 		minDuration : 0.3,
 		maxDuration : 0.6,

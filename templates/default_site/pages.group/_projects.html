@@ -1,3 +1,4 @@
+{exp:channel:entries channel="projects"}
 {embed="global/_header"
 	entry_id="{last_segment_absolute_id}"
 	url_title="{last_segment_absolute}"
@@ -5,57 +6,54 @@
 	template_group="page"
 	channel_name="pages"
 	body_class="sub-page"
-	header_image="{hp_header_image}"
+	header_image="{projects_header_image}"
 }
 	<div id="header-scene">
 		<div class="container">
 			<div class="row text-center">	
-				<h1>These Are Our Projects</h1>
-				<p>Our projects are brought to you by the Randall Lewis Fellowship</p>					
+				<h1>{projects_header_headline}</h1>
+				<p>{projects_header_content}</p>					
 			</div>			
 		</div>
 	</div>
 </div>
 <div class="yellowbar-scene"></div>
 <div class="single-scene">
+
+ 
 	<div class="container">
 		<div class="section-banner">Filter projects by city</div>
-		<div class="filter">
-			<ul class="nav nav-pills" >
-				<li><a href="#">All</a></li>
-				<li><a href="#">Chino</a></li>
-				<li><a href="#">Loma Linda</a></li>
-				<li><a href="#">Ontario</a></li>
-				<li><a href="#">Pasadena</a></li>				
-			</ul>
+		<div class="filter" >
+			<section id="options" class="clearfix">
+				<ul id="filter" class="option-set clearfix nav nav-pills" data-option-key="filter">
+					<li><a href="#filter" data-option-value="*" class="selected">All</a></li>
+					{projects_content orderby="city" sort="asc"}
+					<li><a href="#filter" data-option-value=".{stripped-city}">{city}</a></li>
+					
+					
+					{/projects_content}
+				</ul>
+				<script>	//Prevent List items from showing more than once
+					var seen = {};
+					$('a').each(function() {
+						var txt = $(this).text();
+						if (seen[txt])
+							$(this).remove();
+						else
+							seen[txt] = true;
+					});
+				</script>
+			</section> <!-- #options -->
 		</div>
-		<div class="row margin-top-small">
-			<div class="col-lg-3">
-				<div class="thumb-270"><img src="/assets/img/site/chicago.jpg" height="270"></div>
-			</div>
-			<div class="col-lg-3">
-					<div class="thumb-270"><img src="/assets/img/site/process-scene.jpg" height="270"></div>
-			</div>
-			<div class="col-lg-3">
-					<div class="thumb-270"><img src="/assets/img/site/projects-scene.jpg"  height="270"></div>
-			</div>
-			<div class="col-lg-3">
-					<div class="thumb-270"><img src="/assets/img/site/10219_1business_group.jpg" height="270"></div>
-			</div>
+		<div class="rowd margin-top-small"> 
+			<div id="container" class="col-lg-12 clearfix text-center">
+				{projects_content}
+				<div class="element {stripped-city}" data-category="{city}">
+				<img src="{image}" width="265" height="165">
+				</div>
+				{/projects_content}
+			</div> <!-- #container -->
 		</div>
-		<div class="row margin-top-small">
-			<div class="col-lg-3">
-				<div class="thumb-270"><img src="/assets/img/site/chicago.jpg" height="270"></div>
-			</div>
-			<div class="col-lg-3">
-					<div class="thumb-270"><img src="/assets/img/site/process-scene.jpg" height="270"></div>
-			</div>
-			<div class="col-lg-3">
-					<div class="thumb-270"><img src="/assets/img/site/projects-scene.jpg"  height="270"></div>
-			</div>
-			<div class="col-lg-3">
-					<div class="thumb-270"><img src="/assets/img/site/10219_1business_group.jpg" height="270"></div>
-			</div>
-		</div>	
 	</div>
 </div>
+{/exp:channel:entries}
