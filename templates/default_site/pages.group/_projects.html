@@ -27,12 +27,12 @@
 					<li><a href="#filter" data-option-value="*" class="selected">All</a></li>
 					{projects_content orderby="city" sort="asc"}
 					<?php //Remove spacing from string because css classes don't accept spaces
-						$stripped = str_replace( ' ', '', '{city}'); 
-						echo '<li><a href="#filter" data-option-value=".' . $stripped . '">{city}</a></li>';
+						$strippedcity = str_replace( ' ', '', '{city}'); 
+						echo '<li><a href="#filter" data-option-value=".' . $strippedcity . '">{city}</a></li>';
 					?>				
 					{/projects_content}
 				</ul>
-				<script>	//Prevent List items from showing more than once
+				<script>	//Prevent duplicate city listings
 					var seen = {};
 					$('a').each(function() {
 						var txt = $(this).text();
@@ -48,8 +48,8 @@
 			<div id="container" class="col-lg-12 clearfix text-center">
 				{projects_content}
 				<?php //Remove spacing from string because css classes don't accept spaces
-					$stripped = str_replace( ' ', '', '{city}'); 
-					echo '<div class="element ' . $stripped . '" data-category="{city}">';
+					$strippedcity = str_replace( ' ', '', '{city}'); 
+					echo '<div class="element ' . $strippedcity . '" data-category="{city}">';
 				?>
 				<img src="{image}" width="265" height="165">
 				</div>
