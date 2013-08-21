@@ -3,14 +3,15 @@
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
+@import "compass/css3";
+ 
 @import "variables";
 @import "vendor/bootstrap3/bootstrap";
 @import "vendor/gridloading/component";		//Y Axis Loading Effect
 @import "vendor/slider/royalslider";		//Slider Effect
 @import "vendor/slider/rs-default";			//Slider Theme such as arrows and bullets
 @import "vendor/isotope";					//Isotope Filter Effect
-
-@import "compass/css3";
+@import "vendor/modal/reveal";
 
 @import "responsive/responsive-entypo";
 @import "responsive/responsive-royalslider";

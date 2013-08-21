@@ -119,3 +119,26 @@
 		min-height: 2em;
 	}
 }
+.modal-scene {
+	h2 {
+		color: $pbh-darkgray;
+		font-size: 36px;
+		weight: bold;
+	
+		margin-top: 0;
+	}
+	h4 {
+		color: $pbh-gray;
+		font-size: 14px;
+		line-height: 1;
+	}
+	p {
+		color: $pbh-gray;
+		font-size: 14px;
+	}
+	.modal-formatting {
+	h1 {color: $pbh-orange;font-size: 28px;}
+	h2 {color: $pbh-darkgray;font-weight: bold;font-size: 24px;}
+	p {color: $pbh-darkgray;font-size:18px;}
+	}
+}

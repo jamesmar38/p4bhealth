@@ -4514,6 +4514,73 @@ img.rsImg {
   -o-transition: none;
   transition: none; }
 
+/*	--------------------------------------------------
+	Reveal Modals
+	-------------------------------------------------- */
+.reveal-modal-bg {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  z-index: 100;
+  display: none;
+  top: 0;
+  left: 0; }
+
+.reveal-modal {
+  visibility: hidden;
+  top: 50px;
+  left: 50%;
+  margin-left: -300px;
+  width: 520px;
+  background: #FFFFFF;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid #949494;
+  position: absolute;
+  z-index: 101;
+  padding: 30px 40px 34px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  -box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); }
+
+.reveal-modal.small {
+  width: 200px;
+  margin-left: -140px; }
+
+.reveal-modal.medium {
+  width: 400px;
+  margin-left: -240px; }
+
+.reveal-modal.large {
+  width: 600px;
+  margin-left: -340px; }
+
+.reveal-modal.xlarge {
+  width: 100%;
+  margin-left: -50%; }
+
+.reveal-modal .close-reveal-modal {
+  cursor: pointer; }
+
+/*
+	
+NOTES
+
+Close button entity is &#215;
+
+Example markup
+
+<div id="myModal" class="reveal-modal">
+	<h2>Awesome. I have it.</h2>
+	<p class="lead">Your couch.  I it's mine.</p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ultrices aliquet placerat. Duis pulvinar orci et nisi euismod vitae tempus lorem consectetur. Duis at magna quis turpis mattis venenatis eget id diam. </p>
+	<a class="close-reveal-modal">&#215;</a>
+</div>
+
+*/
 @media screen and (max-width: 568px) {
   #process-scene .icons {
     height: 130px !important;
@@ -4594,7 +4661,6 @@ img.rsImg {
 
 .btn-white {
   -webkit-box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.2);
   background-color: #fff;
   border: 0;
@@ -4611,7 +4677,6 @@ img.rsImg {
 
 .btn-gray {
   -webkit-box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.2);
   background-color: #525252;
   border: 0;
@@ -4631,7 +4696,6 @@ img.rsImg {
 
 .btn-orange {
   -webkit-box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.2);
   background-color: #f78f1e;
   border: 0;
@@ -4898,7 +4962,6 @@ p {
     -o-border-radius: 999px;
     border-radius: 999px;
     -webkit-box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.2);
     box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.2); }
 
 #partners-scene {
@@ -5066,3 +5129,26 @@ p {
   font-weight: regular; }
 .stories .block-videos {
   min-height: 2em; }
+
+.modal-scene h2 {
+  color: #353535;
+  font-size: 36px;
+  weight: bold;
+  margin-top: 0; }
+.modal-scene h4 {
+  color: #949494;
+  font-size: 14px;
+  line-height: 1; }
+.modal-scene p {
+  color: #949494;
+  font-size: 14px; }
+.modal-scene .modal-formatting h1 {
+  color: #f78f1e;
+  font-size: 28px; }
+.modal-scene .modal-formatting h2 {
+  color: #353535;
+  font-weight: bold;
+  font-size: 24px; }
+.modal-scene .modal-formatting p {
+  color: #353535;
+  font-size: 18px; }
