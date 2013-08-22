@@ -4612,6 +4612,9 @@ Example markup
   #header p {
     width: 90% !important;
     font-size: 18px !important; } }
+@media screen and (max-width: 998px) {
+  nav ul > li {
+    width: 90% !important; } }
 @media screen and (max-width: 768px) {
   body h1 {
     font-size: 40px !important; }

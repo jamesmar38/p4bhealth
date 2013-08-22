@@ -6,5 +6,11 @@
 		}
 	}
 }
-
+@media screen and (max-width: $screen-tablet  + 230px) {
+  nav {
+    ul > li {
+      width: 90% !important;
+    }
+  }
+}
 

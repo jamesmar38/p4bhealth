@@ -66,12 +66,7 @@
 	<div class="container-fluid close-reveal-modal">
 	<span class="pull right">&#215;</span>
 		<div class="col-lg-3">
-			<img src="{image}" class="img-responsive" onclick="showIframe()" />
-			<script>
-			function showIframe() {
-				document.getElementById('iframe-video').style.cssText = 'margin-top:0px;';
-			}
-			</script>
+			<img src="{image}" class="img-responsive" />
 		</div>
 		<div class="col-lg-9">
 			<h2>City of {city}</h2>
@@ -83,7 +78,7 @@
 				</div>
 				<div class="col-lg-4">
 					<div class="row" >
-						<iframe seamless width="100%" height="200" id="iframe-video" src="{video}" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+						<!--<iframe seamless width="100%" height="200" id="iframe-video" src="{video}" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>-->
 					</div>
 					<div class="row"><p>{content2}</p></div>
 				</div>
