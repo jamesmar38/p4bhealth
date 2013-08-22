@@ -4744,9 +4744,6 @@ hr {
   margin: 0.8em 0;
   padding: 0; }
 
-p {
-  font-size: 16px; }
-
 .margin-top-small {
   margin-top: 30px; }
 
@@ -5055,8 +5052,8 @@ p {
       left: 50%;
       text-align: center;
       color: #949494;
-      font-size: 16px;
-      font-weight: 600; }
+      font-size: 14px;
+      font-weight: 500; }
       .single-scene .filter ul li {
         display: block;
         float: left;
