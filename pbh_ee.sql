@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 16, 2013 at 07:32 PM
+-- Generation Time: Aug 22, 2013 at 11:54 PM
 -- Server version: 5.5.24-log
 -- PHP Version: 5.4.3
 
@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `exp_actions` (
   `class` varchar(50) NOT NULL,
   `method` varchar(50) NOT NULL,
   PRIMARY KEY (`action_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `exp_actions`
@@ -77,7 +77,8 @@ INSERT INTO `exp_actions` (`action_id`, `class`, `method`) VALUES
 (10, 'Channel', 'smiley_pop'),
 (11, 'Rte', 'get_js'),
 (12, 'Structure', 'ajax_move_set_data'),
-(13, 'Editor', 'ACT_file_upload');
+(13, 'Editor', 'ACT_file_upload'),
+(14, 'Channel_videos', 'channel_videos_router');
 
 -- --------------------------------------------------------
 
@@ -251,7 +252,7 @@ CREATE TABLE IF NOT EXISTS `exp_channels` (
   KEY `field_group` (`field_group`),
   KEY `channel_name` (`channel_name`),
   KEY `site_id` (`site_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `exp_channels`
@@ -260,9 +261,10 @@ CREATE TABLE IF NOT EXISTS `exp_channels` (
 INSERT INTO `exp_channels` (`channel_id`, `site_id`, `channel_name`, `channel_title`, `channel_url`, `channel_description`, `channel_lang`, `total_entries`, `total_comments`, `last_entry_date`, `last_comment_date`, `cat_group`, `status_group`, `deft_status`, `field_group`, `search_excerpt`, `deft_category`, `deft_comments`, `channel_require_membership`, `channel_max_chars`, `channel_html_formatting`, `channel_allow_img_urls`, `channel_auto_link_urls`, `channel_notify`, `channel_notify_emails`, `comment_url`, `comment_system_enabled`, `comment_require_membership`, `comment_use_captcha`, `comment_moderate`, `comment_max_chars`, `comment_timelock`, `comment_require_email`, `comment_text_formatting`, `comment_html_formatting`, `comment_allow_img_urls`, `comment_auto_link_urls`, `comment_notify`, `comment_notify_authors`, `comment_notify_emails`, `comment_expiration`, `search_results_url`, `ping_return_url`, `show_button_cluster`, `rss_url`, `enable_versioning`, `max_revisions`, `default_entry_title`, `url_title_prefix`, `live_look_template`) VALUES
 (1, 1, 'homepage', 'Homepage', 'http://local.p4bhealth.org/', NULL, 'en', 1, 0, 1375826640, 0, '', NULL, 'open', 1, NULL, NULL, 'y', 'y', NULL, 'all', 'y', 'n', 'n', NULL, NULL, 'y', 'n', 'n', 'n', 5000, 0, 'y', 'xhtml', 'safe', 'n', 'y', 'n', 'n', NULL, 0, NULL, NULL, 'y', NULL, 'n', 10, '', '', 0),
 (2, 1, 'give', 'Give', 'http://local.p4bhealth.org/', NULL, 'en', 8, 0, 1376681040, 0, '', NULL, 'open', 5, NULL, NULL, 'y', 'y', NULL, 'all', 'y', 'n', 'n', NULL, NULL, 'y', 'n', 'n', 'n', 5000, 0, 'y', 'xhtml', 'safe', 'n', 'y', 'n', 'n', NULL, 0, NULL, NULL, 'y', NULL, 'n', 10, '', '', 0),
-(3, 1, 'projects', 'Projects', 'http://local.p4bhealth.org/', NULL, 'en', 2, 0, 1376522460, 0, '', NULL, 'open', NULL, NULL, NULL, 'y', 'y', NULL, 'all', 'y', 'n', 'n', NULL, NULL, 'y', 'n', 'n', 'n', 5000, 0, 'y', 'xhtml', 'safe', 'n', 'y', 'n', 'n', NULL, 0, NULL, NULL, 'y', NULL, 'n', 10, '', '', 0),
+(3, 1, 'projects', 'Projects', 'http://local.p4bhealth.org/', NULL, 'en', 1, 0, 1376510580, 0, '', NULL, 'open', 4, NULL, NULL, 'y', 'y', NULL, 'all', 'y', 'n', 'n', NULL, NULL, 'y', 'n', 'n', 'n', 5000, 0, 'y', 'xhtml', 'safe', 'n', 'y', 'n', 'n', NULL, 0, NULL, NULL, 'y', NULL, 'n', 10, '', '', 0),
 (4, 1, 'get-involved', 'Get Involved', 'http://local.p4bhealth.org/', NULL, 'en', 1, 0, 1376679780, 0, '', NULL, 'open', 3, NULL, NULL, 'y', 'y', NULL, 'all', 'y', 'n', 'n', NULL, NULL, 'y', 'n', 'n', 'n', 5000, 0, 'y', 'xhtml', 'safe', 'n', 'y', 'n', 'n', NULL, 0, NULL, NULL, 'y', NULL, 'n', 10, '', '', 0),
-(5, 1, 'about', 'About', 'http://local.p4bhealth.org/', NULL, 'en', 0, 0, 0, 0, '', NULL, 'open', 6, NULL, NULL, 'y', 'y', NULL, 'all', 'y', 'n', 'n', NULL, NULL, 'y', 'n', 'n', 'n', 5000, 0, 'y', 'xhtml', 'safe', 'n', 'y', 'n', 'n', NULL, 0, NULL, NULL, 'y', NULL, 'n', 10, '', '', 0);
+(5, 1, 'about', 'About', 'http://local.p4bhealth.org/', NULL, 'en', 6, 0, 1376931840, 0, '', NULL, 'open', 6, NULL, NULL, 'y', 'y', NULL, 'all', 'y', 'n', 'n', NULL, NULL, 'y', 'n', 'n', 'n', 5000, 0, 'y', 'xhtml', 'safe', 'n', 'y', 'n', 'n', NULL, 0, NULL, NULL, 'y', NULL, 'n', 10, '', '', 0),
+(6, 1, 'stories', 'Stories', 'http://local.p4bhealth.org/', NULL, 'en', 1, 0, 1376935440, 0, '', NULL, 'open', 7, NULL, NULL, 'y', 'y', NULL, 'all', 'y', 'n', 'n', NULL, NULL, 'y', 'n', 'n', 'n', 5000, 0, 'y', 'xhtml', 'safe', 'n', 'y', 'n', 'n', NULL, 0, NULL, NULL, 'y', NULL, 'n', 10, '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -298,6 +300,72 @@ CREATE TABLE IF NOT EXISTS `exp_channel_data` (
   `field_ft_11` tinytext,
   `field_id_12` text,
   `field_ft_12` tinytext,
+  `field_id_13` text,
+  `field_ft_13` tinytext,
+  `field_id_14` text,
+  `field_ft_14` tinytext,
+  `field_id_15` text,
+  `field_ft_15` tinytext,
+  `field_id_16` text,
+  `field_ft_16` tinytext,
+  `field_id_17` text,
+  `field_ft_17` tinytext,
+  `field_id_18` text,
+  `field_ft_18` tinytext,
+  `field_id_19` text,
+  `field_ft_19` tinytext,
+  `field_id_20` text,
+  `field_ft_20` tinytext,
+  `field_id_21` text,
+  `field_ft_21` tinytext,
+  `field_id_22` text,
+  `field_ft_22` tinytext,
+  `field_id_23` text,
+  `field_ft_23` tinytext,
+  `field_id_24` text,
+  `field_ft_24` tinytext,
+  `field_id_25` text,
+  `field_ft_25` tinytext,
+  `field_id_26` text,
+  `field_ft_26` tinytext,
+  `field_id_28` text,
+  `field_ft_28` tinytext,
+  `field_id_29` text,
+  `field_ft_29` tinytext,
+  `field_id_30` text,
+  `field_ft_30` tinytext,
+  `field_id_31` text,
+  `field_ft_31` tinytext,
+  `field_id_32` text,
+  `field_ft_32` tinytext,
+  `field_id_33` text,
+  `field_ft_33` tinytext,
+  `field_id_34` text,
+  `field_ft_34` tinytext,
+  `field_id_35` text,
+  `field_ft_35` tinytext,
+  `field_id_36` text,
+  `field_ft_36` tinytext,
+  `field_id_37` text,
+  `field_ft_37` tinytext,
+  `field_id_38` text,
+  `field_ft_38` tinytext,
+  `field_id_39` text,
+  `field_ft_39` tinytext,
+  `field_id_40` text,
+  `field_ft_40` tinytext,
+  `field_id_41` text,
+  `field_ft_41` tinytext,
+  `field_id_42` text,
+  `field_ft_42` tinytext,
+  `field_id_43` text,
+  `field_ft_43` tinytext,
+  `field_id_44` text,
+  `field_ft_44` tinytext,
+  `field_id_45` text,
+  `field_ft_45` tinytext,
+  `field_id_46` text,
+  `field_ft_46` tinytext,
   PRIMARY KEY (`entry_id`),
   KEY `channel_id` (`channel_id`),
   KEY `site_id` (`site_id`)
@@ -307,20 +375,29 @@ CREATE TABLE IF NOT EXISTS `exp_channel_data` (
 -- Dumping data for table `exp_channel_data`
 --
 
-INSERT INTO `exp_channel_data` (`entry_id`, `site_id`, `channel_id`, `field_id_1`, `field_ft_1`, `field_id_2`, `field_ft_2`, `field_id_3`, `field_ft_3`, `field_id_4`, `field_ft_4`, `field_id_5`, `field_ft_5`, `field_id_6`, `field_ft_6`, `field_id_7`, `field_ft_7`, `field_id_8`, `field_ft_8`, `field_id_9`, `field_ft_9`, `field_id_10`, `field_ft_10`, `field_id_11`, `field_ft_11`, `field_id_12`, `field_ft_12`) VALUES
-(1, 1, 1, '{filedir_1}pbh_home-header.jpg', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none'),
-(4, 1, 3, '', NULL, '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none'),
-(3, 1, 2, '', NULL, '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none'),
-(5, 1, 3, '', NULL, '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none'),
-(6, 1, 2, '', NULL, '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none'),
-(7, 1, 2, '', NULL, '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none'),
-(8, 1, 2, '', NULL, '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none'),
-(9, 1, 2, '', NULL, '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none'),
-(10, 1, 2, '', NULL, '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none'),
-(11, 1, 2, '', NULL, '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none'),
-(12, 1, 2, '', NULL, '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none'),
-(13, 1, 4, '', NULL, '', 'none', 'The Randall Lewis Health Policy Fellowship', 'none', '<p>\n	A collaborative of corporate, university, and community leadership to assist municipal efforts in the San Bernardino County’s Healthy Communities Initiative. You’re invited to get involved!\n</p>', 'xhtml', 'THE PURPOSE', 'none', '<p>\n	The purpose of the Randall Lewis Health Policy Fellowship program is to ensure the development of public health professionals who possess the necessary skills to influence positive change in public policy, systems, and the built environment in our local municipalities. In addition, these prestigious and competitive fellowships will create educational and professional opportunities for local students in health policy, provide for the expansion of the regional health policy infrastructure, and retain essential intellectual capital in the Inland Empire\n</p>\n<p>\n	The fellowship, currentily in its third year, runs from September until May.\n</p>', 'xhtml', '1', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none'),
-(14, 1, 2, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', 'none', 'How You Can Give', 'none', '<p>\n	Please join us in creating a healthier future with a donation. We have provided a safe and cost efficient means for you to give to Partners for Better Health (P4bHealth.)\n</p>', 'xhtml', 'OTHER WAYS TO GIVE', 'none', '1', 'none');
+INSERT INTO `exp_channel_data` (`entry_id`, `site_id`, `channel_id`, `field_id_1`, `field_ft_1`, `field_id_2`, `field_ft_2`, `field_id_3`, `field_ft_3`, `field_id_4`, `field_ft_4`, `field_id_5`, `field_ft_5`, `field_id_6`, `field_ft_6`, `field_id_7`, `field_ft_7`, `field_id_8`, `field_ft_8`, `field_id_9`, `field_ft_9`, `field_id_10`, `field_ft_10`, `field_id_11`, `field_ft_11`, `field_id_12`, `field_ft_12`, `field_id_13`, `field_ft_13`, `field_id_14`, `field_ft_14`, `field_id_15`, `field_ft_15`, `field_id_16`, `field_ft_16`, `field_id_17`, `field_ft_17`, `field_id_18`, `field_ft_18`, `field_id_19`, `field_ft_19`, `field_id_20`, `field_ft_20`, `field_id_21`, `field_ft_21`, `field_id_22`, `field_ft_22`, `field_id_23`, `field_ft_23`, `field_id_24`, `field_ft_24`, `field_id_25`, `field_ft_25`, `field_id_26`, `field_ft_26`, `field_id_28`, `field_ft_28`, `field_id_29`, `field_ft_29`, `field_id_30`, `field_ft_30`, `field_id_31`, `field_ft_31`, `field_id_32`, `field_ft_32`, `field_id_33`, `field_ft_33`, `field_id_34`, `field_ft_34`, `field_id_35`, `field_ft_35`, `field_id_36`, `field_ft_36`, `field_id_37`, `field_ft_37`, `field_id_38`, `field_ft_38`, `field_id_39`, `field_ft_39`, `field_id_40`, `field_ft_40`, `field_id_41`, `field_ft_41`, `field_id_42`, `field_ft_42`, `field_id_43`, `field_ft_43`, `field_id_44`, `field_ft_44`, `field_id_45`, `field_ft_45`, `field_id_46`, `field_ft_46`) VALUES
+(1, 1, 1, '{filedir_1}pbh_home-header.jpg', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'xhtml', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', 'Imagine Your Community \nWith A Healthier Future', 'none', 'ChannelVideos', 'xhtml', 'OUR VISION', 'none', 'Population-Based Health Systems', 'none', 'Our vision is to assist communities throughout the United States in developing a population-based health system that reflects the health needs and preferences of the segments of our community, with service and access solutions that are appropriate in scale and cost, developed through collaboration and cooperation between the communities and the health sector.', 'none', 'OUR PROCESS', 'none', 'It Starts With Collaboration', 'none', '1', 'xhtml', '/about', 'none', 'OUR PARTNERS', 'none', 'It Continues With Our Partnerships', 'none', '1', 'none', 'CALL TO ACTION', 'none', 'How Can You Participate?', 'none', '1', 'none', 'See Our List of Partners', 'none', '/about/partners-organizations', 'none', 'WHAT WE''VE DONE', 'none', '1', 'none'),
+(4, 1, 3, '', NULL, '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'xhtml', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', 'These Are Our Projects', 'none', '<p>\n	                Our projects are brought to you by the Randall Lewis Fellowship\n</p>', 'xhtml', '1', 'none', 'FILTER PROJECTS BY CITY', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none'),
+(3, 1, 2, '', NULL, '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'xhtml', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none'),
+(5, 1, 3, '', NULL, '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'xhtml', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none'),
+(6, 1, 2, '', NULL, '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'xhtml', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none'),
+(7, 1, 2, '', NULL, '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'xhtml', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none'),
+(8, 1, 2, '', NULL, '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'xhtml', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none'),
+(9, 1, 2, '', NULL, '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'xhtml', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none'),
+(10, 1, 2, '', NULL, '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'xhtml', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none'),
+(11, 1, 2, '', NULL, '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'xhtml', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none'),
+(12, 1, 2, '', NULL, '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'xhtml', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none'),
+(13, 1, 4, '', NULL, '', 'none', 'The Randall Lewis Health Policy Fellowship', 'none', '<p>\n	 A collaborative of corporate, university, and community leadership to assist municipal efforts in the San Bernardino County’s Healthy Communities Initiative. You’re invited to get involved!\n</p>', 'xhtml', 'THE PURPOSE', 'none', '<p>\n	 The purpose of the Randall Lewis Health Policy Fellowship program is to ensure the development of public health professionals who possess the necessary skills to influence positive change in public policy, systems, and the built environment in our local municipalities. In addition, these prestigious and competitive fellowships will create educational and professional opportunities for local students in health policy, provide for the expansion of the regional health policy infrastructure, and retain essential intellectual capital in the Inland Empire\n</p>\n<p>\n	 The fellowship, currentily in its third year, runs from September until May.\n</p>', 'xhtml', '1', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'xhtml', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none'),
+(14, 1, 2, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', 'none', 'How You Can Give', 'none', '<p>\n	 Please join us in creating a healthier future with a donation. We have provided a safe and cost efficient means for you to give to Partners for Better Health (P4bHealth.)\n</p>', 'xhtml', 'OTHER WAYS TO GIVE', 'none', '1', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'xhtml', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none'),
+(15, 1, 5, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', 'none', 'About Us', 'none', '<p>\n	     Please join us in creating a healthier future with a donation. We have provided a safe and cost efficient means for you to give to Partners for Better Health (P4bHealth.)\n</p>', 'xhtml', '...', 'none', '<p>\n	 ...\n</p>', 'xhtml', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none'),
+(16, 1, 5, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', 'none', '', 'none', '', 'xhtml', 'About Us', 'none', '<h1>What Is P4B Health?</h1>\n<p>\n	     Partners for Better Health (P4bHealth) is a not-for-profit 501 (C) (3) public benefit corporation in formation with the purpose and healthcare design and development to meet the health needs of our local communities. We will not directly provide health services but work with existing agencies to develop appropriate health services.\n</p>\n<h1>Vision</h1>\n<p>\n	  To assist communities throughout the United States in developing a population-based health system that reflects the health needs and preferences of the segments of our community, with service and access solutions that are appropriate in scale and cost, developed through collaboration and cooperation between the communities and the health sector.\n</p>\n<h1>Mission</h1>\n<p>\n	  Partners for Better Health (P4bHealth) will lead in creation of a collaborative effort to understand and interpret health needs, conceptualize solutions, then incubate solutions, drawing on the resources of public and private organizations and on the voluntary contributions of people in the served communities.\n</p>\n<h1>History</h1>\n<p>\n	  Partners for Better Health (P4bHealth) started in 2002 when a group of concerned community members made a decision that they wanted their community to be different. They wanted to create a better future. In 2006, Partners for Better Health (P4bHealth) officially became a 501(c)(3). Today, the conversation continues. Communities are being transformed; our part of the world is modeling the change we want to see—a new paradigm in health begins.\n</p>', 'xhtml', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none'),
+(17, 1, 5, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', 'none', 'About Us', 'none', '<p>\n	  Please join us in creating a healthier future with a donation. We have provided a safe and cost efficient means for you to give to Partners for Better Health (P4bHealth.)\n</p>', 'xhtml', 'Partners & Organizations', 'none', '<div>\n	<ol>\n		<li><img src="http://www.p4bhealth.org/P4bhealth/Partners_files/bullet_plus.png" alt="Bullet">2-1-1</li>\n		<li><img src="http://www.p4bhealth.org/P4bhealth/Partners_files/bullet_plus.png" alt="Bullet">American Red Cross</li>\n		<li><img src="http://www.p4bhealth.org/P4bhealth/Partners_files/bullet_plus.png" alt="Bullet">Arrowhead Regional Medical Center</li>\n		<li><img src="http://www.p4bhealth.org/P4bhealth/Partners_files/bullet_plus.png" alt="Bullet">BLD Consulting</li>\n		<li><img src="http://www.p4bhealth.org/P4bhealth/Partners_files/bullet_plus.png" alt="Bullet">Chaffey Joint Unified School District</li>\n		<li><img src="http://www.p4bhealth.org/P4bhealth/Partners_files/bullet_plus.png" alt="Bullet">City of Ontario<br>\n		  City Manager<br>\n		  Chamber of Commerce<br>\n		  Code Enforcement<br>\n		  Development Center<br>\n		  Economic Development<br>\n		  Fire Department<br>\n		  Housing<br>\n		  Library<br>\n		  Mayor’s Office<br>\n		  Parks<br>\n		  Planning<br>\n		  Public Works<br>\n		  Police Department<br>\n		  Recreation<br>\n		  Risk Management<br>\n		  Transportation</li>\n		<li><img src="http://www.p4bhealth.org/P4bhealth/Partners_files/bullet_plus.png" alt="Bullet">Fresh Start Ministries</li>\n		<li><img src="http://www.p4bhealth.org/P4bhealth/Partners_files/bullet_plus.png" alt="Bullet">Coalition for Quality Affordable Health Care</li>\n		<li><img src="http://www.p4bhealth.org/P4bhealth/Partners_files/bullet_plus.png" alt="Bullet">First 5 San Bernardino</li>\n	</ol>\n	<div>\n		<ol>\n			<li><img src="http://www.p4bhealth.org/P4bhealth/Partners_files/bullet_plus.png" alt="Bullet">Fox Group - Consultants to the Healthcare Industry</li>\n			<li><img src="http://www.p4bhealth.org/P4bhealth/Partners_files/bullet_plus.png" alt="Bullet">IHP</li>\n			<li><img src="http://www.p4bhealth.org/P4bhealth/Partners_files/bullet_plus.png" alt="Bullet">Kaiser Permanente</li>\n			<li><img src="http://www.p4bhealth.org/P4bhealth/Partners_files/bullet_plus.png" alt="Bullet">Kids Come First</li>\n			<li><img src="http://www.p4bhealth.org/P4bhealth/Partners_files/bullet_plus.png" alt="Bullet">Latino Health Collaborative</li>\n			<li><img src="http://www.p4bhealth.org/P4bhealth/Partners_files/bullet_plus.png" alt="Bullet">Lewis Group</li>\n			<li><img src="http://www.p4bhealth.org/P4bhealth/Partners_files/bullet_plus.png" alt="Bullet">Loma Linda University</li>\n			<li><img src="http://www.p4bhealth.org/P4bhealth/Partners_files/bullet_plus.png" alt="Bullet">Mercy House</li>\n			<li><img src="http://www.p4bhealth.org/P4bhealth/Partners_files/bullet_plus.png" alt="Bullet">Mt Zion Church</li>\n			<li><img src="http://www.p4bhealth.org/P4bhealth/Partners_files/bullet_plus.png" alt="Bullet">Ontario Montclair School District</li>\n			<li><img src="http://www.p4bhealth.org/P4bhealth/Partners_files/bullet_plus.png" alt="Bullet">Our Lady of Guadalupe</li>\n			<li><img src="http://www.p4bhealth.org/P4bhealth/Partners_files/bullet_plus.png" alt="Bullet">Pomona Valley Hospital Medical Center</li>\n			<li><img src="http://www.p4bhealth.org/P4bhealth/Partners_files/bullet_plus.png" alt="Bullet">Public Works</li>\n			<li><img src="http://www.p4bhealth.org/P4bhealth/Partners_files/bullet_plus.png" alt="Bullet">Reach Out West End</li>\n			<li><img src="http://www.p4bhealth.org/P4bhealth/Partners_files/bullet_plus.png" alt="Bullet">SMG Catering</li>\n			<li><img src="http://www.p4bhealth.org/P4bhealth/Partners_files/bullet_plus.png" alt="Bullet">San Bernardino County</li>\n			<li><img src="http://www.p4bhealth.org/P4bhealth/Partners_files/bullet_plus.png" alt="Bullet">San Joaquin Valley College</li>\n			<li><img src="http://www.p4bhealth.org/P4bhealth/Partners_files/bullet_plus.png" alt="Bullet">San Antonio Community Hospital</li>\n			<li><img src="http://www.p4bhealth.org/P4bhealth/Partners_files/bullet_plus.png" alt="Bullet">The Planning Center</li>\n			<li><img src="http://www.p4bhealth.org/P4bhealth/Partners_files/bullet_plus.png" alt="Bullet">Transportation Center</li>\n			<li><img src="http://www.p4bhealth.org/P4bhealth/Partners_files/bullet_plus.png" alt="Bullet">Water of Life Church</li>\n			<li><img src="http://www.p4bhealth.org/P4bhealth/Partners_files/bullet_plus.png" alt="Bullet">12 Week Weight Loss Challenge</li>\n			<li><img src="http://www.p4bhealth.org/P4bhealth/Partners_files/bullet_plus.png" alt="Bullet">Ontario Montclair YMCA</li>\n		</ol>\n	</div>\n</div>', 'xhtml', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none'),
+(18, 1, 5, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', 'none', '', 'none', '', 'xhtml', 'Our Team', 'none', '<h1>Staff</h1>\n<ul>\n	<li><img alt="Bullet" src="http://www.p4bhealth.org/P4bhealth/OurTeam_files/bullet_plus.png"><a href="http://web.me.com/dratifadam/P4bhealth/OurTeam.html#widget1">Dora Barilla, DrPH, MPH, CHES, Executive Director, Loma Linda University</a></li>\n	<li><a href="http://web.me.com/dratifadam/P4bhealth/OurTeam.html#widget1"><img alt="Bullet" src="http://www.p4bhealth.org/P4bhealth/OurTeam_files/bullet_plus.png"></a><a href="http://web.me.com/dratifadam/P4bhealth/OurTeam.html#widget2">Eileen Fry Bowers, JD, MS, RN, CPNP</a></li>\n	<li><a href="http://web.me.com/dratifadam/P4bhealth/OurTeam.html#widget2"><img alt="Bullet" src="http://www.p4bhealth.org/P4bhealth/OurTeam_files/bullet_plus.png"></a><a href="http://web.me.com/dratifadam/P4bhealth/OurTeam.html#widget3">Sandra Fuentes, MSW, RN</a></li>\n</ul>\n<h1>Board of Directors</h1>\n<ul>\n	<li><img alt="Bullet" src="http://www.p4bhealth.org/P4bhealth/OurTeam_files/bullet_plus.png"><a href="http://web.me.com/dratifadam/P4bhealth/OurTeam.html#widget1">Dora Barilla, DrPH, MPH, CHES, Executive Director, Loma Linda University </a></li>\n	<li><a href="http://web.me.com/dratifadam/P4bhealth/OurTeam.html#widget1"><img alt="Bullet" src="http://www.p4bhealth.org/P4bhealth/OurTeam_files/bullet_plus.png"></a><a href="http://web.me.com/dratifadam/P4bhealth/OurTeam.html#widget4">Larry Enriquez, MCS, Ontario/Montclair YMCA</a></li>\n	<li><a href="http://web.me.com/dratifadam/P4bhealth/OurTeam.html#widget4"><img alt="Bullet" src="http://www.p4bhealth.org/P4bhealth/OurTeam_files/bullet_plus.png">Shirley Simmons, Vice-Chairman, Community</a></li>\n	<li><a href="http://web.me.com/dratifadam/P4bhealth/OurTeam.html#widget4"><img alt="Bullet" src="http://www.p4bhealth.org/P4bhealth/OurTeam_files/bullet_plus.png"></a><a href="http://web.me.com/dratifadam/P4bhealth/OurTeam.html#widget5">Lesa Hiben, EMBA, Secretary, Claremont Graduate University </a></li>\n	<li><a href="http://web.me.com/dratifadam/P4bhealth/OurTeam.html#widget5"><img alt="Bullet" src="http://www.p4bhealth.org/P4bhealth/OurTeam_files/bullet_plus.png"></a><a href="http://web.me.com/dratifadam/P4bhealth/OurTeam.html#widget6">Betty Ansley, RN , Board Member; Public Heath Nurse (Retired), County of San Bernardino Department of Public Health </a></li>\n	<li><a href="http://web.me.com/dratifadam/P4bhealth/OurTeam.html#widget6"><img alt="Bullet" src="http://www.p4bhealth.org/P4bhealth/OurTeam_files/bullet_plus.png">Angela Coaston, BSN, Water of Life</a></li>\n	<li><a href="http://web.me.com/dratifadam/P4bhealth/OurTeam.html#widget6"><img alt="Bullet" src="http://www.p4bhealth.org/P4bhealth/OurTeam_files/bullet_plus.png"></a><a href="http://web.me.com/dratifadam/P4bhealth/OurTeam.html#widget7">S. Eric Anderson, PhD, MBA, Treasurer, La Sierra University</a></li>\n	<li><a href="http://web.me.com/dratifadam/P4bhealth/OurTeam.html#widget7"><img alt="Bullet" src="http://www.p4bhealth.org/P4bhealth/OurTeam_files/bullet_plus.png"></a><a href="http://web.me.com/dratifadam/P4bhealth/OurTeam.html#widget8">Tammy Young, Member, DrPH, FNP-BC, CHES, Department of State</a></li>\n</ul>\n<h1>Advisory Board</h1>\n<ul>\n	<li><img alt="Bullet" src="http://www.p4bhealth.org/P4bhealth/OurTeam_files/bullet_plus.png"><a href="http://web.me.com/dratifadam/P4bhealth/OurTeam.html#widget9">Angelica Baltazar, MSW, Health and Human Services Industry Specialist, ESRI</a></li>\n	<li><a href="http://web.me.com/dratifadam/P4bhealth/OurTeam.html#widget9"><img alt="Bullet" src="http://www.p4bhealth.org/P4bhealth/OurTeam_files/bullet_plus.png"></a><a href="http://web.me.com/dratifadam/P4bhealth/OurTeam.html#widget10">Mayor Paul Leon, City of Ontario, CA</a></li>\n	<li><a href="http://web.me.com/dratifadam/P4bhealth/OurTeam.html#widget10"><img alt="Bullet" src="http://www.p4bhealth.org/P4bhealth/OurTeam_files/bullet_plus.png"></a><a href="http://web.me.com/dratifadam/P4bhealth/OurTeam.html#widget11">Evelyn Trevino, MSE, Staff Analyst, Healthy Communities Program for the County of  San Bernardino County Public Health Department</a></li>\n</ul>', 'xhtml', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none'),
+(19, 1, 5, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'xhtml', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none'),
+(20, 1, 5, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'xhtml', '', 'xhtml', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none'),
+(21, 1, 6, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, 'ChannelVideos', 'xhtml', 'Listen and Watch Our Stories', 'none', '<p>\n	    Lorem ipsum dolor sit amet, consectetur adipiscing elit, pellentesque pulvinar urna.\n</p>', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none'),
+(22, 1, 3, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', 'none', '', 'none', '', 'xhtml', '1', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none'),
+(23, 1, 3, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', NULL, '', 'none', '', 'none', '', 'xhtml', '1', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'xhtml', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none', '', 'none');
 
 -- --------------------------------------------------------
 
@@ -364,7 +441,7 @@ CREATE TABLE IF NOT EXISTS `exp_channel_entries_autosave` (
   KEY `entry_date` (`entry_date`),
   KEY `expiration_date` (`expiration_date`),
   KEY `site_id` (`site_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
 
 -- --------------------------------------------------------
 
@@ -399,7 +476,7 @@ CREATE TABLE IF NOT EXISTS `exp_channel_fields` (
   KEY `group_id` (`group_id`),
   KEY `field_type` (`field_type`),
   KEY `site_id` (`site_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=47 ;
 
 --
 -- Dumping data for table `exp_channel_fields`
@@ -412,12 +489,45 @@ INSERT INTO `exp_channel_fields` (`field_id`, `site_id`, `group_id`, `field_name
 (4, 1, 3, 'get-involved_header_content', 'Header Content', '', 'editor', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'n', 'xhtml', 'n', 3, 'any', 'YTo3OntzOjY6ImVkaXRvciI7YToyODp7czoxNToiZWRpdG9yX3NldHRpbmdzIjtzOjEwOiJwcmVkZWZpbmVkIjtzOjE0OiJ1cGxvYWRfc2VydmljZSI7czo1OiJsb2NhbCI7czoyMDoiZmlsZV91cGxvYWRfbG9jYXRpb24iO3M6MToiMCI7czoyMToiaW1hZ2VfdXBsb2FkX2xvY2F0aW9uIjtzOjE6IjAiO3M6MTQ6ImltYWdlX2Jyb3dzaW5nIjtzOjM6InllcyI7czoxMjoiaW1hZ2Vfc3ViZGlyIjtzOjM6InllcyI7czoyOiJzMyI7YTo0OntzOjQ6ImZpbGUiO2E6MTp7czo2OiJidWNrZXQiO3M6MDoiIjt9czo1OiJpbWFnZSI7YToxOntzOjY6ImJ1Y2tldCI7czowOiIiO31zOjE0OiJhd3NfYWNjZXNzX2tleSI7czowOiIiO3M6MTQ6ImF3c19zZWNyZXRfa2V5IjtzOjA6IiI7fXM6NjoiaGVpZ2h0IjtzOjM6IjIwMCI7czo5OiJkaXJlY3Rpb24iO3M6MzoibHRyIjtzOjc6InRvb2xiYXIiO3M6MzoieWVzIjtzOjY6InNvdXJjZSI7czozOiJ5ZXMiO3M6NToiZm9jdXMiO3M6Mjoibm8iO3M6MTA6ImF1dG9yZXNpemUiO3M6MzoieWVzIjtzOjU6ImZpeGVkIjtzOjI6Im5vIjtzOjEyOiJjb252ZXJ0bGlua3MiO3M6MzoieWVzIjtzOjExOiJjb252ZXJ0ZGl2cyI7czozOiJ5ZXMiO3M6Nzoib3ZlcmxheSI7czozOiJ5ZXMiO3M6MTM6Im9ic2VydmVpbWFnZXMiO3M6MzoieWVzIjtzOjk6InNob3J0Y3V0cyI7czozOiJ5ZXMiO3M6MzoiYWlyIjtzOjI6Im5vIjtzOjM6Ind5bSI7czoyOiJubyI7czo4OiJwcm90b2NvbCI7czozOiJ5ZXMiO3M6MTg6ImFsbG93ZWR0YWdzX29wdGlvbiI7czo3OiJkZWZhdWx0IjtzOjExOiJhbGxvd2VkdGFncyI7YTowOnt9czoxNDoiZm9ybWF0dGluZ3RhZ3MiO2E6Nzp7aTowO3M6MToicCI7aToxO3M6MTA6ImJsb2NrcXVvdGUiO2k6MjtzOjM6InByZSI7aTozO3M6MjoiaDEiO2k6NDtzOjI6ImgyIjtpOjU7czoyOiJoMyI7aTo2O3M6MjoiaDQiO31zOjg6Imxhbmd1YWdlIjtzOjI6ImVuIjtzOjg6ImNzc19maWxlIjtzOjA6IiI7czoxMToiZWRpdG9yX2NvbmYiO3M6MToiMyI7fXM6MTg6ImZpZWxkX3Nob3dfc21pbGV5cyI7czoxOiJuIjtzOjE5OiJmaWVsZF9zaG93X2dsb3NzYXJ5IjtzOjE6Im4iO3M6MjE6ImZpZWxkX3Nob3dfc3BlbGxjaGVjayI7czoxOiJuIjtzOjI2OiJmaWVsZF9zaG93X2Zvcm1hdHRpbmdfYnRucyI7czoxOiJuIjtzOjI0OiJmaWVsZF9zaG93X2ZpbGVfc2VsZWN0b3IiO3M6MToibiI7czoyMDoiZmllbGRfc2hvd193cml0ZW1vZGUiO3M6MToibiI7fQ=='),
 (5, 1, 3, 'get-involved_body_headline', 'Body Headline', '', 'text', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'n', 'none', 'n', 4, 'any', 'YTo3OntzOjE4OiJmaWVsZF9jb250ZW50X3R5cGUiO3M6MzoiYWxsIjtzOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30='),
 (6, 1, 3, 'get-involved_body_content', 'Body Content', '', 'editor', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'n', 'xhtml', 'n', 5, 'any', 'YTo3OntzOjY6ImVkaXRvciI7YToyODp7czoxNToiZWRpdG9yX3NldHRpbmdzIjtzOjEwOiJwcmVkZWZpbmVkIjtzOjE0OiJ1cGxvYWRfc2VydmljZSI7czo1OiJsb2NhbCI7czoyMDoiZmlsZV91cGxvYWRfbG9jYXRpb24iO3M6MToiMCI7czoyMToiaW1hZ2VfdXBsb2FkX2xvY2F0aW9uIjtzOjE6IjAiO3M6MTQ6ImltYWdlX2Jyb3dzaW5nIjtzOjM6InllcyI7czoxMjoiaW1hZ2Vfc3ViZGlyIjtzOjM6InllcyI7czoyOiJzMyI7YTo0OntzOjQ6ImZpbGUiO2E6MTp7czo2OiJidWNrZXQiO3M6MDoiIjt9czo1OiJpbWFnZSI7YToxOntzOjY6ImJ1Y2tldCI7czowOiIiO31zOjE0OiJhd3NfYWNjZXNzX2tleSI7czowOiIiO3M6MTQ6ImF3c19zZWNyZXRfa2V5IjtzOjA6IiI7fXM6NjoiaGVpZ2h0IjtzOjM6IjIwMCI7czo5OiJkaXJlY3Rpb24iO3M6MzoibHRyIjtzOjc6InRvb2xiYXIiO3M6MzoieWVzIjtzOjY6InNvdXJjZSI7czozOiJ5ZXMiO3M6NToiZm9jdXMiO3M6Mjoibm8iO3M6MTA6ImF1dG9yZXNpemUiO3M6MzoieWVzIjtzOjU6ImZpeGVkIjtzOjI6Im5vIjtzOjEyOiJjb252ZXJ0bGlua3MiO3M6MzoieWVzIjtzOjExOiJjb252ZXJ0ZGl2cyI7czozOiJ5ZXMiO3M6Nzoib3ZlcmxheSI7czozOiJ5ZXMiO3M6MTM6Im9ic2VydmVpbWFnZXMiO3M6MzoieWVzIjtzOjk6InNob3J0Y3V0cyI7czozOiJ5ZXMiO3M6MzoiYWlyIjtzOjI6Im5vIjtzOjM6Ind5bSI7czoyOiJubyI7czo4OiJwcm90b2NvbCI7czozOiJ5ZXMiO3M6MTg6ImFsbG93ZWR0YWdzX29wdGlvbiI7czo3OiJkZWZhdWx0IjtzOjExOiJhbGxvd2VkdGFncyI7YTowOnt9czoxNDoiZm9ybWF0dGluZ3RhZ3MiO2E6Nzp7aTowO3M6MToicCI7aToxO3M6MTA6ImJsb2NrcXVvdGUiO2k6MjtzOjM6InByZSI7aTozO3M6MjoiaDEiO2k6NDtzOjI6ImgyIjtpOjU7czoyOiJoMyI7aTo2O3M6MjoiaDQiO31zOjg6Imxhbmd1YWdlIjtzOjI6ImVuIjtzOjg6ImNzc19maWxlIjtzOjA6IiI7czoxMToiZWRpdG9yX2NvbmYiO3M6MToiMyI7fXM6MTg6ImZpZWxkX3Nob3dfc21pbGV5cyI7czoxOiJuIjtzOjE5OiJmaWVsZF9zaG93X2dsb3NzYXJ5IjtzOjE6Im4iO3M6MjE6ImZpZWxkX3Nob3dfc3BlbGxjaGVjayI7czoxOiJuIjtzOjI2OiJmaWVsZF9zaG93X2Zvcm1hdHRpbmdfYnRucyI7czoxOiJuIjtzOjI0OiJmaWVsZF9zaG93X2ZpbGVfc2VsZWN0b3IiO3M6MToibiI7czoyMDoiZmllbGRfc2hvd193cml0ZW1vZGUiO3M6MToibiI7fQ=='),
-(7, 1, 3, 'get-involved_content', 'Get Involved Content', '', 'matrix', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'n', 'none', 'n', 6, 'any', 'YTozOntzOjg6Im1pbl9yb3dzIjtzOjE6IjMiO3M6ODoibWF4X3Jvd3MiO3M6MToiMyI7czo3OiJjb2xfaWRzIjthOjI6e2k6MDtpOjE7aToxO2k6Mjt9fQ=='),
+(7, 1, 3, 'get-involved_content', 'Get Involved Content', '', 'matrix', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'n', 'none', 'n', 6, 'any', 'YTozOntzOjg6Im1pbl9yb3dzIjtzOjE6IjMiO3M6ODoibWF4X3Jvd3MiO3M6MToiMyI7czo3OiJjb2xfaWRzIjthOjQ6e2k6MDtzOjE6IjEiO2k6MTtzOjE6IjIiO2k6MjtpOjc7aTozO2k6ODt9fQ=='),
 (8, 1, 5, 'give_header_image', 'Header Image', '', 'file', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'n', 'none', 'n', 1, 'any', 'YTo4OntzOjE4OiJmaWVsZF9jb250ZW50X3R5cGUiO3M6NToiaW1hZ2UiO3M6MTk6ImFsbG93ZWRfZGlyZWN0b3JpZXMiO3M6MzoiYWxsIjtzOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30='),
 (9, 1, 5, 'give_header_headline', 'Header Headline', '', 'text', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'n', 'none', 'n', 2, 'any', 'YTo3OntzOjE4OiJmaWVsZF9jb250ZW50X3R5cGUiO3M6MzoiYWxsIjtzOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30='),
 (10, 1, 5, 'give_header_content', 'Header Content', '', 'editor', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'n', 'xhtml', 'n', 3, 'any', 'YTo3OntzOjY6ImVkaXRvciI7YToyODp7czoxNToiZWRpdG9yX3NldHRpbmdzIjtzOjEwOiJwcmVkZWZpbmVkIjtzOjE0OiJ1cGxvYWRfc2VydmljZSI7czo1OiJsb2NhbCI7czoyMDoiZmlsZV91cGxvYWRfbG9jYXRpb24iO3M6MToiMCI7czoyMToiaW1hZ2VfdXBsb2FkX2xvY2F0aW9uIjtzOjE6IjAiO3M6MTQ6ImltYWdlX2Jyb3dzaW5nIjtzOjM6InllcyI7czoxMjoiaW1hZ2Vfc3ViZGlyIjtzOjM6InllcyI7czoyOiJzMyI7YTo0OntzOjQ6ImZpbGUiO2E6MTp7czo2OiJidWNrZXQiO3M6MDoiIjt9czo1OiJpbWFnZSI7YToxOntzOjY6ImJ1Y2tldCI7czowOiIiO31zOjE0OiJhd3NfYWNjZXNzX2tleSI7czowOiIiO3M6MTQ6ImF3c19zZWNyZXRfa2V5IjtzOjA6IiI7fXM6NjoiaGVpZ2h0IjtzOjM6IjIwMCI7czo5OiJkaXJlY3Rpb24iO3M6MzoibHRyIjtzOjc6InRvb2xiYXIiO3M6MzoieWVzIjtzOjY6InNvdXJjZSI7czozOiJ5ZXMiO3M6NToiZm9jdXMiO3M6Mjoibm8iO3M6MTA6ImF1dG9yZXNpemUiO3M6MzoieWVzIjtzOjU6ImZpeGVkIjtzOjI6Im5vIjtzOjEyOiJjb252ZXJ0bGlua3MiO3M6MzoieWVzIjtzOjExOiJjb252ZXJ0ZGl2cyI7czozOiJ5ZXMiO3M6Nzoib3ZlcmxheSI7czozOiJ5ZXMiO3M6MTM6Im9ic2VydmVpbWFnZXMiO3M6MzoieWVzIjtzOjk6InNob3J0Y3V0cyI7czozOiJ5ZXMiO3M6MzoiYWlyIjtzOjI6Im5vIjtzOjM6Ind5bSI7czoyOiJubyI7czo4OiJwcm90b2NvbCI7czozOiJ5ZXMiO3M6MTg6ImFsbG93ZWR0YWdzX29wdGlvbiI7czo3OiJkZWZhdWx0IjtzOjExOiJhbGxvd2VkdGFncyI7YTowOnt9czoxNDoiZm9ybWF0dGluZ3RhZ3MiO2E6Nzp7aTowO3M6MToicCI7aToxO3M6MTA6ImJsb2NrcXVvdGUiO2k6MjtzOjM6InByZSI7aTozO3M6MjoiaDEiO2k6NDtzOjI6ImgyIjtpOjU7czoyOiJoMyI7aTo2O3M6MjoiaDQiO31zOjg6Imxhbmd1YWdlIjtzOjI6ImVuIjtzOjg6ImNzc19maWxlIjtzOjA6IiI7czoxMToiZWRpdG9yX2NvbmYiO3M6MToiMyI7fXM6MTg6ImZpZWxkX3Nob3dfc21pbGV5cyI7czoxOiJuIjtzOjE5OiJmaWVsZF9zaG93X2dsb3NzYXJ5IjtzOjE6Im4iO3M6MjE6ImZpZWxkX3Nob3dfc3BlbGxjaGVjayI7czoxOiJuIjtzOjI2OiJmaWVsZF9zaG93X2Zvcm1hdHRpbmdfYnRucyI7czoxOiJuIjtzOjI0OiJmaWVsZF9zaG93X2ZpbGVfc2VsZWN0b3IiO3M6MToibiI7czoyMDoiZmllbGRfc2hvd193cml0ZW1vZGUiO3M6MToibiI7fQ=='),
 (11, 1, 5, 'give_body_headline', 'Body Headline', '', 'text', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'n', 'none', 'n', 4, 'any', 'YTo3OntzOjE4OiJmaWVsZF9jb250ZW50X3R5cGUiO3M6MzoiYWxsIjtzOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30='),
-(12, 1, 5, 'give_content', 'Content', '', 'matrix', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'n', 'none', 'n', 5, 'any', 'YTozOntzOjg6Im1pbl9yb3dzIjtzOjE6IjAiO3M6ODoibWF4X3Jvd3MiO3M6MDoiIjtzOjc6ImNvbF9pZHMiO2E6NDp7aTowO3M6MToiMyI7aToxO3M6MToiNCI7aToyO3M6MToiNSI7aTozO3M6MToiNiI7fX0=');
+(12, 1, 5, 'give_content', 'Content', '', 'matrix', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'n', 'none', 'n', 5, 'any', 'YTozOntzOjg6Im1pbl9yb3dzIjtzOjE6IjAiO3M6ODoibWF4X3Jvd3MiO3M6MDoiIjtzOjc6ImNvbF9pZHMiO2E6NDp7aTowO3M6MToiMyI7aToxO3M6MToiNCI7aToyO3M6MToiNSI7aTozO3M6MToiNiI7fX0='),
+(13, 1, 6, 'about_header_image', 'Header Image', 'If left BLANK, the image in the -top level about page- will be used. Leave BLANK unless you want it to be unique from the other About subpages', 'file', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'y', 'none', 'n', 1, 'any', 'YTo4OntzOjE4OiJmaWVsZF9jb250ZW50X3R5cGUiO3M6NToiaW1hZ2UiO3M6MTk6ImFsbG93ZWRfZGlyZWN0b3JpZXMiO3M6MzoiYWxsIjtzOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30='),
+(14, 1, 6, 'about_header_headline', 'Header Headline', 'If left BLANK, the headline in the -top level about page- will be used. Leave BLANK unless you want it to be unique from the other About subpages', 'text', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'y', 'none', 'n', 2, 'any', 'YTo3OntzOjE4OiJmaWVsZF9jb250ZW50X3R5cGUiO3M6MzoiYWxsIjtzOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30='),
+(15, 1, 6, 'about_header_content', 'Header Content', 'If left BLANK, the header content in the -top level about page- will be used. Leave BLANK unless you want it to be unique from the other About subpages', 'editor', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'y', 'xhtml', 'n', 3, 'any', 'YTo3OntzOjY6ImVkaXRvciI7YToyOTp7czoxNToiZWRpdG9yX3NldHRpbmdzIjtzOjEwOiJwcmVkZWZpbmVkIjtzOjc6ImJ1dHRvbnMiO2E6MzA6e2k6MDtzOjQ6Imh0bWwiO2k6MTtzOjE6InwiO2k6MjtzOjEwOiJmb3JtYXR0aW5nIjtpOjM7czoxOiJ8IjtpOjQ7czo0OiJib2xkIjtpOjU7czo2OiJpdGFsaWMiO2k6NjtzOjc6ImRlbGV0ZWQiO2k6NztzOjE6InwiO2k6ODtzOjEzOiJ1bm9yZGVyZWRsaXN0IjtpOjk7czoxMToib3JkZXJlZGxpc3QiO2k6MTA7czo3OiJvdXRkZW50IjtpOjExO3M6NjoiaW5kZW50IjtpOjEyO3M6MToifCI7aToxMztzOjQ6ImxpbmsiO2k6MTQ7czo1OiJpbWFnZSI7aToxNTtzOjU6InZpZGVvIjtpOjE2O3M6NDoiZmlsZSI7aToxNztzOjU6InRhYmxlIjtpOjE4O3M6MToifCI7aToxOTtzOjk6ImZvbnRjb2xvciI7aToyMDtzOjk6ImJhY2tjb2xvciI7aToyMTtzOjE6InwiO2k6MjI7czo5OiJhbGlnbmxlZnQiO2k6MjM7czoxMToiYWxpZ25jZW50ZXIiO2k6MjQ7czoxMDoiYWxpZ25yaWdodCI7aToyNTtzOjc6Imp1c3RpZnkiO2k6MjY7czoxOiJ8IjtpOjI3O3M6MTQ6Imhvcml6b250YWxydWxlIjtpOjI4O3M6MTE6InBhc3RlX3BsYWluIjtpOjI5O3M6MToifCI7fXM6MTQ6InVwbG9hZF9zZXJ2aWNlIjtzOjU6ImxvY2FsIjtzOjIwOiJmaWxlX3VwbG9hZF9sb2NhdGlvbiI7czoxOiIwIjtzOjIxOiJpbWFnZV91cGxvYWRfbG9jYXRpb24iO3M6MToiMCI7czoxNDoiaW1hZ2VfYnJvd3NpbmciO3M6MzoieWVzIjtzOjEyOiJpbWFnZV9zdWJkaXIiO3M6MzoieWVzIjtzOjI6InMzIjthOjQ6e3M6NDoiZmlsZSI7YToxOntzOjY6ImJ1Y2tldCI7czowOiIiO31zOjU6ImltYWdlIjthOjE6e3M6NjoiYnVja2V0IjtzOjA6IiI7fXM6MTQ6ImF3c19hY2Nlc3Nfa2V5IjtzOjA6IiI7czoxNDoiYXdzX3NlY3JldF9rZXkiO3M6MDoiIjt9czo2OiJoZWlnaHQiO3M6MzoiMjAwIjtzOjk6ImRpcmVjdGlvbiI7czozOiJsdHIiO3M6NzoidG9vbGJhciI7czozOiJ5ZXMiO3M6Njoic291cmNlIjtzOjM6InllcyI7czo1OiJmb2N1cyI7czoyOiJubyI7czoxMDoiYXV0b3Jlc2l6ZSI7czozOiJ5ZXMiO3M6NToiZml4ZWQiO3M6Mjoibm8iO3M6MTI6ImNvbnZlcnRsaW5rcyI7czozOiJ5ZXMiO3M6MTE6ImNvbnZlcnRkaXZzIjtzOjM6InllcyI7czo3OiJvdmVybGF5IjtzOjM6InllcyI7czoxMzoib2JzZXJ2ZWltYWdlcyI7czozOiJ5ZXMiO3M6OToic2hvcnRjdXRzIjtzOjM6InllcyI7czozOiJhaXIiO3M6Mjoibm8iO3M6Mzoid3ltIjtzOjI6Im5vIjtzOjg6InByb3RvY29sIjtzOjM6InllcyI7czoxODoiYWxsb3dlZHRhZ3Nfb3B0aW9uIjtzOjc6ImRlZmF1bHQiO3M6MTE6ImFsbG93ZWR0YWdzIjthOjA6e31zOjE0OiJmb3JtYXR0aW5ndGFncyI7YTo3OntpOjA7czoxOiJwIjtpOjE7czoxMDoiYmxvY2txdW90ZSI7aToyO3M6MzoicHJlIjtpOjM7czoyOiJoMSI7aTo0O3M6MjoiaDIiO2k6NTtzOjI6ImgzIjtpOjY7czoyOiJoNCI7fXM6ODoibGFuZ3VhZ2UiO3M6MjoiZW4iO3M6ODoiY3NzX2ZpbGUiO3M6MDoiIjtzOjExOiJlZGl0b3JfY29uZiI7czoxOiIzIjt9czoxODoiZmllbGRfc2hvd19zbWlsZXlzIjtzOjE6Im4iO3M6MTk6ImZpZWxkX3Nob3dfZ2xvc3NhcnkiO3M6MToibiI7czoyMToiZmllbGRfc2hvd19zcGVsbGNoZWNrIjtzOjE6Im4iO3M6MjY6ImZpZWxkX3Nob3dfZm9ybWF0dGluZ19idG5zIjtzOjE6Im4iO3M6MjQ6ImZpZWxkX3Nob3dfZmlsZV9zZWxlY3RvciI7czoxOiJuIjtzOjIwOiJmaWVsZF9zaG93X3dyaXRlbW9kZSI7czoxOiJuIjt9'),
+(16, 1, 6, 'about_body_headline', 'Body Headline', '', 'text', '', '0', 0, 0, 6, 128, 'y', 'ltr', 'n', 'n', 'none', 'n', 4, 'any', 'YTo3OntzOjE4OiJmaWVsZF9jb250ZW50X3R5cGUiO3M6MzoiYWxsIjtzOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30='),
+(17, 1, 6, 'about_body_content', 'Body Content', '', 'editor', '', '0', 0, 0, 6, 128, 'y', 'ltr', 'n', 'n', 'xhtml', 'n', 5, 'any', 'YTo3OntzOjY6ImVkaXRvciI7YToyOTp7czoxNToiZWRpdG9yX3NldHRpbmdzIjtzOjEwOiJwcmVkZWZpbmVkIjtzOjc6ImJ1dHRvbnMiO2E6MzA6e2k6MDtzOjQ6Imh0bWwiO2k6MTtzOjE6InwiO2k6MjtzOjEwOiJmb3JtYXR0aW5nIjtpOjM7czoxOiJ8IjtpOjQ7czo0OiJib2xkIjtpOjU7czo2OiJpdGFsaWMiO2k6NjtzOjc6ImRlbGV0ZWQiO2k6NztzOjE6InwiO2k6ODtzOjEzOiJ1bm9yZGVyZWRsaXN0IjtpOjk7czoxMToib3JkZXJlZGxpc3QiO2k6MTA7czo3OiJvdXRkZW50IjtpOjExO3M6NjoiaW5kZW50IjtpOjEyO3M6MToifCI7aToxMztzOjQ6ImxpbmsiO2k6MTQ7czo1OiJpbWFnZSI7aToxNTtzOjU6InZpZGVvIjtpOjE2O3M6NDoiZmlsZSI7aToxNztzOjU6InRhYmxlIjtpOjE4O3M6MToifCI7aToxOTtzOjk6ImZvbnRjb2xvciI7aToyMDtzOjk6ImJhY2tjb2xvciI7aToyMTtzOjE6InwiO2k6MjI7czo5OiJhbGlnbmxlZnQiO2k6MjM7czoxMToiYWxpZ25jZW50ZXIiO2k6MjQ7czoxMDoiYWxpZ25yaWdodCI7aToyNTtzOjc6Imp1c3RpZnkiO2k6MjY7czoxOiJ8IjtpOjI3O3M6MTQ6Imhvcml6b250YWxydWxlIjtpOjI4O3M6MTE6InBhc3RlX3BsYWluIjtpOjI5O3M6MToifCI7fXM6MTQ6InVwbG9hZF9zZXJ2aWNlIjtzOjU6ImxvY2FsIjtzOjIwOiJmaWxlX3VwbG9hZF9sb2NhdGlvbiI7czoxOiIwIjtzOjIxOiJpbWFnZV91cGxvYWRfbG9jYXRpb24iO3M6MToiMCI7czoxNDoiaW1hZ2VfYnJvd3NpbmciO3M6MzoieWVzIjtzOjEyOiJpbWFnZV9zdWJkaXIiO3M6MzoieWVzIjtzOjI6InMzIjthOjQ6e3M6NDoiZmlsZSI7YToxOntzOjY6ImJ1Y2tldCI7czowOiIiO31zOjU6ImltYWdlIjthOjE6e3M6NjoiYnVja2V0IjtzOjA6IiI7fXM6MTQ6ImF3c19hY2Nlc3Nfa2V5IjtzOjA6IiI7czoxNDoiYXdzX3NlY3JldF9rZXkiO3M6MDoiIjt9czo2OiJoZWlnaHQiO3M6MzoiMjAwIjtzOjk6ImRpcmVjdGlvbiI7czozOiJsdHIiO3M6NzoidG9vbGJhciI7czozOiJ5ZXMiO3M6Njoic291cmNlIjtzOjM6InllcyI7czo1OiJmb2N1cyI7czoyOiJubyI7czoxMDoiYXV0b3Jlc2l6ZSI7czozOiJ5ZXMiO3M6NToiZml4ZWQiO3M6Mjoibm8iO3M6MTI6ImNvbnZlcnRsaW5rcyI7czozOiJ5ZXMiO3M6MTE6ImNvbnZlcnRkaXZzIjtzOjM6InllcyI7czo3OiJvdmVybGF5IjtzOjM6InllcyI7czoxMzoib2JzZXJ2ZWltYWdlcyI7czozOiJ5ZXMiO3M6OToic2hvcnRjdXRzIjtzOjM6InllcyI7czozOiJhaXIiO3M6Mjoibm8iO3M6Mzoid3ltIjtzOjI6Im5vIjtzOjg6InByb3RvY29sIjtzOjM6InllcyI7czoxODoiYWxsb3dlZHRhZ3Nfb3B0aW9uIjtzOjc6ImRlZmF1bHQiO3M6MTE6ImFsbG93ZWR0YWdzIjthOjA6e31zOjE0OiJmb3JtYXR0aW5ndGFncyI7YTo3OntpOjA7czoxOiJwIjtpOjE7czoxMDoiYmxvY2txdW90ZSI7aToyO3M6MzoicHJlIjtpOjM7czoyOiJoMSI7aTo0O3M6MjoiaDIiO2k6NTtzOjI6ImgzIjtpOjY7czoyOiJoNCI7fXM6ODoibGFuZ3VhZ2UiO3M6MjoiZW4iO3M6ODoiY3NzX2ZpbGUiO3M6MDoiIjtzOjExOiJlZGl0b3JfY29uZiI7czoxOiIzIjt9czoxODoiZmllbGRfc2hvd19zbWlsZXlzIjtzOjE6Im4iO3M6MTk6ImZpZWxkX3Nob3dfZ2xvc3NhcnkiO3M6MToibiI7czoyMToiZmllbGRfc2hvd19zcGVsbGNoZWNrIjtzOjE6Im4iO3M6MjY6ImZpZWxkX3Nob3dfZm9ybWF0dGluZ19idG5zIjtzOjE6Im4iO3M6MjQ6ImZpZWxkX3Nob3dfZmlsZV9zZWxlY3RvciI7czoxOiJuIjtzOjIwOiJmaWVsZF9zaG93X3dyaXRlbW9kZSI7czoxOiJuIjt9'),
+(18, 1, 7, 'videos', 'Videos', '', 'channel_videos', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'n', 'xhtml', 'n', 5, 'any', 'YTo4OntzOjExOiJjdl9zZXJ2aWNlcyI7YToyOntpOjA7czo3OiJ5b3V0dWJlIjtpOjE7czo1OiJ2aW1lbyI7fXM6OToiY3ZfbGF5b3V0IjtzOjU6InRhYmxlIjtzOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30='),
+(19, 1, 7, 'stories_header_headline', 'Header Headline', '', 'text', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'n', 'none', 'n', 2, 'any', 'YTo3OntzOjE4OiJmaWVsZF9jb250ZW50X3R5cGUiO3M6MzoiYWxsIjtzOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30='),
+(20, 1, 7, 'stories_header_content', 'Header Content', '', 'editor', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'n', 'xhtml', 'n', 3, 'any', 'YTo3OntzOjY6ImVkaXRvciI7YToyODp7czoxNToiZWRpdG9yX3NldHRpbmdzIjtzOjEwOiJwcmVkZWZpbmVkIjtzOjE0OiJ1cGxvYWRfc2VydmljZSI7czo1OiJsb2NhbCI7czoyMDoiZmlsZV91cGxvYWRfbG9jYXRpb24iO3M6MToiMCI7czoyMToiaW1hZ2VfdXBsb2FkX2xvY2F0aW9uIjtzOjE6IjAiO3M6MTQ6ImltYWdlX2Jyb3dzaW5nIjtzOjM6InllcyI7czoxMjoiaW1hZ2Vfc3ViZGlyIjtzOjM6InllcyI7czoyOiJzMyI7YTo0OntzOjQ6ImZpbGUiO2E6MTp7czo2OiJidWNrZXQiO3M6MDoiIjt9czo1OiJpbWFnZSI7YToxOntzOjY6ImJ1Y2tldCI7czowOiIiO31zOjE0OiJhd3NfYWNjZXNzX2tleSI7czowOiIiO3M6MTQ6ImF3c19zZWNyZXRfa2V5IjtzOjA6IiI7fXM6NjoiaGVpZ2h0IjtzOjM6IjIwMCI7czo5OiJkaXJlY3Rpb24iO3M6MzoibHRyIjtzOjc6InRvb2xiYXIiO3M6MzoieWVzIjtzOjY6InNvdXJjZSI7czozOiJ5ZXMiO3M6NToiZm9jdXMiO3M6Mjoibm8iO3M6MTA6ImF1dG9yZXNpemUiO3M6MzoieWVzIjtzOjU6ImZpeGVkIjtzOjI6Im5vIjtzOjEyOiJjb252ZXJ0bGlua3MiO3M6MzoieWVzIjtzOjExOiJjb252ZXJ0ZGl2cyI7czozOiJ5ZXMiO3M6Nzoib3ZlcmxheSI7czozOiJ5ZXMiO3M6MTM6Im9ic2VydmVpbWFnZXMiO3M6MzoieWVzIjtzOjk6InNob3J0Y3V0cyI7czozOiJ5ZXMiO3M6MzoiYWlyIjtzOjI6Im5vIjtzOjM6Ind5bSI7czoyOiJubyI7czo4OiJwcm90b2NvbCI7czozOiJ5ZXMiO3M6MTg6ImFsbG93ZWR0YWdzX29wdGlvbiI7czo3OiJkZWZhdWx0IjtzOjExOiJhbGxvd2VkdGFncyI7YTowOnt9czoxNDoiZm9ybWF0dGluZ3RhZ3MiO2E6Nzp7aTowO3M6MToicCI7aToxO3M6MTA6ImJsb2NrcXVvdGUiO2k6MjtzOjM6InByZSI7aTozO3M6MjoiaDEiO2k6NDtzOjI6ImgyIjtpOjU7czoyOiJoMyI7aTo2O3M6MjoiaDQiO31zOjg6Imxhbmd1YWdlIjtzOjI6ImVuIjtzOjg6ImNzc19maWxlIjtzOjA6IiI7czoxMToiZWRpdG9yX2NvbmYiO3M6MToiMyI7fXM6MTg6ImZpZWxkX3Nob3dfc21pbGV5cyI7czoxOiJuIjtzOjE5OiJmaWVsZF9zaG93X2dsb3NzYXJ5IjtzOjE6Im4iO3M6MjE6ImZpZWxkX3Nob3dfc3BlbGxjaGVjayI7czoxOiJuIjtzOjI2OiJmaWVsZF9zaG93X2Zvcm1hdHRpbmdfYnRucyI7czoxOiJuIjtzOjI0OiJmaWVsZF9zaG93X2ZpbGVfc2VsZWN0b3IiO3M6MToibiI7czoyMDoiZmllbGRfc2hvd193cml0ZW1vZGUiO3M6MToibiI7fQ=='),
+(21, 1, 7, 'stories_header_image', 'Header Image', '', 'file', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'n', 'none', 'n', 1, 'any', 'YTo4OntzOjE4OiJmaWVsZF9jb250ZW50X3R5cGUiO3M6NToiaW1hZ2UiO3M6MTk6ImFsbG93ZWRfZGlyZWN0b3JpZXMiO3M6MzoiYWxsIjtzOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30='),
+(22, 1, 4, 'projects_header_image', 'Header Image', '', 'file', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'n', 'none', 'n', 1, 'any', 'YTo4OntzOjE4OiJmaWVsZF9jb250ZW50X3R5cGUiO3M6NToiaW1hZ2UiO3M6MTk6ImFsbG93ZWRfZGlyZWN0b3JpZXMiO3M6MzoiYWxsIjtzOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30='),
+(23, 1, 4, 'projects_header_headline', 'Header Headline', '', 'text', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'n', 'none', 'n', 2, 'any', 'YTo3OntzOjE4OiJmaWVsZF9jb250ZW50X3R5cGUiO3M6MzoiYWxsIjtzOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30='),
+(24, 1, 4, 'projects_header_content', 'Header Content', '', 'editor', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'n', 'xhtml', 'n', 3, 'any', 'YTo3OntzOjY6ImVkaXRvciI7YToyOTp7czoxNToiZWRpdG9yX3NldHRpbmdzIjtzOjEwOiJwcmVkZWZpbmVkIjtzOjc6ImJ1dHRvbnMiO2E6MzA6e2k6MDtzOjQ6Imh0bWwiO2k6MTtzOjE6InwiO2k6MjtzOjEwOiJmb3JtYXR0aW5nIjtpOjM7czoxOiJ8IjtpOjQ7czo0OiJib2xkIjtpOjU7czo2OiJpdGFsaWMiO2k6NjtzOjc6ImRlbGV0ZWQiO2k6NztzOjE6InwiO2k6ODtzOjEzOiJ1bm9yZGVyZWRsaXN0IjtpOjk7czoxMToib3JkZXJlZGxpc3QiO2k6MTA7czo3OiJvdXRkZW50IjtpOjExO3M6NjoiaW5kZW50IjtpOjEyO3M6MToifCI7aToxMztzOjQ6ImxpbmsiO2k6MTQ7czo1OiJpbWFnZSI7aToxNTtzOjU6InZpZGVvIjtpOjE2O3M6NDoiZmlsZSI7aToxNztzOjU6InRhYmxlIjtpOjE4O3M6MToifCI7aToxOTtzOjk6ImZvbnRjb2xvciI7aToyMDtzOjk6ImJhY2tjb2xvciI7aToyMTtzOjE6InwiO2k6MjI7czo5OiJhbGlnbmxlZnQiO2k6MjM7czoxMToiYWxpZ25jZW50ZXIiO2k6MjQ7czoxMDoiYWxpZ25yaWdodCI7aToyNTtzOjc6Imp1c3RpZnkiO2k6MjY7czoxOiJ8IjtpOjI3O3M6MTQ6Imhvcml6b250YWxydWxlIjtpOjI4O3M6MTE6InBhc3RlX3BsYWluIjtpOjI5O3M6MToifCI7fXM6MTQ6InVwbG9hZF9zZXJ2aWNlIjtzOjU6ImxvY2FsIjtzOjIwOiJmaWxlX3VwbG9hZF9sb2NhdGlvbiI7czoxOiIwIjtzOjIxOiJpbWFnZV91cGxvYWRfbG9jYXRpb24iO3M6MToiMCI7czoxNDoiaW1hZ2VfYnJvd3NpbmciO3M6MzoieWVzIjtzOjEyOiJpbWFnZV9zdWJkaXIiO3M6MzoieWVzIjtzOjI6InMzIjthOjQ6e3M6NDoiZmlsZSI7YToxOntzOjY6ImJ1Y2tldCI7czowOiIiO31zOjU6ImltYWdlIjthOjE6e3M6NjoiYnVja2V0IjtzOjA6IiI7fXM6MTQ6ImF3c19hY2Nlc3Nfa2V5IjtzOjA6IiI7czoxNDoiYXdzX3NlY3JldF9rZXkiO3M6MDoiIjt9czo2OiJoZWlnaHQiO3M6MzoiMjAwIjtzOjk6ImRpcmVjdGlvbiI7czozOiJsdHIiO3M6NzoidG9vbGJhciI7czozOiJ5ZXMiO3M6Njoic291cmNlIjtzOjM6InllcyI7czo1OiJmb2N1cyI7czoyOiJubyI7czoxMDoiYXV0b3Jlc2l6ZSI7czozOiJ5ZXMiO3M6NToiZml4ZWQiO3M6Mjoibm8iO3M6MTI6ImNvbnZlcnRsaW5rcyI7czozOiJ5ZXMiO3M6MTE6ImNvbnZlcnRkaXZzIjtzOjM6InllcyI7czo3OiJvdmVybGF5IjtzOjM6InllcyI7czoxMzoib2JzZXJ2ZWltYWdlcyI7czozOiJ5ZXMiO3M6OToic2hvcnRjdXRzIjtzOjM6InllcyI7czozOiJhaXIiO3M6Mjoibm8iO3M6Mzoid3ltIjtzOjI6Im5vIjtzOjg6InByb3RvY29sIjtzOjM6InllcyI7czoxODoiYWxsb3dlZHRhZ3Nfb3B0aW9uIjtzOjc6ImRlZmF1bHQiO3M6MTE6ImFsbG93ZWR0YWdzIjthOjA6e31zOjE0OiJmb3JtYXR0aW5ndGFncyI7YTo3OntpOjA7czoxOiJwIjtpOjE7czoxMDoiYmxvY2txdW90ZSI7aToyO3M6MzoicHJlIjtpOjM7czoyOiJoMSI7aTo0O3M6MjoiaDIiO2k6NTtzOjI6ImgzIjtpOjY7czoyOiJoNCI7fXM6ODoibGFuZ3VhZ2UiO3M6MjoiZW4iO3M6ODoiY3NzX2ZpbGUiO3M6MDoiIjtzOjExOiJlZGl0b3JfY29uZiI7czoxOiIzIjt9czoxODoiZmllbGRfc2hvd19zbWlsZXlzIjtzOjE6Im4iO3M6MTk6ImZpZWxkX3Nob3dfZ2xvc3NhcnkiO3M6MToibiI7czoyMToiZmllbGRfc2hvd19zcGVsbGNoZWNrIjtzOjE6Im4iO3M6MjY6ImZpZWxkX3Nob3dfZm9ybWF0dGluZ19idG5zIjtzOjE6Im4iO3M6MjQ6ImZpZWxkX3Nob3dfZmlsZV9zZWxlY3RvciI7czoxOiJuIjtzOjIwOiJmaWVsZF9zaG93X3dyaXRlbW9kZSI7czoxOiJuIjt9'),
+(25, 1, 4, 'projects_content', 'Content', '', 'matrix', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'n', 'none', 'n', 5, 'any', 'YTozOntzOjg6Im1pbl9yb3dzIjtzOjE6IjAiO3M6ODoibWF4X3Jvd3MiO3M6MDoiIjtzOjc6ImNvbF9pZHMiO2E6Njp7aTowO3M6MjoiMTIiO2k6MTtzOjE6IjkiO2k6MjtzOjI6IjEwIjtpOjM7czoyOiIxMSI7aTo0O3M6MjoiMTQiO2k6NTtpOjE1O319'),
+(26, 1, 4, 'projects_body_headline', 'Body Headline', '', 'text', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'n', 'none', 'n', 4, 'any', 'YTo3OntzOjE4OiJmaWVsZF9jb250ZW50X3R5cGUiO3M6MzoiYWxsIjtzOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30='),
+(45, 1, 1, 'hp_projects_banner', 'Projects Banner', '', 'text', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'n', 'none', 'n', 16, 'any', 'YTo3OntzOjE4OiJmaWVsZF9jb250ZW50X3R5cGUiO3M6MzoiYWxsIjtzOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30='),
+(28, 1, 1, 'hp_header_headline', 'Header Headline', '', 'textarea', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'n', 'br', 'n', 2, 'any', 'YTo2OntzOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30='),
+(29, 1, 1, 'hp_header_content', 'Header Content', '', 'channel_videos', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'n', 'xhtml', 'n', 3, 'any', 'YTo4OntzOjExOiJjdl9zZXJ2aWNlcyI7YToyOntpOjA7czo3OiJ5b3V0dWJlIjtpOjE7czo1OiJ2aW1lbyI7fXM6OToiY3ZfbGF5b3V0IjtzOjU6InRhYmxlIjtzOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30='),
+(30, 1, 1, 'hp_vision_banner', 'Vision Banner', '', 'text', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'n', 'none', 'n', 4, 'any', 'YTo3OntzOjE4OiJmaWVsZF9jb250ZW50X3R5cGUiO3M6MzoiYWxsIjtzOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30='),
+(31, 1, 1, 'hp_vision_headline', 'Vision Headline', '', 'text', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'n', 'none', 'n', 5, 'any', 'YTo3OntzOjE4OiJmaWVsZF9jb250ZW50X3R5cGUiO3M6MzoiYWxsIjtzOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30='),
+(32, 1, 1, 'hp_vision_content', 'Vision Content', '', 'textarea', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'n', 'none', 'n', 6, 'any', 'YTo2OntzOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30='),
+(43, 1, 1, 'hp_partners_button', 'Partners Button Text', '', 'text', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'n', 'none', 'n', 14, 'any', 'YTo3OntzOjE4OiJmaWVsZF9jb250ZW50X3R5cGUiO3M6MzoiYWxsIjtzOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30='),
+(44, 1, 1, 'hp_partners_button_link', 'Partners Button Link', '', 'text', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'n', 'none', 'n', 15, 'any', 'YTo3OntzOjE4OiJmaWVsZF9jb250ZW50X3R5cGUiO3M6MzoiYWxsIjtzOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30='),
+(33, 1, 1, 'hp_process_banner', 'Process Banner', '', 'text', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'n', 'none', 'n', 8, 'any', 'YTo3OntzOjE4OiJmaWVsZF9jb250ZW50X3R5cGUiO3M6MzoiYWxsIjtzOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30='),
+(34, 1, 1, 'hp_process_headline', 'Process Headline', '', 'text', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'n', 'none', 'n', 9, 'any', 'YTo3OntzOjE4OiJmaWVsZF9jb250ZW50X3R5cGUiO3M6MzoiYWxsIjtzOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30='),
+(35, 1, 1, 'hp_process_content', 'Process Content', '', 'matrix', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'n', 'none', 'n', 10, 'any', 'YTozOntzOjg6Im1pbl9yb3dzIjtzOjE6IjMiO3M6ODoibWF4X3Jvd3MiO3M6MToiMyI7czo3OiJjb2xfaWRzIjthOjM6e2k6MDtzOjI6IjE2IjtpOjE7czoyOiIyMyI7aToyO3M6MjoiMTciO319'),
+(37, 1, 1, 'hp_partners_banner', 'Partners Banner', '', 'text', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'n', 'none', 'n', 12, 'any', 'YTo3OntzOjE4OiJmaWVsZF9jb250ZW50X3R5cGUiO3M6MzoiYWxsIjtzOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30='),
+(38, 1, 1, 'hp_partners_headline', 'Partners Headline', '', 'text', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'n', 'none', 'n', 11, 'any', 'YTo3OntzOjE4OiJmaWVsZF9jb250ZW50X3R5cGUiO3M6MzoiYWxsIjtzOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30='),
+(39, 1, 1, 'hp_partners_content', 'Partners Content', '', 'matrix', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'n', 'none', 'n', 13, 'any', 'YTozOntzOjg6Im1pbl9yb3dzIjtzOjE6IjYiO3M6ODoibWF4X3Jvd3MiO3M6MToiNiI7czo3OiJjb2xfaWRzIjthOjI6e2k6MDtzOjI6IjE4IjtpOjE7czoyOiIxOSI7fX0='),
+(40, 1, 1, 'hp_action_banner', 'Call to Action Banner', '', 'text', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'n', 'none', 'n', 18, 'any', 'YTo3OntzOjE4OiJmaWVsZF9jb250ZW50X3R5cGUiO3M6MzoiYWxsIjtzOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30='),
+(36, 1, 1, 'hp_vision_link', 'Vision Link', '', 'text', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'n', 'none', 'n', 7, 'any', 'YTo3OntzOjE4OiJmaWVsZF9jb250ZW50X3R5cGUiO3M6MzoiYWxsIjtzOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30='),
+(41, 1, 1, 'hp_action_headline', 'Call to Action Headline', '', 'text', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'n', 'none', 'n', 19, 'any', 'YTo3OntzOjE4OiJmaWVsZF9jb250ZW50X3R5cGUiO3M6MzoiYWxsIjtzOjE4OiJmaWVsZF9zaG93X3NtaWxleXMiO3M6MToibiI7czoxOToiZmllbGRfc2hvd19nbG9zc2FyeSI7czoxOiJuIjtzOjIxOiJmaWVsZF9zaG93X3NwZWxsY2hlY2siO3M6MToibiI7czoyNjoiZmllbGRfc2hvd19mb3JtYXR0aW5nX2J0bnMiO3M6MToibiI7czoyNDoiZmllbGRfc2hvd19maWxlX3NlbGVjdG9yIjtzOjE6Im4iO3M6MjA6ImZpZWxkX3Nob3dfd3JpdGVtb2RlIjtzOjE6Im4iO30='),
+(42, 1, 1, 'hp_action_content', 'Call to Action Content', '', 'matrix', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'n', 'none', 'n', 20, 'any', 'YTozOntzOjg6Im1pbl9yb3dzIjtzOjE6IjMiO3M6ODoibWF4X3Jvd3MiO3M6MToiMyI7czo3OiJjb2xfaWRzIjthOjM6e2k6MDtzOjI6IjIwIjtpOjE7czoyOiIyMSI7aToyO3M6MjoiMjIiO319'),
+(46, 1, 1, 'hp_projects_content', 'Projects Content', '', 'matrix', '', '0', 0, 0, 6, 128, 'n', 'ltr', 'n', 'n', 'none', 'n', 17, 'any', 'YTozOntzOjg6Im1pbl9yb3dzIjtzOjE6IjAiO3M6ODoibWF4X3Jvd3MiO3M6MDoiIjtzOjc6ImNvbF9pZHMiO2E6Mzp7aTowO3M6MjoiMjQiO2k6MTtzOjI6IjI1IjtpOjI7czoyOiIyNiI7fX0=');
 
 -- --------------------------------------------------------
 
@@ -471,26 +581,77 @@ CREATE TABLE IF NOT EXISTS `exp_channel_titles` (
   KEY `entry_date` (`entry_date`),
   KEY `expiration_date` (`expiration_date`),
   KEY `site_id` (`site_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
 
 --
 -- Dumping data for table `exp_channel_titles`
 --
 
 INSERT INTO `exp_channel_titles` (`entry_id`, `site_id`, `channel_id`, `author_id`, `forum_topic_id`, `ip_address`, `title`, `url_title`, `status`, `versioning_enabled`, `view_count_one`, `view_count_two`, `view_count_three`, `view_count_four`, `allow_comments`, `sticky`, `entry_date`, `year`, `month`, `day`, `expiration_date`, `comment_expiration_date`, `edit_date`, `recent_comment_date`, `comment_total`) VALUES
-(1, 1, 1, 1, NULL, '127.0.0.1', 'Homepage', 'homepage', 'open', 'y', 0, 0, 0, 0, 'y', 'n', 1375826640, '2013', '08', '06', 0, 0, 20130806222623, 0, 0),
-(4, 1, 3, 1, NULL, '127.0.0.1', 'Projects', 'projects', 'open', 'y', 0, 0, 0, 0, 'y', 'n', 1376510580, '2013', '08', '14', 0, 0, 20130814232228, 0, 0),
+(1, 1, 1, 1, NULL, '127.0.0.1', 'Homepage', 'homepage', 'open', 'y', 0, 0, 0, 0, 'y', 'n', 1375826640, '2013', '08', '06', 0, 0, 20130822231159, 0, 0),
+(4, 1, 3, 1, NULL, '127.0.0.1', 'Projects', 'projects', 'open', 'y', 0, 0, 0, 0, 'y', 'n', 1376510580, '2013', '08', '14', 0, 0, 20130822235332, 0, 0),
 (3, 1, 2, 1, NULL, '127.0.0.1', 'Give', 'give', 'closed', 'y', 0, 0, 0, 0, 'y', 'n', 1376502180, '2013', '08', '14', 0, 0, 20130815190941, 0, 0),
-(6, 1, 2, 1, NULL, '127.0.0.1', 'About Us', 'about-us', 'open', 'y', 0, 0, 0, 0, 'y', 'n', 1376593320, '2013', '08', '15', 0, 0, 20130815190306, 0, 0),
+(6, 1, 2, 1, NULL, '127.0.0.1', 'About Us', 'about-us', 'closed', 'y', 0, 0, 0, 0, 'y', 'n', 1376593320, '2013', '08', '15', 0, 0, 20130815190306, 0, 0),
 (5, 1, 3, 1, NULL, '127.0.0.1', 'Get Involved', 'get-involved', 'closed', 'y', 0, 0, 0, 0, 'y', 'n', 1376522460, '2013', '08', '14', 0, 0, 20130816190312, 0, 0),
-(7, 1, 2, 1, NULL, '127.0.0.1', 'Success Stories', 'success-stories', 'open', 'y', 0, 0, 0, 0, 'y', 'n', 1376593380, '2013', '08', '15', 0, 0, 20130815190326, 0, 0),
-(8, 1, 2, 1, NULL, '127.0.0.1', 'About Us', 'about-us1', 'open', 'y', 0, 0, 0, 0, 'y', 'n', 1376597280, '2013', '08', '15', 0, 0, 20130815200844, 0, 0),
-(9, 1, 2, 1, NULL, '127.0.0.1', 'Team', 'team', 'open', 'y', 0, 0, 0, 0, 'y', 'n', 1376597280, '2013', '08', '15', 0, 0, 20130815200856, 0, 0),
-(10, 1, 2, 1, NULL, '127.0.0.1', 'Alumni', 'alumni', 'open', 'y', 0, 0, 0, 0, 'y', 'n', 1376597340, '2013', '08', '15', 0, 0, 20130815200906, 0, 0),
-(11, 1, 2, 1, NULL, '127.0.0.1', 'Partners & Organizations', 'partners-organizations', 'open', 'y', 0, 0, 0, 0, 'y', 'n', 1376597340, '2013', '08', '15', 0, 0, 20130815200924, 0, 0),
-(12, 1, 2, 1, NULL, '127.0.0.1', 'Resources & Links', 'resources-links', 'open', 'y', 0, 0, 0, 0, 'y', 'n', 1376597340, '2013', '08', '15', 0, 0, 20130815200936, 0, 0),
-(13, 1, 4, 1, NULL, '127.0.0.1', 'Get Involved', 'get-involved', 'open', 'y', 0, 0, 0, 0, 'y', 'n', 1376679780, '2013', '08', '16', 0, 0, 20130816190601, 0, 0),
-(14, 1, 2, 1, NULL, '127.0.0.1', 'Give', 'give1', 'open', 'y', 0, 0, 0, 0, 'y', 'n', 1376681040, '2013', '08', '16', 0, 0, 20130816192549, 0, 0);
+(7, 1, 2, 1, NULL, '127.0.0.1', 'Success Stories', 'success-stories', 'closed', 'y', 0, 0, 0, 0, 'y', 'n', 1376593380, '2013', '08', '15', 0, 0, 20130815190326, 0, 0),
+(8, 1, 2, 1, NULL, '127.0.0.1', 'About Us', 'about-us1', 'closed', 'y', 0, 0, 0, 0, 'y', 'n', 1376597280, '2013', '08', '15', 0, 0, 20130815200844, 0, 0),
+(9, 1, 2, 1, NULL, '127.0.0.1', 'Team', 'team', 'closed', 'y', 0, 0, 0, 0, 'y', 'n', 1376597280, '2013', '08', '15', 0, 0, 20130815200856, 0, 0),
+(10, 1, 2, 1, NULL, '127.0.0.1', 'Alumni', 'alumni', 'closed', 'y', 0, 0, 0, 0, 'y', 'n', 1376597340, '2013', '08', '15', 0, 0, 20130815200906, 0, 0),
+(11, 1, 2, 1, NULL, '127.0.0.1', 'Partners & Organizations', 'partners-organizations', 'closed', 'y', 0, 0, 0, 0, 'y', 'n', 1376597340, '2013', '08', '15', 0, 0, 20130815200924, 0, 0),
+(12, 1, 2, 1, NULL, '127.0.0.1', 'Resources & Links', 'resources-links', 'closed', 'y', 0, 0, 0, 0, 'y', 'n', 1376597340, '2013', '08', '15', 0, 0, 20130815200936, 0, 0),
+(13, 1, 4, 1, NULL, '127.0.0.1', 'Get Involved', 'get-involved', 'open', 'y', 0, 0, 0, 0, 'y', 'n', 1376679780, '2013', '08', '16', 0, 0, 20130816203414, 0, 0),
+(14, 1, 2, 1, NULL, '127.0.0.1', 'Give', 'give1', 'open', 'y', 0, 0, 0, 0, 'y', 'n', 1376681040, '2013', '08', '16', 0, 0, 20130816193345, 0, 0),
+(15, 1, 5, 1, NULL, '127.0.0.1', 'About Us', 'about-us', 'open', 'y', 0, 0, 0, 0, 'y', 'n', 1376681880, '2013', '08', '16', 0, 0, 20130819174120, 0, 0),
+(16, 1, 5, 1, NULL, '127.0.0.1', 'About Us', 'about-us1', 'open', 'y', 0, 0, 0, 0, 'y', 'n', 1376682120, '2013', '08', '16', 0, 0, 20130819173827, 0, 0),
+(17, 1, 5, 1, NULL, '127.0.0.1', 'Partners & Organizations', 'partners-organizations', 'open', 'y', 0, 0, 0, 0, 'y', 'n', 1376682900, '2013', '08', '16', 0, 0, 20130819172948, 0, 0),
+(18, 1, 5, 1, NULL, '127.0.0.1', 'Team', 'team', 'open', 'y', 0, 0, 0, 0, 'y', 'n', 1376931780, '2013', '08', '19', 0, 0, 20130819172443, 0, 0),
+(19, 1, 5, 1, NULL, '127.0.0.1', 'Alumni', 'alumni', 'open', 'y', 0, 0, 0, 0, 'y', 'n', 1376931840, '2013', '08', '19', 0, 0, 20130819172452, 0, 0),
+(20, 1, 5, 1, NULL, '127.0.0.1', 'Resources & Links', 'resources-links', 'open', 'y', 0, 0, 0, 0, 'y', 'n', 1376931840, '2013', '08', '19', 0, 0, 20130819170507, 0, 0),
+(21, 1, 6, 1, NULL, '127.0.0.1', 'Success Stories', 'success-stories', 'open', 'y', 0, 0, 0, 0, 'y', 'n', 1376935440, '2013', '08', '19', 0, 0, 20130819211425, 0, 0),
+(22, 1, 3, 1, NULL, '127.0.0.1', 'Ontario', 'ontario', 'closed', 'y', 0, 0, 0, 0, 'y', 'n', 1377030480, '2013', '08', '20', 0, 0, 20130820202835, 0, 0),
+(23, 1, 3, 1, NULL, '127.0.0.1', 'Loma Linda', 'loma-linda', 'closed', 'y', 0, 0, 0, 0, 'y', 'n', 1377030480, '2013', '08', '20', 0, 0, 20130820202913, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `exp_channel_videos`
+--
+
+CREATE TABLE IF NOT EXISTS `exp_channel_videos` (
+  `video_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `site_id` tinyint(3) unsigned DEFAULT '1',
+  `entry_id` int(10) unsigned DEFAULT '0',
+  `channel_id` int(10) unsigned DEFAULT '0',
+  `field_id` mediumint(8) unsigned DEFAULT '1',
+  `service` varchar(250) DEFAULT '',
+  `service_video_id` varchar(250) DEFAULT '',
+  `hash_id` varchar(250) DEFAULT '',
+  `video_title` varchar(250) DEFAULT '',
+  `video_desc` varchar(250) DEFAULT '',
+  `video_username` varchar(250) DEFAULT '',
+  `video_author` varchar(250) DEFAULT '',
+  `video_author_id` int(10) unsigned DEFAULT '0',
+  `video_date` varchar(250) DEFAULT '',
+  `video_views` varchar(250) DEFAULT '',
+  `video_duration` varchar(250) DEFAULT '',
+  `video_url` varchar(250) DEFAULT '',
+  `video_img_url` varchar(250) DEFAULT '',
+  `video_order` smallint(5) unsigned DEFAULT '1',
+  `video_cover` tinyint(1) unsigned DEFAULT '0',
+  PRIMARY KEY (`video_id`),
+  KEY `entry_id` (`entry_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `exp_channel_videos`
+--
+
+INSERT INTO `exp_channel_videos` (`video_id`, `site_id`, `entry_id`, `channel_id`, `field_id`, `service`, `service_video_id`, `hash_id`, `video_title`, `video_desc`, `video_username`, `video_author`, `video_author_id`, `video_date`, `video_views`, `video_duration`, `video_url`, `video_img_url`, `video_order`, `video_cover`) VALUES
+(1, 1, 21, 6, 18, 'vimeo', '70771434', '', 'Ecuador e Islas Galápagos', 'Trip to Ecuador and Galápagos Islands, made with Canon T2i for video  and G10 for Timelapses.', 'fabianosilva', 'Fabiano Silva', 8613746, '1374476834', '179', '269', 'http://player.vimeo.com/video/70771434?title=0&byline=0&portrait=0', 'https://secure-b.vimeocdn.com/ts/445/924/445924825_100.jpg', 1, 0),
+(3, 1, 21, 6, 18, 'vimeo', '71908739', '', 'Paddling Out', 'Kayaking Colorado rivers and creeks in May of 2013.', 'user15631437', 'SkiniKid Productions', 15631437, '1375883069', '75', '234', 'http://player.vimeo.com/video/71908739?title=0&byline=0&portrait=0', 'https://secure-b.vimeocdn.com/ts/445/626/445626716_100.jpg', 2, 0),
+(4, 1, 21, 6, 18, 'vimeo', '7030292', '', 'one minute', 'Erica, Xander and I went to Onsted on Saturday, and before heading out to go buy pumpkins, we went to the park with my Mom and baby brother, Dylan to hike around "the trail" and record a one minute video for this weekend''s Vimeo project :) \n\nI guess ', 'mikeambs', 'mike ambs', 229397, '1255362096', '2305', '61', 'http://player.vimeo.com/video/7030292?title=0&byline=0&portrait=0', 'https://secure-b.vimeocdn.com/ts/288/779/28877983_100.jpg', 3, 0),
+(5, 1, 21, 6, 18, 'vimeo', '32493954', '', 'Salmon Fishing in a Minute', 'See if I hook up fishing for King Salmon in a Minute.\n\nThe rules:\n-Video must be exactly one minute long\n-No camera movement (no panning, tilting, etc)\n-No editing whatsoever\n-Use original sound\n-Tag with ''1 minute''', 'user1547388', 'Clearwater-Media', 1547388, '1321922077', '746', '60', 'http://player.vimeo.com/video/32493954?title=0&byline=0&portrait=0', 'https://secure-b.vimeocdn.com/ts/219/865/219865977_100.jpg', 4, 0),
+(6, 1, 1, 1, 29, 'vimeo', '35396305', '', 'Yosemite HD', 'This video is a collaboration between Sheldon Neill and Colin Delehanty. All timelapses were shot on the Canon 5D Mark II with a variety of Canon L and Zeiss CP.2 Lenses.\n\nProject Yosemite Website: http://projectyose.com\nFacebook Page: http://faceboo', 'projectyose', 'Project Yosemite', 9807817, '1327076331', '3579907', '237', 'http://player.vimeo.com/video/35396305?title=0&byline=0&portrait=0', 'https://secure-b.vimeocdn.com/ts/254/218/254218511_100.jpg', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -557,7 +718,7 @@ CREATE TABLE IF NOT EXISTS `exp_cp_log` (
   `action` varchar(200) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `site_id` (`site_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=44 ;
 
 --
 -- Dumping data for table `exp_cp_log`
@@ -590,7 +751,23 @@ INSERT INTO `exp_cp_log` (`id`, `site_id`, `member_id`, `username`, `ip_address`
 (24, 1, 1, 'longdao', '127.0.0.1', 1376679094, 'Logged in'),
 (25, 1, 1, 'longdao', '127.0.0.1', 1376679240, 'Field group Deleted:&nbsp;&nbsp;Pages'),
 (26, 1, 1, 'longdao', '127.0.0.1', 1376679709, 'Channel Created:&nbsp;&nbsp;Get Involved'),
-(27, 1, 1, 'longdao', '127.0.0.1', 1376679765, 'Channel Created:&nbsp;&nbsp;About');
+(27, 1, 1, 'longdao', '127.0.0.1', 1376679765, 'Channel Created:&nbsp;&nbsp;About'),
+(28, 1, 1, 'longdao', '127.0.0.1', 1376931796, 'Logged in'),
+(29, 1, 1, 'longdao', '127.0.0.1', 1376935380, 'Field Group Created:&nbsp;stories'),
+(30, 1, 1, 'longdao', '127.0.0.1', 1376935425, 'Channel Created:&nbsp;&nbsp;Stories'),
+(31, 1, 1, 'longdao', '127.0.0.1', 1376946449, 'Logged in'),
+(32, 1, 1, 'longdao', '127.0.0.1', 1377029404, 'Logged in'),
+(33, 1, 1, 'longdao', '127.0.0.1', 1377041123, 'Logged in'),
+(34, 1, 1, 'longdao', '127.0.0.1', 1377107336, 'Logged in'),
+(35, 1, 1, 'longdao', '127.0.0.1', 1377114483, 'Logged out'),
+(36, 1, 1, 'longdao', '127.0.0.1', 1377118446, 'Logged in'),
+(37, 1, 1, 'longdao', '127.0.0.1', 1377121921, 'Custom Field Deleted:&nbsp;Video'),
+(38, 1, 1, 'longdao', '127.0.0.1', 1377128176, 'Logged in'),
+(39, 1, 1, 'longdao', '127.0.0.1', 1377198650, 'Logged in'),
+(40, 1, 1, 'longdao', '127.0.0.1', 1377207362, 'Logged in'),
+(41, 1, 1, 'longdao', '127.0.0.1', 1377209094, 'Logged out'),
+(42, 1, 1, 'longdao', '127.0.0.1', 1377209131, 'Logged in'),
+(43, 1, 1, 'longdao', '127.0.0.1', 1377212981, 'Logged in');
 
 -- --------------------------------------------------------
 
@@ -642,7 +819,7 @@ INSERT INTO `exp_developer_log` (`log_id`, `timestamp`, `viewed`, `description`,
 (1, 1376412718, 'n', NULL, 'generate_json()', 684, 'I:\\git\\PBH\\system\\expressionengine\\third_party\\nsm_htaccess_generator\\ext.nsm_htaccess_generator.php', '2.6', 'the native JSON extension (json_encode())', 0, NULL, NULL, NULL, NULL, NULL),
 (2, 1376412718, 'n', NULL, 'generate_json()', 797, 'I:\\git\\PBH\\system\\codeigniter\\system\\libraries\\Javascript.php', '2.6', 'the native JSON extension (json_encode())', 0, NULL, NULL, NULL, NULL, NULL),
 (3, 1376412723, 'n', NULL, 'generate_json()', 421, 'I:\\git\\PBH\\system\\expressionengine\\third_party\\nsm_htaccess_generator\\ext.nsm_htaccess_generator.php', '2.6', 'the native JSON extension (json_encode())', 0, NULL, NULL, NULL, NULL, NULL),
-(4, 1376412819, 'n', NULL, 'do_hash()', 224, 'I:\\git\\PBH\\system\\expressionengine\\third_party\\nsm_htaccess_generator\\ext.nsm_htaccess_generator.php', '2.6', 'PHP''s hashing functions', 0, NULL, NULL, NULL, NULL, NULL);
+(4, 1377030014, 'n', NULL, 'do_hash()', 224, 'I:\\git\\PBH\\system\\expressionengine\\third_party\\nsm_htaccess_generator\\ext.nsm_htaccess_generator.php', '2.6', 'PHP''s hashing functions', 0, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -848,7 +1025,7 @@ CREATE TABLE IF NOT EXISTS `exp_fieldtypes` (
   `settings` text,
   `has_global_settings` char(1) DEFAULT 'n',
   PRIMARY KEY (`fieldtype_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `exp_fieldtypes`
@@ -867,7 +1044,8 @@ INSERT INTO `exp_fieldtypes` (`fieldtype_id`, `name`, `version`, `settings`, `ha
 (10, 'rte', '1.0', 'YTowOnt9', 'n'),
 (11, 'structure', '3.3.10', 'YToxOntzOjE5OiJzdHJ1Y3R1cmVfbGlzdF90eXBlIjtzOjU6InBhZ2VzIjt9', 'n'),
 (12, 'editor', '3.1.4', 'YTowOnt9', 'n'),
-(13, 'matrix', '2.5.6', 'YTowOnt9', 'y');
+(13, 'matrix', '2.5.6', 'YTowOnt9', 'y'),
+(14, 'channel_videos', '3.1.3', 'YTowOnt9', 'n');
 
 -- --------------------------------------------------------
 
@@ -880,7 +1058,7 @@ CREATE TABLE IF NOT EXISTS `exp_field_formatting` (
   `field_id` int(10) unsigned NOT NULL,
   `field_fmt` varchar(40) NOT NULL,
   PRIMARY KEY (`formatting_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=37 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=139 ;
 
 --
 -- Dumping data for table `exp_field_formatting`
@@ -922,7 +1100,106 @@ INSERT INTO `exp_field_formatting` (`formatting_id`, `field_id`, `field_fmt`) VA
 (33, 11, 'xhtml'),
 (34, 12, 'none'),
 (35, 12, 'br'),
-(36, 12, 'xhtml');
+(36, 12, 'xhtml'),
+(37, 13, 'none'),
+(38, 13, 'br'),
+(39, 13, 'xhtml'),
+(40, 14, 'none'),
+(41, 14, 'br'),
+(42, 14, 'xhtml'),
+(43, 15, 'none'),
+(44, 15, 'br'),
+(45, 15, 'xhtml'),
+(46, 16, 'none'),
+(47, 16, 'br'),
+(48, 16, 'xhtml'),
+(49, 17, 'none'),
+(50, 17, 'br'),
+(51, 17, 'xhtml'),
+(52, 18, 'none'),
+(53, 18, 'br'),
+(54, 18, 'xhtml'),
+(55, 19, 'none'),
+(56, 19, 'br'),
+(57, 19, 'xhtml'),
+(58, 20, 'none'),
+(59, 20, 'br'),
+(60, 20, 'xhtml'),
+(61, 21, 'none'),
+(62, 21, 'br'),
+(63, 21, 'xhtml'),
+(64, 22, 'none'),
+(65, 22, 'br'),
+(66, 22, 'xhtml'),
+(67, 23, 'none'),
+(68, 23, 'br'),
+(69, 23, 'xhtml'),
+(70, 24, 'none'),
+(71, 24, 'br'),
+(72, 24, 'xhtml'),
+(73, 25, 'none'),
+(74, 25, 'br'),
+(75, 25, 'xhtml'),
+(76, 26, 'none'),
+(77, 26, 'br'),
+(78, 26, 'xhtml'),
+(84, 28, 'xhtml'),
+(83, 28, 'br'),
+(82, 28, 'none'),
+(85, 29, 'none'),
+(86, 29, 'br'),
+(87, 29, 'xhtml'),
+(88, 30, 'none'),
+(89, 30, 'br'),
+(90, 30, 'xhtml'),
+(91, 31, 'none'),
+(92, 31, 'br'),
+(93, 31, 'xhtml'),
+(94, 32, 'none'),
+(95, 32, 'br'),
+(96, 32, 'xhtml'),
+(97, 33, 'none'),
+(98, 33, 'br'),
+(99, 33, 'xhtml'),
+(100, 34, 'none'),
+(101, 34, 'br'),
+(102, 34, 'xhtml'),
+(103, 35, 'none'),
+(104, 35, 'br'),
+(105, 35, 'xhtml'),
+(106, 36, 'none'),
+(107, 36, 'br'),
+(108, 36, 'xhtml'),
+(109, 37, 'none'),
+(110, 37, 'br'),
+(111, 37, 'xhtml'),
+(112, 38, 'none'),
+(113, 38, 'br'),
+(114, 38, 'xhtml'),
+(115, 39, 'none'),
+(116, 39, 'br'),
+(117, 39, 'xhtml'),
+(118, 40, 'none'),
+(119, 40, 'br'),
+(120, 40, 'xhtml'),
+(121, 41, 'none'),
+(122, 41, 'br'),
+(123, 41, 'xhtml'),
+(124, 42, 'none'),
+(125, 42, 'br'),
+(126, 42, 'xhtml'),
+(127, 43, 'none'),
+(128, 43, 'br'),
+(129, 43, 'xhtml'),
+(130, 44, 'none'),
+(131, 44, 'br'),
+(132, 44, 'xhtml'),
+(133, 45, 'none'),
+(134, 45, 'br'),
+(135, 45, 'xhtml'),
+(136, 46, 'none'),
+(137, 46, 'br'),
+(138, 46, 'xhtml');
 
 -- --------------------------------------------------------
 
@@ -936,7 +1213,7 @@ CREATE TABLE IF NOT EXISTS `exp_field_groups` (
   `group_name` varchar(50) NOT NULL,
   PRIMARY KEY (`group_id`),
   KEY `site_id` (`site_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `exp_field_groups`
@@ -944,6 +1221,7 @@ CREATE TABLE IF NOT EXISTS `exp_field_groups` (
 
 INSERT INTO `exp_field_groups` (`group_id`, `site_id`, `group_name`) VALUES
 (1, 1, 'Homepage'),
+(7, 1, 'stories'),
 (3, 1, 'get-involved'),
 (4, 1, 'projects'),
 (5, 1, 'give'),
@@ -975,7 +1253,7 @@ CREATE TABLE IF NOT EXISTS `exp_files` (
   PRIMARY KEY (`file_id`),
   KEY `upload_location_id` (`upload_location_id`),
   KEY `site_id` (`site_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
 -- Dumping data for table `exp_files`
@@ -983,7 +1261,20 @@ CREATE TABLE IF NOT EXISTS `exp_files` (
 
 INSERT INTO `exp_files` (`file_id`, `site_id`, `title`, `upload_location_id`, `rel_path`, `mime_type`, `file_name`, `file_size`, `description`, `credit`, `location`, `uploaded_by_member_id`, `upload_date`, `modified_by_member_id`, `modified_date`, `file_hw_original`) VALUES
 (2, 1, 'pbh_home-header.jpg', 1, 'I:/git/PBH/httpdocs/images/uploads/pbh_home-header.jpg', 'image/jpeg', 'pbh_home-header.jpg', 147201, NULL, NULL, NULL, 1, 1375827616, 1, 1375827718, '657 1600'),
-(3, 1, '10219_1business_group.jpg', 1, 'I:/git/PBH/httpdocs/images/uploads/10219_1business_group.jpg', 'image/jpeg', '10219_1business_group.jpg', 487967, NULL, NULL, NULL, 1, 1376681123, 1, 1376681123, '1050 1500');
+(3, 1, '10219_1business_group.jpg', 1, 'I:/git/PBH/httpdocs/images/uploads/10219_1business_group.jpg', 'image/jpeg', '10219_1business_group.jpg', 487967, NULL, NULL, NULL, 1, 1376681123, 1, 1376681123, '1050 1500'),
+(4, 1, 'll.png', 1, 'I:/git/PBH/httpdocs/images/uploads/ll.png', 'image/png', 'll.png', 72571, NULL, NULL, NULL, 1, 1377213420, 1, 1377213420, '526 527'),
+(5, 1, 'ont1.png', 1, 'I:/git/PBH/httpdocs/images/uploads/ont1.png', 'image/png', 'ont1.png', 50842, NULL, NULL, NULL, 1, 1377213606, 1, 1377213606, '121 156'),
+(6, 1, 'sb.jpg', 1, 'I:/git/PBH/httpdocs/images/uploads/sb.jpg', 'image/jpeg', 'sb.jpg', 20879, NULL, NULL, NULL, 1, 1377213771, 1, 1377213771, '182 518'),
+(7, 1, 'psdna.png', 1, 'I:/git/PBH/httpdocs/images/uploads/psdna.png', 'image/png', 'psdna.png', 33915, NULL, NULL, NULL, 1, 1377213900, 1, 1377213900, '161 180'),
+(8, 1, 'rialto.jpg', 1, 'I:/git/PBH/httpdocs/images/uploads/rialto.jpg', 'image/jpeg', 'rialto.jpg', 14203, NULL, NULL, NULL, 1, 1377214063, 1, 1377214063, '131 578'),
+(9, 1, 'fntn.jpg', 1, 'I:/git/PBH/httpdocs/images/uploads/fntn.jpg', 'image/jpeg', 'fntn.jpg', 8858, NULL, NULL, NULL, 1, 1377214175, 1, 1377214175, '106 407'),
+(10, 1, 'desrt.jpg', 1, 'I:/git/PBH/httpdocs/images/uploads/desrt.jpg', 'image/jpeg', 'desrt.jpg', 20040, NULL, NULL, NULL, 1, 1377214263, 1, 1377214263, '173 596'),
+(11, 1, 'rc.png', 1, 'I:/git/PBH/httpdocs/images/uploads/rc.png', 'image/png', 'rc.png', 149217, NULL, NULL, NULL, 1, 1377214472, 1, 1377214472, '319 323'),
+(12, 1, 'rim.jpg', 1, 'I:/git/PBH/httpdocs/images/uploads/rim.jpg', 'image/jpeg', 'rim.jpg', 29962, NULL, NULL, NULL, 1, 1377214570, 1, 1377214570, '251 463'),
+(13, 1, 'jurupa.jpg', 1, 'I:/git/PBH/httpdocs/images/uploads/jurupa.jpg', 'image/jpeg', 'jurupa.jpg', 47483, NULL, NULL, NULL, 1, 1377214653, 1, 1377214653, '334 502'),
+(14, 1, 'clr.gif', 1, 'I:/git/PBH/httpdocs/images/uploads/clr.gif', 'image/gif', 'clr.gif', 6318, NULL, NULL, NULL, 1, 1377214735, 1, 1377214735, '114 110'),
+(15, 1, 'chino.png', 1, 'I:/git/PBH/httpdocs/images/uploads/chino.png', 'image/png', 'chino.png', 52777, NULL, NULL, NULL, 1, 1377215276, 1, 1377215276, '143 363'),
+(16, 1, 'pomona.jpg', 1, 'I:/git/PBH/httpdocs/images/uploads/pomona.jpg', 'image/jpeg', 'pomona.jpg', 44780, NULL, NULL, NULL, 1, 1377215291, 1, 1377215291, '334 335');
 
 -- --------------------------------------------------------
 
@@ -1188,19 +1479,38 @@ CREATE TABLE IF NOT EXISTS `exp_matrix_cols` (
   KEY `site_id` (`site_id`),
   KEY `field_id` (`field_id`),
   KEY `var_id` (`var_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=27 ;
 
 --
 -- Dumping data for table `exp_matrix_cols`
 --
 
 INSERT INTO `exp_matrix_cols` (`col_id`, `site_id`, `field_id`, `var_id`, `col_name`, `col_label`, `col_instructions`, `col_type`, `col_required`, `col_search`, `col_order`, `col_width`, `col_settings`) VALUES
-(1, 1, 7, NULL, 'headline', 'Headline', '', 'text', 'n', 'n', 0, '33%', 'YTozOntzOjQ6Im1heGwiO3M6MDoiIjtzOjM6ImZtdCI7czo0OiJub25lIjtzOjM6ImRpciI7czozOiJsdHIiO30='),
-(2, 1, 7, NULL, 'content', 'Content', '', 'editor', 'n', 'n', 1, '', 'YToxOntzOjY6ImVkaXRvciI7YToyODp7czoxNToiZWRpdG9yX3NldHRpbmdzIjtzOjEwOiJwcmVkZWZpbmVkIjtzOjE0OiJ1cGxvYWRfc2VydmljZSI7czo1OiJsb2NhbCI7czoyMDoiZmlsZV91cGxvYWRfbG9jYXRpb24iO3M6MToiMCI7czoyMToiaW1hZ2VfdXBsb2FkX2xvY2F0aW9uIjtzOjE6IjAiO3M6MTQ6ImltYWdlX2Jyb3dzaW5nIjtzOjM6InllcyI7czoxMjoiaW1hZ2Vfc3ViZGlyIjtzOjM6InllcyI7czoyOiJzMyI7YTo0OntzOjQ6ImZpbGUiO2E6MTp7czo2OiJidWNrZXQiO3M6MDoiIjt9czo1OiJpbWFnZSI7YToxOntzOjY6ImJ1Y2tldCI7czowOiIiO31zOjE0OiJhd3NfYWNjZXNzX2tleSI7czowOiIiO3M6MTQ6ImF3c19zZWNyZXRfa2V5IjtzOjA6IiI7fXM6NjoiaGVpZ2h0IjtzOjM6IjIwMCI7czo5OiJkaXJlY3Rpb24iO3M6MzoibHRyIjtzOjc6InRvb2xiYXIiO3M6MzoieWVzIjtzOjY6InNvdXJjZSI7czozOiJ5ZXMiO3M6NToiZm9jdXMiO3M6Mjoibm8iO3M6MTA6ImF1dG9yZXNpemUiO3M6MzoieWVzIjtzOjU6ImZpeGVkIjtzOjI6Im5vIjtzOjEyOiJjb252ZXJ0bGlua3MiO3M6MzoieWVzIjtzOjExOiJjb252ZXJ0ZGl2cyI7czozOiJ5ZXMiO3M6Nzoib3ZlcmxheSI7czozOiJ5ZXMiO3M6MTM6Im9ic2VydmVpbWFnZXMiO3M6MzoieWVzIjtzOjk6InNob3J0Y3V0cyI7czozOiJ5ZXMiO3M6MzoiYWlyIjtzOjI6Im5vIjtzOjM6Ind5bSI7czoyOiJubyI7czo4OiJwcm90b2NvbCI7czozOiJ5ZXMiO3M6MTg6ImFsbG93ZWR0YWdzX29wdGlvbiI7czo3OiJkZWZhdWx0IjtzOjExOiJhbGxvd2VkdGFncyI7YTowOnt9czoxNDoiZm9ybWF0dGluZ3RhZ3MiO2E6Nzp7aTowO3M6MToicCI7aToxO3M6MTA6ImJsb2NrcXVvdGUiO2k6MjtzOjM6InByZSI7aTozO3M6MjoiaDEiO2k6NDtzOjI6ImgyIjtpOjU7czoyOiJoMyI7aTo2O3M6MjoiaDQiO31zOjg6Imxhbmd1YWdlIjtzOjI6ImVuIjtzOjg6ImNzc19maWxlIjtzOjA6IiI7czoxMToiZWRpdG9yX2NvbmYiO3M6MToiMyI7fX0='),
-(3, 1, 12, NULL, 'img', 'Image', '', 'file', 'n', 'n', 0, '', 'YToyOntzOjk6ImRpcmVjdG9yeSI7czozOiJhbGwiO3M6MTI6ImNvbnRlbnRfdHlwZSI7czozOiJhbGwiO30='),
-(4, 1, 12, NULL, 'headline', 'Headline', '', 'text', 'n', 'n', 1, '', 'YTo0OntzOjQ6Im1heGwiO3M6MzoiMTQwIjtzOjk6Im11bHRpbGluZSI7czoxOiJ5IjtzOjM6ImZtdCI7czo0OiJub25lIjtzOjM6ImRpciI7czozOiJsdHIiO30='),
-(5, 1, 12, NULL, 'content', 'Content', '', 'editor', 'n', 'n', 2, '', 'YToxOntzOjY6ImVkaXRvciI7YToyOTp7czoxNToiZWRpdG9yX3NldHRpbmdzIjtzOjEwOiJwcmVkZWZpbmVkIjtzOjc6ImJ1dHRvbnMiO2E6MzA6e2k6MDtzOjQ6Imh0bWwiO2k6MTtzOjE6InwiO2k6MjtzOjEwOiJmb3JtYXR0aW5nIjtpOjM7czoxOiJ8IjtpOjQ7czo0OiJib2xkIjtpOjU7czo2OiJpdGFsaWMiO2k6NjtzOjc6ImRlbGV0ZWQiO2k6NztzOjE6InwiO2k6ODtzOjEzOiJ1bm9yZGVyZWRsaXN0IjtpOjk7czoxMToib3JkZXJlZGxpc3QiO2k6MTA7czo3OiJvdXRkZW50IjtpOjExO3M6NjoiaW5kZW50IjtpOjEyO3M6MToifCI7aToxMztzOjQ6ImxpbmsiO2k6MTQ7czo1OiJpbWFnZSI7aToxNTtzOjU6InZpZGVvIjtpOjE2O3M6NDoiZmlsZSI7aToxNztzOjU6InRhYmxlIjtpOjE4O3M6MToifCI7aToxOTtzOjk6ImZvbnRjb2xvciI7aToyMDtzOjk6ImJhY2tjb2xvciI7aToyMTtzOjE6InwiO2k6MjI7czo5OiJhbGlnbmxlZnQiO2k6MjM7czoxMToiYWxpZ25jZW50ZXIiO2k6MjQ7czoxMDoiYWxpZ25yaWdodCI7aToyNTtzOjc6Imp1c3RpZnkiO2k6MjY7czoxOiJ8IjtpOjI3O3M6MTQ6Imhvcml6b250YWxydWxlIjtpOjI4O3M6MTE6InBhc3RlX3BsYWluIjtpOjI5O3M6MToifCI7fXM6MTQ6InVwbG9hZF9zZXJ2aWNlIjtzOjU6ImxvY2FsIjtzOjIwOiJmaWxlX3VwbG9hZF9sb2NhdGlvbiI7czoxOiIwIjtzOjIxOiJpbWFnZV91cGxvYWRfbG9jYXRpb24iO3M6MToiMCI7czoxNDoiaW1hZ2VfYnJvd3NpbmciO3M6MzoieWVzIjtzOjEyOiJpbWFnZV9zdWJkaXIiO3M6MzoieWVzIjtzOjI6InMzIjthOjQ6e3M6NDoiZmlsZSI7YToxOntzOjY6ImJ1Y2tldCI7czowOiIiO31zOjU6ImltYWdlIjthOjE6e3M6NjoiYnVja2V0IjtzOjA6IiI7fXM6MTQ6ImF3c19hY2Nlc3Nfa2V5IjtzOjA6IiI7czoxNDoiYXdzX3NlY3JldF9rZXkiO3M6MDoiIjt9czo2OiJoZWlnaHQiO3M6MzoiMjAwIjtzOjk6ImRpcmVjdGlvbiI7czozOiJsdHIiO3M6NzoidG9vbGJhciI7czozOiJ5ZXMiO3M6Njoic291cmNlIjtzOjM6InllcyI7czo1OiJmb2N1cyI7czoyOiJubyI7czoxMDoiYXV0b3Jlc2l6ZSI7czozOiJ5ZXMiO3M6NToiZml4ZWQiO3M6Mjoibm8iO3M6MTI6ImNvbnZlcnRsaW5rcyI7czozOiJ5ZXMiO3M6MTE6ImNvbnZlcnRkaXZzIjtzOjM6InllcyI7czo3OiJvdmVybGF5IjtzOjM6InllcyI7czoxMzoib2JzZXJ2ZWltYWdlcyI7czozOiJ5ZXMiO3M6OToic2hvcnRjdXRzIjtzOjM6InllcyI7czozOiJhaXIiO3M6Mjoibm8iO3M6Mzoid3ltIjtzOjI6Im5vIjtzOjg6InByb3RvY29sIjtzOjM6InllcyI7czoxODoiYWxsb3dlZHRhZ3Nfb3B0aW9uIjtzOjc6ImRlZmF1bHQiO3M6MTE6ImFsbG93ZWR0YWdzIjthOjA6e31zOjE0OiJmb3JtYXR0aW5ndGFncyI7YTo3OntpOjA7czoxOiJwIjtpOjE7czoxMDoiYmxvY2txdW90ZSI7aToyO3M6MzoicHJlIjtpOjM7czoyOiJoMSI7aTo0O3M6MjoiaDIiO2k6NTtzOjI6ImgzIjtpOjY7czoyOiJoNCI7fXM6ODoibGFuZ3VhZ2UiO3M6MjoiZW4iO3M6ODoiY3NzX2ZpbGUiO3M6MDoiIjtzOjExOiJlZGl0b3JfY29uZiI7czoxOiIzIjt9fQ=='),
-(6, 1, 12, NULL, 'link', 'Link', '', 'text', 'n', 'n', 3, '', 'YTozOntzOjQ6Im1heGwiO3M6MDoiIjtzOjM6ImZtdCI7czo0OiJub25lIjtzOjM6ImRpciI7czozOiJsdHIiO30=');
+(1, 1, 7, NULL, 'headline', 'Headline', '', 'text', 'n', 'n', 0, '', 'YTozOntzOjQ6Im1heGwiO3M6MDoiIjtzOjM6ImZtdCI7czo0OiJub25lIjtzOjM6ImRpciI7czozOiJsdHIiO30='),
+(2, 1, 7, NULL, 'content', 'Content', '', 'editor', 'n', 'n', 1, '60%', 'YToxOntzOjY6ImVkaXRvciI7YToyOTp7czoxNToiZWRpdG9yX3NldHRpbmdzIjtzOjEwOiJwcmVkZWZpbmVkIjtzOjc6ImJ1dHRvbnMiO2E6MzA6e2k6MDtzOjQ6Imh0bWwiO2k6MTtzOjE6InwiO2k6MjtzOjEwOiJmb3JtYXR0aW5nIjtpOjM7czoxOiJ8IjtpOjQ7czo0OiJib2xkIjtpOjU7czo2OiJpdGFsaWMiO2k6NjtzOjc6ImRlbGV0ZWQiO2k6NztzOjE6InwiO2k6ODtzOjEzOiJ1bm9yZGVyZWRsaXN0IjtpOjk7czoxMToib3JkZXJlZGxpc3QiO2k6MTA7czo3OiJvdXRkZW50IjtpOjExO3M6NjoiaW5kZW50IjtpOjEyO3M6MToifCI7aToxMztzOjQ6ImxpbmsiO2k6MTQ7czo1OiJpbWFnZSI7aToxNTtzOjU6InZpZGVvIjtpOjE2O3M6NDoiZmlsZSI7aToxNztzOjU6InRhYmxlIjtpOjE4O3M6MToifCI7aToxOTtzOjk6ImZvbnRjb2xvciI7aToyMDtzOjk6ImJhY2tjb2xvciI7aToyMTtzOjE6InwiO2k6MjI7czo5OiJhbGlnbmxlZnQiO2k6MjM7czoxMToiYWxpZ25jZW50ZXIiO2k6MjQ7czoxMDoiYWxpZ25yaWdodCI7aToyNTtzOjc6Imp1c3RpZnkiO2k6MjY7czoxOiJ8IjtpOjI3O3M6MTQ6Imhvcml6b250YWxydWxlIjtpOjI4O3M6MTE6InBhc3RlX3BsYWluIjtpOjI5O3M6MToifCI7fXM6MTQ6InVwbG9hZF9zZXJ2aWNlIjtzOjU6ImxvY2FsIjtzOjIwOiJmaWxlX3VwbG9hZF9sb2NhdGlvbiI7czoxOiIwIjtzOjIxOiJpbWFnZV91cGxvYWRfbG9jYXRpb24iO3M6MToiMCI7czoxNDoiaW1hZ2VfYnJvd3NpbmciO3M6MzoieWVzIjtzOjEyOiJpbWFnZV9zdWJkaXIiO3M6MzoieWVzIjtzOjI6InMzIjthOjQ6e3M6NDoiZmlsZSI7YToxOntzOjY6ImJ1Y2tldCI7czowOiIiO31zOjU6ImltYWdlIjthOjE6e3M6NjoiYnVja2V0IjtzOjA6IiI7fXM6MTQ6ImF3c19hY2Nlc3Nfa2V5IjtzOjA6IiI7czoxNDoiYXdzX3NlY3JldF9rZXkiO3M6MDoiIjt9czo2OiJoZWlnaHQiO3M6MzoiMjAwIjtzOjk6ImRpcmVjdGlvbiI7czozOiJsdHIiO3M6NzoidG9vbGJhciI7czozOiJ5ZXMiO3M6Njoic291cmNlIjtzOjM6InllcyI7czo1OiJmb2N1cyI7czoyOiJubyI7czoxMDoiYXV0b3Jlc2l6ZSI7czozOiJ5ZXMiO3M6NToiZml4ZWQiO3M6Mjoibm8iO3M6MTI6ImNvbnZlcnRsaW5rcyI7czozOiJ5ZXMiO3M6MTE6ImNvbnZlcnRkaXZzIjtzOjM6InllcyI7czo3OiJvdmVybGF5IjtzOjM6InllcyI7czoxMzoib2JzZXJ2ZWltYWdlcyI7czozOiJ5ZXMiO3M6OToic2hvcnRjdXRzIjtzOjM6InllcyI7czozOiJhaXIiO3M6Mjoibm8iO3M6Mzoid3ltIjtzOjI6Im5vIjtzOjg6InByb3RvY29sIjtzOjM6InllcyI7czoxODoiYWxsb3dlZHRhZ3Nfb3B0aW9uIjtzOjc6ImRlZmF1bHQiO3M6MTE6ImFsbG93ZWR0YWdzIjthOjA6e31zOjE0OiJmb3JtYXR0aW5ndGFncyI7YTo3OntpOjA7czoxOiJwIjtpOjE7czoxMDoiYmxvY2txdW90ZSI7aToyO3M6MzoicHJlIjtpOjM7czoyOiJoMSI7aTo0O3M6MjoiaDIiO2k6NTtzOjI6ImgzIjtpOjY7czoyOiJoNCI7fXM6ODoibGFuZ3VhZ2UiO3M6MjoiZW4iO3M6ODoiY3NzX2ZpbGUiO3M6MDoiIjtzOjExOiJlZGl0b3JfY29uZiI7czoxOiIzIjt9fQ=='),
+(3, 1, 12, NULL, 'img', 'Image', '', 'file', 'y', 'n', 0, '10%', 'YToyOntzOjk6ImRpcmVjdG9yeSI7czozOiJhbGwiO3M6MTI6ImNvbnRlbnRfdHlwZSI7czozOiJhbGwiO30='),
+(4, 1, 12, NULL, 'headline', 'Headline', '', 'text', 'y', 'n', 1, '30%', 'YTo0OntzOjQ6Im1heGwiO3M6MzoiMTQwIjtzOjk6Im11bHRpbGluZSI7czoxOiJ5IjtzOjM6ImZtdCI7czo0OiJub25lIjtzOjM6ImRpciI7czozOiJsdHIiO30='),
+(5, 1, 12, NULL, 'content', 'Content', '', 'editor', 'y', 'n', 2, '', 'YToxOntzOjY6ImVkaXRvciI7YToyOTp7czoxNToiZWRpdG9yX3NldHRpbmdzIjtzOjEwOiJwcmVkZWZpbmVkIjtzOjc6ImJ1dHRvbnMiO2E6MzA6e2k6MDtzOjQ6Imh0bWwiO2k6MTtzOjE6InwiO2k6MjtzOjEwOiJmb3JtYXR0aW5nIjtpOjM7czoxOiJ8IjtpOjQ7czo0OiJib2xkIjtpOjU7czo2OiJpdGFsaWMiO2k6NjtzOjc6ImRlbGV0ZWQiO2k6NztzOjE6InwiO2k6ODtzOjEzOiJ1bm9yZGVyZWRsaXN0IjtpOjk7czoxMToib3JkZXJlZGxpc3QiO2k6MTA7czo3OiJvdXRkZW50IjtpOjExO3M6NjoiaW5kZW50IjtpOjEyO3M6MToifCI7aToxMztzOjQ6ImxpbmsiO2k6MTQ7czo1OiJpbWFnZSI7aToxNTtzOjU6InZpZGVvIjtpOjE2O3M6NDoiZmlsZSI7aToxNztzOjU6InRhYmxlIjtpOjE4O3M6MToifCI7aToxOTtzOjk6ImZvbnRjb2xvciI7aToyMDtzOjk6ImJhY2tjb2xvciI7aToyMTtzOjE6InwiO2k6MjI7czo5OiJhbGlnbmxlZnQiO2k6MjM7czoxMToiYWxpZ25jZW50ZXIiO2k6MjQ7czoxMDoiYWxpZ25yaWdodCI7aToyNTtzOjc6Imp1c3RpZnkiO2k6MjY7czoxOiJ8IjtpOjI3O3M6MTQ6Imhvcml6b250YWxydWxlIjtpOjI4O3M6MTE6InBhc3RlX3BsYWluIjtpOjI5O3M6MToifCI7fXM6MTQ6InVwbG9hZF9zZXJ2aWNlIjtzOjU6ImxvY2FsIjtzOjIwOiJmaWxlX3VwbG9hZF9sb2NhdGlvbiI7czoxOiIwIjtzOjIxOiJpbWFnZV91cGxvYWRfbG9jYXRpb24iO3M6MToiMCI7czoxNDoiaW1hZ2VfYnJvd3NpbmciO3M6MzoieWVzIjtzOjEyOiJpbWFnZV9zdWJkaXIiO3M6MzoieWVzIjtzOjI6InMzIjthOjQ6e3M6NDoiZmlsZSI7YToxOntzOjY6ImJ1Y2tldCI7czowOiIiO31zOjU6ImltYWdlIjthOjE6e3M6NjoiYnVja2V0IjtzOjA6IiI7fXM6MTQ6ImF3c19hY2Nlc3Nfa2V5IjtzOjA6IiI7czoxNDoiYXdzX3NlY3JldF9rZXkiO3M6MDoiIjt9czo2OiJoZWlnaHQiO3M6MzoiMjAwIjtzOjk6ImRpcmVjdGlvbiI7czozOiJsdHIiO3M6NzoidG9vbGJhciI7czozOiJ5ZXMiO3M6Njoic291cmNlIjtzOjM6InllcyI7czo1OiJmb2N1cyI7czoyOiJubyI7czoxMDoiYXV0b3Jlc2l6ZSI7czozOiJ5ZXMiO3M6NToiZml4ZWQiO3M6Mjoibm8iO3M6MTI6ImNvbnZlcnRsaW5rcyI7czozOiJ5ZXMiO3M6MTE6ImNvbnZlcnRkaXZzIjtzOjM6InllcyI7czo3OiJvdmVybGF5IjtzOjM6InllcyI7czoxMzoib2JzZXJ2ZWltYWdlcyI7czozOiJ5ZXMiO3M6OToic2hvcnRjdXRzIjtzOjM6InllcyI7czozOiJhaXIiO3M6Mjoibm8iO3M6Mzoid3ltIjtzOjI6Im5vIjtzOjg6InByb3RvY29sIjtzOjM6InllcyI7czoxODoiYWxsb3dlZHRhZ3Nfb3B0aW9uIjtzOjc6ImRlZmF1bHQiO3M6MTE6ImFsbG93ZWR0YWdzIjthOjA6e31zOjE0OiJmb3JtYXR0aW5ndGFncyI7YTo3OntpOjA7czoxOiJwIjtpOjE7czoxMDoiYmxvY2txdW90ZSI7aToyO3M6MzoicHJlIjtpOjM7czoyOiJoMSI7aTo0O3M6MjoiaDIiO2k6NTtzOjI6ImgzIjtpOjY7czoyOiJoNCI7fXM6ODoibGFuZ3VhZ2UiO3M6MjoiZW4iO3M6ODoiY3NzX2ZpbGUiO3M6MDoiIjtzOjExOiJlZGl0b3JfY29uZiI7czoxOiIzIjt9fQ=='),
+(6, 1, 12, NULL, 'link', 'Link', '', 'text', 'n', 'n', 3, '', 'YTozOntzOjQ6Im1heGwiO3M6MDoiIjtzOjM6ImZtdCI7czo0OiJub25lIjtzOjM6ImRpciI7czozOiJsdHIiO30='),
+(7, 1, 7, NULL, 'button_text', 'Button Text', '', 'text', 'n', 'n', 2, '', 'YTozOntzOjQ6Im1heGwiO3M6MDoiIjtzOjM6ImZtdCI7czo0OiJub25lIjtzOjM6ImRpciI7czozOiJsdHIiO30='),
+(8, 1, 7, NULL, 'link', 'File', '', 'file', 'n', 'n', 3, '', 'YToyOntzOjk6ImRpcmVjdG9yeSI7czozOiJhbGwiO3M6MTI6ImNvbnRlbnRfdHlwZSI7czozOiJhbGwiO30='),
+(9, 1, 25, NULL, 'image', 'Project Image', '', 'file', 'n', 'n', 1, '10%', 'YToyOntzOjk6ImRpcmVjdG9yeSI7czoxOiIxIjtzOjEyOiJjb250ZW50X3R5cGUiO3M6MzoiYWxsIjt9'),
+(10, 1, 25, NULL, 'headline', 'Body Headline', '', 'text', 'n', 'n', 2, '', 'YTo0OntzOjQ6Im1heGwiO3M6MzoiMTQwIjtzOjk6Im11bHRpbGluZSI7czoxOiJ5IjtzOjM6ImZtdCI7czo0OiJub25lIjtzOjM6ImRpciI7czozOiJsdHIiO30='),
+(11, 1, 25, NULL, 'content1', 'Body Content 1', '', 'editor', 'n', 'n', 3, '', 'YToxOntzOjY6ImVkaXRvciI7YToyOTp7czoxNToiZWRpdG9yX3NldHRpbmdzIjtzOjEwOiJwcmVkZWZpbmVkIjtzOjc6ImJ1dHRvbnMiO2E6MzA6e2k6MDtzOjQ6Imh0bWwiO2k6MTtzOjE6InwiO2k6MjtzOjEwOiJmb3JtYXR0aW5nIjtpOjM7czoxOiJ8IjtpOjQ7czo0OiJib2xkIjtpOjU7czo2OiJpdGFsaWMiO2k6NjtzOjc6ImRlbGV0ZWQiO2k6NztzOjE6InwiO2k6ODtzOjEzOiJ1bm9yZGVyZWRsaXN0IjtpOjk7czoxMToib3JkZXJlZGxpc3QiO2k6MTA7czo3OiJvdXRkZW50IjtpOjExO3M6NjoiaW5kZW50IjtpOjEyO3M6MToifCI7aToxMztzOjQ6ImxpbmsiO2k6MTQ7czo1OiJpbWFnZSI7aToxNTtzOjU6InZpZGVvIjtpOjE2O3M6NDoiZmlsZSI7aToxNztzOjU6InRhYmxlIjtpOjE4O3M6MToifCI7aToxOTtzOjk6ImZvbnRjb2xvciI7aToyMDtzOjk6ImJhY2tjb2xvciI7aToyMTtzOjE6InwiO2k6MjI7czo5OiJhbGlnbmxlZnQiO2k6MjM7czoxMToiYWxpZ25jZW50ZXIiO2k6MjQ7czoxMDoiYWxpZ25yaWdodCI7aToyNTtzOjc6Imp1c3RpZnkiO2k6MjY7czoxOiJ8IjtpOjI3O3M6MTQ6Imhvcml6b250YWxydWxlIjtpOjI4O3M6MTE6InBhc3RlX3BsYWluIjtpOjI5O3M6MToifCI7fXM6MTQ6InVwbG9hZF9zZXJ2aWNlIjtzOjU6ImxvY2FsIjtzOjIwOiJmaWxlX3VwbG9hZF9sb2NhdGlvbiI7czoxOiIwIjtzOjIxOiJpbWFnZV91cGxvYWRfbG9jYXRpb24iO3M6MToiMCI7czoxNDoiaW1hZ2VfYnJvd3NpbmciO3M6MzoieWVzIjtzOjEyOiJpbWFnZV9zdWJkaXIiO3M6MzoieWVzIjtzOjI6InMzIjthOjQ6e3M6NDoiZmlsZSI7YToxOntzOjY6ImJ1Y2tldCI7czowOiIiO31zOjU6ImltYWdlIjthOjE6e3M6NjoiYnVja2V0IjtzOjA6IiI7fXM6MTQ6ImF3c19hY2Nlc3Nfa2V5IjtzOjA6IiI7czoxNDoiYXdzX3NlY3JldF9rZXkiO3M6MDoiIjt9czo2OiJoZWlnaHQiO3M6MzoiMjAwIjtzOjk6ImRpcmVjdGlvbiI7czozOiJsdHIiO3M6NzoidG9vbGJhciI7czozOiJ5ZXMiO3M6Njoic291cmNlIjtzOjM6InllcyI7czo1OiJmb2N1cyI7czoyOiJubyI7czoxMDoiYXV0b3Jlc2l6ZSI7czozOiJ5ZXMiO3M6NToiZml4ZWQiO3M6Mjoibm8iO3M6MTI6ImNvbnZlcnRsaW5rcyI7czozOiJ5ZXMiO3M6MTE6ImNvbnZlcnRkaXZzIjtzOjM6InllcyI7czo3OiJvdmVybGF5IjtzOjM6InllcyI7czoxMzoib2JzZXJ2ZWltYWdlcyI7czozOiJ5ZXMiO3M6OToic2hvcnRjdXRzIjtzOjM6InllcyI7czozOiJhaXIiO3M6Mjoibm8iO3M6Mzoid3ltIjtzOjI6Im5vIjtzOjg6InByb3RvY29sIjtzOjM6InllcyI7czoxODoiYWxsb3dlZHRhZ3Nfb3B0aW9uIjtzOjc6ImRlZmF1bHQiO3M6MTE6ImFsbG93ZWR0YWdzIjthOjA6e31zOjE0OiJmb3JtYXR0aW5ndGFncyI7YTo3OntpOjA7czoxOiJwIjtpOjE7czoxMDoiYmxvY2txdW90ZSI7aToyO3M6MzoicHJlIjtpOjM7czoyOiJoMSI7aTo0O3M6MjoiaDIiO2k6NTtzOjI6ImgzIjtpOjY7czoyOiJoNCI7fXM6ODoibGFuZ3VhZ2UiO3M6MjoiZW4iO3M6ODoiY3NzX2ZpbGUiO3M6MDoiIjtzOjExOiJlZGl0b3JfY29uZiI7czoxOiIzIjt9fQ=='),
+(12, 1, 25, NULL, 'city', 'City', '', 'text', 'y', 'n', 0, '5%', 'YTozOntzOjQ6Im1heGwiO3M6MDoiIjtzOjM6ImZtdCI7czo0OiJub25lIjtzOjM6ImRpciI7czozOiJsdHIiO30='),
+(14, 1, 25, NULL, 'content2', 'Body Content 2', '', 'editor', 'n', 'n', 4, '', 'YToxOntzOjY6ImVkaXRvciI7YToyOTp7czoxNToiZWRpdG9yX3NldHRpbmdzIjtzOjEwOiJwcmVkZWZpbmVkIjtzOjc6ImJ1dHRvbnMiO2E6MzA6e2k6MDtzOjQ6Imh0bWwiO2k6MTtzOjE6InwiO2k6MjtzOjEwOiJmb3JtYXR0aW5nIjtpOjM7czoxOiJ8IjtpOjQ7czo0OiJib2xkIjtpOjU7czo2OiJpdGFsaWMiO2k6NjtzOjc6ImRlbGV0ZWQiO2k6NztzOjE6InwiO2k6ODtzOjEzOiJ1bm9yZGVyZWRsaXN0IjtpOjk7czoxMToib3JkZXJlZGxpc3QiO2k6MTA7czo3OiJvdXRkZW50IjtpOjExO3M6NjoiaW5kZW50IjtpOjEyO3M6MToifCI7aToxMztzOjQ6ImxpbmsiO2k6MTQ7czo1OiJpbWFnZSI7aToxNTtzOjU6InZpZGVvIjtpOjE2O3M6NDoiZmlsZSI7aToxNztzOjU6InRhYmxlIjtpOjE4O3M6MToifCI7aToxOTtzOjk6ImZvbnRjb2xvciI7aToyMDtzOjk6ImJhY2tjb2xvciI7aToyMTtzOjE6InwiO2k6MjI7czo5OiJhbGlnbmxlZnQiO2k6MjM7czoxMToiYWxpZ25jZW50ZXIiO2k6MjQ7czoxMDoiYWxpZ25yaWdodCI7aToyNTtzOjc6Imp1c3RpZnkiO2k6MjY7czoxOiJ8IjtpOjI3O3M6MTQ6Imhvcml6b250YWxydWxlIjtpOjI4O3M6MTE6InBhc3RlX3BsYWluIjtpOjI5O3M6MToifCI7fXM6MTQ6InVwbG9hZF9zZXJ2aWNlIjtzOjU6ImxvY2FsIjtzOjIwOiJmaWxlX3VwbG9hZF9sb2NhdGlvbiI7czoxOiIwIjtzOjIxOiJpbWFnZV91cGxvYWRfbG9jYXRpb24iO3M6MToiMCI7czoxNDoiaW1hZ2VfYnJvd3NpbmciO3M6MzoieWVzIjtzOjEyOiJpbWFnZV9zdWJkaXIiO3M6MzoieWVzIjtzOjI6InMzIjthOjQ6e3M6NDoiZmlsZSI7YToxOntzOjY6ImJ1Y2tldCI7czowOiIiO31zOjU6ImltYWdlIjthOjE6e3M6NjoiYnVja2V0IjtzOjA6IiI7fXM6MTQ6ImF3c19hY2Nlc3Nfa2V5IjtzOjA6IiI7czoxNDoiYXdzX3NlY3JldF9rZXkiO3M6MDoiIjt9czo2OiJoZWlnaHQiO3M6MzoiMjAwIjtzOjk6ImRpcmVjdGlvbiI7czozOiJsdHIiO3M6NzoidG9vbGJhciI7czozOiJ5ZXMiO3M6Njoic291cmNlIjtzOjM6InllcyI7czo1OiJmb2N1cyI7czoyOiJubyI7czoxMDoiYXV0b3Jlc2l6ZSI7czozOiJ5ZXMiO3M6NToiZml4ZWQiO3M6Mjoibm8iO3M6MTI6ImNvbnZlcnRsaW5rcyI7czozOiJ5ZXMiO3M6MTE6ImNvbnZlcnRkaXZzIjtzOjM6InllcyI7czo3OiJvdmVybGF5IjtzOjM6InllcyI7czoxMzoib2JzZXJ2ZWltYWdlcyI7czozOiJ5ZXMiO3M6OToic2hvcnRjdXRzIjtzOjM6InllcyI7czozOiJhaXIiO3M6Mjoibm8iO3M6Mzoid3ltIjtzOjI6Im5vIjtzOjg6InByb3RvY29sIjtzOjM6InllcyI7czoxODoiYWxsb3dlZHRhZ3Nfb3B0aW9uIjtzOjc6ImRlZmF1bHQiO3M6MTE6ImFsbG93ZWR0YWdzIjthOjA6e31zOjE0OiJmb3JtYXR0aW5ndGFncyI7YTo3OntpOjA7czoxOiJwIjtpOjE7czoxMDoiYmxvY2txdW90ZSI7aToyO3M6MzoicHJlIjtpOjM7czoyOiJoMSI7aTo0O3M6MjoiaDIiO2k6NTtzOjI6ImgzIjtpOjY7czoyOiJoNCI7fXM6ODoibGFuZ3VhZ2UiO3M6MjoiZW4iO3M6ODoiY3NzX2ZpbGUiO3M6MDoiIjtzOjExOiJlZGl0b3JfY29uZiI7czoxOiIzIjt9fQ=='),
+(15, 1, 25, NULL, 'video', 'Video URL', '', 'text', 'n', 'n', 5, '', 'YTozOntzOjQ6Im1heGwiO3M6MDoiIjtzOjM6ImZtdCI7czo0OiJub25lIjtzOjM6ImRpciI7czozOiJsdHIiO30='),
+(16, 1, 35, NULL, 'icon', 'Icon', '', 'text', 'y', 'n', 0, '33%', 'YTozOntzOjQ6Im1heGwiO3M6MDoiIjtzOjM6ImZtdCI7czo1OiJ4aHRtbCI7czozOiJkaXIiO3M6MzoibHRyIjt9'),
+(17, 1, 35, NULL, 'content', 'Content', '', 'text', 'y', 'n', 2, '', 'YTo0OntzOjQ6Im1heGwiO3M6MDoiIjtzOjk6Im11bHRpbGluZSI7czoxOiJ5IjtzOjM6ImZtdCI7czo0OiJub25lIjtzOjM6ImRpciI7czozOiJsdHIiO30='),
+(18, 1, 39, NULL, 'icon', 'Icon', '', 'text', 'n', 'n', 0, '5%', 'YTozOntzOjQ6Im1heGwiO3M6MDoiIjtzOjM6ImZtdCI7czo1OiJ4aHRtbCI7czozOiJkaXIiO3M6MzoibHRyIjt9'),
+(19, 1, 39, NULL, 'content', 'Content', '', 'text', 'n', 'n', 1, '', 'YTozOntzOjQ6Im1heGwiO3M6MDoiIjtzOjM6ImZtdCI7czo0OiJub25lIjtzOjM6ImRpciI7czozOiJsdHIiO30='),
+(20, 1, 42, NULL, 'icon', 'Icon', '', 'text', 'y', 'n', 0, '10%', 'YTozOntzOjQ6Im1heGwiO3M6MDoiIjtzOjM6ImZtdCI7czo1OiJ4aHRtbCI7czozOiJkaXIiO3M6MzoibHRyIjt9'),
+(21, 1, 42, NULL, 'content', 'Content', '', 'text', 'y', 'n', 1, '', 'YTozOntzOjQ6Im1heGwiO3M6MDoiIjtzOjM6ImZtdCI7czo0OiJub25lIjtzOjM6ImRpciI7czozOiJsdHIiO30='),
+(24, 1, 46, NULL, 'bg', 'Background', '', 'file', 'n', 'n', 0, '33%', 'YToyOntzOjk6ImRpcmVjdG9yeSI7czozOiJhbGwiO3M6MTI6ImNvbnRlbnRfdHlwZSI7czozOiJhbGwiO30='),
+(25, 1, 46, NULL, 'headline', 'Headline', '', 'text', 'n', 'n', 1, '', 'YTo0OntzOjQ6Im1heGwiO3M6MzoiMTQwIjtzOjk6Im11bHRpbGluZSI7czoxOiJ5IjtzOjM6ImZtdCI7czo0OiJub25lIjtzOjM6ImRpciI7czozOiJsdHIiO30='),
+(26, 1, 46, NULL, 'content', 'Content', '', 'editor', 'n', 'n', 2, '', 'YToxOntzOjY6ImVkaXRvciI7YToyOTp7czoxNToiZWRpdG9yX3NldHRpbmdzIjtzOjEwOiJwcmVkZWZpbmVkIjtzOjc6ImJ1dHRvbnMiO2E6MzA6e2k6MDtzOjQ6Imh0bWwiO2k6MTtzOjE6InwiO2k6MjtzOjEwOiJmb3JtYXR0aW5nIjtpOjM7czoxOiJ8IjtpOjQ7czo0OiJib2xkIjtpOjU7czo2OiJpdGFsaWMiO2k6NjtzOjc6ImRlbGV0ZWQiO2k6NztzOjE6InwiO2k6ODtzOjEzOiJ1bm9yZGVyZWRsaXN0IjtpOjk7czoxMToib3JkZXJlZGxpc3QiO2k6MTA7czo3OiJvdXRkZW50IjtpOjExO3M6NjoiaW5kZW50IjtpOjEyO3M6MToifCI7aToxMztzOjQ6ImxpbmsiO2k6MTQ7czo1OiJpbWFnZSI7aToxNTtzOjU6InZpZGVvIjtpOjE2O3M6NDoiZmlsZSI7aToxNztzOjU6InRhYmxlIjtpOjE4O3M6MToifCI7aToxOTtzOjk6ImZvbnRjb2xvciI7aToyMDtzOjk6ImJhY2tjb2xvciI7aToyMTtzOjE6InwiO2k6MjI7czo5OiJhbGlnbmxlZnQiO2k6MjM7czoxMToiYWxpZ25jZW50ZXIiO2k6MjQ7czoxMDoiYWxpZ25yaWdodCI7aToyNTtzOjc6Imp1c3RpZnkiO2k6MjY7czoxOiJ8IjtpOjI3O3M6MTQ6Imhvcml6b250YWxydWxlIjtpOjI4O3M6MTE6InBhc3RlX3BsYWluIjtpOjI5O3M6MToifCI7fXM6MTQ6InVwbG9hZF9zZXJ2aWNlIjtzOjU6ImxvY2FsIjtzOjIwOiJmaWxlX3VwbG9hZF9sb2NhdGlvbiI7czoxOiIwIjtzOjIxOiJpbWFnZV91cGxvYWRfbG9jYXRpb24iO3M6MToiMCI7czoxNDoiaW1hZ2VfYnJvd3NpbmciO3M6MzoieWVzIjtzOjEyOiJpbWFnZV9zdWJkaXIiO3M6MzoieWVzIjtzOjI6InMzIjthOjQ6e3M6NDoiZmlsZSI7YToxOntzOjY6ImJ1Y2tldCI7czowOiIiO31zOjU6ImltYWdlIjthOjE6e3M6NjoiYnVja2V0IjtzOjA6IiI7fXM6MTQ6ImF3c19hY2Nlc3Nfa2V5IjtzOjA6IiI7czoxNDoiYXdzX3NlY3JldF9rZXkiO3M6MDoiIjt9czo2OiJoZWlnaHQiO3M6MzoiMjAwIjtzOjk6ImRpcmVjdGlvbiI7czozOiJsdHIiO3M6NzoidG9vbGJhciI7czozOiJ5ZXMiO3M6Njoic291cmNlIjtzOjM6InllcyI7czo1OiJmb2N1cyI7czoyOiJubyI7czoxMDoiYXV0b3Jlc2l6ZSI7czozOiJ5ZXMiO3M6NToiZml4ZWQiO3M6Mjoibm8iO3M6MTI6ImNvbnZlcnRsaW5rcyI7czozOiJ5ZXMiO3M6MTE6ImNvbnZlcnRkaXZzIjtzOjM6InllcyI7czo3OiJvdmVybGF5IjtzOjM6InllcyI7czoxMzoib2JzZXJ2ZWltYWdlcyI7czozOiJ5ZXMiO3M6OToic2hvcnRjdXRzIjtzOjM6InllcyI7czozOiJhaXIiO3M6Mjoibm8iO3M6Mzoid3ltIjtzOjI6Im5vIjtzOjg6InByb3RvY29sIjtzOjM6InllcyI7czoxODoiYWxsb3dlZHRhZ3Nfb3B0aW9uIjtzOjc6ImRlZmF1bHQiO3M6MTE6ImFsbG93ZWR0YWdzIjthOjA6e31zOjE0OiJmb3JtYXR0aW5ndGFncyI7YTo3OntpOjA7czoxOiJwIjtpOjE7czoxMDoiYmxvY2txdW90ZSI7aToyO3M6MzoicHJlIjtpOjM7czoyOiJoMSI7aTo0O3M6MjoiaDIiO2k6NTtzOjI6ImgzIjtpOjY7czoyOiJoNCI7fXM6ODoibGFuZ3VhZ2UiO3M6MjoiZW4iO3M6ODoiY3NzX2ZpbGUiO3M6MDoiIjtzOjExOiJlZGl0b3JfY29uZiI7czoxOiIzIjt9fQ=='),
+(22, 1, 42, NULL, 'link', 'Link', '', 'text', 'y', 'n', 2, '', 'YTozOntzOjQ6Im1heGwiO3M6MDoiIjtzOjM6ImZtdCI7czo0OiJub25lIjtzOjM6ImRpciI7czozOiJsdHIiO30='),
+(23, 1, 35, NULL, 'headline', 'Headline', '', 'text', 'n', 'n', 1, '', 'YTozOntzOjQ6Im1heGwiO3M6MDoiIjtzOjM6ImZtdCI7czo0OiJub25lIjtzOjM6ImRpciI7czozOiJsdHIiO30=');
 
 -- --------------------------------------------------------
 
@@ -1222,22 +1532,72 @@ CREATE TABLE IF NOT EXISTS `exp_matrix_data` (
   `col_id_4` text,
   `col_id_5` text,
   `col_id_6` text,
+  `col_id_7` text,
+  `col_id_8` text,
+  `col_id_9` text,
+  `col_id_10` text,
+  `col_id_11` text,
+  `col_id_12` text,
+  `col_id_14` text,
+  `col_id_15` text,
+  `col_id_16` text,
+  `col_id_17` text,
+  `col_id_18` text,
+  `col_id_19` text,
+  `col_id_20` text,
+  `col_id_21` text,
+  `col_id_22` text,
+  `col_id_23` text,
+  `col_id_24` text,
+  `col_id_25` text,
+  `col_id_26` text,
   PRIMARY KEY (`row_id`),
   KEY `site_id` (`site_id`),
   KEY `entry_id` (`entry_id`),
   KEY `field_id` (`field_id`),
   KEY `var_id` (`var_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=36 ;
 
 --
 -- Dumping data for table `exp_matrix_data`
 --
 
-INSERT INTO `exp_matrix_data` (`row_id`, `site_id`, `entry_id`, `field_id`, `var_id`, `is_draft`, `row_order`, `col_id_1`, `col_id_2`, `col_id_3`, `col_id_4`, `col_id_5`, `col_id_6`) VALUES
-(1, 1, 13, 7, NULL, 0, 1, 'Universities', '<p>\n	Randall Lewis Health Policy Fellows are enroled in graduate programs at local universities. They are selected to work with participating municipal leadership on Healthy Communities intiatives. The Fellow is placed with no cost to the city or agency, but we do ask that you participate in maintaining the quality of the fellowship program for our region.\n</p>\n<p>\n	If you are interested in working with a Fellow for 2013-2014, please take a moment to complete our interest form.\n</p>', NULL, NULL, NULL, NULL),
-(2, 1, 13, 7, NULL, 0, 2, 'Students', '<p>\n	Randall Lewis Health Policy Fellows are enroled in graduate programs at local universities. They are selected to work with participating municipal leadership on Healthy Communities intiatives. The Fellow is placed with no cost to the city or agency, but we do ask that you participate in maintaining the quality of the fellowship program for our region.\n</p>\n<p>\n	If you are interested in working with a Fellow for 2013-2014, please take a moment to complete our interest form.\n</p>', NULL, NULL, NULL, NULL),
-(3, 1, 13, 7, NULL, 0, 3, 'Cities / Agencies', '<p>\n	Randall Lewis Health Policy Fellows are enroled in graduate programs at local universities. They are selected to work with participating municipal leadership on Healthy Communities intiatives. The Fellow is placed with no cost to the city or agency, but we do ask that you participate in maintaining the quality of the fellowship program for our region.\n</p>\n<p>\n	If you are interested in working with a Fellow for 2013-2014, please take a moment to complete our interest form.\n</p>', NULL, NULL, NULL, NULL),
-(4, 1, 14, 12, NULL, 0, 1, NULL, NULL, '{filedir_1}10219_1business_group.jpg', 'Randall Lewis Health Policy Fellowship', '<p>\n	Your donation to the Partners for Better Health Policy Fellowships will help us create a better future in the Inland Empire.\n</p>\n<p>\n	We are now seeking applications for The Randall Lewis Health Policy Fellowship for the 2011-2012 academic year. This prestigious and competitive fellowship is the first of its kind in the Inland Empire and will provide a unique opportunity to work directly with local communities in improving residents'' health. Five to seven applicants will be selected to serve as interns in cities within the Inland Empire. Fellows will develop the skills required to successfully influence local and regional health policy. We will have a direct influence on shaping the little p in health policy to make a difference in our communities.between the communities and the health sector.\n</p>', '');
+INSERT INTO `exp_matrix_data` (`row_id`, `site_id`, `entry_id`, `field_id`, `var_id`, `is_draft`, `row_order`, `col_id_1`, `col_id_2`, `col_id_3`, `col_id_4`, `col_id_5`, `col_id_6`, `col_id_7`, `col_id_8`, `col_id_9`, `col_id_10`, `col_id_11`, `col_id_12`, `col_id_14`, `col_id_15`, `col_id_16`, `col_id_17`, `col_id_18`, `col_id_19`, `col_id_20`, `col_id_21`, `col_id_22`, `col_id_23`, `col_id_24`, `col_id_25`, `col_id_26`) VALUES
+(1, 1, 13, 7, NULL, 0, 1, 'Universities', '<p>\n	 Randall Lewis Health Policy Fellows are enroled in graduate programs at local universities. They are selected to work with participating municipal leadership on Healthy Communities intiatives. The Fellow is placed with no cost to the city or agency, but we do ask that you participate in maintaining the quality of the fellowship program for our region.\n</p>\n<p>\n	 If you are interested in working with a Fellow for 2013-2014, please take a moment to complete our interest form.\n</p>', NULL, NULL, NULL, NULL, 'Download', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 1, 13, 7, NULL, 0, 2, 'Students', '<p>\n	 Randall Lewis Health Policy Fellows are enroled in graduate programs at local universities. They are selected to work with participating municipal leadership on Healthy Communities intiatives. The Fellow is placed with no cost to the city or agency, but we do ask that you participate in maintaining the quality of the fellowship program for our region.\n</p>\n<p>\n	 If you are interested in working with a Fellow for 2013-2014, please take a moment to complete our interest form.\n</p>', NULL, NULL, NULL, NULL, 'Download', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, 1, 13, 7, NULL, 0, 3, 'Cities / Agencies', '<p>\n	 Randall Lewis Health Policy Fellows are enroled in graduate programs at local universities. They are selected to work with participating municipal leadership on Healthy Communities intiatives. The Fellow is placed with no cost to the city or agency, but we do ask that you participate in maintaining the quality of the fellowship program for our region.\n</p>\n<p>\n	 If you are interested in working with a Fellow for 2013-2014, please take a moment to complete our interest form.\n</p>', NULL, NULL, NULL, NULL, 'Download', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(4, 1, 14, 12, NULL, 0, 1, NULL, NULL, '{filedir_1}10219_1business_group.jpg', 'Randall Lewis Health Policy Fellowship', '<p>\n	 Your donation to the Partners for Better Health Policy Fellowships will help us create a better future in the Inland Empire.\n</p>\n<p>\n	 We are now seeking applications for The Randall Lewis Health Policy Fellowship for the 2011-2012 academic year. This prestigious and competitive fellowship is the first of its kind in the Inland Empire and will provide a unique opportunity to work directly with local communities in improving residents'' health. Five to seven applicants will be selected to serve as interns in cities within the Inland Empire. Fellows will develop the skills required to successfully influence local and regional health policy. We will have a direct influence on shaping the little p in health policy to make a difference in our communities.between the communities and the health sector.\n</p>', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(5, 1, 14, 12, NULL, 0, 2, NULL, NULL, '{filedir_1}10219_1business_group.jpg', 'Randall Lewis Health Policy Fellowship', '<p>\n	Your donation to the Partners for Better Health Policy Fellowships will help us create a better future in the Inland Empire.\n</p>\n<p>\n	We are now seeking applications for The Randall Lewis Health Policy Fellowship for the 2011-2012 academic year. This prestigious and competitive fellowship is the first of its kind in the Inland Empire and will provide a unique opportunity to work directly with local communities in improving residents'' health. Five to seven applicants will be selected to serve as interns in cities within the Inland Empire. Fellows will develop the skills required to successfully influence local and regional health policy. We will have a direct influence on shaping the little p in health policy to make a difference in our communities.between the communities and the health sector.\n</p>', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(6, 1, 22, 25, NULL, 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{filedir_1}pbh_home-header.jpg', 'Ontario', '<p>\n	This is Ontario\n</p>', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(7, 1, 23, 25, NULL, 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{filedir_1}10219_1business_group.jpg', 'Healthy Cities Initiative', '<p>\n	This is Loma Linda\n</p>', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(8, 1, 4, 25, NULL, 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{filedir_1}ll.png', 'Healthy Cities Initiative', '<h1>At A Glance</h1>\n<p>\n	     Population – 23,296 (nearly triples during workdays)\n</p>\n<p>\n	     Median Income - $50,643\n</p>\n<p>\n	     Median Age – 33.7\n</p>\n<h1>Key Fact</h1>\n<p>\n	     Known as a Blue Zone with commonly observed longevity exceeding 100 years\n</p>\n<h1>Key Projects &amp; Initiatives</h1>\n<h2>Healthy Communities By Design Summit 2012</h2>\n<p>\n	     Opportunity to attend and present on Healthy Loma Linda efforts\n</p>\n<h2></h2>\n<h2>Launching and re-energizing Healthy Loma Linda efforts</h2>\n<p>\n	     Working with local partners to improve farmer’s market and increase healthy food options, address walkability and bicycle safety, quality of built environment\n</p>', 'Loma Linda', '<h1>Supporting Universities</h1>\n<p>\n	             Loma Linda University\n</p>\n<h1>University Contact</h1>\n<p>\n	     Andrejs Galenieks\n</p>\n<h1>City Preceptor</h1>\n<p>\n	     Konrad Bolowich\n</p>', 'https://player.vimeo.com/video/7030292?title=0&amp;byline=0&amp;portrait=0&amp;', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(9, 1, 4, 25, NULL, 0, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{filedir_1}ont1.png', 'Healthy Cities Initiative', '<h1>At A Glance</h1>\n<p>\n	     Population: 173,690\n</p>\n<p>\n	     Median Income:  $53,018\n</p>\n<p>\n	     Median Age: 29 years old\n</p>\n<h1>Key Fact</h1>\n<p>\n	     The Gateway to Southern CA takes its name from the Ontario Model Colony development in 1882 by the Chaffey brothers, Canadian engineers, after their home province of Ontario, Canada.\n</p>\n<h1>Key Projects &amp; Initiatives</h1>\n<h2>\n<p>\n	 <span style="font-weight: normal;">Access to Health Care for Target Population</span>\n</p>\n<p>\n	 <span style="font-weight: normal;">Needs Assessment - Focus Group Meeting</span>\n</p>\n<p>\n	 <span style="font-weight: normal;">Junior Public Health Internship Program</span>\n</p>\n</h2>\n<h2></h2>\n<h2>Key Project</h2>\n<p>\n	     In the context of Affordability Care Act implementation, establish an action plan with partner organizations to initiate outreach promotion, provide appropriate resources &amp; information to facilitate health care access for a target population and help achieve better care outcomes long term.\n</p>', 'Ontario', '<h1>Supporting Universities</h1>\n<p>\n	     Claremont Graduate University\n</p>\n<h1>University Contact</h1>\n<p>\n	     Joe Garbanzos\n</p>\n<h1>City Preceptor</h1>\n<p>\n	     Karen Thompson\n</p>', 'https://player.vimeo.com/video/7030292?title=0&amp;byline=0&amp;portrait=0&amp;', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(10, 1, 4, 25, NULL, 0, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{filedir_1}sb.jpg', 'Healthy Cities Initiative', '<h1>At A Glance</h1>\n<p>\n	    Population: 2,035,210\n</p>\n<p>\n	      Median Income: $53,364\n</p>\n<p>\n	      Median Age: 31.9 years\n</p>\n<h1>Key Fact</h1>\n<p>\n	    The City of San Bernardino has the most elected officials of any city in California (7 council members + Mayor + Treasurer + City Attorney + City Clerk)\n</p>\n<h1>Key Projects &amp; Initiatives</h1>\n<h2></h2>\n<h2>1. Policy Briefs</h2>\n<p>\n	    1. Access to healthy food\n</p>\n<p>\n	      2. Open safe spaces for physical activity\n</p>\n<h2>2. HSBC Health Hubs Farm Share</h2>\n<p>\n	    HSBC is working with its partners to increase access to fresh fruits and vegetable in   underserved neighborhoods.\n</p>\n<h2>3. Healthy San Bernardino Junior Public Health Internship</h2>\n<p>\n	    Encourage students interested in health and public health in experiential learning   opportunities.\n</p>\n<h2>*Health Hubs</h2>\n<p>\n	    Place-based in San Bernardino where multiple partners are collaborating to improve the health of the community.\n</p>\n<p>\n	      14 identified health hubs in the city\n</p>', 'San Bernardino', '<h1>Supporting Universities</h1>\n<p>\n	          Loma Linda University\n</p>\n<h1>University Contact</h1>\n<p>\n	    Laura Acosta\n</p>\n<h1>City Preceptor</h1>\n<p>\n	    Cynthia Luna\n</p>', 'https://player.vimeo.com/video/7030292?title=0&amp;byline=0&amp;portrait=0&amp;', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(11, 1, 4, 25, NULL, 0, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{filedir_1}rialto.jpg', 'Healthy Cities Initiative', '<h1>At A Glance</h1>\n<p>\n	   Population – 100,438\n</p>\n<p>\n	   Median Income - $50,516\n</p>\n<p>\n	   Median Age – 28.5\n</p>\n<h1>Key Fact</h1>\n<p>\n	   The last orange grove in Rialto,  Adams Acres, delivers oranges to Pomona college twice a week\n</p>\n<h1>Key Projects &amp; Initiatives</h1>\n<h2></h2>\n<h2><span style="font-weight: normal;">Rialto’s Certified Farmers’ Market</span></h2>\n<p>\n	 <span style="font-weight: normal;">Initially seasonal market that expanded to a year-round market </span>\n</p>\n<p>\n	 <span style="font-weight: normal;">Opportunity to present Healthy Rialto programs </span>\n</p>\n<h2><span style="font-weight: normal;">Healthy Rialto Divisions and Programs</span></h2>\n<p>\n	 <span style="font-weight: normal;">Healthy Rialto Earth, Food, Active Living, Kids, &amp; Seniors</span>\n</p>\n<h2><span style="font-weight: normal;">Healthy Rialto Coalition Meetings</span></h2>\n<p>\n	 <span style="font-weight: normal;">Coordinate and implement healthy eating active living programs that are sustainable</span>\n</p>', 'Rialto', '<h1>Supporting Universities</h1>\n<p>\n	          Loma Linda University\n</p>\n<h1>University Contact</h1>\n<p>\n	   Laureen Nilo\n</p>\n<h1>City Preceptor</h1>\n<p>\n	   Barbara McGee\n</p>', 'https://player.vimeo.com/video/7030292?title=0&amp;byline=0&amp;portrait=0&amp;', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(12, 1, 4, 25, NULL, 0, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{filedir_1}fntn.jpg', 'Healthy Cities Initiative', '<h1>At A Glance</h1>\n<p>\n	   Population – 199,898 residents\n</p>\n<p>\n	   Median Income – $57,557\n</p>\n<p>\n	   Median Age – 28.7\n</p>\n<h1>Key Fact</h1>\n<p>\n	   Currently, ranked number 5 in the nation for the Let’s Move! Cities, Towns, and Counties Initiative\n</p>\n<h1>Key Projects &amp; Initiatives</h1>\n<h2></h2>\n<h2><span style="font-weight: normal;">Grant/Policy Research and Assistance</span></h2>\n<p>\n	 <span style="font-weight: normal;">Contributing editor for grant application for Kaiser Permanente Fontana Medical Center Community Benefits Program</span>\n</p>\n<h2><span style="font-weight: normal;">Community Outreach, Partnerships, and Events </span></h2>\n<p>\n	 <span style="font-weight: normal;">Provide support during outreach and collaboration events (e.g. Festival of Winter, Stakeholders’ Meeting, etc)</span>\n</p>\n<h2><span style="font-weight: normal;">Let’s Move! Cities, Towns, and Counties initiative </span></h2>\n<p>\n	 <span style="font-weight: normal;">Create a checklist of goals, provide technical support in accomplishing them, and develop and maintain online profile for City of Fontana</span>\n</p>', 'Fontana', '<h1>Supporting Universities</h1>\n<p>\n	          Loma Linda University\n</p>\n<h1>University Contact</h1>\n<p>\n	   Sidra Nasir\n</p>\n<h1>City Preceptor</h1>\n<p>\n	   Dede Benson\n</p>', 'https://player.vimeo.com/video/7030292?title=0&amp;byline=0&amp;portrait=0&amp;', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(13, 1, 1, 35, NULL, 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '&#128269;', '	 We create a collaborative effort to understand and interpret the health needs of the community.', NULL, NULL, NULL, NULL, NULL, 'Investigate', NULL, NULL, NULL),
+(14, 1, 1, 35, NULL, 0, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '&#128161;', '	 We gather our findings and conceptualize solutions.', NULL, NULL, NULL, NULL, NULL, 'Conceptualize', NULL, NULL, NULL),
+(15, 1, 1, 35, NULL, 0, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '&#128255;', '	 We incubate those solutions by drawing on a network of resources.', NULL, NULL, NULL, NULL, NULL, 'Incubate', NULL, NULL, NULL),
+(16, 1, 1, 39, NULL, 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '&#59172;', 'Cities', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(17, 1, 1, 39, NULL, 0, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '&#128213;', 'Universities', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(18, 1, 1, 39, NULL, 0, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '&#127891;', 'Students', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19, 1, 1, 39, NULL, 0, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '&#128710;', 'Businesses', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(20, 1, 1, 39, NULL, 0, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '&#128101;', 'Organizations', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21, 1, 1, 39, NULL, 0, 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '&#127810;', 'Health Systems', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22, 1, 1, 42, NULL, 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '&#128227;', 'Get Involved', '/get-involved', NULL, NULL, NULL, NULL),
+(23, 1, 1, 42, NULL, 0, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '&hearts;', 'Give', '/give', NULL, NULL, NULL, NULL),
+(24, 1, 1, 42, NULL, 0, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '&#128213;', 'Learn More', '/about', NULL, NULL, NULL, NULL),
+(25, 1, 1, 46, NULL, 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{filedir_1}pbh_home-header.jpg', 'San Bernardino', '<p>\n	Joined Healthy Cities in 2010\n</p>\n<p>\n	At a glance:\n</p>\n<p>\n	Population: 2,035,210\n</p>\n<p>\n	  Median Income: $53,364\n</p>\n<p>\n	  Median Age: 31.9 years\n</p>\n<p>\n	The City of San Bernardino has the most elected officials of any city in California (7 council members + Mayor + Treasurer + City Attorney + City Clerk)\n</p>'),
+(26, 1, 1, 46, NULL, 0, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{filedir_1}pbh_home-header.jpg', 'Pasadena', '<p>\n	Joined Healthy Cities in 1989\n</p>\n<p>\n	At a glance:\n</p>\n<p>\n	Population- 137,122\n</p>\n<p>\n	  Median Income- $58,402\n</p>\n<p>\n	Median Age- 37.2\n</p>\n<p>\n	One of only three cities in the state of California that maintains its own independent local health jurisdiction\n</p>'),
+(27, 1, 1, 46, NULL, 0, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{filedir_1}10219_1business_group.jpg', 'Loma Linda', '<p>\n	Joined Healthy Cities in 2012\n</p>\n<p>\n	At a glance:\n</p>\n<p>\n	Population – 23,296 (nearly triples during workdays)\n</p>\n<p>\n	Median Income - $50,643\n</p>\n<p>\n	Median Age – 33.7\n</p>\n<p>\n	Known as a Blue Zone with commonly observed longevity exceeding 100 years\n</p>'),
+(28, 1, 4, 25, NULL, 0, 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{filedir_1}psdna.png', 'Healthy Cities Initiative', '<h1>At A Glance</h1>\n<p>\n	    Population- 137,122\n</p>\n<p>\n	      Median Income- $58,402\n</p>\n<p>\n	    Median Age- 37.2\n</p>\n<h1>Key Fact</h1>\n<p>\n	    One of only three cities in the state of California that maintains its own independent local health jurisdiction\n</p>\n<h1>Key Projects &amp; Initiatives</h1>\n<h2></h2>\n<h2><span style="font-weight: normal;">2013-2016 School/City Work Plan</span></h2>\n<p>\n	<span style="font-weight: normal;">A collaborative effort to strategically track the progress of children and families through a variety of conditions for learning.</span>\n</p>\n<h2><span style="font-weight: normal;">Infant, Children, Youth and Family Master Plan</span></h2>\n<p>\n	<span style="font-weight: normal;">A long range strategic planning document that will set measurable goals and objectives to support and enrich the lives of children, youth, and families.</span>\n</p>\n<h2><span style="font-weight: normal;">Policy on Children, Youth, and Families, 2013 Report</span></h2>\n<p>\n	<span style="font-weight: normal;">Comprehensive review of key issues that make the City of Pasadena a family friendly and nurturing community.</span>\n</p>', 'Pasadena', '<h1>Supporting Universities</h1>\n<p>\n	    Loma Linda University\n</p>\n<h1>University Contact</h1>\n<p>\n	    Bode Adeniyi\n</p>\n<h1>City Preceptor</h1>\n<p>\n	   Mercy Santoro\n</p>', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(29, 1, 4, 25, NULL, 0, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{filedir_1}desrt.jpg', 'Healthy Cities Initiative', '<h1>At A Glance</h1>\n<p>\n	   Population – 339,492\n</p>\n<p>\n	   Median Income - $48,463\n</p>\n<p>\n	   Median Age – 30.5\n</p>\n<h1>Key Fact</h1>\n<p>\n	   The late Roy Rogers retired in Apple Valley\n</p>\n<h1>Key Projects &amp; Initiatives</h1>\n<h2></h2>\n<h2><span style="font-weight: normal;">Healthy Vending Machine</span></h2>\n<p>\n	 <span style="font-weight: normal;">Developed an audit tool, assessed and presented data to the Healthy Victorville meeting on the vending machines in the city</span>\n</p>\n<h2><span style="font-weight: normal;">Matthew’s Park</span></h2>\n<p>\n	 <span style="font-weight: normal;">Working to purchase equipment and dedicate a park to Matthew in Adelanto</span>\n</p>\n<h2><span style="font-weight: normal;">Joint Use Agreement</span></h2>\n<p>\n	 <span style="font-weight: normal;">Shot a video that will highlight the importance of policy in the city</span>\n</p>\n<p>\n	 <span style="font-weight: normal;">  Developing a joint use agreement for the use of Adelanto High School</span>\n</p>\n<h2><span style="font-weight: normal;">Pipeline Program</span></h2>\n<p>\n	 <span style="font-weight: normal;">Junior Public Health Internship</span>\n</p>\n<p>\n	 <span style="font-weight: normal;">Encourage students interested in health and public health in experiential   learning opportunities</span>\n</p>', 'High Desert', '<h1>Supporting Universities</h1>\n<p>\n	   Loma Linda University\n</p>\n<h1>University Contact</h1>\n<p>\n	   Sendy Sanchez\n</p>\n<h1>City Preceptor</h1>\n<p>\n	   Allen Christensen\n</p>', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(30, 1, 4, 25, NULL, 0, 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{filedir_1}rc.png', 'Healthy Cities Initiative', '<h1>At A Glance</h1>\n<p>\n	  Population: 168,000\n</p>\n<p>\n	  Median Income: $81,000\n</p>\n<p>\n	  Median Age: 32.8\n</p>\n<h1>Key Fact</h1>\n<p>\n	  Rancho Cucamonga was home to the first commercial winery founded in 1889\n</p>\n<h1>Key Projects &amp; Initiatives</h1>\n<h2></h2>\n<h2><span style="font-weight: normal;">Bringing Health Home Initiative  </span></h2>\n<p>\n	<span style="font-weight: normal;">Provides financial incentives to Southwest Cucamonga residents at the Farmer’s Market</span>\n</p>\n<h2><span style="font-weight: normal;">Healthy RC Dining Program</span></h2>\n<p>\n	<span style="font-weight: normal;">Working on providing healthier dining options at restaurants within the City</span>\n</p>\n<h2><span style="font-weight: normal;">Breastfeeding Workplace Policy</span></h2>\n<p>\n	<span style="font-weight: normal;">Creating a policy to accommodate lactating mothers at the workplace</span>\n</p>', 'Rancho Cucamonga', '<h1>Supporting Universities</h1>\n<p>\n	  Claremont Graduate University\n</p>\n<h1>University Contact</h1>\n<p>\n	  Uloma Ajuonu\n</p>\n<h1>City Preceptor</h1>\n<p>\n	  Ruben Brambila &amp; Michael Parmer\n</p>', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(31, 1, 4, 25, NULL, 0, 9, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{filedir_1}rim.jpg', 'Healthy Cities Initiative', '<h1><span style="color: rgb(0, 0, 0); font-weight: bold;">At A Glance</span></h1>\n<p>\n	  Population- 28,912\n</p>\n<p>\n	    Income- 40% of households are above $70,000\n</p>\n<p>\n	    &amp; 25% are below $30,000\n</p>\n<p>\n	    Median Age- 43.3\n</p>\n<h1>Key Fact</h1>\n<p>\n	  43% of households are seasonal recreational or occasional-use which means fluctuations in population seasonally\n</p>\n<h1>Key Projects &amp; Initiatives</h1>\n<h2></h2>\n<h2><span style="font-weight: normal;">Rim Communities Resource Network</span></h2>\n<p>\n	<span style="font-weight: normal;">Develop a Healthy Communities Action Plan</span>\n</p>\n<h2><span style="font-weight: normal;">Research</span></h2>\n<p>\n	<span style="font-weight: normal;">Complete secondary data analysis and plan future primary data collection</span>\n</p>', 'Rim', '<h1>Supporting Universities</h1>\n<p>\n	  Claremont Graduate University\n</p>\n<h1>University Contact</h1>\n<p>\n	  Alyssa De Santiago, MPH\n</p>\n<h1>City Preceptor</h1>\n<p>\n	  Miki Carpenter, PhD, MPH\n</p>', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(32, 1, 4, 25, NULL, 0, 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{filedir_1}jurupa.jpg', 'Healthy Cities Initiative', '<h1>At A Glance</h1>\n<p>\n	  Population: 95,004\n</p>\n<p>\n	  Median Income: $55,803\n</p>\n<p>\n	  Median Age: 27.8\n</p>\n<h1>Key Fact</h1>\n<p>\n	  “The Newest City In California”\n</p>\n<h1>Key Projects &amp; Initiatives</h1>\n<h2></h2>\n<h2><span style="font-weight: normal;">Safe Routes to School  </span></h2>\n<p>\n	<span style="font-weight: normal;">Working together with community stakeholders and County of Riverside to improve the safety of our students walking/biking to school</span>\n</p>\n<h2><span style="font-weight: normal;">Healthy Jurupa Valley Extravaganza!</span></h2>\n<p>\n	<span style="font-weight: normal;">Health and safety fair to generate community excitement and desire to be part of the visioning &amp; planning process of our Healthy Jurupa Valley Initiative   </span>\n</p>\n<p>\n	<span style="font-weight: normal;">Where: Community Center and Agate Park (JARPD)</span>\n</p>\n<p>\n	<span style="font-weight: normal;">  When: April 20, 2013</span>\n</p>\n<p>\n	<span style="font-weight: normal;">  Time: 10am – 3pm</span>\n</p>', 'Jurupa', '<h1>Supporting Universities</h1>\n<p>\n	  Claremont Graduate University\n</p>\n<h1>University Contact</h1>\n<p>\n	  Leticia Miranda\n</p>\n<h1>City Preceptor</h1>\n<p>\n	  Jose Campos\n</p>', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(33, 1, 4, 25, NULL, 0, 11, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{filedir_1}clr.gif', 'Healthy Cities Initiative', '<h1>At A Glance</h1>\n<p>\n	  Population: 35,143\n</p>\n<p>\n	  Median Income: $78,376\n</p>\n<p>\n	  Median Age: 38.6\n</p>\n<h1>Key Fact</h1>\n<p>\n	  Claremont has been a winner of the National Arbor Day Association’s Tree City USA award for the past 20 years\n</p>\n<h1>Key Projects &amp; Initiatives</h1>\n<h2></h2>\n<h2><span style="font-weight: normal;">Claremont Youth Health Fair </span></h2>\n<p>\n	<span style="font-weight: normal;">Creation of an annual health fair to provide free physicals as well as health and well-being information to our youth</span>\n</p>\n<h2><span style="font-weight: normal;">Community-Wide Status Update in Mental Health</span></h2>\n<p>\n	<span style="font-weight: normal;">Formal status report on the mental health service providers in our community and adoption of evaluation methodology </span>\n</p>\n<h2><span style="font-weight: normal;">Claremont Mental Health Provider Summit</span></h2>\n<p>\n	<span style="font-weight: normal;">Opportunity to provide cross collaboration across mental health organizations and present our status report findings</span>\n</p>', 'Claremont', '<h1>Supporting Universities</h1>\n<p>\n	  Claremont Graduate University\n</p>\n<h1>University Contact</h1>\n<p>\n	  Hannah Gordon\n</p>\n<h1>City Preceptor</h1>\n<p>\n	  Bill Pallotto\n</p>', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(34, 1, 4, 25, NULL, 0, 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{filedir_1}chino.png', 'Healthy Cities Initiative', '<h1>At A Glance</h1>\n<p>\n	 Population: 79,059\n</p>\n<p>\n	 Median Income: 60,000\n</p>\n<p>\n	 Median Age: 33.2\n</p>\n<h1>Key Fact</h1>\n<p>\n	 Largely agricultural in the past, but continues to provide dairy for much of Southern California\n</p>\n<h1>Key Projects &amp; Initiatives</h1>\n<h2></h2>\n<h2><span style="font-weight: normal;">Project 1</span></h2>\n<p>\n	 <span style="font-weight: normal;">Re-vitalize employee wellness program </span>\n</p>\n<h2><span style="font-weight: normal;">Project 2</span></h2>\n<p>\n	 <span style="font-weight: normal;">Encourage local business to be a part of the Healthy Chino Movement</span>\n</p>\n<h2><span style="font-weight: normal;">Key Project</span></h2>\n<p>\n	 <span style="font-weight: normal;">Research and compile information for policy change of vending machines to include healthy options</span>\n</p>', 'Chino', '<h1>Supporting Universities</h1>\n<p>\n	 Claremont Graduate University\n</p>\n<h1>University Contact</h1>\n<p>\n	 Gar-Wei Lee\n</p>\n<h1>City Preceptor</h1>\n<p>\n	 Karen Pacheco, Martha Hernandez\n</p>', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(35, 1, 4, 25, NULL, 0, 13, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{filedir_1}pomona.jpg', 'Healthy Cities Initiative', '<h1>At A Glance</h1>\n<p>\n	 Population: 149,058\n</p>\n<p>\n	 Median income: $48,973\n</p>\n<p>\n	 Median age: 29.5 years\n</p>\n<h1>Key Fact</h1>\n<p>\n	 Birthplace of Mark McGwire (73 home runs in 2001)\n</p>\n<h1>Key Projects &amp; Initiatives</h1>\n<h2></h2>\n<h2><span style="font-weight: normal;">Healthy Communities by Design Summit 2012  </span></h2>\n<p>\n	 <span style="font-weight: normal;">Represent Pomona in its inaugural year</span>\n</p>\n<h2><span style="font-weight: normal;">Youth and Family Master Plan</span></h2>\n<p>\n	 <span style="font-weight: normal;">Attend meetings and share ideas to foster coordination of services</span>\n</p>\n<h2><span style="font-weight: normal;">“Healthy Pomona” General Plan component</span></h2>\n<p>\n	 <span style="font-weight: normal;">In the forthcoming update to the city''s general plan, a new unique section will be added that unifies health promotion efforts and articulates the vision for improving the city''s health in the coming years</span>\n</p>', 'Pomona', '<h1>Supporting Universities</h1>\n<p>\n	 Claremont Graduate University\n</p>\n<h1>University Contact</h1>\n<p>\n	 Daniel Nuyujukian\n</p>\n<h1>City Preceptor</h1>\n<p>\n	 Andrea Rico\n</p>', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1332,7 +1692,7 @@ CREATE TABLE IF NOT EXISTS `exp_members` (
 --
 
 INSERT INTO `exp_members` (`member_id`, `group_id`, `username`, `screen_name`, `password`, `salt`, `unique_id`, `crypt_key`, `authcode`, `email`, `url`, `location`, `occupation`, `interests`, `bday_d`, `bday_m`, `bday_y`, `aol_im`, `yahoo_im`, `msn_im`, `icq`, `bio`, `signature`, `avatar_filename`, `avatar_width`, `avatar_height`, `photo_filename`, `photo_width`, `photo_height`, `sig_img_filename`, `sig_img_width`, `sig_img_height`, `ignore_list`, `private_messages`, `accept_messages`, `last_view_bulletins`, `last_bulletin_date`, `ip_address`, `join_date`, `last_visit`, `last_activity`, `total_entries`, `total_comments`, `total_forum_topics`, `total_forum_posts`, `last_entry_date`, `last_comment_date`, `last_forum_post_date`, `last_email_date`, `in_authorlist`, `accept_admin_email`, `accept_user_email`, `notify_by_default`, `notify_of_pm`, `display_avatars`, `display_signatures`, `parse_smileys`, `smart_notifications`, `language`, `timezone`, `localization_is_site_default`, `time_format`, `cp_theme`, `profile_theme`, `forum_theme`, `tracker`, `template_size`, `notepad`, `notepad_size`, `quick_links`, `quick_tabs`, `show_sidebar`, `pmember_id`, `rte_enabled`, `rte_toolset_id`) VALUES
-(1, 1, 'longdao', 'Long Dao', '12979c641bc3b4e40c73d02cf5bbf2e376d3ccfed770602e3081d3ad20f2893dabe1926fbab9daed15fa4a9016f481d66b80bd0cb7cf6692f0e513596e0e8467', '@b0R2Xi)WskwA85Id;(ae54:r'':Vim[Tx8o#&\\)8>P!K3}qi-Wxh''!#{Lbu}{>x1rkVB#|VoP.Uqa08##kp;xN3I^K~>)ATey^s@FFoQm4?Z5CT;0.]m"<}t+Cel|v~Q', '92f71572c4d8aa6251ef1aa88162af2731307147', 'f3d4626675be8404dae6ec4c194165296cdc6ec0', NULL, 'support@maven20.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'y', 0, 0, '127.0.0.1', 1375811349, 1376609979, 1376681330, 14, 0, 0, 0, 1376681149, 0, 0, 0, 'n', 'y', 'y', 'y', 'y', 'y', 'y', 'y', 'y', 'english', 'America/Los_Angeles', 'n', 'us', NULL, NULL, NULL, NULL, '28', NULL, '18', '', 'Template Manager|C=design&M=manager&tgpref=1|1', 'n', 0, 'y', 0);
+(1, 1, 'longdao', 'Long Dao', '12979c641bc3b4e40c73d02cf5bbf2e376d3ccfed770602e3081d3ad20f2893dabe1926fbab9daed15fa4a9016f481d66b80bd0cb7cf6692f0e513596e0e8467', '@b0R2Xi)WskwA85Id;(ae54:r'':Vim[Tx8o#&\\)8>P!K3}qi-Wxh''!#{Lbu}{>x1rkVB#|VoP.Uqa08##kp;xN3I^K~>)ATey^s@FFoQm4?Z5CT;0.]m"<}t+Cel|v~Q', '92f71572c4d8aa6251ef1aa88162af2731307147', 'f3d4626675be8404dae6ec4c194165296cdc6ec0', NULL, 'support@maven20.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'y', 0, 0, '127.0.0.1', 1375811349, 1377209293, 1377215625, 23, 0, 0, 0, 1377030553, 0, 0, 0, 'n', 'y', 'y', 'y', 'y', 'y', 'y', 'y', 'y', 'english', 'America/Los_Angeles', 'n', 'us', NULL, NULL, NULL, NULL, '28', NULL, '18', '', 'Template Manager|C=design&M=manager&tgpref=1|1', 'n', 0, 'y', 0);
 
 -- --------------------------------------------------------
 
@@ -1671,7 +2031,7 @@ CREATE TABLE IF NOT EXISTS `exp_modules` (
   `has_publish_fields` char(1) NOT NULL DEFAULT 'n',
   `settings` text,
   PRIMARY KEY (`module_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `exp_modules`
@@ -1691,7 +2051,8 @@ INSERT INTO `exp_modules` (`module_id`, `module_name`, `module_version`, `has_cp
 (11, 'Seo_lite', '1.4.4', 'y', 'y', NULL),
 (12, 'Snippetssync', '1.0.7', 'y', 'n', NULL),
 (13, 'Editor', '3.1.4', 'y', 'n', NULL),
-(14, 'Low_reorder', '2.2.1', 'y', 'n', NULL);
+(14, 'Low_reorder', '2.2.1', 'y', 'n', NULL),
+(15, 'Channel_videos', '3.1.3', 'y', 'n', NULL);
 
 -- --------------------------------------------------------
 
@@ -1762,7 +2123,7 @@ CREATE TABLE IF NOT EXISTS `exp_password_lockout` (
   KEY `login_date` (`login_date`),
   KEY `ip_address` (`ip_address`),
   KEY `user_agent` (`user_agent`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `exp_password_lockout`
@@ -1770,7 +2131,8 @@ CREATE TABLE IF NOT EXISTS `exp_password_lockout` (
 
 INSERT INTO `exp_password_lockout` (`lockout_id`, `login_date`, `ip_address`, `user_agent`, `username`) VALUES
 (1, 1375826867, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.41 Safari/537.36', 'longdao'),
-(2, 1376412634, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.49 Safari/537.36', 'admin');
+(2, 1376412634, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.49 Safari/537.36', 'admin'),
+(3, 1377118443, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.57 Safari/537.36', 'longdao');
 
 -- --------------------------------------------------------
 
@@ -1970,298 +2332,189 @@ CREATE TABLE IF NOT EXISTS `exp_security_hashes` (
   `hash` varchar(40) NOT NULL,
   PRIMARY KEY (`hash_id`),
   KEY `hash` (`hash`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1052 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2964 ;
 
 --
 -- Dumping data for table `exp_security_hashes`
 --
 
 INSERT INTO `exp_security_hashes` (`hash_id`, `date`, `session_id`, `hash`) VALUES
-(976, 1376680996, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '40595270fe2c19906802ece3b227cb7b79b0a7dc'),
-(975, 1376680996, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '97945708b600a215d5f68b8cecc6f24d2604fdec'),
-(974, 1376680995, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '5679500fbb0a739a29db2f1f0425d302a3d3d37e'),
-(973, 1376680995, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'f873eab54500b4052664474921007d50b78d7ae6'),
-(972, 1376680994, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '6b2f970b3a60b0d03488fa43d9bb4cac50d93ca4'),
-(971, 1376680984, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '60a98375ecbea3aa5d02d4505be2d05b4c45a657'),
-(970, 1376680983, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '512a9ebe21bcd9d1d4fa077af94fa5796db709d0'),
-(969, 1376680979, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'ae0f7b64ed4f5ec3dbac709b5342a67742093e58'),
-(968, 1376680978, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '582b590cc49fd9d67998baaae9c84f75183d116a'),
-(967, 1376680978, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'e7029c8914adee66916c82335bf31f1aa71dcc66'),
-(966, 1376680978, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '0f40e291854aa66ee7fd50343ed1921535e3cb7f'),
-(965, 1376680977, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'f9b04d796378552a08c8929cf960073d7f7d322b'),
-(964, 1376680975, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '90a79ee0159c006c9f2fbc8a29e611b5b5720f94'),
-(963, 1376680974, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'c24b075dfaf91c06f39512745d0ba99b3ed6ad94'),
-(962, 1376680972, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '8f76b6c231649d8f363ddb4f45acb6661998cf19'),
-(961, 1376680972, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '07c4bae81e41fc06f63314f5d493df9fab2fdeea'),
-(960, 1376680972, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '841ccf8a0a195d2e577b504052061d7c8b2c6622'),
-(959, 1376680971, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '022d5e402db0b97d6ca326eda27b59ec0ef2307d'),
-(958, 1376680971, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'f31eeef39cef722be4f3fe2143c3c7f4b9b4ed1c'),
-(957, 1376680962, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '92e53cd4a37797060794faf1c5fb76abd80665f3'),
-(956, 1376680961, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '6814946a15acd0a08f9d556073843914d9604476'),
-(955, 1376680953, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '0baf5578c14665f4eabe8e5c56bfa6d17c88af52'),
-(863, 1376679813, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '5057f3dd18170e127d4ae31c7d9feb5337fae20d'),
-(862, 1376679812, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'acfa6cb955aab4926349a9145eaca9338ed3dd39'),
-(861, 1376679809, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '05934af5e25ac284c80bb87b438e859209bc1fbe'),
-(860, 1376679809, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'ff8fb7adaf0bd1c0b3463ad2b6ec25ddb0df02f4'),
-(858, 1376679803, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'b70776d81825d5c69172c0ddd88702a0545c392b'),
-(859, 1376679808, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'dfb4a2fccd348fa90e4adc8f49f741126aa248cc'),
-(856, 1376679801, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'ea6236b6b6712580a018d2f264c5d2e0230d5499'),
-(855, 1376679800, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'e1b10275dd60ffe3cf2cec4a49e7159c74db88d6'),
-(854, 1376679796, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'd737984274c7d9f0f97ed550ec877dc3bacfe37d'),
-(853, 1376679796, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'a021e705500177c45148c17799f22f72786871e5'),
-(852, 1376679795, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '3924ccbcc7649116c2eca71105c8289ab2da565d'),
-(851, 1376679795, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'cee5c5a1bb8968825c02287f5bfaf532d8c72f21'),
-(850, 1376679795, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'd9753de9aadba5d326880ab951246fb8e665457c'),
-(849, 1376679793, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '15c50658a59a561e3db398978e59dc3968381f14'),
-(848, 1376679793, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '319b6e1954e56f67f0fa75e4da79607a29454e7e'),
-(846, 1376679786, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '0f7a0d0489ac27fbe90610b8a3155764f9b3374a'),
-(845, 1376679786, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'e83249d155bacd55b44e1c3c76623fadaee87553'),
-(844, 1376679786, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'e6f153aa801449791cde9bed2143c4c9d74ab641'),
-(843, 1376679785, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'bae286c43290f78f4e5dcbf9b0faadc9a1a06aa6'),
-(847, 1376679792, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'f704d70d6c18ae32400b8556303df670c3983e8a'),
-(841, 1376679784, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'a42eaf05d74aa1d5f3f8a0e7ff79645ec1fc64cc'),
-(840, 1376679783, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '22df178f76c888b55c43b4bb288127eee19c288a'),
-(839, 1376679781, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '7e1024cea4f46d66e609c3de6bf5b5c095a8392b'),
-(790, 1376679525, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '564e45db4c41467780a5b0263e1a459b8db59b75'),
-(789, 1376679524, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '82f56256f3508389f4b1797e7456a6ad1017ccc9'),
-(788, 1376679522, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '16d9e63a66f6701b52da670c4354010e3c644984'),
-(786, 1376679520, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '839aca5a64bc703ed994a864bc437c3b37689f09'),
-(785, 1376679517, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '91e3131a9395f045e728765c0e9acd7eef1fb44d'),
-(784, 1376679512, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'd5b66f6f7c453b3bc2c9ea1d6ebdf010d64ac43b'),
-(783, 1376679506, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '191ded30db984ac88674af6d865e0b620d118995'),
-(782, 1376679505, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '6d3d0a8c88740586de6de23a8fbd0ebb0a7eb9e0'),
-(781, 1376679504, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '0476d7f1c558e3edfc08bf3ebefe4f46f329a4ce'),
-(780, 1376679503, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'ec108dcf75f1a6935372ae6978273a9c4d83b4ff'),
-(779, 1376679493, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '90c187ee700b9b9dfcfb06148cf367be808eda92'),
-(778, 1376679492, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '04621aecf22b4c57a03f80546917763a5322b0d5'),
-(777, 1376679484, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'faab9343d9ebefa69b22eb4c1d9db116a9f48dee'),
-(770, 1376679470, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'f80e985a11436a3a1120e84a6442e314b8b1c272'),
-(773, 1376679481, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'f3db9720594b4a2dfc61556efd97b27a9c3d72fb'),
-(772, 1376679472, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'fb1234764e9f5175de913a8757a75e34fa008cd0'),
-(774, 1376679482, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'a24868067743d58348393634917888ce8f5a5ec7'),
-(775, 1376679483, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'fa1f53bcbaaee7a75c60c0a4b8e5ddb5a32c93e8'),
-(776, 1376679484, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '1da924282849ab695d5ce668ec8972948011ea83'),
-(759, 1376679420, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'ceaaea90851511407ffff5d8b9dc9bc9a422de7d'),
-(760, 1376679421, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '8f444df9e352e95f1f006b3d265807017c2b75bc'),
-(763, 1376679441, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'eefc55ebf78c4b8a432504ace58fd22d0e6b2d48'),
-(762, 1376679423, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '51cdc5cb36859b6171e26a161ab870a25cb1bbbe'),
-(764, 1376679442, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'a344cc5c807761aa2e9bd6053844b3d641defdb8'),
-(765, 1376679442, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'f605001ae4e534b16feed38d3aac0c44f4f19a7c'),
-(768, 1376679469, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'b6543b2168bfe1ec81e9678b12b809486e87fb84'),
-(767, 1376679447, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '6708fdaa4ea0df8dc9f95541bf2010ccf7af1b18'),
-(769, 1376679469, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '414a22fd27b3330cdf8eccafabf6950df13e360c'),
-(954, 1376680952, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'f88631c388ac5f2a5e387051ef35a923941376f9'),
-(952, 1376680873, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '018bf87e60096a81ff0e9a18e1f76ef57192fd0a'),
-(953, 1376680951, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'c6eb90ddf21d258c92996d77b1cb0ebf4de5e571'),
-(950, 1376680870, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '4f593f54fcfae450b16ea93654321dc476afe06e'),
-(949, 1376680870, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '956cc504d5fd55a5f66d91d27a3fd7ec4f01113f'),
-(947, 1376680858, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'ff78f56c42d3ec5daac03e3509cbe347288518c1'),
-(948, 1376680869, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '5813c918ac979b935e24ff7160b848b1017c4536'),
-(945, 1376680856, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'cfce0d08f5e212e66da7806be1e47863697cac14'),
-(944, 1376680855, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '09d24aad4a3b11dd6940e8c453ac624b30836c66'),
-(942, 1376680846, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '12c54de7d1288255bf62a20fbcb20e7f8d4d791b'),
-(943, 1376680854, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'e3e9ae10f7624913fe89de8ea365e4552f1d7721'),
-(940, 1376680845, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '19c8edd8218bc842e3d77fb0a2db4cae3f95e437'),
-(939, 1376680844, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '69e126a07f04c730bae3d0cbd9255363fc075f06'),
-(937, 1376680839, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'ab146cd841f99f40cb21475321e1b7c3306c2923'),
-(938, 1376680843, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '1ed61c58e96bb862686b7345a2fcc22cab53cb6e'),
-(935, 1376680834, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'f8b27a616fcafe44c35544191a0784ea9ef4eabb'),
-(934, 1376680833, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'e498dc776d7a0d3dd8826155a8c85a02577257d1'),
-(932, 1376680814, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '1f75ea8c7096fa9c67c141489f0956d36c37fce8'),
-(933, 1376680832, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'da0d4a40a76948c3bcf8d70231c82e8b7f1d8b2f'),
-(930, 1376680812, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '5fdcc272bd5c9e924a254b03ba4ab03db3660162'),
-(929, 1376680811, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '42ac64e1f8a17cb5535b7faeda9fa377fcfe6c80'),
-(927, 1376680765, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '0b2563403434920c137318655802b2473cf0b3c8'),
-(928, 1376680810, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'a4d28908b69711ffe57d83aca456a7f84daa6cc6'),
-(925, 1376680762, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '21703bbba8be3a83954512a849c37311580b9482'),
-(924, 1376680762, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '55544686cb8e1f925636a323db21378b6b5bb409'),
-(923, 1376680759, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '934c0c39e5fbd33fadc0892abcc11fdb815db48a'),
-(922, 1376680758, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '67d9c5197cfb22cb0ca6f0c9a16378ff6ae3a726'),
-(921, 1376680516, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '48f06d56dcc835a51c15d61c9f13c3ccc00e61ea'),
-(920, 1376680515, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'e46bc2f143e99dfe40e328cfc0ee8ed5a5fd3ffd'),
-(919, 1376680513, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'e69f52fead79a588c7b9faec0d8e61aa830d5d3a'),
-(918, 1376680128, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '5db16e1c737555f85f9fea5e7c4e17f0a7deb323'),
-(917, 1376680127, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '7aa49b4f7ec723118491fa84af3f186e7c090ce6'),
-(916, 1376680125, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '3186867d62714f89d83d64a5ff05d6c1323cacfd'),
-(915, 1376680124, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'f91239064be9d2d2053d180920d59657bdf0bfda'),
-(914, 1376680122, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '856ea490554a21ebff1fae200c69b00bd8ead4bd'),
-(913, 1376680122, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'a21c8a7b13e511730ad703b815e24e8547e054dc'),
-(912, 1376680114, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '61fd824d14085cfd5484a0e6f8bce589ae43155a'),
-(911, 1376680114, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '17acdae2ed5ed434a9d22c950737f0f3b58476ae'),
-(910, 1376680114, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '673738d9e56426e249f67fd37c13be82c99a10b7'),
-(909, 1376680114, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'aef8a0ba01389fb0231055577fb72ec49ff2b486'),
-(908, 1376680113, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '9b8b2cfcb6cce945c13ed91e446bda5d85d01803'),
-(907, 1376679963, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '6c42e9aa1dbc78ac7d1d3c59d4087beb9c8d2ca1'),
-(906, 1376679962, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'fe0aa25e70f214441fafb96582dc57d195aa6b3f'),
-(904, 1376679907, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '1d45a9230f79dae76e981e25e9f81a80cf4fd6a5'),
-(903, 1376679907, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '647bb220ac6724c8ec772ac9ab5662217b3dc502'),
-(902, 1376679907, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '419c15304e3115649ca4a3a224edfa9825bffb68'),
-(901, 1376679907, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '5c4e66927a841847f98699f0e93a14f18360582c'),
-(905, 1376679961, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '265da157d972d343898f302318c9796e4d062a81'),
-(899, 1376679900, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '58af924e1fdaa9bc8992393802d1ad4b2eac78e7'),
-(898, 1376679900, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '25a9e424484b5a9dad0743b13f463660a46c49fa'),
-(897, 1376679900, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '76535f9c4d21217b27c48a5b32ff07d0b9f3caa4'),
-(896, 1376679889, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '289195ec47839ccd6068e4421572b81d156fca95'),
-(895, 1376679889, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '4eb0a992b0f5e028e665bd9baee6f51368e5a91e'),
-(894, 1376679884, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '3056a2ebd22afe0fa3054915e9208dfa327e0b8f'),
-(893, 1376679884, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '77719fd8d45e21ed747ceeb4896e84d0f46954d9'),
-(892, 1376679884, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '3a4aa647114c9b408e1a57967be2e509928ed15f'),
-(891, 1376679882, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '161175b35035bc2da3c3b4cb29e7ddd44bdb963f'),
-(890, 1376679863, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '643274e33080d2df7cb032656c2f49ef7b14e0ee'),
-(889, 1376679862, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '2f2304155e72e1d120ce527929cb06e43dc8cbe0'),
-(888, 1376679862, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'f3db09715dbf98497a27ea5a448327424ec2058a'),
-(887, 1376679862, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'ea8656c3c6ffcfdb6d30de3123c21471977e3931'),
-(886, 1376679862, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'ca028ded2f3f6e0feecd538baf7aac88991d000f'),
-(885, 1376679861, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '9f85341760b7aeb96b6b3d8cd80dfae433135045'),
-(884, 1376679861, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '6c1541acc4bd3390fd4023a2d684ce347b7304ad'),
-(883, 1376679861, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'f2131a58fe1498162d464ce38c188b60a3a1e58d'),
-(882, 1376679861, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '1e01dfe8e0dae063de7cdb8375db774633239b0c'),
-(881, 1376679860, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'b3c7709500a0f2dae0d66114393fc618a2b484d4'),
-(880, 1376679858, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '230c159803d12cde249f4ec39ae33ba3a2eaa835'),
-(879, 1376679856, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '7e0dce214eb3669200160f98b4afce82e6d57251'),
-(878, 1376679850, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'd0ce570fa3bf2989f325a1f5187468283d91310f'),
-(877, 1376679849, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'bcc97946446e9ac28e02662d3958eea505fa92ac'),
-(875, 1376679827, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'cf0f54340863ce7044e6aad6a5f8bb4b6994658f'),
-(874, 1376679827, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '08cc28cf8d657b183c4f83bbe913215956194c6c'),
-(873, 1376679826, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '6a398cab74d2371a096db1b76849e3b1be288820'),
-(872, 1376679826, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '0e5d588ee853cdb05f71608e5d97d6e2af5a3c0a'),
-(876, 1376679848, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '768dbfb642efc12ec5e129273e9692d6755861bd'),
-(870, 1376679822, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'cbb4e0c1672bf76af277a67210f5540e6d4bc429'),
-(869, 1376679821, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '028cfcac2aa8f8e03760b91f3f123417c406e627'),
-(868, 1376679816, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'fc2dbab72b148d20ae2de55b0bce4d2c7303b514'),
-(867, 1376679816, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'd2d2b2686fe14bc96dbf56b464a6fc3752f5be84'),
-(866, 1376679816, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '583e3fce90dd5cd3ad19357a57278393fd3b3dc6'),
-(865, 1376679816, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '03799810a5df5e49c1ebc842265de464b45038e5'),
-(864, 1376679815, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '130836639363ba7409921a5d0855e8156ebd91b3'),
-(838, 1376679781, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '5259496bc59a3d26dfa2ebfd182fcc267dfa69ab'),
-(836, 1376679769, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '72d9480a6cd23ab31855cf63a896d1a46f358804'),
-(837, 1376679780, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '26c2ad0fd395d4ad16f18e24392f74794840d0fb'),
-(834, 1376679768, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '7442c1363e4b0987ce5403d7acec867ac7a20059'),
-(833, 1376679767, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '8a64388279e61813aa7e738af3098e01eee0d922'),
-(832, 1376679766, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'd30ca2aac5ecb792a6d4753ecc8f6164b07631a7'),
-(831, 1376679765, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '1e5be07279144a3e972ef473f50cf875e654f98b'),
-(829, 1376679756, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '8e6b346b452d228b6baa0468aed391b063769b99'),
-(830, 1376679765, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '1b9cccd0161da9f20fea836ea8c2263a51b10ea3'),
-(827, 1376679749, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'b31cbeb22c0895e5527d9d3b9ad13bbd131d200f'),
-(826, 1376679747, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'a93a80419b8b2bb18dabe283c9dd4c22f34a62f3'),
-(825, 1376679744, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'eb669098f411efd14ac704892496b928f9a95600'),
-(823, 1376679732, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '82d9550dab4c1153d817bcc8ceef1628292fa480'),
-(824, 1376679743, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'cc8b0bac1308ccd17299b8b9f4d8d4679bf356c7'),
-(821, 1376679729, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'ac615d7b60deb00bbbda38111b9fcdb550747049'),
-(820, 1376679729, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '447f04f534762623befa6667c1d30a0b2a5a04ad'),
-(819, 1376679726, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'adff3c7a38f13a72f9bcbd66fed8d29d6079d04e'),
-(818, 1376679725, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '3e48da6694a6e78652526f143cbb53fc95d68b60'),
-(817, 1376679718, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'b62aa671b6c8d6ef6d177417d8e9ddc8329ee79e'),
-(816, 1376679718, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '53caa21e5dff82cd9ff338caa6907ab91d898dfb'),
-(815, 1376679718, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '0127d1d274345b9853a01cd3520744c2fe151ecd'),
-(814, 1376679718, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'd8a4c6245fb48ba22d0f1fc9e23e72f5dfaf4beb'),
-(813, 1376679717, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'd2584a55c7e6469f1fd5d8477fa6454e3a2e4b86'),
-(812, 1376679716, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '69dba0fcaeb27ffeaf723197621a3f7a70d3426a'),
-(811, 1376679715, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '6bc91494f34cff2089bb19a7149f1ae52db41f18'),
-(810, 1376679710, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'ec90bcbae02451781a089c52daa9990ac2e5f57a'),
-(809, 1376679710, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'b661fdc9b7dd6b8a0e61b703db50321efc52b918'),
-(807, 1376679695, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '8592abf89128bda5701e39ba7e6228811cbc7bb5'),
-(808, 1376679709, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '646656dfae1379054ddd2cd931dcd66507d2cd76'),
-(805, 1376679691, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '36ac63890fa92465c8bd1960b19f3137ab0c7e6d'),
-(804, 1376679691, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '1f0099c9cbe7b65a16f385431b537ad9c1f043a3'),
-(803, 1376679684, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '01ebaa92aaba6e617c7358540b9859e21961ab6b'),
-(802, 1376679683, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '18673ec80b3791d56f1f1047f4c42ffb52096425'),
-(801, 1376679683, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'a76590bab78c1f556b649d9a682c60b70843d4d7'),
-(800, 1376679683, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '0590ae1e6b51c3c3b8fd8c643dfc28f0c02f2f89'),
-(799, 1376679680, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'da2d4e19048aafab6e58e3ce15b8596d4a05d446'),
-(798, 1376679678, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '2c0196f0dc2fcf92747c5875de813403cb574184'),
-(797, 1376679677, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '761251d22e70f54218bb1095965d3c1d1b59fc5a'),
-(796, 1376679652, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '2caa376cc94a9267d8560d163dcd8c9fc44ca01a'),
-(795, 1376679651, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '65a33e95bbab30b23eeb99745b9c7a74fe13d18a'),
-(793, 1376679533, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '98c5bbeea6be22361474370a915199d03d8ddc75'),
-(794, 1376679650, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '0a97883407e0a94af7aa1da919fbc55079b3bdf6'),
-(791, 1376679526, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'bf3b3b5733678af1c7a8471b5ebeb39b6e641f2c'),
-(757, 1376679386, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '2f3f05687d9d5475f84fa0b65864b92253253892'),
-(758, 1376679419, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '92f8d0c21c99802ae63ea12d1e97052d3105680a'),
-(755, 1376679383, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '2b9e828fe5ebfb9669083c699ea64349794ae273'),
-(754, 1376679383, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'e1d28e3821b1eed89ea6ef383fb62d44b160352b'),
-(752, 1376679286, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '645459c9d53e13ec9591785c70f19de4151b9c54'),
-(753, 1376679382, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '741168df362a11ec527aed3091d54a943ef704a8'),
-(750, 1376679277, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'ccf314b336e81151faabfc84f68dee33a31a7f40'),
-(749, 1376679277, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '8b136e821ca1dc939e963f2505ee28fcdd662182'),
-(748, 1376679244, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '8ecbaa8bc236bd2f41b190c4f6a4b89285ff347a'),
-(747, 1376679244, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '503424bb1f60404c6b9be3eace8f91ff9a0cb9c1'),
-(743, 1376679229, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '9a8eb9e7a0b1645fb59a7c22b49a446d0e923fa7'),
-(746, 1376679240, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '5d716bb9e55e6f96943d14c10395c69d509d1977'),
-(745, 1376679238, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '94dd7f7f7f1120d9b2d36fddc2a1c0610bc73a44'),
-(742, 1376679228, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '3b44af0f1ad7841f5505153669a6cd0f59b9c7b6'),
-(741, 1376679097, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '928fc31746baf3f89b9f53bb034af505c2c22392'),
-(739, 1376679094, '0', '970bdc5cd5521564703fa5d500bb296504e023e8'),
-(740, 1376679094, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '231304142d6718357c03ef946f3a8e5d57821f11'),
-(977, 1376681003, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '39f4f00a4f22b5c801df32e731e7d27070069ca1'),
-(978, 1376681004, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'ef590ac127d40987857f782750bde877eaac4b4b'),
-(979, 1376681004, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'a5f30b609c95ef11f94dcf8ca8a04ab3d22e121a'),
-(980, 1376681007, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'd561530c6daaea3a5f7ba05fc53cac01b66c1066'),
-(981, 1376681007, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '99982e7be3d4eb92519a377a08d145cb7daa4b57'),
-(982, 1376681007, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'ba75cce3451791344fee0e0a577bf5bc9fd06132'),
-(983, 1376681008, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '4d1d7aec4adb29e16adfb2d610f061aebcdfff25'),
-(984, 1376681008, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'a001b62531ba4a70a6a511b10e89a65765c18ada'),
-(985, 1376681024, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '0953efad93139b494168941b28095432f651faa9'),
-(986, 1376681025, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '6c2ed88e931856086c333b6a9828e32039b31db1'),
-(987, 1376681031, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'e3be5e99be397f30848f6e961c175ad0fd82ab0f'),
-(988, 1376681032, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '5bea761df75459f7d2d8027c01121118ea481f19'),
-(989, 1376681036, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'da130c724b1692513dceb7f5dae28c9a7d987ac2'),
-(990, 1376681037, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '7be9a314f25ed77a5e1588e52b9f1f3df72839d0'),
-(993, 1376681044, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'acd304053bce9abf5ddf266977f1be24e388769f'),
-(992, 1376681041, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'b166c5333c4a73afed9ef87eb2f28b1c41af14fc'),
-(994, 1376681044, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'f6c0cfcaa4fdcab7a792c0fc6d593a363315a813'),
-(995, 1376681045, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '965fef27036d5153d7104cdc958a85448aa6caa7'),
-(996, 1376681045, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '499ac5f6a1b67126ffdd2b44fdff1e8c6d75be29'),
-(997, 1376681046, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '4390fe619d06e2fdce1b7c75d6538bb0602096b0'),
-(1011, 1376681149, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '0cacdda7e724f0ad0e87c4229498efd7bcb71a9f'),
-(999, 1376681050, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '86fbcd2d393b2bed0cb3820865c6bfb4a73a25cc'),
-(1000, 1376681050, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '98792391dcc979b30970ac92d48e8182aca0cc89'),
-(1001, 1376681050, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '71e98d2adbdca64c5d731edcd72665f3bac66ff3'),
-(1002, 1376681051, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '1c7fee8ffe64d7a7a91c1071b16fb73b4677fc7e'),
-(1003, 1376681098, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '733969d95fa06676d86d8e51cab5f2a7d2926783'),
-(1006, 1376681123, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'f30c4a9422f3da484ccbbd53ee2f28d9d9d87fa7'),
-(1005, 1376681112, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '3c82cfc4d62f54a83f27eede0028bd9f50dbaaf4'),
-(1007, 1376681126, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '5ea741c5a8c0f213ab17bd79933bfd905abd8ebd'),
-(1008, 1376681126, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '5037508923a2977ffe6b270cfa1d780b685f83bd'),
-(1009, 1376681126, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'c2fa51bc4a08288827ee02b13e3f91b95c77ce40'),
-(1010, 1376681126, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '752246d888d9fd31818003a2fdb5bf81c8afe0f2'),
-(1012, 1376681150, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'd7f5faa45de051b1faf91dbb6130403638218fbc'),
-(1013, 1376681150, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '10014c18f44441f63521c63ccc509b17e0f92a2f'),
-(1014, 1376681157, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '00f6e89b6f60da6cc2c79631267db97bc839bd8d'),
-(1015, 1376681161, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'd7bf5060e1c3328328f52fc2ce5e1b6c792e5774'),
-(1016, 1376681161, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '6d01c77d80bf4960ac6a8942c032bb72e3c8943b'),
-(1017, 1376681162, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '5d0ec69aea9544f7608d1816b35f7bb04f1bd13c'),
-(1018, 1376681163, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'e1554d79f5864735d931adde9ea0807109d17797'),
-(1021, 1376681170, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '2ae4dbe41aeb65cb049a4418a6a613d8dedd3eb4'),
-(1020, 1376681165, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '6e2aaea1368654c84475f621793123cb563c8c89'),
-(1022, 1376681171, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '85129cebe602f58a81c671b95849d66788cf1a51'),
-(1023, 1376681171, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'faceb7355b721225a406bba50f493ebc5c276a75'),
-(1024, 1376681302, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'cb0af0c1696162f69da34087d7d4f3f35eeb19f9'),
-(1025, 1376681303, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '03a3cf51a146978a1dbedd1616010f2f42ec2b2f'),
-(1026, 1376681305, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '8d90f3c8ea1c7d71129b58df7fbe5fd28d79618c'),
-(1027, 1376681305, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '1866c40dc43bf850ae2804d63c3f711a14803c16'),
-(1028, 1376681305, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'a08c5c07bcf9981c6b6912c965bdc6e159f0b927'),
-(1029, 1376681306, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '6a21ca92748478defb5555438404846ba7566ce4'),
-(1030, 1376681306, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'ccfcee39c90cadcd0a0fa2f7683670e0cdef8ee7'),
-(1031, 1376681313, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '5a4d6fdb7a1e4f893ea56f417eb83474af665e61'),
-(1032, 1376681313, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '5ad83694e888fb212d6882e67364a52e0dfece27'),
-(1033, 1376681315, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '4e606cf6449877e6eacf8965fe0308350800dcd5'),
-(1034, 1376681316, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'b5e26381fc0d2a979cef2f657fa304bc97b5c788'),
-(1037, 1376681330, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '0b31e61b786293aec7bd3daa16b141c454fecfd8'),
-(1036, 1376681318, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '2acaf3f1178ab47ceb9644760ff33651ac5b9736'),
-(1038, 1376681330, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '74b358178325bae45124befa52795ca8a10dc0a3'),
-(1039, 1376681331, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'b2c5d46bc1c3d046caf2bd5f054132f2f81338ae'),
-(1042, 1376681363, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '32451e3e8775a5cce8ca75021e9037897023308b'),
-(1041, 1376681342, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '19e5b5fcb61eae27d50bcc36f0b514f96fb057f7'),
-(1043, 1376681364, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '03def945f162c390b3f9461d6c924760b42b453a'),
-(1044, 1376681365, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'ab2909f17ddf4d134f707ab401a8816342eeac5a'),
-(1045, 1376681522, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', 'e52769ab192b9078abd3ebf43561b7bd0fb58cd1'),
-(1046, 1376681523, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '28e7452ba30cddc32c2f1ee66c99f86d73e3e098'),
-(1047, 1376681524, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '9583a2f824757809462bdbe561466ab7297d43f9'),
-(1048, 1376681525, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '4a5982cc10cee6466a79a67946bb719c11cb54ae'),
-(1049, 1376681525, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '3c9416a4c2747028112f168fe77f5753ab9a9d86'),
-(1050, 1376681526, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '5fe1a9ea70fff8ee324701aa545ee480df63a5b8'),
-(1051, 1376681526, '0128b51062e091f2556b4e667ba657a9ba8a4b0c', '61a84bdfc96436469aa04209360bf95902f2f66b');
+(2866, 1377213902, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'e13ea498fcaeccc0966ceb913d0010e476047f6d'),
+(2862, 1377213900, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '9f4c40f3d3e9ebb4fb080cf0dd1f467a853f8af7'),
+(2863, 1377213902, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'd05860e861722049838ac5502f8f069261aa54c4'),
+(2864, 1377213902, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '4deb062a44efc63a81de828860d794dbe0d5313e'),
+(2865, 1377213902, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '6ad3b7953c3fca754a6bffafddecde8c33018a3a'),
+(2807, 1377209325, '0a0610034613c6896ffecb05620fdb3208b4aa5e', 'cfba7ff94cd727074254cf46777224b649f6ad5c'),
+(2808, 1377209326, '0a0610034613c6896ffecb05620fdb3208b4aa5e', '7802e82f8e11a262eba11d408f00f36e130954ca'),
+(2809, 1377209327, '0a0610034613c6896ffecb05620fdb3208b4aa5e', 'c286baf31bfb03f6f62096cbc4846f367a0743e9'),
+(2810, 1377209328, '0a0610034613c6896ffecb05620fdb3208b4aa5e', '68a06284fc4825f9655f80566d6256f42f632ab0'),
+(2811, 1377209329, '0a0610034613c6896ffecb05620fdb3208b4aa5e', 'c1b8989480ea9b829bc009a0660cd7fd801044a8'),
+(2820, 1377212986, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '198e3b355f114216ff3499cbc933e3f4b89d775b'),
+(2821, 1377213067, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '470664ce76255e0bcc20aa44c78d58c4a3676354'),
+(2822, 1377213089, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '5cfae92ea436fd7eb220b8ea90ab197f6297eb2c'),
+(2823, 1377213091, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'd03ea99a2328894389519d2cc9852bf3191e18b4'),
+(2824, 1377213091, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'bbf8f35bbfc5f448b4abba4ff69b9f355ed4a1f4'),
+(2826, 1377213120, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '79c932d18f7e398a15012c9535be980e4f3d6b34'),
+(2827, 1377213121, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '2040e3799b828088eef22d8a2e1ef5f98128ee36'),
+(2846, 1377213712, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'cc415220fb3e1b1372b95a0edfa344a6bf1c2b00'),
+(2829, 1377213199, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '07c5502fa7c8b0956d14f0d7730cdd249fad79ee'),
+(2830, 1377213199, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'cdaf7b92b0244d4789ab43c9ae0daa2d166fd4c5'),
+(2831, 1377213200, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'a3eaca7e78084ed4228b33f2d88f866fa49038fc'),
+(2832, 1377213201, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '867ebf12eaf4639e77bc1f330ae21ef581c5796a'),
+(2833, 1377213405, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'cfe51b98a51894a3fa005cec74e1bdb3dced1d58'),
+(2835, 1377213420, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '01921a9886c2aef75f079fb9c80430cd9be751f8'),
+(2836, 1377213423, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'c9733dcb9cc35c6251923ba14bafc3623c4426a5'),
+(2837, 1377213423, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '0ae5a89fd1166106490446b83516e4895104ad5e'),
+(2838, 1377213423, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '5498f447f1c1a2cb0e663a329dc824849d96bba2'),
+(2839, 1377213423, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'd6b3741cb1b8c55ee870000a5bdeaed55621c811'),
+(2841, 1377213606, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '153afd9148cbab5e1d3386f88d0554d644c704bf'),
+(2842, 1377213608, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '5c1c461afd180318851661a45b07f3728a109a0e'),
+(2843, 1377213608, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'ebe2dd63b36694242d0aa10bc29159d673a50c3c'),
+(2844, 1377213608, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '06efb666b75b9ed76501671fa2811ddc918c56c1'),
+(2845, 1377213608, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '06f5d06f81076c994d0d2620d7ee9f85cd21c2d7'),
+(2847, 1377213714, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '9ae0a10a8d1f0faa77175f06b13f24d38caf3da3'),
+(2848, 1377213715, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '15697aa3a2a23dc387e250206f7be6175864527c'),
+(2867, 1377213997, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'be40006d1452e295a8f7efb70cd9ccd972f5794e'),
+(2850, 1377213752, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '029737f743fccb4c58c271faf7f0c0aef7d67be9'),
+(2851, 1377213752, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '54f950332bb369f4d4238fec955650112342d6ab'),
+(2852, 1377213752, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '01e48371305aeae450024f156e171429b838eb8e'),
+(2853, 1377213754, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '0f795a978c89586dd59c2dadba902835a122a54d'),
+(2854, 1377213766, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'f81c6880b37198a6e5e354d2d84f552ff118eb34'),
+(2856, 1377213771, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'fd75e2f5a804860d4828885de032cd3297c1f607'),
+(2857, 1377213773, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '59163b033b43b870f226c6d912f799997a470e63'),
+(2858, 1377213773, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '9ba1aefa436b4ce3dd30046db1f44757b8f1da2b'),
+(2859, 1377213773, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '28a0f1bb3112098cfcbaf609a201a6af3626851d'),
+(2860, 1377213773, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '12ac714036101ac42474eda13c4777f7f09c7429'),
+(2806, 1377209324, '0a0610034613c6896ffecb05620fdb3208b4aa5e', '549b2096eecdcd5601be5c64cb6d12a53a537e2e'),
+(2788, 1377209096, '0', 'e4dea534af1e36f039dea4d0759e559e7b138265'),
+(2787, 1377209094, 'af137c57c00c07b7988dc84b6970edb516d23bd2', 'a78436e84e990c1d0064296f64886662bcfd5b59'),
+(2778, 1377209064, 'af137c57c00c07b7988dc84b6970edb516d23bd2', '4a83263d89e1f0975cbd3e2f9bd85848daa2734f'),
+(2779, 1377209065, 'af137c57c00c07b7988dc84b6970edb516d23bd2', '0b327c5b023e2da4121f8a853e1f0118862a52da'),
+(2780, 1377209084, 'af137c57c00c07b7988dc84b6970edb516d23bd2', '642033cb12986f956a8cd675c864acb4b68e8152'),
+(2781, 1377209086, 'af137c57c00c07b7988dc84b6970edb516d23bd2', 'bb7b8abf70c8cad9934bda032e46a91ce544b351'),
+(2782, 1377209087, 'af137c57c00c07b7988dc84b6970edb516d23bd2', '4a44de86a8aff1189c034ca7cdde143b4a2ccccb'),
+(2783, 1377209089, 'af137c57c00c07b7988dc84b6970edb516d23bd2', '79f4c3e36aa589e70dc524d13e47e1a468758b13'),
+(2784, 1377209089, 'af137c57c00c07b7988dc84b6970edb516d23bd2', '33e2a330b8088a0dd21fb551cf3cee1231052889'),
+(2785, 1377209090, 'af137c57c00c07b7988dc84b6970edb516d23bd2', 'd4015bec28bb9d5ae7a5cadc84a16ca6d98554d0'),
+(2786, 1377209090, 'af137c57c00c07b7988dc84b6970edb516d23bd2', '75de19a8728d43973f03d391e5bf237abf226c27'),
+(2766, 1377208481, 'af137c57c00c07b7988dc84b6970edb516d23bd2', 'fd78c0342d099ebb255edc38ba103edfff34a83c'),
+(2767, 1377208482, 'af137c57c00c07b7988dc84b6970edb516d23bd2', 'c43463ecbf35b00c883d1d807b78195b56de2f5c'),
+(2768, 1377209049, 'af137c57c00c07b7988dc84b6970edb516d23bd2', '1ee551a63a19be68354fa1ff5f5c66c2bceaaf79'),
+(2769, 1377209050, 'af137c57c00c07b7988dc84b6970edb516d23bd2', '822bb57e9a79131879089d2a8f48a9c530eb18b2'),
+(2770, 1377209051, 'af137c57c00c07b7988dc84b6970edb516d23bd2', '3c0570384966865795c5d080443c7aaa9d3dd670'),
+(2771, 1377209053, 'af137c57c00c07b7988dc84b6970edb516d23bd2', '8069ea86816c7d5ec6c77e8a0123e76cd369de4b'),
+(2772, 1377209053, 'af137c57c00c07b7988dc84b6970edb516d23bd2', 'd56881536fe4c77d0485742209899529927e3b96'),
+(2773, 1377209055, 'af137c57c00c07b7988dc84b6970edb516d23bd2', '0ebc50e830abe0931b4feb9b5af34939c262c48d'),
+(2774, 1377209056, 'af137c57c00c07b7988dc84b6970edb516d23bd2', '68b76e607f9d54686e416c9b7f4ac0f610198cca'),
+(2777, 1377209063, 'af137c57c00c07b7988dc84b6970edb516d23bd2', '5ce918b759627a405a550108aef1bfc6f1dac7e2'),
+(2776, 1377209059, 'af137c57c00c07b7988dc84b6970edb516d23bd2', '8cd333083b1e52ccbd5e5c93b319243cf01fb3c6'),
+(2868, 1377213999, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'd73a1b7e20f21ffe95298f263e198a510ed61ddc'),
+(2869, 1377214000, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '7f2a64950422ce6e870f86152e8a708c3333e544'),
+(2896, 1377214346, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'c8785d46e8d52f73fb91278fc9db8f716f3fee40'),
+(2871, 1377214038, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'e697fd76bac1f0a071dcb0f5301413e01354e0e0'),
+(2765, 1377208480, 'af137c57c00c07b7988dc84b6970edb516d23bd2', '42c1df8b981fca1aafbf5b6501f2d397c02454ef'),
+(2764, 1377208474, 'af137c57c00c07b7988dc84b6970edb516d23bd2', '40933c6a127c306534656c49e31adae36ddb5a3c'),
+(2906, 1377214472, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '8b9889c1ba65e382bf2e75f642b873122f5c9317'),
+(2904, 1377214460, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '8858417e28c5ea06c2bb99185e2a79b4444044b4'),
+(2903, 1377214442, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '8ef45a9d5c4a00df9265dd07bcfe4bddaa859a2a'),
+(2902, 1377214441, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'c0a18c1d3457e118e1caabe5e3b5b77ca99ca957'),
+(2901, 1377214440, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '3e04addcddf7218eafb0dd99e610e1beeb457156'),
+(2900, 1377214440, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'a5ddb03ed7185b2df43770923adada119a1f390c'),
+(2934, 1377215235, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '41e1230b3b4cdadc34f59e50022b9f7ffc384bb2'),
+(2898, 1377214349, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '35afb94b62af8deb799808cd093266914efe857a'),
+(2897, 1377214348, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '04feb011162d84250df99cce784d316d18fd0419'),
+(2895, 1377214264, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'a53fa8556e67416fc4417379bfe4d435dc35ba4b'),
+(2894, 1377214264, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '2cf43b66e6a977ac793509ffd2a5ed704f7fc797'),
+(2891, 1377214263, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '9f7d8df1c5ba1381d0b69e07ba377f61903d23d0'),
+(2892, 1377214264, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '4d2d00d8d36ffe6cd41d215ced261e1fb2787e74'),
+(2889, 1377214225, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '4697b48660a6e273c7df011a2ff6149ac9b0cece'),
+(2893, 1377214264, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '9126cf8a6dd05c3b14c9bcc798c0cd5e0783ed73'),
+(2888, 1377214176, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '76481f4d0402d0466921c755557f1d5e9b88c147'),
+(2887, 1377214176, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '0c2592d571a9c768e0b5263fdc1460c1b2a39b0a'),
+(2886, 1377214176, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'eaa8dbdf3df0f84e8993857e8cb0635d8f321666'),
+(2885, 1377214176, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '90928574ca1c4a4fb92c3ce198d97ff2b1ba9f2c'),
+(2884, 1377214175, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '5436da7c2d3580026c71e32c60bd33dca3337882'),
+(2882, 1377214114, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'ce0d32b25d9d73d82f98d92f669a239f879e90e5'),
+(2881, 1377214067, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'cc50c5a8a78f3e749501b1ff22c24e4ca9c05d9d'),
+(2880, 1377214067, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'cdfc1b0af1b66b40314db83b07e79c76aa330367'),
+(2879, 1377214067, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'beb6a443acbbaa6157e8d3a69617174362b32d36'),
+(2878, 1377214067, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '53a3a2966f11f7aeb1981a2211fa2c0048c179f4'),
+(2877, 1377214063, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '2297225aa71ecc33a5224abc51ee0cbfd47b149f'),
+(2875, 1377214057, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'afdbef6069cc7e0677b9e953e8df41dca3510e3a'),
+(2874, 1377214040, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '0c9bb04d7aabd6064deb085bd2098e540f99aee3'),
+(2873, 1377214038, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '795940467dbee44f8ce49552390cb3433a7bf6a8'),
+(2872, 1377214038, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '8f5b465bfd82285deb15e0bcbfe4bdc15a0896ab'),
+(2962, 1377215619, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'c83f026830bbdb664af880ebacaedd9fb0fd8575'),
+(2963, 1377215620, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'c1b0eb04aad86d6e7aba10d2b89694a126ed338c'),
+(2953, 1377215560, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '9af70b90be1134dcbd79602cf7f7949c282a8103'),
+(2954, 1377215562, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '2295648eb8fc3e053c5013d8b88a41b3a565824c'),
+(2961, 1377215612, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '95c01839f78a325bc87e27cc4bb18af9153f9cc1'),
+(2956, 1377215596, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'd1ed7dc5b36e8652bc186262fcc26438519d070c'),
+(2957, 1377215596, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'b0e966d7c561baf416d0aaef51d85ac7771ec612'),
+(2958, 1377215596, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'd11eaa4007eb7c9808e01593730e010ef69a3711'),
+(2959, 1377215597, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '7c9a3ba8a363ebd761aacfcdea1df19d756bcddd'),
+(2960, 1377215597, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'acc246ca87325713d3164a55cf03fac9267a2756'),
+(2935, 1377215236, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '4b7ae15867f8806e671417369445290c32d0af83'),
+(2936, 1377215236, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '28da9d090629c518858b986f71f33d14f55f9751'),
+(2937, 1377215236, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'fc19b29a8e756ddaf6b3f4ee7463bfa250685f91'),
+(2938, 1377215268, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'e83ce284b1645c5089f0ffcdd88dc706ef72a23a'),
+(2948, 1377215293, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '8af48b79e2c6dfb1a45d52e93294df15b62dbd6d'),
+(2949, 1377215293, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '66ced500c6c56fa71c3db77cceb490ac6d727531'),
+(2950, 1377215293, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '819d2b08a2917cdebfdee267b4e0c53a90c5b6cb'),
+(2951, 1377215321, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '410f4596175e2abbc27a78849536ba3462f2b96e'),
+(2819, 1377212986, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '15a3eb35ed76957a4e25c1a9e771fe5b6201b0b4'),
+(2818, 1377212985, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'd3e5c9484a4f3c0781707d3500952152cdd0e87f'),
+(2817, 1377212985, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'b5961d06558549e7a3f7e899ba567ad8cf7df122'),
+(2825, 1377213119, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '428d33248386c02c5fb72f9999e339e66e10dd76'),
+(2815, 1377212983, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '842a249289551d1e8eb767b78725562fbe9bf82e'),
+(2814, 1377212982, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '5902b886dea1a3b7b842dfb56beb34cb8d379aa6'),
+(2813, 1377212981, '0', '0250dba230e2bda5ac385c1b7d9618417c3dee3e'),
+(2800, 1377209171, '0a0610034613c6896ffecb05620fdb3208b4aa5e', '08fdc56bdbc4a9bc13f4a53242b2c243dd057092'),
+(2801, 1377209180, '0a0610034613c6896ffecb05620fdb3208b4aa5e', 'a869489a5d0792f7e1e4cdc7aa704b490527ff57'),
+(2802, 1377209182, '0a0610034613c6896ffecb05620fdb3208b4aa5e', 'abf074bc13dea194ddf5b278d06ef67dc0e9cf8a'),
+(2803, 1377209182, '0a0610034613c6896ffecb05620fdb3208b4aa5e', 'a38cb032eeac7768dcd916fd1abf8e4e974c0d7f'),
+(2804, 1377209184, '0a0610034613c6896ffecb05620fdb3208b4aa5e', 'ed3e5712f093796455dc47ebf206032e54ebfcb4'),
+(2799, 1377209170, '0a0610034613c6896ffecb05620fdb3208b4aa5e', '959c9dc5ee92014c35718726bc26205cfd6e97ec'),
+(2790, 1377209131, '0', 'cc6d66dac251d1e244a1ab66483c462da6d56c1f'),
+(2791, 1377209131, '0a0610034613c6896ffecb05620fdb3208b4aa5e', 'e0d0bb3e59d9047d67a1d15fc2e0cd0fec7f05ca'),
+(2792, 1377209132, '0a0610034613c6896ffecb05620fdb3208b4aa5e', '4dd1685e1d202d1f60be08a4e839ce4c339722ce'),
+(2798, 1377209169, '0a0610034613c6896ffecb05620fdb3208b4aa5e', '8596d6b3b88b9c1cb147da3f5b4dd25ca99da1a4'),
+(2794, 1377209135, '0a0610034613c6896ffecb05620fdb3208b4aa5e', 'a33cbc9a47f7f4d712610fc402840cbd3677415f'),
+(2795, 1377209135, '0a0610034613c6896ffecb05620fdb3208b4aa5e', 'c50216d443bed009c18dc0b54b2a9a28eaf0930d'),
+(2796, 1377209136, '0a0610034613c6896ffecb05620fdb3208b4aa5e', 'bfb657f1df43b3e57b959c5a23c6ba40f5163f97'),
+(2797, 1377209137, '0a0610034613c6896ffecb05620fdb3208b4aa5e', 'bbed9e3ff5c9542348bc7c422f583120375fdb23'),
+(2805, 1377209184, '0a0610034613c6896ffecb05620fdb3208b4aa5e', '91fa4d2e9cb009e9fff7e61f57e7a2ff2c23664f'),
+(2916, 1377214572, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '76af0806fe9e0a162e0cc8baa1cc591b6c7bb07b'),
+(2915, 1377214572, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '632d358f751c5d6279f46e8f2e3190131489e17e'),
+(2910, 1377214474, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'e64d01c328b2e2210a1f23d81f5b6043e2b90a50'),
+(2909, 1377214474, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'cbec57e9f8c9c7d27940693421565b806fc8a804'),
+(2908, 1377214474, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '2bb88a261bd16882a23eb9e3e4cf0529d60269bd'),
+(2907, 1377214474, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '854f921b2704144cf13e39c705087e8b82333d0a'),
+(2947, 1377215293, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'c4d434fcaaa0862ab75a601af7b3f5cd588374d2'),
+(2946, 1377215291, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '4ed598b201cf1e87f57b35457f496185236615aa'),
+(2944, 1377215277, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'a646a6813b4bf167464f94cd04b26d06c7b7fdeb'),
+(2943, 1377215277, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '1b9d81b76e4224eff93ef4b5073d1bf65a4a9357'),
+(2942, 1377215277, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '16c54485b4099ad48d062e8eaa1489a5fabbfd4f'),
+(2941, 1377215277, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'b2854445b755046dd84125927f3f26404df6e747'),
+(2940, 1377215276, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '7f4d4901227b937e041dab1ec63beeeba03eac58'),
+(2933, 1377215235, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'b2f1dce807c4a50789e31d6e450ecc78087d74d1'),
+(2952, 1377215553, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '141f006f0a5cc1fd162e29da3bdf570461871ae6'),
+(2931, 1377214818, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '07fdc89a4888634e65f8f14559efc962302b7750'),
+(2930, 1377214817, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'e558ac44dfb9deb604cbba734612a3f9cf97080a'),
+(2929, 1377214811, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '147f8593797dba8268d773d30fbc4ced5bba8e86'),
+(2928, 1377214737, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '603612555453014c3e1502db5bb953720e1f0fe8'),
+(2927, 1377214737, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '4a73b2af521a509a8d11a096f6dae1e0f85fb223'),
+(2926, 1377214737, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'dfaa2455467eb8bfb421406388ae376b04487f3e'),
+(2925, 1377214737, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'f89f935f780ce37cedf47b20babd469b214418f9'),
+(2924, 1377214735, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'ae2bfab7ca615f06fb4bfafdd89a442dc8f320e5'),
+(2922, 1377214655, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '146958d46b712d658c95cb7df6e1ef924dd89227'),
+(2921, 1377214655, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '350639de131a195325a20750c62b30df8933f6a8'),
+(2920, 1377214655, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '73310ef294e4e9a5910e3287832e3211ab244d33'),
+(2919, 1377214655, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '22dd4fd1fdb2bd9a3796a94dc335d61619d21361'),
+(2918, 1377214653, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '611b72f2c63fd74b41c377b3d48e54ade0b1a096'),
+(2914, 1377214572, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '13acd8b0bc09a5667ca2b9e69a220b95a8ff40c4'),
+(2913, 1377214572, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', 'da8970087934877f6abd0220cbfad7da1b5f2805'),
+(2912, 1377214570, 'f232cabf9a9784d83ba6cdbc50243e975411af8a', '3301ce997aadadc3d588dcb588a554ae90ebeb61');
 
 -- --------------------------------------------------------
 
@@ -2300,7 +2553,7 @@ CREATE TABLE IF NOT EXISTS `exp_seolite_content` (
   `keywords` varchar(1024) NOT NULL,
   `description` text,
   PRIMARY KEY (`seolite_content_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
 
 --
 -- Dumping data for table `exp_seolite_content`
@@ -2319,7 +2572,16 @@ INSERT INTO `exp_seolite_content` (`seolite_content_id`, `site_id`, `entry_id`, 
 (11, 1, 11, '', '', ''),
 (12, 1, 12, '', '', ''),
 (13, 1, 13, '', '', ''),
-(14, 1, 14, '', '', '');
+(14, 1, 14, '', '', ''),
+(15, 1, 15, '', '', ''),
+(16, 1, 16, '', '', ''),
+(17, 1, 17, '', '', ''),
+(18, 1, 18, '', '', ''),
+(19, 1, 19, '', '', ''),
+(20, 1, 20, '', '', ''),
+(21, 1, 21, '', '', ''),
+(22, 1, 22, '', '', ''),
+(23, 1, 23, '', '', '');
 
 -- --------------------------------------------------------
 
@@ -2346,7 +2608,7 @@ CREATE TABLE IF NOT EXISTS `exp_sessions` (
 --
 
 INSERT INTO `exp_sessions` (`session_id`, `member_id`, `admin_sess`, `ip_address`, `user_agent`, `fingerprint`, `sess_start`, `last_activity`) VALUES
-('0128b51062e091f2556b4e667ba657a9ba8a4b0c', 1, 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.55 Safari/537.36', 'd229ff47eb517a11d2d08e1565db2339', 1376679094, 1376681526);
+('f232cabf9a9784d83ba6cdbc50243e975411af8a', 1, 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.10 Safari/537.36', '85f26a3e2aa02451053fa67b8da0f9f8', 1377212981, 1377215629);
 
 -- --------------------------------------------------------
 
@@ -2375,7 +2637,7 @@ CREATE TABLE IF NOT EXISTS `exp_sites` (
 --
 
 INSERT INTO `exp_sites` (`site_id`, `site_label`, `site_name`, `site_description`, `site_system_preferences`, `site_mailinglist_preferences`, `site_member_preferences`, `site_template_preferences`, `site_channel_preferences`, `site_bootstrap_checksums`, `site_pages`) VALUES
-(1, 'Partners for Better Health', 'default_site', NULL, 'YTo5MDp7czoxMDoic2l0ZV9pbmRleCI7czowOiIiO3M6ODoic2l0ZV91cmwiO3M6Mjc6Imh0dHA6Ly9sb2NhbC5wNGJoZWFsdGgub3JnLyI7czoxNjoidGhlbWVfZm9sZGVyX3VybCI7czozNDoiaHR0cDovL2xvY2FsLnA0YmhlYWx0aC5vcmcvdGhlbWVzLyI7czoxNToid2VibWFzdGVyX2VtYWlsIjtzOjE5OiJzdXBwb3J0QG1hdmVuMjAuY29tIjtzOjE0OiJ3ZWJtYXN0ZXJfbmFtZSI7czowOiIiO3M6MjA6ImNoYW5uZWxfbm9tZW5jbGF0dXJlIjtzOjc6ImNoYW5uZWwiO3M6MTA6Im1heF9jYWNoZXMiO3M6MzoiMTUwIjtzOjExOiJjYXB0Y2hhX3VybCI7czo0MzoiaHR0cDovL2xvY2FsLnA0YmhlYWx0aC5vcmcvaW1hZ2VzL2NhcHRjaGFzLyI7czoxMjoiY2FwdGNoYV9wYXRoIjtzOjI3OiJJOlxnaXRcUEJIXGltYWdlc1xjYXB0Y2hhc1wiO3M6MTI6ImNhcHRjaGFfZm9udCI7czoxOiJ5IjtzOjEyOiJjYXB0Y2hhX3JhbmQiO3M6MToieSI7czoyMzoiY2FwdGNoYV9yZXF1aXJlX21lbWJlcnMiO3M6MToibiI7czoxNzoiZW5hYmxlX2RiX2NhY2hpbmciO3M6MToibiI7czoxODoiZW5hYmxlX3NxbF9jYWNoaW5nIjtzOjE6Im4iO3M6MTg6ImZvcmNlX3F1ZXJ5X3N0cmluZyI7czoxOiJuIjtzOjEzOiJzaG93X3Byb2ZpbGVyIjtzOjE6Im4iO3M6MTg6InRlbXBsYXRlX2RlYnVnZ2luZyI7czoxOiJuIjtzOjE1OiJpbmNsdWRlX3NlY29uZHMiO3M6MToibiI7czoxMzoiY29va2llX2RvbWFpbiI7czowOiIiO3M6MTE6ImNvb2tpZV9wYXRoIjtzOjA6IiI7czoxNzoidXNlcl9zZXNzaW9uX3R5cGUiO3M6MToiYyI7czoxODoiYWRtaW5fc2Vzc2lvbl90eXBlIjtzOjI6ImNzIjtzOjIxOiJhbGxvd191c2VybmFtZV9jaGFuZ2UiO3M6MToieSI7czoxODoiYWxsb3dfbXVsdGlfbG9naW5zIjtzOjE6InkiO3M6MTY6InBhc3N3b3JkX2xvY2tvdXQiO3M6MToieSI7czoyNToicGFzc3dvcmRfbG9ja291dF9pbnRlcnZhbCI7czoxOiIxIjtzOjIwOiJyZXF1aXJlX2lwX2Zvcl9sb2dpbiI7czoxOiJ5IjtzOjIyOiJyZXF1aXJlX2lwX2Zvcl9wb3N0aW5nIjtzOjE6InkiO3M6MjQ6InJlcXVpcmVfc2VjdXJlX3Bhc3N3b3JkcyI7czoxOiJuIjtzOjE5OiJhbGxvd19kaWN0aW9uYXJ5X3B3IjtzOjE6InkiO3M6MjM6Im5hbWVfb2ZfZGljdGlvbmFyeV9maWxlIjtzOjA6IiI7czoxNzoieHNzX2NsZWFuX3VwbG9hZHMiO3M6MToieSI7czoxNToicmVkaXJlY3RfbWV0aG9kIjtzOjc6InJlZnJlc2giO3M6OToiZGVmdF9sYW5nIjtzOjc6ImVuZ2xpc2giO3M6ODoieG1sX2xhbmciO3M6MjoiZW4iO3M6MTI6InNlbmRfaGVhZGVycyI7czoxOiJ5IjtzOjExOiJnemlwX291dHB1dCI7czoxOiJuIjtzOjEzOiJsb2dfcmVmZXJyZXJzIjtzOjE6Im4iO3M6MTM6Im1heF9yZWZlcnJlcnMiO3M6MzoiNTAwIjtzOjExOiJ0aW1lX2Zvcm1hdCI7czoyOiJ1cyI7czoxNToic2VydmVyX3RpbWV6b25lIjtzOjE5OiJBbWVyaWNhL0xvc19BbmdlbGVzIjtzOjEzOiJzZXJ2ZXJfb2Zmc2V0IjtzOjA6IiI7czoyMToiZGVmYXVsdF9zaXRlX3RpbWV6b25lIjtzOjE5OiJBbWVyaWNhL0xvc19BbmdlbGVzIjtzOjE1OiJob25vcl9lbnRyeV9kc3QiO3M6MToieSI7czoxMzoibWFpbF9wcm90b2NvbCI7czo0OiJtYWlsIjtzOjExOiJzbXRwX3NlcnZlciI7czowOiIiO3M6MTM6InNtdHBfdXNlcm5hbWUiO3M6MDoiIjtzOjEzOiJzbXRwX3Bhc3N3b3JkIjtzOjA6IiI7czoxMToiZW1haWxfZGVidWciO3M6MToibiI7czoxMzoiZW1haWxfY2hhcnNldCI7czo1OiJ1dGYtOCI7czoxNToiZW1haWxfYmF0Y2htb2RlIjtzOjE6Im4iO3M6MTY6ImVtYWlsX2JhdGNoX3NpemUiO3M6MDoiIjtzOjExOiJtYWlsX2Zvcm1hdCI7czo1OiJwbGFpbiI7czo5OiJ3b3JkX3dyYXAiO3M6MToieSI7czoyMjoiZW1haWxfY29uc29sZV90aW1lbG9jayI7czoxOiI1IjtzOjIyOiJsb2dfZW1haWxfY29uc29sZV9tc2dzIjtzOjE6InkiO3M6ODoiY3BfdGhlbWUiO3M6NzoiZGVmYXVsdCI7czoyMToiZW1haWxfbW9kdWxlX2NhcHRjaGFzIjtzOjE6Im4iO3M6MTY6ImxvZ19zZWFyY2hfdGVybXMiO3M6MToieSI7czoxMjoic2VjdXJlX2Zvcm1zIjtzOjE6InkiO3M6MTk6ImRlbnlfZHVwbGljYXRlX2RhdGEiO3M6MToieSI7czoyNDoicmVkaXJlY3Rfc3VibWl0dGVkX2xpbmtzIjtzOjE6Im4iO3M6MTY6ImVuYWJsZV9jZW5zb3JpbmciO3M6MToibiI7czoxNDoiY2Vuc29yZWRfd29yZHMiO3M6MDoiIjtzOjE4OiJjZW5zb3JfcmVwbGFjZW1lbnQiO3M6MDoiIjtzOjEwOiJiYW5uZWRfaXBzIjtzOjA6IiI7czoxMzoiYmFubmVkX2VtYWlscyI7czowOiIiO3M6MTY6ImJhbm5lZF91c2VybmFtZXMiO3M6MDoiIjtzOjE5OiJiYW5uZWRfc2NyZWVuX25hbWVzIjtzOjA6IiI7czoxMDoiYmFuX2FjdGlvbiI7czo4OiJyZXN0cmljdCI7czoxMToiYmFuX21lc3NhZ2UiO3M6MzQ6IlRoaXMgc2l0ZSBpcyBjdXJyZW50bHkgdW5hdmFpbGFibGUiO3M6MTU6ImJhbl9kZXN0aW5hdGlvbiI7czoyMToiaHR0cDovL3d3dy55YWhvby5jb20vIjtzOjE2OiJlbmFibGVfZW1vdGljb25zIjtzOjE6InkiO3M6MTI6ImVtb3RpY29uX3VybCI7czo0MjoiaHR0cDovL2xvY2FsLnA0YmhlYWx0aC5vcmcvaW1hZ2VzL3NtaWxleXMvIjtzOjE5OiJyZWNvdW50X2JhdGNoX3RvdGFsIjtzOjQ6IjEwMDAiO3M6MTc6Im5ld192ZXJzaW9uX2NoZWNrIjtzOjE6InkiO3M6MTc6ImVuYWJsZV90aHJvdHRsaW5nIjtzOjE6Im4iO3M6MTc6ImJhbmlzaF9tYXNrZWRfaXBzIjtzOjE6InkiO3M6MTQ6Im1heF9wYWdlX2xvYWRzIjtzOjI6IjEwIjtzOjEzOiJ0aW1lX2ludGVydmFsIjtzOjE6IjgiO3M6MTI6ImxvY2tvdXRfdGltZSI7czoyOiIzMCI7czoxNToiYmFuaXNobWVudF90eXBlIjtzOjc6Im1lc3NhZ2UiO3M6MTQ6ImJhbmlzaG1lbnRfdXJsIjtzOjA6IiI7czoxODoiYmFuaXNobWVudF9tZXNzYWdlIjtzOjUwOiJZb3UgaGF2ZSBleGNlZWRlZCB0aGUgYWxsb3dlZCBwYWdlIGxvYWQgZnJlcXVlbmN5LiI7czoxNzoiZW5hYmxlX3NlYXJjaF9sb2ciO3M6MToieSI7czoxOToibWF4X2xvZ2dlZF9zZWFyY2hlcyI7czozOiI1MDAiO3M6MTc6InRoZW1lX2ZvbGRlcl9wYXRoIjtzOjI3OiJJOi9naXQvUEJIL2h0dHBkb2NzL3RoZW1lcy8iO3M6MTA6ImlzX3NpdGVfb24iO3M6MToieSI7czoxMToicnRlX2VuYWJsZWQiO3M6MToieSI7czoyMjoicnRlX2RlZmF1bHRfdG9vbHNldF9pZCI7czoxOiIxIjt9', 'YTozOntzOjE5OiJtYWlsaW5nbGlzdF9lbmFibGVkIjtzOjE6InkiO3M6MTg6Im1haWxpbmdsaXN0X25vdGlmeSI7czoxOiJuIjtzOjI1OiJtYWlsaW5nbGlzdF9ub3RpZnlfZW1haWxzIjtzOjA6IiI7fQ==', 'YTo0NDp7czoxMDoidW5fbWluX2xlbiI7czoxOiI0IjtzOjEwOiJwd19taW5fbGVuIjtzOjE6IjUiO3M6MjU6ImFsbG93X21lbWJlcl9yZWdpc3RyYXRpb24iO3M6MToibiI7czoyNToiYWxsb3dfbWVtYmVyX2xvY2FsaXphdGlvbiI7czoxOiJ5IjtzOjE4OiJyZXFfbWJyX2FjdGl2YXRpb24iO3M6NToiZW1haWwiO3M6MjM6Im5ld19tZW1iZXJfbm90aWZpY2F0aW9uIjtzOjE6Im4iO3M6MjM6Im1icl9ub3RpZmljYXRpb25fZW1haWxzIjtzOjA6IiI7czoyNDoicmVxdWlyZV90ZXJtc19vZl9zZXJ2aWNlIjtzOjE6InkiO3M6MjI6InVzZV9tZW1iZXJzaGlwX2NhcHRjaGEiO3M6MToibiI7czoyMDoiZGVmYXVsdF9tZW1iZXJfZ3JvdXAiO3M6MToiNSI7czoxNToicHJvZmlsZV90cmlnZ2VyIjtzOjY6Im1lbWJlciI7czoxMjoibWVtYmVyX3RoZW1lIjtzOjc6ImRlZmF1bHQiO3M6MTQ6ImVuYWJsZV9hdmF0YXJzIjtzOjE6InkiO3M6MjA6ImFsbG93X2F2YXRhcl91cGxvYWRzIjtzOjE6Im4iO3M6MTA6ImF2YXRhcl91cmwiO3M6NDI6Imh0dHA6Ly9sb2NhbC5wNGJoZWFsdGgub3JnL2ltYWdlcy9hdmF0YXJzLyI7czoxMToiYXZhdGFyX3BhdGgiO3M6MjY6Ikk6XGdpdFxQQkhcaW1hZ2VzXGF2YXRhcnNcIjtzOjE2OiJhdmF0YXJfbWF4X3dpZHRoIjtzOjM6IjEwMCI7czoxNzoiYXZhdGFyX21heF9oZWlnaHQiO3M6MzoiMTAwIjtzOjEzOiJhdmF0YXJfbWF4X2tiIjtzOjI6IjUwIjtzOjEzOiJlbmFibGVfcGhvdG9zIjtzOjE6Im4iO3M6OToicGhvdG9fdXJsIjtzOjQ4OiJodHRwOi8vbG9jYWwucDRiaGVhbHRoLm9yZy9pbWFnZXMvbWVtYmVyX3Bob3Rvcy8iO3M6MTA6InBob3RvX3BhdGgiO3M6MzI6Ikk6XGdpdFxQQkhcaW1hZ2VzXG1lbWJlcl9waG90b3NcIjtzOjE1OiJwaG90b19tYXhfd2lkdGgiO3M6MzoiMTAwIjtzOjE2OiJwaG90b19tYXhfaGVpZ2h0IjtzOjM6IjEwMCI7czoxMjoicGhvdG9fbWF4X2tiIjtzOjI6IjUwIjtzOjE2OiJhbGxvd19zaWduYXR1cmVzIjtzOjE6InkiO3M6MTM6InNpZ19tYXhsZW5ndGgiO3M6MzoiNTAwIjtzOjIxOiJzaWdfYWxsb3dfaW1nX2hvdGxpbmsiO3M6MToibiI7czoyMDoic2lnX2FsbG93X2ltZ191cGxvYWQiO3M6MToibiI7czoxMToic2lnX2ltZ191cmwiO3M6NTY6Imh0dHA6Ly9sb2NhbC5wNGJoZWFsdGgub3JnL2ltYWdlcy9zaWduYXR1cmVfYXR0YWNobWVudHMvIjtzOjEyOiJzaWdfaW1nX3BhdGgiO3M6NDA6Ikk6XGdpdFxQQkhcaW1hZ2VzXHNpZ25hdHVyZV9hdHRhY2htZW50c1wiO3M6MTc6InNpZ19pbWdfbWF4X3dpZHRoIjtzOjM6IjQ4MCI7czoxODoic2lnX2ltZ19tYXhfaGVpZ2h0IjtzOjI6IjgwIjtzOjE0OiJzaWdfaW1nX21heF9rYiI7czoyOiIzMCI7czoxOToicHJ2X21zZ191cGxvYWRfcGF0aCI7czozMzoiSTpcZ2l0XFBCSFxpbWFnZXNccG1fYXR0YWNobWVudHNcIjtzOjIzOiJwcnZfbXNnX21heF9hdHRhY2htZW50cyI7czoxOiIzIjtzOjIyOiJwcnZfbXNnX2F0dGFjaF9tYXhzaXplIjtzOjM6IjI1MCI7czoyMDoicHJ2X21zZ19hdHRhY2hfdG90YWwiO3M6MzoiMTAwIjtzOjE5OiJwcnZfbXNnX2h0bWxfZm9ybWF0IjtzOjQ6InNhZmUiO3M6MTg6InBydl9tc2dfYXV0b19saW5rcyI7czoxOiJ5IjtzOjE3OiJwcnZfbXNnX21heF9jaGFycyI7czo0OiI2MDAwIjtzOjE5OiJtZW1iZXJsaXN0X29yZGVyX2J5IjtzOjExOiJ0b3RhbF9wb3N0cyI7czoyMToibWVtYmVybGlzdF9zb3J0X29yZGVyIjtzOjQ6ImRlc2MiO3M6MjA6Im1lbWJlcmxpc3Rfcm93X2xpbWl0IjtzOjI6IjIwIjt9', 'YTo2OntzOjExOiJzdHJpY3RfdXJscyI7czoxOiJ5IjtzOjg6InNpdGVfNDA0IjtzOjA6IiI7czoxOToic2F2ZV90bXBsX3JldmlzaW9ucyI7czoxOiJuIjtzOjE4OiJtYXhfdG1wbF9yZXZpc2lvbnMiO3M6MToiNSI7czoxNToic2F2ZV90bXBsX2ZpbGVzIjtzOjE6Im4iO3M6MTg6InRtcGxfZmlsZV9iYXNlcGF0aCI7czoxOiJcIjt9', 'YTo5OntzOjIxOiJpbWFnZV9yZXNpemVfcHJvdG9jb2wiO3M6MzoiZ2QyIjtzOjE4OiJpbWFnZV9saWJyYXJ5X3BhdGgiO3M6MDoiIjtzOjE2OiJ0aHVtYm5haWxfcHJlZml4IjtzOjU6InRodW1iIjtzOjE0OiJ3b3JkX3NlcGFyYXRvciI7czo0OiJkYXNoIjtzOjE3OiJ1c2VfY2F0ZWdvcnlfbmFtZSI7czoxOiJuIjtzOjIyOiJyZXNlcnZlZF9jYXRlZ29yeV93b3JkIjtzOjg6ImNhdGVnb3J5IjtzOjIzOiJhdXRvX2NvbnZlcnRfaGlnaF9hc2NpaSI7czoxOiJuIjtzOjIyOiJuZXdfcG9zdHNfY2xlYXJfY2FjaGVzIjtzOjE6InkiO3M6MjM6ImF1dG9fYXNzaWduX2NhdF9wYXJlbnRzIjtzOjE6InkiO30=', 'YToxOntzOjI5OiJJOlxnaXRcUEJIXGh0dHBkb2NzXGluZGV4LnBocCI7czozMjoiZjM5MzU3ZTVlZDNhZjc4N2FiNWFmMjQzYTg5YjIwNmUiO30=', 'YToxOntpOjE7YTozOntzOjM6InVybCI7czoyNzoiaHR0cDovL2xvY2FsLnA0YmhlYWx0aC5vcmcvIjtzOjQ6InVyaXMiO2E6MTE6e2k6MTtzOjk6Ii9ob21lcGFnZSI7aToxMztzOjEzOiIvZ2V0LWludm9sdmVkIjtpOjQ7czo5OiIvcHJvamVjdHMiO2k6NztzOjg6Ii9zdG9yaWVzIjtpOjE0O3M6NToiL2dpdmUiO2k6NjtzOjY6Ii9hYm91dCI7aTo4O3M6MTU6Ii9hYm91dC9hYm91dC11cyI7aTo5O3M6MTE6Ii9hYm91dC90ZWFtIjtpOjEwO3M6MTM6Ii9hYm91dC9hbHVtbmkiO2k6MTE7czoyOToiL2Fib3V0L3BhcnRuZXJzLW9yZ2FuaXphdGlvbnMiO2k6MTI7czoyMjoiL2Fib3V0L3Jlc291cmNlcy1saW5rcyI7fXM6OToidGVtcGxhdGVzIjthOjExOntpOjE7czoxOiIyIjtpOjQ7czoxOiIyIjtpOjY7czoxOiIyIjtpOjc7czoxOiIyIjtpOjg7czoxOiIyIjtpOjk7czoxOiIyIjtpOjEwO3M6MToiMiI7aToxMTtzOjE6IjIiO2k6MTI7czoxOiIyIjtpOjEzO3M6MToiMiI7aToxNDtzOjE6IjIiO319fQ==');
+(1, 'Partners for Better Health', 'default_site', NULL, 'YTo5MDp7czoxMDoic2l0ZV9pbmRleCI7czowOiIiO3M6ODoic2l0ZV91cmwiO3M6Mjc6Imh0dHA6Ly9sb2NhbC5wNGJoZWFsdGgub3JnLyI7czoxNjoidGhlbWVfZm9sZGVyX3VybCI7czozNDoiaHR0cDovL2xvY2FsLnA0YmhlYWx0aC5vcmcvdGhlbWVzLyI7czoxNToid2VibWFzdGVyX2VtYWlsIjtzOjE5OiJzdXBwb3J0QG1hdmVuMjAuY29tIjtzOjE0OiJ3ZWJtYXN0ZXJfbmFtZSI7czowOiIiO3M6MjA6ImNoYW5uZWxfbm9tZW5jbGF0dXJlIjtzOjc6ImNoYW5uZWwiO3M6MTA6Im1heF9jYWNoZXMiO3M6MzoiMTUwIjtzOjExOiJjYXB0Y2hhX3VybCI7czo0MzoiaHR0cDovL2xvY2FsLnA0YmhlYWx0aC5vcmcvaW1hZ2VzL2NhcHRjaGFzLyI7czoxMjoiY2FwdGNoYV9wYXRoIjtzOjI3OiJJOlxnaXRcUEJIXGltYWdlc1xjYXB0Y2hhc1wiO3M6MTI6ImNhcHRjaGFfZm9udCI7czoxOiJ5IjtzOjEyOiJjYXB0Y2hhX3JhbmQiO3M6MToieSI7czoyMzoiY2FwdGNoYV9yZXF1aXJlX21lbWJlcnMiO3M6MToibiI7czoxNzoiZW5hYmxlX2RiX2NhY2hpbmciO3M6MToibiI7czoxODoiZW5hYmxlX3NxbF9jYWNoaW5nIjtzOjE6Im4iO3M6MTg6ImZvcmNlX3F1ZXJ5X3N0cmluZyI7czoxOiJuIjtzOjEzOiJzaG93X3Byb2ZpbGVyIjtzOjE6Im4iO3M6MTg6InRlbXBsYXRlX2RlYnVnZ2luZyI7czoxOiJuIjtzOjE1OiJpbmNsdWRlX3NlY29uZHMiO3M6MToibiI7czoxMzoiY29va2llX2RvbWFpbiI7czowOiIiO3M6MTE6ImNvb2tpZV9wYXRoIjtzOjA6IiI7czoxNzoidXNlcl9zZXNzaW9uX3R5cGUiO3M6MToiYyI7czoxODoiYWRtaW5fc2Vzc2lvbl90eXBlIjtzOjI6ImNzIjtzOjIxOiJhbGxvd191c2VybmFtZV9jaGFuZ2UiO3M6MToieSI7czoxODoiYWxsb3dfbXVsdGlfbG9naW5zIjtzOjE6InkiO3M6MTY6InBhc3N3b3JkX2xvY2tvdXQiO3M6MToieSI7czoyNToicGFzc3dvcmRfbG9ja291dF9pbnRlcnZhbCI7czoxOiIxIjtzOjIwOiJyZXF1aXJlX2lwX2Zvcl9sb2dpbiI7czoxOiJ5IjtzOjIyOiJyZXF1aXJlX2lwX2Zvcl9wb3N0aW5nIjtzOjE6InkiO3M6MjQ6InJlcXVpcmVfc2VjdXJlX3Bhc3N3b3JkcyI7czoxOiJuIjtzOjE5OiJhbGxvd19kaWN0aW9uYXJ5X3B3IjtzOjE6InkiO3M6MjM6Im5hbWVfb2ZfZGljdGlvbmFyeV9maWxlIjtzOjA6IiI7czoxNzoieHNzX2NsZWFuX3VwbG9hZHMiO3M6MToieSI7czoxNToicmVkaXJlY3RfbWV0aG9kIjtzOjc6InJlZnJlc2giO3M6OToiZGVmdF9sYW5nIjtzOjc6ImVuZ2xpc2giO3M6ODoieG1sX2xhbmciO3M6MjoiZW4iO3M6MTI6InNlbmRfaGVhZGVycyI7czoxOiJ5IjtzOjExOiJnemlwX291dHB1dCI7czoxOiJuIjtzOjEzOiJsb2dfcmVmZXJyZXJzIjtzOjE6Im4iO3M6MTM6Im1heF9yZWZlcnJlcnMiO3M6MzoiNTAwIjtzOjExOiJ0aW1lX2Zvcm1hdCI7czoyOiJ1cyI7czoxNToic2VydmVyX3RpbWV6b25lIjtzOjE5OiJBbWVyaWNhL0xvc19BbmdlbGVzIjtzOjEzOiJzZXJ2ZXJfb2Zmc2V0IjtzOjA6IiI7czoyMToiZGVmYXVsdF9zaXRlX3RpbWV6b25lIjtzOjE5OiJBbWVyaWNhL0xvc19BbmdlbGVzIjtzOjE1OiJob25vcl9lbnRyeV9kc3QiO3M6MToieSI7czoxMzoibWFpbF9wcm90b2NvbCI7czo0OiJtYWlsIjtzOjExOiJzbXRwX3NlcnZlciI7czowOiIiO3M6MTM6InNtdHBfdXNlcm5hbWUiO3M6MDoiIjtzOjEzOiJzbXRwX3Bhc3N3b3JkIjtzOjA6IiI7czoxMToiZW1haWxfZGVidWciO3M6MToibiI7czoxMzoiZW1haWxfY2hhcnNldCI7czo1OiJ1dGYtOCI7czoxNToiZW1haWxfYmF0Y2htb2RlIjtzOjE6Im4iO3M6MTY6ImVtYWlsX2JhdGNoX3NpemUiO3M6MDoiIjtzOjExOiJtYWlsX2Zvcm1hdCI7czo1OiJwbGFpbiI7czo5OiJ3b3JkX3dyYXAiO3M6MToieSI7czoyMjoiZW1haWxfY29uc29sZV90aW1lbG9jayI7czoxOiI1IjtzOjIyOiJsb2dfZW1haWxfY29uc29sZV9tc2dzIjtzOjE6InkiO3M6ODoiY3BfdGhlbWUiO3M6NzoiZGVmYXVsdCI7czoyMToiZW1haWxfbW9kdWxlX2NhcHRjaGFzIjtzOjE6Im4iO3M6MTY6ImxvZ19zZWFyY2hfdGVybXMiO3M6MToieSI7czoxMjoic2VjdXJlX2Zvcm1zIjtzOjE6InkiO3M6MTk6ImRlbnlfZHVwbGljYXRlX2RhdGEiO3M6MToieSI7czoyNDoicmVkaXJlY3Rfc3VibWl0dGVkX2xpbmtzIjtzOjE6Im4iO3M6MTY6ImVuYWJsZV9jZW5zb3JpbmciO3M6MToibiI7czoxNDoiY2Vuc29yZWRfd29yZHMiO3M6MDoiIjtzOjE4OiJjZW5zb3JfcmVwbGFjZW1lbnQiO3M6MDoiIjtzOjEwOiJiYW5uZWRfaXBzIjtzOjA6IiI7czoxMzoiYmFubmVkX2VtYWlscyI7czowOiIiO3M6MTY6ImJhbm5lZF91c2VybmFtZXMiO3M6MDoiIjtzOjE5OiJiYW5uZWRfc2NyZWVuX25hbWVzIjtzOjA6IiI7czoxMDoiYmFuX2FjdGlvbiI7czo4OiJyZXN0cmljdCI7czoxMToiYmFuX21lc3NhZ2UiO3M6MzQ6IlRoaXMgc2l0ZSBpcyBjdXJyZW50bHkgdW5hdmFpbGFibGUiO3M6MTU6ImJhbl9kZXN0aW5hdGlvbiI7czoyMToiaHR0cDovL3d3dy55YWhvby5jb20vIjtzOjE2OiJlbmFibGVfZW1vdGljb25zIjtzOjE6InkiO3M6MTI6ImVtb3RpY29uX3VybCI7czo0MjoiaHR0cDovL2xvY2FsLnA0YmhlYWx0aC5vcmcvaW1hZ2VzL3NtaWxleXMvIjtzOjE5OiJyZWNvdW50X2JhdGNoX3RvdGFsIjtzOjQ6IjEwMDAiO3M6MTc6Im5ld192ZXJzaW9uX2NoZWNrIjtzOjE6InkiO3M6MTc6ImVuYWJsZV90aHJvdHRsaW5nIjtzOjE6Im4iO3M6MTc6ImJhbmlzaF9tYXNrZWRfaXBzIjtzOjE6InkiO3M6MTQ6Im1heF9wYWdlX2xvYWRzIjtzOjI6IjEwIjtzOjEzOiJ0aW1lX2ludGVydmFsIjtzOjE6IjgiO3M6MTI6ImxvY2tvdXRfdGltZSI7czoyOiIzMCI7czoxNToiYmFuaXNobWVudF90eXBlIjtzOjc6Im1lc3NhZ2UiO3M6MTQ6ImJhbmlzaG1lbnRfdXJsIjtzOjA6IiI7czoxODoiYmFuaXNobWVudF9tZXNzYWdlIjtzOjUwOiJZb3UgaGF2ZSBleGNlZWRlZCB0aGUgYWxsb3dlZCBwYWdlIGxvYWQgZnJlcXVlbmN5LiI7czoxNzoiZW5hYmxlX3NlYXJjaF9sb2ciO3M6MToieSI7czoxOToibWF4X2xvZ2dlZF9zZWFyY2hlcyI7czozOiI1MDAiO3M6MTc6InRoZW1lX2ZvbGRlcl9wYXRoIjtzOjI3OiJJOi9naXQvUEJIL2h0dHBkb2NzL3RoZW1lcy8iO3M6MTA6ImlzX3NpdGVfb24iO3M6MToieSI7czoxMToicnRlX2VuYWJsZWQiO3M6MToieSI7czoyMjoicnRlX2RlZmF1bHRfdG9vbHNldF9pZCI7czoxOiIxIjt9', 'YTozOntzOjE5OiJtYWlsaW5nbGlzdF9lbmFibGVkIjtzOjE6InkiO3M6MTg6Im1haWxpbmdsaXN0X25vdGlmeSI7czoxOiJuIjtzOjI1OiJtYWlsaW5nbGlzdF9ub3RpZnlfZW1haWxzIjtzOjA6IiI7fQ==', 'YTo0NDp7czoxMDoidW5fbWluX2xlbiI7czoxOiI0IjtzOjEwOiJwd19taW5fbGVuIjtzOjE6IjUiO3M6MjU6ImFsbG93X21lbWJlcl9yZWdpc3RyYXRpb24iO3M6MToibiI7czoyNToiYWxsb3dfbWVtYmVyX2xvY2FsaXphdGlvbiI7czoxOiJ5IjtzOjE4OiJyZXFfbWJyX2FjdGl2YXRpb24iO3M6NToiZW1haWwiO3M6MjM6Im5ld19tZW1iZXJfbm90aWZpY2F0aW9uIjtzOjE6Im4iO3M6MjM6Im1icl9ub3RpZmljYXRpb25fZW1haWxzIjtzOjA6IiI7czoyNDoicmVxdWlyZV90ZXJtc19vZl9zZXJ2aWNlIjtzOjE6InkiO3M6MjI6InVzZV9tZW1iZXJzaGlwX2NhcHRjaGEiO3M6MToibiI7czoyMDoiZGVmYXVsdF9tZW1iZXJfZ3JvdXAiO3M6MToiNSI7czoxNToicHJvZmlsZV90cmlnZ2VyIjtzOjY6Im1lbWJlciI7czoxMjoibWVtYmVyX3RoZW1lIjtzOjc6ImRlZmF1bHQiO3M6MTQ6ImVuYWJsZV9hdmF0YXJzIjtzOjE6InkiO3M6MjA6ImFsbG93X2F2YXRhcl91cGxvYWRzIjtzOjE6Im4iO3M6MTA6ImF2YXRhcl91cmwiO3M6NDI6Imh0dHA6Ly9sb2NhbC5wNGJoZWFsdGgub3JnL2ltYWdlcy9hdmF0YXJzLyI7czoxMToiYXZhdGFyX3BhdGgiO3M6MjY6Ikk6XGdpdFxQQkhcaW1hZ2VzXGF2YXRhcnNcIjtzOjE2OiJhdmF0YXJfbWF4X3dpZHRoIjtzOjM6IjEwMCI7czoxNzoiYXZhdGFyX21heF9oZWlnaHQiO3M6MzoiMTAwIjtzOjEzOiJhdmF0YXJfbWF4X2tiIjtzOjI6IjUwIjtzOjEzOiJlbmFibGVfcGhvdG9zIjtzOjE6Im4iO3M6OToicGhvdG9fdXJsIjtzOjQ4OiJodHRwOi8vbG9jYWwucDRiaGVhbHRoLm9yZy9pbWFnZXMvbWVtYmVyX3Bob3Rvcy8iO3M6MTA6InBob3RvX3BhdGgiO3M6MzI6Ikk6XGdpdFxQQkhcaW1hZ2VzXG1lbWJlcl9waG90b3NcIjtzOjE1OiJwaG90b19tYXhfd2lkdGgiO3M6MzoiMTAwIjtzOjE2OiJwaG90b19tYXhfaGVpZ2h0IjtzOjM6IjEwMCI7czoxMjoicGhvdG9fbWF4X2tiIjtzOjI6IjUwIjtzOjE2OiJhbGxvd19zaWduYXR1cmVzIjtzOjE6InkiO3M6MTM6InNpZ19tYXhsZW5ndGgiO3M6MzoiNTAwIjtzOjIxOiJzaWdfYWxsb3dfaW1nX2hvdGxpbmsiO3M6MToibiI7czoyMDoic2lnX2FsbG93X2ltZ191cGxvYWQiO3M6MToibiI7czoxMToic2lnX2ltZ191cmwiO3M6NTY6Imh0dHA6Ly9sb2NhbC5wNGJoZWFsdGgub3JnL2ltYWdlcy9zaWduYXR1cmVfYXR0YWNobWVudHMvIjtzOjEyOiJzaWdfaW1nX3BhdGgiO3M6NDA6Ikk6XGdpdFxQQkhcaW1hZ2VzXHNpZ25hdHVyZV9hdHRhY2htZW50c1wiO3M6MTc6InNpZ19pbWdfbWF4X3dpZHRoIjtzOjM6IjQ4MCI7czoxODoic2lnX2ltZ19tYXhfaGVpZ2h0IjtzOjI6IjgwIjtzOjE0OiJzaWdfaW1nX21heF9rYiI7czoyOiIzMCI7czoxOToicHJ2X21zZ191cGxvYWRfcGF0aCI7czozMzoiSTpcZ2l0XFBCSFxpbWFnZXNccG1fYXR0YWNobWVudHNcIjtzOjIzOiJwcnZfbXNnX21heF9hdHRhY2htZW50cyI7czoxOiIzIjtzOjIyOiJwcnZfbXNnX2F0dGFjaF9tYXhzaXplIjtzOjM6IjI1MCI7czoyMDoicHJ2X21zZ19hdHRhY2hfdG90YWwiO3M6MzoiMTAwIjtzOjE5OiJwcnZfbXNnX2h0bWxfZm9ybWF0IjtzOjQ6InNhZmUiO3M6MTg6InBydl9tc2dfYXV0b19saW5rcyI7czoxOiJ5IjtzOjE3OiJwcnZfbXNnX21heF9jaGFycyI7czo0OiI2MDAwIjtzOjE5OiJtZW1iZXJsaXN0X29yZGVyX2J5IjtzOjExOiJ0b3RhbF9wb3N0cyI7czoyMToibWVtYmVybGlzdF9zb3J0X29yZGVyIjtzOjQ6ImRlc2MiO3M6MjA6Im1lbWJlcmxpc3Rfcm93X2xpbWl0IjtzOjI6IjIwIjt9', 'YTo2OntzOjExOiJzdHJpY3RfdXJscyI7czoxOiJ5IjtzOjg6InNpdGVfNDA0IjtzOjA6IiI7czoxOToic2F2ZV90bXBsX3JldmlzaW9ucyI7czoxOiJuIjtzOjE4OiJtYXhfdG1wbF9yZXZpc2lvbnMiO3M6MToiNSI7czoxNToic2F2ZV90bXBsX2ZpbGVzIjtzOjE6Im4iO3M6MTg6InRtcGxfZmlsZV9iYXNlcGF0aCI7czoxOiJcIjt9', 'YTo5OntzOjIxOiJpbWFnZV9yZXNpemVfcHJvdG9jb2wiO3M6MzoiZ2QyIjtzOjE4OiJpbWFnZV9saWJyYXJ5X3BhdGgiO3M6MDoiIjtzOjE2OiJ0aHVtYm5haWxfcHJlZml4IjtzOjU6InRodW1iIjtzOjE0OiJ3b3JkX3NlcGFyYXRvciI7czo0OiJkYXNoIjtzOjE3OiJ1c2VfY2F0ZWdvcnlfbmFtZSI7czoxOiJuIjtzOjIyOiJyZXNlcnZlZF9jYXRlZ29yeV93b3JkIjtzOjg6ImNhdGVnb3J5IjtzOjIzOiJhdXRvX2NvbnZlcnRfaGlnaF9hc2NpaSI7czoxOiJuIjtzOjIyOiJuZXdfcG9zdHNfY2xlYXJfY2FjaGVzIjtzOjE6InkiO3M6MjM6ImF1dG9fYXNzaWduX2NhdF9wYXJlbnRzIjtzOjE6InkiO30=', 'YToxOntzOjI5OiJJOlxnaXRcUEJIXGh0dHBkb2NzXGluZGV4LnBocCI7czozMjoiZjM5MzU3ZTVlZDNhZjc4N2FiNWFmMjQzYTg5YjIwNmUiO30=', 'YToxOntpOjE7YTozOntzOjM6InVybCI7czoyNzoiaHR0cDovL2xvY2FsLnA0YmhlYWx0aC5vcmcvIjtzOjQ6InVyaXMiO2E6MTE6e2k6MTtzOjk6Ii9ob21lcGFnZSI7aToxMztzOjEzOiIvZ2V0LWludm9sdmVkIjtpOjQ7czo5OiIvcHJvamVjdHMiO2k6MjE7czoxNjoiL3N1Y2Nlc3Mtc3RvcmllcyI7aToxNDtzOjU6Ii9naXZlIjtpOjE1O3M6NjoiL2Fib3V0IjtpOjE2O3M6MTU6Ii9hYm91dC9hYm91dC11cyI7aToxODtzOjExOiIvYWJvdXQvdGVhbSI7aToxOTtzOjEzOiIvYWJvdXQvYWx1bW5pIjtpOjE3O3M6Mjk6Ii9hYm91dC9wYXJ0bmVycy1vcmdhbml6YXRpb25zIjtpOjIwO3M6MjI6Ii9hYm91dC9yZXNvdXJjZXMtbGlua3MiO31zOjk6InRlbXBsYXRlcyI7YToxMTp7aToxO3M6MToiMiI7aTo0O3M6MToiMiI7aToxMztzOjE6IjIiO2k6MTQ7czoxOiIyIjtpOjE1O3M6MToiMiI7aToxNjtzOjE6IjIiO2k6MTc7czoxOiIyIjtpOjE4O3M6MToiMiI7aToxOTtzOjE6IjIiO2k6MjA7czoxOiIyIjtpOjIxO3M6MToiMiI7fX19');
 
 -- --------------------------------------------------------
 
@@ -2397,9 +2659,9 @@ CREATE TABLE IF NOT EXISTS `exp_snippets` (
 --
 
 INSERT INTO `exp_snippets` (`snippet_id`, `site_id`, `snippet_name`, `snippet_contents`) VALUES
-(1, 0, 'www_js_foot', '<!-- JS and analytics only. -->\r\n\r\n<!-- Slider. For some reason, it doesn''t load correctly if placed below other scripts here-->\r\n<script>\r\n    jQuery(document).ready(function($) {\r\n	$(''#full-width-slider'').royalSlider({\r\n		arrowsNav: true,\r\n		loop: true,\r\n		keyboardNavEnabled: true,\r\n		controlsInside: false,\r\n		imageScaleMode: ''fill'',\r\n		arrowsNavAutoHide: false,\r\n		autoScaleSlider: true, \r\n		autoScaleSliderWidth: 960,     \r\n		autoScaleSliderHeight: 400,\r\n		controlNavigation: ''bullets'',\r\n		thumbsFitInViewport: true,\r\n		navigateByClick: true,\r\n		startSlideId: 0,\r\n		autoPlay: true,\r\n		transitionType:''move'',\r\n		globalCaption: true,\r\n		deeplinking: {\r\n			enabled: true,\r\n			change: false\r\n		},\r\n		/* size of all images http://help.dimsemenov.com/kb/royalslider-jquery-plugin-faq/adding-width-and-height-properties-to-images */\r\n		imgWidth: 1400,\r\n		imgHeight: 715\r\n		});\r\n	});\r\n</script>\r\n\r\n<!-- Bootstrap core JavaScript\r\n================================================== -->\r\n<!-- Placed at the end of the document so the pages load faster -->\r\n<!-- backbone\r\n    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.10/backbone-min.js"></script>\r\n    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.3/underscore-min.js"></script>\r\n-->\r\n<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>\r\n<script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>\r\n<script src="/assets/js/lib.js"></script>\r\n<script src="/assets/js/app.js"></script>\r\n\r\n<!-- Livereload code (http://livereload.com/) -->\r\n<script>document.write(''<script src="http://'' + (location.host || ''localhost'').split('':'')[0] + '':35729/livereload.js?snipver=1"></'' + ''script>'')</script>\r\n\r\n\r\n<!-- Y Axis Loader -->\r\n<script src="/assets/js/gridloading/masonry.pkgd.min.js"></script>\r\n<script src="/assets/js/gridloading/imagesloaded.js"></script>\r\n<script src="/assets/js/gridloading/classie.js"></script>\r\n<script src="/assets/js/gridloading/AnimOnScroll.js"></script>\r\n<script>\r\n	new AnimOnScroll( document.getElementById( ''grid'' ), {\r\n		minDuration : 0.3,\r\n		maxDuration : 0.6,\r\n		viewportFactor : 0.6\r\n	} );\r\n</script>'),
+(1, 0, 'www_js_foot', '<!-- JS and analytics only. -->\r\n\r\n<!-- Slider. For some reason, it doesn''t load correctly if placed below other scripts here-->\r\n<script>\r\n    jQuery(document).ready(function($) {\r\n	$(''#full-width-slider'').royalSlider({\r\n		arrowsNav: true,\r\n		loop: true,\r\n		\r\n		keyboardNavEnabled: true,\r\n		controlsInside: false,\r\n		imageScaleMode: ''fill'',\r\n		arrowsNavAutoHide: false,\r\n		autoScaleSlider: false, \r\n		autoScaleSliderWidth: false,     \r\n		autoScaleSliderHeight: false,\r\n		controlNavigation: ''bullets'',\r\n		thumbsFitInViewport: false,\r\n		navigateByClick: true,\r\n		startSlideId: 0,\r\n		autoPlay: {\r\n    		// autoplay options go gere\r\n    		enabled: true,\r\n    		pauseOnHover: false,\r\n			delay: 4000\r\n    	},\r\n		transitionType:''move'',\r\n		globalCaption: true,\r\n		deeplinking: {\r\n			enabled: true,\r\n			change: false\r\n		},\r\n		/* size of all images http://help.dimsemenov.com/kb/royalslider-jquery-plugin-faq/adding-width-and-height-properties-to-images */\r\n		\r\n		});\r\n	});\r\n</script>\r\n<!-- Modal -->\r\n<script src="/assets/js/jquery.min.js" type="text/javascript"></script>\r\n<script src="/assets/js/modal.js"></script>\r\n<script>\r\n	$.reveal({\r\n	  animation: ''fadeAndPop'',                   //fade, fadeAndPop, none\r\n     animationspeed: 900,                       //how fast animtions are\r\n     closeonbackgroundclick: true,              //if you click background will modal close?\r\n     dismissmodalclass: ''close-reveal-modal''    //the class of a button or element that will close an open modal\r\n});\r\n</script>\r\n<!-- Bootstrap core JavaScript\r\n================================================== -->\r\n<!-- Placed at the end of the document so the pages load faster -->\r\n<!-- backbone\r\n    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.10/backbone-min.js"></script>\r\n    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.3/underscore-min.js"></script>\r\n-->\r\n<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>\r\n<script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>\r\n<script src="/assets/js/lib.js"></script>\r\n<script src="/assets/js/app.js"></script>\r\n\r\n<!-- Livereload code (http://livereload.com/) -->\r\n<script>document.write(''<script src="http://'' + (location.host || ''localhost'').split('':'')[0] + '':35729/livereload.js?snipver=1"></'' + ''script>'')</script>\r\n\r\n\r\n\r\n<!-- Filtering -->\r\n<script src="/assets/js/filtering.js"></script>\r\n <script>\r\n    $(function(){\r\n      \r\n      var $container = $(''#container'');\r\n\r\n      $container.isotope({\r\n        itemSelector : ''.element'',\r\n		layoutMode : ''fitRows''\r\n      });\r\n      $(''#container'').isotope({\r\n  layoutMode: ''cellsByRow'',\r\n  cellsByRow: {\r\n    columnWidth: 278,\r\n    rowHeight: 190\r\n  }\r\n});\r\n      \r\n      var $optionSets = $(''#options .option-set''),\r\n          $optionLinks = $optionSets.find(''a'');\r\n\r\n      $optionLinks.click(function(){\r\n        var $this = $(this);\r\n        // don''t proceed if already selected\r\n        if ( $this.hasClass(''selected'') ) {\r\n          return false;\r\n        }\r\n        var $optionSet = $this.parents(''.option-set'');\r\n        $optionSet.find(''.selected'').removeClass(''selected'');\r\n        $this.addClass(''selected'');\r\n  \r\n        // make option object dynamically, i.e. { filter: ''.my-filter-class'' }\r\n        var options = {},\r\n            key = $optionSet.attr(''data-option-key''),\r\n            value = $this.attr(''data-option-value'');\r\n        // parse ''false'' as false boolean\r\n        value = value === ''false'' ? false : value;\r\n        options[ key ] = value;\r\n        if ( key === ''layoutMode'' && typeof changeLayoutMode === ''function'' ) {\r\n          // changes in layout modes need extra logic\r\n          changeLayoutMode( $this, options )\r\n        } else {\r\n          // otherwise, apply new options\r\n          $container.isotope( options );\r\n        }\r\n        \r\n        return false;\r\n      });\r\n\r\n      \r\n    });\r\n  </script>\r\n\r\n<!-- Y Axis Loader -->\r\n<script src="/assets/js/gridloading/masonry.pkgd.min.js"></script>\r\n<script src="/assets/js/gridloading/imagesloaded.js"></script>\r\n<script src="/assets/js/gridloading/classie.js"></script>\r\n<script src="/assets/js/gridloading/AnimOnScroll.js"></script>\r\n<script>\r\n\r\n\r\n	new AnimOnScroll( document.getElementById( ''grid'' ), {\r\n		minDuration : 0.3,\r\n		maxDuration : 0.6,\r\n		viewportFactor : 0.6\r\n	} );\r\n</script>'),
 (2, 0, 'www_metatags', '<!-- Meta, title, CSS, favicons, etc. -->\r\n<meta charset="utf-8">\r\n<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0">\r\n{!--<meta name="apple-mobile-web-app-capable" content="yes" />--}\r\n<!--[if lte IE 9]><meta http-equiv="X-UA-Compatible" content="chrome=1" /><![endif]-->\r\n<meta name="author" content="Maven 2.0">\r\n'),
-(3, 0, 'www_stylesheets', '<!-- Core CSS -->\r\n<link href="{exp:cache_buster file="/assets/css/screen.css" separator="?"}" rel="stylesheet">\r\n<link href=''http://fonts.googleapis.com/css?family=Maven+Pro'' rel=''stylesheet'' type=''text/css''>\r\n');
+(3, 0, 'www_stylesheets', '<!-- Core CSS -->\r\n<link href="{exp:cache_buster file="/assets/css/screen.css" separator="?"}" rel="stylesheet">\r\n');
 
 -- --------------------------------------------------------
 
@@ -2473,7 +2735,7 @@ CREATE TABLE IF NOT EXISTS `exp_stats` (
 --
 
 INSERT INTO `exp_stats` (`stat_id`, `site_id`, `total_members`, `recent_member_id`, `recent_member`, `total_entries`, `total_forum_topics`, `total_forum_posts`, `total_comments`, `last_entry_date`, `last_forum_post_date`, `last_comment_date`, `last_visitor_date`, `most_visitors`, `most_visitor_date`, `last_cache_clear`) VALUES
-(1, 1, 1, 1, 'admin', 11, 0, 0, 0, 1376681040, 0, 0, 0, 0, 0, 1377026223);
+(1, 1, 1, 1, 'admin', 11, 0, 0, 0, 1376935440, 0, 0, 0, 0, 0, 1377631034);
 
 -- --------------------------------------------------------
 
@@ -2558,18 +2820,18 @@ CREATE TABLE IF NOT EXISTS `exp_structure` (
 --
 
 INSERT INTO `exp_structure` (`site_id`, `entry_id`, `parent_id`, `channel_id`, `listing_cid`, `lft`, `rgt`, `dead`, `hidden`) VALUES
-(0, 0, 0, 0, 0, 1, 26, 'root', 'n'),
+(0, 0, 0, 0, 0, 1, 24, 'root', 'n'),
 (1, 1, 0, 1, 0, 2, 3, '', 'n'),
 (1, 14, 0, 2, 0, 10, 11, '', 'n'),
 (1, 4, 0, 3, 0, 6, 7, '', 'n'),
-(1, 6, 0, 2, 0, 12, 23, '', 'n'),
-(1, 7, 0, 2, 0, 8, 9, '', 'n'),
-(1, 8, 6, 2, 0, 13, 14, '', 'n'),
-(1, 9, 6, 2, 0, 15, 16, '', 'n'),
-(1, 10, 6, 2, 0, 17, 18, '', 'n'),
-(1, 11, 6, 2, 0, 19, 20, '', 'n'),
-(1, 12, 6, 2, 0, 21, 22, '', 'n'),
-(1, 13, 0, 4, 0, 4, 5, '', 'n');
+(1, 15, 0, 5, 0, 12, 23, '', 'n'),
+(1, 19, 15, 5, 0, 17, 18, '', 'n'),
+(1, 16, 15, 5, 0, 13, 14, '', 'n'),
+(1, 17, 15, 5, 0, 19, 20, '', 'n'),
+(1, 18, 15, 5, 0, 15, 16, '', 'n'),
+(1, 13, 0, 4, 0, 4, 5, '', 'n'),
+(1, 21, 0, 6, 0, 8, 9, '', 'n'),
+(1, 20, 15, 5, 0, 21, 22, '', 'n');
 
 -- --------------------------------------------------------
 
@@ -2592,11 +2854,12 @@ CREATE TABLE IF NOT EXISTS `exp_structure_channels` (
 --
 
 INSERT INTO `exp_structure_channels` (`site_id`, `channel_id`, `template_id`, `type`, `split_assets`, `show_in_page_selector`) VALUES
-(1, 1, 2, 'page', 'n', 'y'),
-(1, 2, 2, 'page', 'n', 'y'),
+(1, 1, 2, 'page', 'n', 'n'),
+(1, 2, 2, 'page', 'n', 'n'),
 (1, 3, 2, 'page', 'n', 'y'),
 (1, 5, 2, 'page', 'n', 'y'),
-(1, 4, 2, 'page', 'n', 'y');
+(1, 4, 2, 'page', 'n', 'n'),
+(1, 6, 2, 'page', 'n', 'n');
 
 -- --------------------------------------------------------
 
@@ -2703,7 +2966,7 @@ INSERT INTO `exp_templates` (`template_id`, `site_id`, `group_id`, `template_nam
 (6, 1, 2, '_give', 'y', 'webpage', 'frt', '', 1376502301, 1, 'n', 0, '', 'n', 'n', 'o', 0),
 (7, 1, 1, '_header', 'y', 'webpage', '<body class="{exp:nsm_body_class return=''class_attr''} {if logged_in} logged-in{/if}{if logged_out} not-logged-in{/if}">\r\n	<!--[if lt IE 7]>\r\n	<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>\r\n	<![endif]-->\r\n	<!--<div id="skip-link">\r\n	<a href="#main-content" class="invisible focusable">Skip to main content</a>\r\n	</div>-->\r\n	{exp:channel:entries channel="homepage"}\r\n	<div id="header" style="background: url(''{hp_header_image}'') no-repeat fixed center;background-size:cover;">\r\n		<div id="topbar">\r\n			<div class="container">\r\n				<div class="pull-left">\r\n					<img class="vertical-center" src="/assets/img/logo.png">\r\n				</div>\r\n				<div class="pull-right">\r\n					<nav>\r\n						<ul>\r\n							<li>Get Involved</li>\r\n							<li>Projects</li>\r\n							<li>Success Stories</li>\r\n							<li><div class="banner"><object  data="/assets/img/vectors/banner.svg" type="image/svg+xml">sdsd</object></div><span class="topper">Give</span></li>\r\n							<li>About Us</li>				\r\n						</ul>\r\n					</nav>\r\n				</div>\r\n			</div>	\r\n		</div>\r\n	{/exp:channel:entries}', NULL, 1376502174, 1, 'n', 0, '', 'n', 'n', 'o', 0),
 (8, 1, 1, '_footer', 'y', 'webpage', '<div id="footer">\r\n	<div class="container">\r\n		<div class="row">\r\n			<div class="pull-left">\r\n				<img class="vertical-center" src="/assets/img/logo.png">\r\n			</div>\r\n			<div class="col-2">\r\n				<address>\r\n					Partners For Better Health\r\n					8780  19th Street, Suite #239\r\n					Rancho Cucamonga, CA  91701     \r\n\r\n					T: 909.984.9153\r\n				</address>\r\n			</div>\r\n			<div class="pull-right">\r\n				<button type="button" class="btn btn-primary btn-lg btn-gray">RLF Login</button>\r\n			</div>\r\n		</div>\r\n		<div class="row footer-text">\r\n			Copyright 2013, All Rights Reserved, Partners For Better Health©, p4bHealth©\r\n		</div>\r\n	</div>\r\n</div>	', NULL, 1376502770, 1, 'n', 0, '', 'n', 'n', 'o', 0),
-(9, 1, 2, '_projects', 'y', 'webpage', '', NULL, 1376510574, 1, 'n', 0, '', 'n', 'n', 'o', 0),
+(9, 1, 2, '_projects', 'y', 'webpage', '{exp:channel:entries channel="projects"}\n{embed="global/_header"\n	entry_id="{last_segment_absolute_id}"\n	url_title="{last_segment_absolute}"\n	template="index"\n	template_group="page"\n	channel_name="pages"\n	body_class="sub-page"\n	header_image="{projects_header_image}"\n}\n	<div id="header-scene">\n		<div class="container">\n			<div class="row text-center">	\n				<h1>{projects_header_headline}</h1>\n				<p>{projects_header_content}</p>					\n			</div>			\n		</div>\n	</div>\n</div>\n<div class="yellowbar-scene"></div>\n<div class="single-scene">\n\n \n	<div class="container">\n		<div class="section-banner">Filter projects by city</div>\n		<div class="filter" >\n			<section id="options" class="clearfix">\n				<ul id="filter" class="option-set clearfix nav nav-pills" data-option-key="filter">\n					<li><a href="#filter" data-option-value="*" class="selected">All</a></li>\n					{projects_content orderby="city" sort="asc"}\n					<li><a href="#filter" data-option-value=".{stripped-city}">{city}</a></li>\n					\n					\n					{/projects_content}\n				</ul>\n				<script>	//Prevent List items from showing more than once\n					var seen = {};\n					$(''a'').each(function() {\n						var txt = $(this).text();\n						if (seen[txt])\n							$(this).remove();\n						else\n							seen[txt] = true;\n					});\n				</script>\n			</section> <!-- #options -->\n		</div>\n		<div class="rowd margin-top-small"> \n			<div id="container" class="col-lg-12 clearfix text-center">\n				{projects_content}\n				<div class="element {stripped-city}" data-category="{city}">\n				<img src="{image}" width="265" height="165">\n				</div>\n				{/projects_content}\n			</div> <!-- #container -->\n		</div>\n	</div>\n</div>\n{/exp:channel:entries}', '', 1377034648, 1, 'n', 0, '', 'n', 'y', 'o', 0),
 (10, 1, 2, '_get-involved', 'y', 'webpage', '	<div id="header-scene">\r\n		<div class="container">\r\n			<div class="row text-center">	\r\n				<h1>How You Can Give</h1>\r\n				<p>Please join us in creating a healthier future with a donation. We have provided a safe and cost efficient means for you to give to Partners for Better Health (P4bHealth.) </p>					\r\n			</div>\r\n			<div class="row text-center">		\r\n				<div id="button">\r\n						<button type="button" class="btn btn-primary btn-lg btn-orange">Give Now</button>\r\n				</div>\r\n			</div>				\r\n		</div>\r\n	</div>\r\n</div>\r\n<div class="yellowbar-scene"></div>\r\n<div class="single-scene">\r\n	<div class="container">\r\n		<div class="section-banner">Other ways to give</div>\r\n		<div class="row margin-top-80">\r\n			<div class="col-lg-4">\r\n				<img class="img-responsive" src="/assets/img/site/10219_1business_group.jpg">\r\n			</div>\r\n			<div class="col-lg-8">\r\n				<h2>Randall Lewis Health Policy Fellowship</h2>\r\n				<p>Your donation to the Partners for Better Health Policy Fellowships will help us create a better future in the \r\nInland Empire.</p>\r\n\r\n				<p>We are now seeking applications for The Randall Lewis Health Policy Fellowship for the 2011-2012 academic year. This prestigious and competitive fellowship is the first of its kind in the Inland Empire and will provide a unique opportunity to work directly with local communities in improving residents'' health.  Five to seven applicants will be selected to serve as interns in cities within the Inland Empire.   Fellows will develop the skills required to successfully influence local and regional health policy.  We will have a direct influence on shaping the little p in health policy to make a difference in our communities.between the communities and the health sector. </p>\r\n				<button type="button" class="btn btn-primary btn-lg btn-orange">Give Now</button>\r\n			</div>\r\n		</div>\r\n		<div class="row margin-top-80">\r\n			<div class="col-lg-4">\r\n				<img class="img-responsive" src="/assets/img/site/10219_1business_group.jpg">\r\n			</div>\r\n			<div class="col-lg-8">\r\n				<h2>Randall Lewis Health Policy Fellowship</h2>\r\n				<p>Your donation to the Partners for Better Health Policy Fellowships will help us create a better future in the \r\nInland Empire.</p>\r\n\r\n				<p>We are now seeking applications for The Randall Lewis Health Policy Fellowship for the 2011-2012 academic year. This prestigious and competitive fellowship is the first of its kind in the Inland Empire and will provide a unique opportunity to work directly with local communities in improving residents'' health.  Five to seven applicants will be selected to serve as interns in cities within the Inland Empire.   Fellows will develop the skills required to successfully influence local and regional health policy.  We will have a direct influence on shaping the little p in health policy to make a difference in our communities.between the communities and the health sector. </p>\r\n				<button type="button" class="btn btn-primary btn-lg btn-orange">Give Now</button>\r\n			</div>\r\n		</div>		\r\n	</div>\r\n</div>	', NULL, 1376522575, 1, 'n', 0, '', 'n', 'n', 'o', 0),
 (11, 1, 2, '_stories', 'y', 'webpage', '', NULL, 1376593461, 1, 'n', 0, '', 'n', 'n', 'o', 0);
 
