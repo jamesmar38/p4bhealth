@@ -18,35 +18,6 @@
 	</div>
 </section>
 <section class="yellowbar-scene"></section>
-{!-- Initiate Modal Data --}
-{projects_content}
-<section id="show{row_id}" class="reveal-modal xlarge modal-scene close-reveal-modal">
-	<div class="container-fluid close-reveal-modal">
-	<span class="pull right">&#215;</span>
-		<div class="col-lg-3">
-			<img src="{image}" class="img-responsive">
-		</div>
-		<div class="col-lg-9">
-			<h2>City of {city}</h2>
-			<h4>{headline}</h4>
-			<hr>
-			<div class="modal-formatting">
-				<div class="col-lg-8">
-					<p>{content1}</p>
-				</div>
-				<div class="col-lg-4">
-					<div class="row">
-						<iframe width="100%" height="200" id="" src="{video}" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-					</div>
-					<div class="row"><p>{content2}</p></div>
-				</div>
-			</div>
-			
-		</div>
-	</div>
-</section>		
-{/projects_content}
-{!-- End init --}
 <section class="single-scene">
 	<div class="container">
 		<div class="section-banner">{projects_body_headline}</div>
@@ -89,4 +60,33 @@
 		</div>
 	</div>
 </section>
+<!-- Initiate Modal Data -->
+{projects_content}
+<section id="show{row_id}" class="reveal-modal xlarge modal-scene close-reveal-modal">
+	<div class="container-fluid close-reveal-modal">
+	<span class="pull right">&#215;</span>
+		<div class="col-lg-3">
+			<img src="{image}" class="img-responsive">
+		</div>
+		<div class="col-lg-9">
+			<h2>City of {city}</h2>
+			<h4>{headline}</h4>
+			<hr>
+			<div class="modal-formatting">
+				<div class="col-lg-8">
+					<p>{content1}</p>
+				</div>
+				<div class="col-lg-4">
+					<div class="row" >
+						<iframe seamless width="100%" height="200" id="" src="{video}" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+					</div>
+					<div class="row"><p>{content2}</p></div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</section>		
+{/projects_content}
+<!-- End Modal Data -->
 {/exp:channel:entries}

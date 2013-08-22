@@ -5144,11 +5144,14 @@ p {
   font-size: 14px; }
 .modal-scene .modal-formatting h1 {
   color: #f78f1e;
-  font-size: 28px; }
+  font-size: 28px;
+  text-align: left;
+  text-shadow: 0px 0px 0px rgba(0, 0, 0, 0); }
 .modal-scene .modal-formatting h2 {
   color: #353535;
   font-weight: bold;
   font-size: 24px; }
 .modal-scene .modal-formatting p {
   color: #353535;
-  font-size: 18px; }
+  font-size: 16px;
+  font-weight: 500; }
