@@ -11,9 +11,9 @@
  */
 
 $env_db['hostname'] = 'localhost';
-$env_db['username'] = '';
-$env_db['password'] = '';
-$env_db['database'] = '';
+$env_db['username'] = 'db-p4bhealth';
+$env_db['password'] = 'KJRwUhg6wE8tLj';
+$env_db['database'] = 'p4bhealth_ee';
 
 // Sample global variable for Production only
 // Can be used in templates like "{global:google_analytics}"
