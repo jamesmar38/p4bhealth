@@ -44,13 +44,13 @@ namespace :deploy do
     run "mkdir -p #{server_root}/#{shared_dir}/logs"
     
     # Custom Upload directories
-    run "mkdir -p #{server_root}/#{shared_dir}/images/uploads/portfolio"
-    run "mkdir -p #{server_root}/#{shared_dir}/images/uploads/services"
-    run "mkdir -p #{server_root}/#{shared_dir}/images/uploads/home"
-    run "mkdir -p #{server_root}/#{shared_dir}/images/uploads/home/promo"
-    run "mkdir -p #{server_root}/#{shared_dir}/images/uploads/home/clients"
-    run "mkdir -p #{server_root}/#{shared_dir}/images/uploads/team"
-    run "mkdir -p #{server_root}/#{shared_dir}/images/uploads/shop"
+    # run "mkdir -p #{server_root}/#{shared_dir}/images/uploads/portfolio"
+    # run "mkdir -p #{server_root}/#{shared_dir}/images/uploads/services"
+    # run "mkdir -p #{server_root}/#{shared_dir}/images/uploads/home"
+    # run "mkdir -p #{server_root}/#{shared_dir}/images/uploads/home/promo"
+    # run "mkdir -p #{server_root}/#{shared_dir}/images/uploads/home/clients"
+    # run "mkdir -p #{server_root}/#{shared_dir}/images/uploads/team"
+    # run "mkdir -p #{server_root}/#{shared_dir}/images/uploads/shop"
   end
 
   desc "This is here to override the original :restart"
