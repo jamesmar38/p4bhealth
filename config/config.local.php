@@ -15,7 +15,7 @@
 // Local db
 $env_db['hostname'] = 'localhost';
 $env_db['username'] = 'root';
-$env_db['password'] = 'root';
+$env_db['password'] = '';
 $env_db['database'] = 'pbh_ee';
 
 /**
