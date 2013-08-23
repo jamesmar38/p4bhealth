@@ -51,9 +51,11 @@
 					$strippedcity = str_replace( ' ', '', '{city}'); 
 					echo '<div class="element ' . $strippedcity . '" data-category="{city}">';
 				?>
-		
+				{if thumbnail != ""}
+				<a href="#" data-reveal-id="show{row_id}"><img src="{thumbnail}" width="265" height="165"></a>
+				{if:else}
 				<a href="#" data-reveal-id="show{row_id}"><img src="{image}" width="265" height="165"></a>
-				
+				{/if}
 				</div>
 				{/projects_content}
 			</div> <!-- #container -->
