@@ -5082,20 +5082,6 @@ hr {
     font-weight: normal;
     margin-bottom: 1.5em; }
 
-.get-involved h2, .about h2 {
-  color: #353535;
-  text-align: center;
-  font-weight: bold; }
-
-.about .nav {
-  margin-bottom: 40px; }
-  .about .nav a {
-    font-size: 18px;
-    font-weight: 600;
-    color: #949494; }
-.about h2 {
-  text-align: left; }
-
 .yellowbar-scene {
   height: 40px;
   background-color: #f78f1e; }
@@ -5113,13 +5099,30 @@ hr {
   text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.2);
   margin-bottom: 60px; }
 
-#about_content h1, #about_content h2, #about_content h3 {
+.get-involved h2, .about h2 {
+  color: #353535;
+  text-align: center;
+  font-weight: bold; }
+
+.about .nav {
+  margin-bottom: 40px; }
+  .about .nav a {
+    font-size: 18px;
+    font-weight: 600;
+    color: #949494; }
+.about h2 {
+  text-align: left; }
+.about #about_content hr {
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #f78f1e; }
+.about #about_content h1, .about #about_content h2, .about #about_content h3 {
   font-size: 22px;
   color: #f78f1e;
   font-weight: 700;
   text-align: left;
   text-shadow: 0px 0px 0px rgba(0, 0, 0, 0); }
-#about_content li {
+.about #about_content li {
   line-height: 1.5; }
 
 .stories h3 {
