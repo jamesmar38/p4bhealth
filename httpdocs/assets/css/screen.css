@@ -4658,7 +4658,7 @@ Example markup
   font-family: 'Entypo';
   font-style: normal;
   font-weight: normal;
-  font-size: 2em;
+  font-size: 3em;
   line-height: 1;
   -webkit-font-smoothing: antialiased; }
 
@@ -4714,10 +4714,7 @@ Example markup
   padding-right: 45px; }
 
 .btn-entypo {
-  height: 2.5em;
-  padding-top: 0; }
-  .btn-entypo .entypo {
-    line-height: 0.7 !important; }
+  height: 2.5em; }
 
 body {
   background: url("/assets/img/site/process-scene.jpg") no-repeat fixed;
@@ -4957,7 +4954,7 @@ hr {
   padding-top: 60px;
   padding-bottom: 60px;
   width: 100%;
-  min-height: 715px;
+  min-height: 100vh;
   font-size: 22px;
   line-height: 1.091;
   text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.2); }
