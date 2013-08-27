@@ -5145,6 +5145,11 @@ hr {
   list-style-type: none;
   display: inline;
   /* IMPORTANT */ }
+  .about .team li img {
+    width: 100px !important;
+    /* you can use % */
+    height: auto;
+    text-align: center; }
 .about .nav {
   margin-bottom: 40px; }
   .about .nav a {

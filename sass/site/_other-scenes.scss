@@ -99,6 +99,11 @@
 			margin-bottom: 2em;
 		}
 		li {
+			img{
+				width:100px !important; /* you can use % */
+				height: auto;
+				text-align: center;
+			}
 			font-size: 14px;
 			width: 25%;
 			float:left; /* IMPORTANT */

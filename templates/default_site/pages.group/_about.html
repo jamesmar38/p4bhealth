@@ -47,10 +47,39 @@
 				<div class="about">
 					<h2 style="text-align: left">{about_body_headline}</h2>
 					<hr>
-					<div id="about_content">
-						{if segment_2 == "team"}<div class="team">{/if}
+					<div id="about_content">						
 						{about_body_content}
-						{if segment_2 == "team"}</div>{/if}
+						{if segment_2 == "team"}
+							<div class="team">
+							<h2>Staff</h2>
+							<ul>
+								{about_team_staff}
+								<li>
+									{if img}<img src="{img}">{/if}
+									<br><strong>{name}</strong><br>{title}
+								</li>
+								{/about_team_staff}
+							</ul>
+							<h2>Board of Directors</h2>
+							<ul>
+								{about_team_bod}
+								<li>
+									{if img}<img src="{img}">{/if}
+									<br><strong>{name}</strong><br>{title}
+								</li>
+								{/about_team_bod}
+							</ul>
+							<h2>Advisory Board</h2>
+							<ul>
+								{about_team_ab}
+								<li>
+									{if img}<img src="{img}">{/if}
+									<br><strong>{name}</strong><br>{title}
+								</li>
+								{/about_team_ab}
+							</ul>
+							</div>
+						{/if}
 						{about_content}
 							{if button_text}
 								{if content}<p>{content}</p>{/if}
