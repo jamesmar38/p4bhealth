@@ -48,7 +48,9 @@
 					<h2 style="text-align: left">{about_body_headline}</h2>
 					<hr>
 					<div id="about_content">
+						{if segment_2 == "team"}<div class="team">{/if}
 						{about_body_content}
+						{if segment_2 == "team"}</div>{/if}
 						{about_content}
 							{if button_text}
 								{if content}<p>{content}</p>{/if}

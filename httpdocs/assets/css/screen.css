@@ -4622,7 +4622,10 @@ Example markup
     font-size: 18px !important; }
 
   .get-involved p, .stories p {
-    font-size: 16px !important; } }
+    font-size: 16px !important; }
+
+  .team li {
+    width: 100% !important; } }
 @media screen and (max-width: 768px) {
   #partners-scene {
     font-size: 17px !important; } }
@@ -5122,6 +5125,26 @@ hr {
   text-align: center;
   font-weight: bold; }
 
+.about .team ul {
+  overflow: hidden;
+  list-style: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  /* CSS Reset */
+  max-width: 1000px;
+  /* restrict the width */
+  margin: auto;
+  /* center it */
+  margin-bottom: 2em; }
+.about .team li {
+  font-size: 14px;
+  width: 25%;
+  float: left;
+  /* IMPORTANT */
+  list-style-type: none;
+  display: inline;
+  /* IMPORTANT */ }
 .about .nav {
   margin-bottom: 40px; }
   .about .nav a {

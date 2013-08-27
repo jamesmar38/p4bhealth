@@ -88,6 +88,24 @@
 	}
 }
 .about {
+	.team {
+		ul {
+			overflow: hidden;
+			list-style: none;
+			width: 100%;
+			margin:0;padding:0; /* CSS Reset */
+			max-width: 1000px; /* restrict the width */
+			margin: auto; /* center it */
+			margin-bottom: 2em;
+		}
+		li {
+			font-size: 14px;
+			width: 25%;
+			float:left; /* IMPORTANT */
+			list-style-type: none;
+			display:inline; /* IMPORTANT */
+		}
+	}
 	.nav {
 		margin-bottom: 40px;	//Spacing under nav for responsive
 		a {
