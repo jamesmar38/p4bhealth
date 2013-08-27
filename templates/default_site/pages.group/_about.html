@@ -55,7 +55,7 @@
 							<ul>
 								{about_team_staff}
 								<li>
-									{if img}<img src="{img}">{/if}
+									{if img}<img src="{img}">{if:else}<img src="/assets/img/blankface.jpg">{/if}
 									<br><strong>{name}</strong><br>{title}
 								</li>
 								{/about_team_staff}
@@ -64,7 +64,7 @@
 							<ul>
 								{about_team_bod}
 								<li>
-									{if img}<img src="{img}">{/if}
+									{if img}<img src="{img}">{if:else}<img src="/assets/img/blankface.jpg">{/if}
 									<br><strong>{name}</strong><br>{title}
 								</li>
 								{/about_team_bod}
@@ -73,7 +73,7 @@
 							<ul>
 								{about_team_ab}
 								<li>
-									{if img}<img src="{img}">{/if}
+									{if img}<img src="{img}">{if:else}<img src="/assets/img/blankface.jpg">{/if}
 									<br><strong>{name}</strong><br>{title}
 								</li>
 								{/about_team_ab}
