@@ -54,7 +54,7 @@ $topbar-height:			125px;
 			}
 		}
 		.nav-pills {
-						
+			@include border-radius($pbh-radius);			
 			a {
 				color: $pbh-white;
 				font-size:18px;

@@ -14,6 +14,8 @@ $pbh-blue:				#428BCA;
 $nav-pills-active-link-hover-bg:            $pbh-orange !default;
 $nav-pills-active-link-hover-color:         $pbh-white !default;
 			
+// Border Radius
+$pbh-radius:			3px;
 
 ////////////////////////////////////////////////////
 // Below are Bootstrap defaults //
@@ -88,7 +90,7 @@ $padding-small-horizontal:       10px !default;
 $line-height-large:              1.33 !default;
 $line-height-small:              1.5 !default;
 
-$border-radius-base:             4px !default;
+$border-radius-base:             $pbh-radius !default;
 $border-radius-large:            6px !default;
 $border-radius-small:            3px !default;
 

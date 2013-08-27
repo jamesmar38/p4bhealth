@@ -533,7 +533,7 @@ pre {
   color: #333333;
   background-color: whitesmoke;
   border: 1px solid #cccccc;
-  border-radius: 4px; }
+  border-radius: 3px; }
   pre.prettyprint {
     margin-bottom: 20px; }
   pre code {
@@ -1175,7 +1175,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
   vertical-align: middle;
   background-color: white;
   border: 1px solid #cccccc;
-  border-radius: 4px;
+  border-radius: 3px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
@@ -1362,7 +1362,7 @@ textarea.input-lg, textarea.input-sm {
   vertical-align: middle;
   cursor: pointer;
   border: 1px solid transparent;
-  border-radius: 4px;
+  border-radius: 3px;
   white-space: nowrap;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -1560,7 +1560,7 @@ input[type="button"].btn-block {
   text-align: center;
   background-color: #eeeeee;
   border: 1px solid #cccccc;
-  border-radius: 4px; }
+  border-radius: 3px; }
   .input-group-addon.input-sm {
     padding: 5px 10px;
     font-size: 12px;
@@ -1636,7 +1636,7 @@ input[type="button"].btn-block {
   background-color: white;
   border: 1px solid #cccccc;
   border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 4px;
+  border-radius: 3px;
   -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
   background-clip: padding-box; }
@@ -1737,12 +1737,12 @@ input[type="button"].btn-block {
   background-color: white;
   border: 1px solid #dddddd; }
   .list-group-item:first-child {
-    border-top-right-radius: 4px;
-    border-top-left-radius: 4px; }
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px; }
   .list-group-item:last-child {
     margin-bottom: 0;
-    border-bottom-right-radius: 4px;
-    border-bottom-left-radius: 4px; }
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px; }
   .list-group-item > .badge {
     float: right;
     margin-right: -15px; }
@@ -1777,7 +1777,7 @@ a.list-group-item.active {
   margin-bottom: 20px;
   background-color: white;
   border: 1px solid #dddddd;
-  border-radius: 4px;
+  border-radius: 3px;
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05); }
   .panel .list-group {
@@ -1795,8 +1795,8 @@ a.list-group-item.active {
   padding: 10px 15px;
   background-color: whitesmoke;
   border-bottom: 1px solid #dddddd;
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px; }
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px; }
 
 .panel-title {
   margin-top: 0;
@@ -1809,8 +1809,8 @@ a.list-group-item.active {
   padding: 10px 15px;
   background-color: whitesmoke;
   border-top: 1px solid #dddddd;
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px; }
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px; }
 
 .panel-primary {
   border-color: #c57117; }
@@ -1853,7 +1853,7 @@ a.list-group-item.active {
   margin-bottom: 20px;
   background-color: whitesmoke;
   border: 1px solid #e3e3e3;
-  border-radius: 4px;
+  border-radius: 3px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05); }
   .well blockquote {
@@ -1943,7 +1943,7 @@ button.close {
       margin-right: 2px;
       line-height: 1.42857;
       border: 1px solid transparent;
-      border-radius: 4px 4px 0 0; }
+      border-radius: 3px 3px 0 0; }
       .nav-tabs > li > a:hover {
         border-color: #eeeeee; }
     .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
@@ -2022,7 +2022,7 @@ button.close {
   padding-left: 15px;
   padding-right: 15px;
   background-color: #eeeeee;
-  border-radius: 4px; }
+  border-radius: 3px; }
   .navbar:before, .navbar:after {
     content: " ";
     /* 1 */
@@ -2039,7 +2039,7 @@ button.close {
     padding-bottom: 15px;
     color: #777777;
     line-height: 20px;
-    border-radius: 4px; }
+    border-radius: 3px; }
     .navbar-nav > li > a:hover, .navbar-nav > li > a:focus {
       color: #333333;
       background-color: transparent; }
@@ -2095,7 +2095,7 @@ button.close {
   padding: 8px 12px;
   background-color: transparent;
   border: 1px solid #dddddd;
-  border-radius: 4px; }
+  border-radius: 3px; }
   .navbar-toggle:hover, .navbar-toggle:focus {
     background-color: #dddddd; }
   .navbar-toggle .icon-bar {
@@ -2353,7 +2353,7 @@ button.close {
   margin-bottom: 20px;
   list-style: none;
   background-color: whitesmoke;
-  border-radius: 4px; }
+  border-radius: 3px; }
   .breadcrumb > li {
     display: inline-block; }
     .breadcrumb > li + li:before {
@@ -2367,7 +2367,7 @@ button.close {
   display: inline-block;
   padding-left: 0;
   margin: 20px 0;
-  border-radius: 4px; }
+  border-radius: 3px; }
   .pagination > li {
     display: inline; }
     .pagination > li > a,
@@ -2382,12 +2382,12 @@ button.close {
     .pagination > li:first-child > a,
     .pagination > li:first-child > span {
       border-left-width: 1px;
-      border-bottom-left-radius: 4px;
-      border-top-left-radius: 4px; }
+      border-bottom-left-radius: 3px;
+      border-top-left-radius: 3px; }
     .pagination > li:last-child > a,
     .pagination > li:last-child > span {
-      border-bottom-right-radius: 4px;
-      border-top-right-radius: 4px; }
+      border-bottom-right-radius: 3px;
+      border-top-right-radius: 3px; }
   .pagination > li > a:hover,
   .pagination > li > a:focus,
   .pagination > .active > a,
@@ -2608,7 +2608,7 @@ button.close {
   text-align: center;
   text-decoration: none;
   background-color: rgba(0, 0, 0, 0.9);
-  border-radius: 4px; }
+  border-radius: 3px; }
 
 .tooltip-arrow {
   position: absolute;
@@ -2777,7 +2777,7 @@ button.close {
   color: #c09853;
   background-color: #fcf8e3;
   border: 1px solid #fbeed5;
-  border-radius: 4px; }
+  border-radius: 3px; }
   .alert h4 {
     margin-top: 0;
     color: inherit; }
@@ -2830,7 +2830,7 @@ button.close {
   line-height: 1.42857;
   background-color: white;
   border: 1px solid #dddddd;
-  border-radius: 4px;
+  border-radius: 3px;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out; }
 
@@ -2987,7 +2987,7 @@ a.list-group-item.active > .badge,
   height: 20px;
   margin-bottom: 20px;
   background-color: whitesmoke;
-  border-radius: 4px;
+  border-radius: 3px;
   -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); }
 
@@ -3061,7 +3061,7 @@ a.list-group-item.active > .badge,
 .accordion-group {
   margin-bottom: 2px;
   border: 1px solid #e5e5e5;
-  border-radius: 4px; }
+  border-radius: 3px; }
 
 .accordion-heading {
   border-bottom: 0; }
@@ -4851,14 +4851,20 @@ hr {
         			height: 145.75px;
         			z-index: 20;
         			line-height: $topbar-height + 22px;*/ }
-    #header nav .nav-pills a {
-      color: white;
-      font-size: 18px;
-      font-weight: regular;
-      text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.2);
-      z-index: 10; }
-      #header nav .nav-pills a:hover {
-        background: rgba(0, 0, 0, 0.5); }
+    #header nav .nav-pills {
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      -ms-border-radius: 3px;
+      -o-border-radius: 3px;
+      border-radius: 3px; }
+      #header nav .nav-pills a {
+        color: white;
+        font-size: 18px;
+        font-weight: regular;
+        text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.2);
+        z-index: 10; }
+        #header nav .nav-pills a:hover {
+          background: rgba(0, 0, 0, 0.5); }
   #header #header-scene {
     margin-top: 60px;
     margin-bottom: 60px; }
