@@ -75,7 +75,7 @@
 	font-weight:700;
 	text-transform: uppercase;
 	text-align: center;
-	padding-top:1em;
+	padding-top:18px;
 	color:$pbh-white;
 	@include text-shadow(0px 2px 0px rgba(0, 0, 0, 0.2));
 	margin-bottom: 60px;
@@ -95,6 +95,7 @@
 			font-weight: 600;
 			color: $pbh-gray;
 		}
+
 	}
 	h2 {
 		text-align: left;
