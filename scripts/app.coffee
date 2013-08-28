@@ -34,7 +34,9 @@ jQuery(document).ready ($) ->
   #   dismissmodalclass: "close-reveal-modal" #the class of a button or element that will close an open modal
 
 $ ->
-  Shadowbox.init()
+  Shadowbox.init
+    autoplayMovies: true
+  
   
   $container = $("#container")
   $container.isotope

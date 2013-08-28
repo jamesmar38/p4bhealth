@@ -24,8 +24,9 @@
 		height:140px;
     text-align: center;
     @include clearfix;
-    
     background-size: 100% 100%;
+    text-decoration: none;
+    color: $pbh-white;
     
     .playicon {
       display: block;
@@ -38,11 +39,20 @@
       line-height: 80px;
       width: 80px;
       @include box-shadow(inset 0px 3px 0px rgba(0, 0, 0, 0.2));
+      @include transition(.2s all);
     }
     i {
       line-height: 72px;
       @include text-shadow(0px 3px 0px rgba(0, 0, 0, 0.2));
     }
+    
+    &:hover, &:focus {
+      
+      .playicon {
+        background-color: darken($pbh-orange, 5%);
+      }
+    }
+    
     
 	}
 }
@@ -153,7 +163,7 @@
 		width: 100%;
 		padding-bottom: 0;
 		overflow: hidden;
-		padding: 20px;
+		padding: 20px 100px;
 	}
 	.infoBlockLeftBlack {		//For Semi-transparent background. Disabled for now
 	  color: #FFF;	

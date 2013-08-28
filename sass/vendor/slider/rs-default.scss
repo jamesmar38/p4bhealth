@@ -42,11 +42,17 @@
 	display: block;
 	cursor: pointer;
 	z-index: 21;
+  
+  @include transition(0.2s all);
+  
+  &:hover {
+	  background-color: rgba(0,0,0,0.5);
+  }
 }
+
 .rsDefault.rsVer .rsArrow {
 	width: 100%;
 	height: 44px;
-	
 }
 .rsDefault.rsVer .rsArrowLeft { top: 0; left: 0; }
 .rsDefault.rsVer .rsArrowRight { bottom: 0;  left: 0; }
@@ -65,13 +71,6 @@
 	position: absolute;	
 	cursor: pointer;	
 	background: url('/assets/third_party/royalslider/skins/default/arrows.png');
-
-
-	
-	border-radius: 999px;
-}
-.rsDefault .rsArrowIcn:hover {
-	background-color: rgba(0,0,0,0.5);
 }
 
 .rsDefault.rsHor .rsArrowLeft .rsArrowIcn { background-position: (-64px * 3) (-32px * 3); }
