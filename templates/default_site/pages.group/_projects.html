@@ -32,16 +32,7 @@
 					?>				
 					{/projects_content}
 				</ul>
-				<script>	//Prevent duplicate city listings
-					var seen = {};
-					$('a').each(function() {
-						var txt = $(this).text();
-						if (seen[txt])
-							$(this).remove();
-						else
-							seen[txt] = true;
-					});
-				</script>
+				
 			</section> <!-- #options -->
 		</div>
 		<div class="row margin-top-small"> 

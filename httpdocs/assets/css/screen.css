@@ -7394,7 +7394,11 @@ a [class*=" pbh-"] {
 
 /* line 37, ../../../sass/site/_buttons.scss */
 .btn-entypo {
-  height: 2.5em; }
+  height: 2.5em;
+  line-height: 1em; }
+  /* line 41, ../../../sass/site/_buttons.scss */
+  .btn-entypo i {
+    font-size: 2.5em; }
 
 /* line 1, ../../../sass/site/_body.scss */
 body {

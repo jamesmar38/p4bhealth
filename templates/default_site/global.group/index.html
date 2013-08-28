@@ -31,4 +31,16 @@
 
 {embed="global/_footer"}
 {www_js_foot}
+{if segment_1 == "projects"}
+<script>	//Prevent duplicate city listings
+	var seen = {};
+	$('#container a').each(function() {
+		var txt = $(this).text();
+		if (seen[txt])
+			$(this).remove();
+		else
+			seen[txt] = true;
+	});
+</script>
+{/if}
 {www_body_html_end}
