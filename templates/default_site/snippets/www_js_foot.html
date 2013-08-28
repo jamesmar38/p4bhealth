@@ -1,51 +1,5 @@
 <!-- JS and analytics only. -->
 
-<!-- Slider. For some reason, it doesn't load correctly if placed below other scripts here-->
-<script>
-    jQuery(document).ready(function($) {
-	$('#full-width-slider').royalSlider({
-		arrowsNav: true,
-		loop: true,
-		
-		keyboardNavEnabled: true,
-		controlsInside: false,
-		imageScaleMode: 'fill',
-		arrowsNavAutoHide: false,
-		autoScaleSlider: false, 
-		autoScaleSliderWidth: false,     
-		autoScaleSliderHeight: false,
-		controlNavigation: 'bullets',
-		thumbsFitInViewport: false,
-		navigateByClick: true,
-		startSlideId: 0,
-		autoPlay: {
-    		// autoplay options go gere
-    		enabled: true,
-    		pauseOnHover: false,
-			delay: 4000
-    	},
-		transitionType:'move',
-		globalCaption: true,
-		deeplinking: {
-			enabled: true,
-			change: false
-		},
-		/* size of all images http://help.dimsemenov.com/kb/royalslider-jquery-plugin-faq/adding-width-and-height-properties-to-images */
-		
-		});
-	});
-</script>
-<!-- Modal -->
-<script src="/assets/js/jquery.min.js" type="text/javascript"></script>
-<script src="/assets/js/modal.js"></script>
-<script>
-	$.reveal({
-	  animation: 'fadeAndPop',                   //fade, fadeAndPop, none
-     animationspeed: 900,                       //how fast animtions are
-     closeonbackgroundclick: true,              //if you click background will modal close?
-     dismissmodalclass: 'close-reveal-modal'    //the class of a button or element that will close an open modal
-});
-</script>
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
@@ -53,69 +7,10 @@
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.10/backbone-min.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.3/underscore-min.js"></script>
 -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+{!--<script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>--}
 <script src="/assets/js/lib.js"></script>
 <script src="/assets/js/app.js"></script>
-
-<!-- Livereload code (http://livereload.com/) -->
-<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
-
-
-
-<!-- Filtering -->
-<script src="/assets/js/filtering.js"></script>
- <script>
-    $(function(){
-      
-      var $container = $('#container');
-
-      $container.isotope({
-        itemSelector : '.element',
-		layoutMode : 'fitRows'
-      });
-      $('#container').isotope({
-  layoutMode: 'cellsByRow',
-  cellsByRow: {
-    columnWidth: 278,
-    rowHeight: 190
-  }
-});
-      
-      var $optionSets = $('#options .option-set'),
-          $optionLinks = $optionSets.find('a');
-
-      $optionLinks.click(function(){
-        var $this = $(this);
-        // don't proceed if already selected
-        if ( $this.hasClass('selected') ) {
-          return false;
-        }
-        var $optionSet = $this.parents('.option-set');
-        $optionSet.find('.selected').removeClass('selected');
-        $this.addClass('selected');
-  
-        // make option object dynamically, i.e. { filter: '.my-filter-class' }
-        var options = {},
-            key = $optionSet.attr('data-option-key'),
-            value = $this.attr('data-option-value');
-        // parse 'false' as false boolean
-        value = value === 'false' ? false : value;
-        options[ key ] = value;
-        if ( key === 'layoutMode' && typeof changeLayoutMode === 'function' ) {
-          // changes in layout modes need extra logic
-          changeLayoutMode( $this, options )
-        } else {
-          // otherwise, apply new options
-          $container.isotope( options );
-        }
-        
-        return false;
-      });
-
-      
-    });
-  </script>
 
 <!-- Y Axis Loader -->
 <script src="/assets/js/gridloading/masonry.pkgd.min.js"></script>

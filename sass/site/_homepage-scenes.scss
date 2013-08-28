@@ -17,14 +17,33 @@
 		@include text-shadow(0px 3px 0px rgba(0, 0, 0, 0.2));
 	}
 	#video {
+    display: block;
 		margin:35px auto;
 		background:rgba(0,0,0,0.3);
 		width:230px;
 		height:140px;
-		.svg {
-			margin-top:30px;
-			margin-bottom:30px;
-		}
+    text-align: center;
+    @include clearfix;
+    
+    background-size: 100% 100%;
+    
+    .playicon {
+      display: block;
+      margin: 25px auto 0;
+      border: 5px solid $pbh-white;
+      background-color: $pbh-orange;
+      @include border-radius(50%);
+      font-size: 80px;
+      height: 80px;
+      line-height: 80px;
+      width: 80px;
+      @include box-shadow(inset 0px 3px 0px rgba(0, 0, 0, 0.2));
+    }
+    i {
+      line-height: 72px;
+      @include text-shadow(0px 3px 0px rgba(0, 0, 0, 0.2));
+    }
+    
 	}
 }
 #vision-scene {
@@ -66,15 +85,32 @@
 	font-size: 22px;
 	line-height: 1.091;
 	@include text-shadow(0px 2px 0px rgba(0, 0, 0, 0.2));
-	.icons {
+	
+  .icons {
+    display: block;
 		margin: 45px auto 0 auto;
 		height: 230px;
 		width: 230px;
 		background-color: $pbh-white;
 		color: $pbh-orange;
 		font-size: 8em;
-		@include border-radius(999px);
+    line-height: 200px;
+    position: relative;
+    text-align: center;
+		@include border-radius(50%);
 		@include box-shadow(0px 4px 0px rgba(0, 0, 0, 0.2));
+    @include text-shadow(none);
+    
+    [class^="entypo-"],
+    [class*=" entypo-"] {
+      
+    }
+    
+    [class^="pbh-"],
+    [class*=" pbh-"] {
+      font-size: 1.2em;
+      line-height: 1em;
+    }
 	}
 }
 #partners-scene {
@@ -95,6 +131,7 @@
 		margin: 0 auto 20px auto;
 		color: $pbh-orange;
 		font-size: 7em;
+    line-height: 1em;
 	}
 	#partners-btn {
 		margin-top: 105px;
@@ -152,6 +189,7 @@
 		margin: 0 auto 40px auto;
 		color: $pbh-white;
 		font-size: 14rem;
+    line-height: 1em;
 		@include text-shadow(0px 4px 0px rgba(0, 0, 0, 0.2));
 	}
 }

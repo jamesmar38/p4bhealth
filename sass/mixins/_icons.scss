@@ -1,0 +1,255 @@
+$borderColor: #eeeeee !default;
+$iconMuted: #eeeeee !default;
+$iconLight: white !default;
+$iconDark: #333333 !default;
+$icons-li-width: (30em/14);
+
+@mixin icon-stack($width: 2em, $height: 2em, $top-font-size: 1em, $base-font-size: 2em) {
+  .icon-stack {
+    position: relative;
+    display: inline-block;
+    width: $width;
+    height: $height;
+    line-height: $width;
+    vertical-align: -35%;
+    [class^="icon-"],
+    [class*=" icon-"] {
+      display: block;
+      text-align: center;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      font-size: $top-font-size;
+      line-height: inherit;
+      *line-height: $height;
+    }
+    .icon-stack-base {
+      font-size: $base-font-size;
+      *line-height: #{$height / $base-font-size}em;
+    }
+  }
+}
+
+/* CORE
+ * -------------------------- */
+
+// [class^="icon-"],
+// [class*=" icon-"] {
+//   @include icon-Entypo();
+// }
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  text-decoration: inherit;
+  display: inline-block;
+  speak: none;
+}
+
+/* makes the font 33% larger relative to the icon container */
+.icon-large:before {
+  vertical-align: -10%;
+  font-size: (4em/3);
+}
+
+/* makes sure icons active on rollover in links */
+a {
+  [class^="icon-"],
+  [class*=" icon-"] {
+    display: inline;
+  }
+}
+
+/* increased font size for icon-large */
+[class^="icon-"],
+[class*=" icon-"] {
+  &.icon-fixed-width {
+    display: inline-block;
+    width: (16em/14);
+    text-align: right;
+    padding-right: (4em/14);
+    &.icon-large {
+      width: (20em/14);
+    }
+  }
+}
+
+.icon-ul {
+  margin-left: $icons-li-width;
+  list-style-type: none;
+
+  > li { position: relative; }
+
+  .icon-li {
+    position: absolute;
+    left: -$icons-li-width;
+    width: $icons-li-width;
+    text-align: center;
+    line-height: inherit;
+  }
+}
+
+// allows usage of the hide class directly on icons
+[class^="icon-"],
+[class*=" icon-"] {
+  &.hide {
+    display: none;
+  }
+}
+
+.icon-muted { color: $iconMuted; }
+.icon-light { color: $iconLight; }
+.icon-dark { color: $iconDark; }
+
+// Icon Borders
+// -------------------------
+
+.icon-border {
+  border: solid 1px $borderColor;
+  padding: .2em .25em .15em;
+  @include border-radius(3px);
+}
+
+// Icon Sizes
+// -------------------------
+
+.icon-2x {
+  font-size: 2em;
+  &.icon-border {
+    border-width: 2px;
+    @include border-radius(4px);
+  }
+}
+.icon-3x {
+  font-size: 3em;
+  &.icon-border {
+    border-width: 3px;
+    @include border-radius(5px);
+  }
+}
+.icon-4x {
+  font-size: 4em;
+  &.icon-border {
+    border-width: 4px;
+    @include border-radius(6px);
+  }
+}
+
+.icon-5x {
+  font-size: 5em;
+  &.icon-border {
+    border-width: 5px;
+    @include border-radius(7px);
+  }
+}
+
+
+// Floats & Margins
+// -------------------------
+
+// Quick floats
+.pull-right { float: right; }
+.pull-left { float: left; }
+
+[class^="icon-"],
+[class*=" icon-"] {
+  &.pull-left {
+    margin-right: .3em;
+  }
+  &.pull-right {
+    margin-left: .3em;
+  }
+}
+
+/* EXTRAS
+ * -------------------------- */
+
+/* Stacked and layered icon */
+@include icon-stack();
+
+/* Animated rotating icon */
+.icon-spin {
+  display: inline-block;
+  -moz-animation: spin 2s infinite linear;
+  -o-animation: spin 2s infinite linear;
+  -webkit-animation: spin 2s infinite linear;
+  animation: spin 2s infinite linear;
+}
+
+/* Prevent stack and spinners from being taken inline when inside a link */
+a .icon-stack,
+a .icon-spin {
+  display: inline-block;
+  text-decoration: none;
+}
+
+@-moz-keyframes spin {
+  0% { -moz-transform: rotate(0deg); }
+  100% { -moz-transform: rotate(359deg); }
+}
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(359deg); }
+}
+@-o-keyframes spin {
+  0% { -o-transform: rotate(0deg); }
+  100% { -o-transform: rotate(359deg); }
+}
+@-ms-keyframes spin {
+  0% { -ms-transform: rotate(0deg); }
+  100% { -ms-transform: rotate(359deg); }
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(359deg); }
+}
+
+/* Icon rotations and mirroring */
+.icon-rotate-90:before {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+}
+
+.icon-rotate-180:before {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+}
+
+.icon-rotate-270:before {
+  -webkit-transform: rotate(270deg);
+  -moz-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  -o-transform: rotate(270deg);
+  transform: rotate(270deg);
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+
+.icon-flip-horizontal:before {
+  -webkit-transform: scale(-1, 1);
+  -moz-transform: scale(-1, 1);
+  -ms-transform: scale(-1, 1);
+  -o-transform: scale(-1, 1);
+  transform: scale(-1, 1);
+}
+
+.icon-flip-vertical:before {
+  -webkit-transform: scale(1, -1);
+  -moz-transform: scale(1, -1);
+  -ms-transform: scale(1, -1);
+  -o-transform: scale(1, -1);
+  transform: scale(1, -1);
+}
+
+/* ensure rotation occurs inside anchor tags */
+a {
+  .icon-rotate-90, .icon-rotate-180, .icon-rotate-270, .icon-flip-horizontal, .icon-flip-vertical {
+    &:before { display: inline-block; }
+  }
+}

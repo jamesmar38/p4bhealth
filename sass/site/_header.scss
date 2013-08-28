@@ -105,3 +105,48 @@ $topbar-height:			125px;
 		}
 	}
 }
+
+.ribbon {
+  float: left;
+  @include appearance(none);
+  @include transition(all 0.2s ease);
+  cursor: pointer;
+  border: none;
+  background: blue;
+  width: 150px;
+  height: 250px;
+  position: relative;
+  color: white;
+  padding: 5px;
+  -webkit-filter: drop-shadow(0 1px 10px rgba(0, 0, 0, 0.5));
+  -moz-filter: drop-shadow(0 1px 10px rgba(0, 0, 0, 0.5));
+  -ms-filter: drop-shadow(0 1px 10px rgba(0, 0, 0, 0.5));
+  -o-filter: drop-shadow(0 1px 10px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 1px 10px rgba(0, 0, 0, 0.5));
+  
+  &:hover {
+    margin-top: 145px;
+    color: white;
+  }
+  span {
+    line-height: 20px;
+    font-size: 5em;
+  }
+  
+  &:before {
+    content: '';
+    position: absolute;
+    top: 100%; left: 0;
+    width: 0; height: 0;
+    border-top: 50px solid blue;
+    border-right: 100px solid transparent;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    top: 100%; right: 0;
+    width: 0; height: 0;
+    border-top: 50px solid blue;
+    border-left: 100px solid transparent;
+  }
+}

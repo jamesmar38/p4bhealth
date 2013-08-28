@@ -16,11 +16,11 @@
 				<h1>{hp_header_headline}</h1>
 			</div>
 			<div class="row text-center">		
-				<div id="video">
-					<object  data="/assets/img/vectors/playbutton.svg" type="image/svg+xml" class="svg">
-					</object>
-
-				</div>
+        {exp:channel_videos:videos entry_id='{entry_id}' limit='1'}
+				<a id="video" style="background-image:url({video:img_url_hd})" rel="shadowbox" href="{video:web_url}">
+					<div class="playicon"><i class="pbh-playbutton"></i></div>
+				</a>
+        {/exp:channel_videos:videos}
 			</div>				
 		</div>
 	</div>
@@ -53,7 +53,7 @@
 			<ul class="grid effect-4" id="grid">
 				{hp_process_content}
 				<li>
-					<div class="icons entypo">{icon}</div>
+					<div class="icons"><i class="{icon}"></i></div>
 					<h3>{headline}</h3>
 					{content}
 				</li>
@@ -69,7 +69,7 @@
 			<h2>{hp_partners_headline}</h2>
 			{hp_partners_content}
 			<div class="col-lg-2 col-4">
-				<div class="icons entypo">{icon}</div>
+				<div class="icons"><i class="{icon}"></i></div>
 				{content}
 			</div>	
 			{/hp_partners_content}
@@ -103,7 +103,7 @@
 			<ul class="grid effect-6" id="grid">
 				{hp_action_content}
 				<li>	
-					<div class="icons entypo">{icon}</div>
+					<div class="icons"><i class="{icon}"></i></div>
 					<a href="{link}"><button type="button" class="btn btn-primary btn-lg btn-white btn-fixed-width">{content}</button></a>						
 				</li>
 				{/hp_action_content}
