@@ -17,6 +17,12 @@ body{
 		color: $pbh-orange;
 		font-weight: 700;
 	}
+  
+  &.t-homepage {
+    background: url(/assets/video/homepage-loop.jpg) no-repeat fixed;	//Fallback image
+  }
+  
+  
 }
 hr {
 	display: block; 
