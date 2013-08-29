@@ -1,0 +1,25 @@
+<div class="filter" >
+	<section id="options" class="clearfix">
+    <ul id="filter" class="option-set clearfix nav nav-pills" data-option-key="filter">
+			<li><a href="#filter" data-option-value="*" class="selected">All</a></li>
+      {exp:channel:categories channel="projects" show_empty="no" style="linear"}
+      <li><a href="#filter" data-option-value=".cat-{category_id}">{category_name}</a></li>
+      {/exp:channel:categories}
+		</ul>
+	</section> <!-- #options -->
+</div>
+<div class="row margin-top-small"> 
+	<div id="container" class="col-lg-12 clearfix text-center">
+		{exp:channel:entries channel="projects" dynamic="no" sort="asc"}
+		  <div class="project project-{entry_id} {categories backspace="1"}cat-{category_id} {/categories} {url_title}">
+        <a href="#" data-reveal-id="project-{entry_id}">
+          {embed="utils/process_image"
+            src="{if project_thumbnail}{project_thumbnail}{if:elseif project_image}{project_image}{if:else}{categories}{if category_image}{category_image}{/if}{/categories}{/if}"
+            max_width='265' max_height='165'
+            filename="project-{entry_id}"
+          }
+        </a>
+		  </div>
+		{/exp:channel:entries}
+	</div><!-- #container -->
+</div>

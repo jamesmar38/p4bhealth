@@ -1,0 +1,74 @@
+{exp:ce_cache:it}
+{www_html_head}
+
+{www_metatags}
+
+{exp:seo_lite use_last_segment="yes"}
+
+{www_stylesheets}
+{www_js_head}
+{www_html_head_end}
+
+{exp:channel:entries channel="pages" limit="1"}
+{embed="global/_header"
+	entry_id="{last_segment_absolute_id}"
+	url_title="{last_segment_absolute}"
+	template="index"
+	template_group="pages"
+	channel_name="pages"
+	body_class="sub-page"
+	{if header_image}header_image="{header_image}"{/if}
+}	
+	<div id="header-scene">
+		<div class="container">
+      {embed="pages/_page_header"
+        {if header_title}
+          title="{header_title}"
+        {/if}
+        {if header_subtitle}
+          subtitle="{header_subtitle}"
+        {/if}
+      }	
+		</div>
+	</div>
+</section>
+<section class="yellowbar-scene"></section>
+
+<section class="single-scene">
+	<div id="{segment_1}" class="container">
+    <div class="row">
+      {if structure:child_ids != '' OR segment_2 != ''}
+			<aside id="side-nav" class="col-lg-3">
+				{exp:structure:nav css_class="nav nav-pills nav-stacked" current_class="active" start_from="/{segment_1}" show_overview="yes" rename_overview="title" max_depth="2" add_unique_ids="yes" add_span="yes"}
+			</aside>
+      {/if}
+			<div class="{if structure:child_ids != '' OR segment_2 != ''}col-lg-9{if:else}col-lg-12{/if}">
+					{if segment_1 == "about"}<h2 style="text-align: left">{title}</h2>
+					<hr>{/if}
+					{if segment_1 == "projects"}<div class="section-banner">Filter By City</div>{/if}
+					<div id="main_content">
+            {if body}{body}{/if}
+            
+            {if segment_2 == "team"}{embed="pages/_team_listing"}{/if}
+            {if segment_1 == "projects"}{embed="pages/_projects_listing"}{/if}
+						
+						{about_content}
+							{if button_text}
+								{if content}<p>{content}</p>{/if}
+								<a href="{link}"><button type="button" class="btn btn-primary btn-lg btn-orange btn-entypo margin-bottom-small"><img width=30 src="/assets/img/dl.png">  {button_text}</button></a>
+							{/if}
+						{/about_content}	
+					</div>
+			  </div>	
+      </div><!--/.row -->
+		</div>
+	</div>
+</section>	
+{/exp:channel:entries}
+
+{if segment_1 == "projects"}{embed="pages/_projects_modals"}{/if}
+
+{embed="global/_footer"}
+{www_js_foot}
+{www_body_html_end}
+{/exp:ce_cache:it}

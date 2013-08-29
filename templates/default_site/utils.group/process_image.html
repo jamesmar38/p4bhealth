@@ -1,0 +1,35 @@
+{if embed:height}{exp:stash:set name="retina-height"}{exp:math_plus calculate='({var2} * 2)' var2='{embed:height}'}{math_plus_result}{/exp:math_plus}{/exp:stash:set}{/if}
+{if embed:width}{exp:stash:set name="retina-width"}{exp:math_plus calculate='({var1} * 2)' var1='{embed:width}'}{math_plus_result}{/exp:math_plus}{/exp:stash:set}{/if}
+{if embed:max_height}{exp:stash:set name="retina-max-height"}{exp:math_plus calculate='({var2} * 2)' var2='{embed:max_height}'}{math_plus_result}{/exp:math_plus}{/exp:stash:set}{/if}
+{if embed:max_width}{exp:stash:set name="retina-max-width"}{exp:math_plus calculate='({var1} * 2)' var1='{embed:max_width}'}{math_plus_result}{/exp:math_plus}{/exp:stash:set}{/if}
+
+
+{!-- normal version --}
+{exp:ce_img:single
+  src="{embed:src}"
+  {if embed:width} width='{embed:width}'{/if}
+  {if embed:height} height='{embed:height}'{/if}
+  {if embed:max_width} width='{embed:max_width}'{/if}
+  {if embed:max_height} height='{embed:max_height}'{/if}
+  {if embed:crop} crop='{embed:crop}'{/if}
+  {if embed:url_only} url_only='{embed:url_only}'{/if}
+  allow_scale_larger='yes'
+  filename='{embed:filename}_{embed:width}_{embed:height}'
+  unique='none'
+  attributes='{if embed:class}class="{embed:class}"{/if} {if embed:alt}alt="{embed:alt}"{/if} {if embed:title}title="{embed:title}"{/if}'
+}
+{!-- retina version --}
+{exp:ce_img:single
+  parse="inward"
+  src="{embed:src}"
+  {if embed:crop} crop="{embed:crop}"{/if}
+  {if embed:height} height='{exp:stash:get name="retina-height"}'{/if}
+  {if embed:width} width='{exp:stash:get name="retina-width"}'{/if}
+  {if embed:max_width} width='{embed:max_width}'{/if}
+  {if embed:max_height} height='{embed:max_height}'{/if}
+  allow_scale_larger='yes'
+  filename='{embed:filename}_{embed:width}_{embed:height}'
+  filename_suffix='@2x'
+  unique='none'
+  output=' '
+}

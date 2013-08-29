@@ -1,0 +1,48 @@
+{exp:ce_cache:it}
+{www_html_head}
+
+{www_metatags}
+
+{exp:seo_lite use_last_segment="yes"}
+
+{www_stylesheets}
+{www_js_head}
+{www_html_head_end}
+
+{!-- PAGE BODY HERE --}
+{if segment_1 != '' OR segment_2 != ''}
+	{if segment_1 == "give"}
+		{embed="pages/_give"}
+	{/if}
+	{if segment_1 == "projects"}
+		{embed="pages/_projects"}
+	{/if}	
+	{if segment_1 == "get-involved"}
+		{embed="pages/_get-involved"}
+	{/if}	
+	{if segment_1 == "about"}
+		{embed="pages/_about"}
+	{/if}		
+	{if segment_1 == "success-stories"}
+		{embed="pages/_stories"}
+	{/if}			
+	{if:else}
+		{embed="pages/_homepage"}
+{/if}
+
+{embed="global/_footer"}
+{www_js_foot}
+{if segment_1 == "projects"}
+<script>	//Prevent duplicate city listings
+	var seen = {};
+	$('#container a').each(function() {
+		var txt = $(this).text();
+		if (seen[txt])
+			$(this).remove();
+		else
+			seen[txt] = true;
+	});
+</script>
+{/if}
+{www_body_html_end}
+{/exp:ce_cache:it}

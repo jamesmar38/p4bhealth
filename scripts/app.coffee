@@ -38,12 +38,15 @@ $ ->
     autoplayMovies: true
   
   
-  $container = $("#container")
+  $("#filter a").click ->
+    selector = $(this).attr("data-filter")
+    $container.isotope filter: selector
+    false
+  
+  
+  $container = $("#container") # initialize isotope
   $container.isotope
-    itemSelector: ".element"
-    layoutMode: "fitRows"
-
-  $("#container").isotope
+    itemSelector: ".project"
     layoutMode: "cellsByRow"
     cellsByRow:
       columnWidth: 278

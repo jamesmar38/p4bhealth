@@ -1,0 +1,23 @@
+{if embed:title != "" || embed:subtitle != ""} {!-- Display custom header if entered --}
+  <div class="row text-center">
+  {if embed:title != ""}
+    <h1>{embed:title}</h1>
+  {/if}
+  {if embed:subtitle != ""}
+    <p>{embed:subtitle}</p>
+  {/if}
+  </div>
+{if:else} {!-- If no custom header, check if one exists on the top level page --}
+  {exp:channel:entries entry_id="{structure:top:entry_id}"}
+    {if header_title || header_subtitle}
+  <div class="row text-center">
+  {if header_title}
+    <h1>{header_title}</h1>
+  {/if}
+  {if header_subtitle}
+    <p>{header_subtitle}</p>
+  {/if}
+  </div>
+    {/if}
+  {/exp:channel:entries}
+{/if}

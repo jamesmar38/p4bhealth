@@ -1,12 +1,23 @@
-{exp:channel:entries channel="stories"}
+{exp:ce_cache:it}
+{www_html_head}
+
+{www_metatags}
+
+{exp:seo_lite use_last_segment="yes"}
+
+{www_stylesheets}
+{www_js_head}
+{www_html_head_end}
+
+{exp:channel:entries channel="stories" limit="1"}
 {embed="global/_header"
 	entry_id="{last_segment_absolute_id}"
 	url_title="{last_segment_absolute}"
-	template="index"
-	template_group="page"
+	template="success-stories"
+	template_group="pages"
 	channel_name="pages"
 	body_class="sub-page"
-	header_image="{stories_header_image}"
+	{if header_image}header_image="{header_image}"{/if}
 }
 	<div id="header-scene">
 		<div class="container">
@@ -36,3 +47,20 @@
 	</div>
 </section>	
 {/exp:channel:entries}
+
+{embed="global/_footer"}
+{www_js_foot}
+{if segment_1 == "projects"}
+<script>	//Prevent duplicate city listings
+	var seen = {};
+	$('#container a').each(function() {
+		var txt = $(this).text();
+		if (seen[txt])
+			$(this).remove();
+		else
+			seen[txt] = true;
+	});
+</script>
+{/if}
+{www_body_html_end}
+{/exp:ce_cache:it}
