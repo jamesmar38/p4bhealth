@@ -6,7 +6,7 @@
 
 {!-- normal version --}
 {exp:ce_img:single
-  src="{embed:src}"
+  src='{embed:src}'
   {if embed:width} width='{embed:width}'{/if}
   {if embed:height} height='{embed:height}'{/if}
   {if embed:max_width} width='{embed:max_width}'{/if}
@@ -16,13 +16,13 @@
   allow_scale_larger='yes'
   filename='{embed:filename}_{embed:width}_{embed:height}'
   unique='none'
-  attributes='{if embed:class}class="{embed:class}"{/if} {if embed:alt}alt="{embed:alt}"{/if} {if embed:title}title="{embed:title}"{/if}'
+  attributes='class="{embed:class}" alt="{embed:alt}" title="{embed:title}"'
 }
 {!-- retina version --}
 {exp:ce_img:single
-  parse="inward"
-  src="{embed:src}"
-  {if embed:crop} crop="{embed:crop}"{/if}
+  parse='inward'
+  src='{embed:src}'
+  {if embed:crop} crop='{embed:crop}'{/if}
   {if embed:height} height='{exp:stash:get name="retina-height"}'{/if}
   {if embed:width} width='{exp:stash:get name="retina-width"}'{/if}
   {if embed:max_width} width='{embed:max_width}'{/if}

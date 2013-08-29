@@ -29,7 +29,12 @@
 		{give_content}
 			<div class="row margin-top-large">
 				<div class="col-lg-4">
-					<img class="img-responsive margin-bottom-small" src="{img}">
+          {embed="utils/process_image"
+            src="{img}"
+            max_width="370" max_height="260"
+            filename="give-{row_id}"
+            class="img-responsive margin-bottom-small"
+          }
 				</div>
 				<div class="col-lg-8">
 					<h2>{headline}</h2>
