@@ -7422,9 +7422,10 @@ body {
     font-weight: 700; }
   /* line 21, ../../../sass/site/_body.scss */
   body.t-homepage {
-    background: url(/assets/video/homepage-loop.jpg) no-repeat fixed; }
+    background: url(/assets/video/homepage-loop.jpg) no-repeat fixed;
+    background-size: cover; }
 
-/* line 27, ../../../sass/site/_body.scss */
+/* line 28, ../../../sass/site/_body.scss */
 hr {
   display: block;
   height: 6px;
@@ -7433,35 +7434,35 @@ hr {
   margin: 0.8em 0;
   padding: 0; }
 
-/* line 33, ../../../sass/site/_body.scss */
+/* line 34, ../../../sass/site/_body.scss */
 .margin-top-small {
   margin-top: 30px; }
 
-/* line 36, ../../../sass/site/_body.scss */
+/* line 37, ../../../sass/site/_body.scss */
 .margin-top-large {
   margin-top: 80px; }
 
-/* line 39, ../../../sass/site/_body.scss */
+/* line 40, ../../../sass/site/_body.scss */
 .margin-bottom-small {
   margin-bottom: 30px; }
 
-/* line 42, ../../../sass/site/_body.scss */
+/* line 43, ../../../sass/site/_body.scss */
 .margin-bottom-large {
   margin-bottom: 80px; }
 
 /* Start: Recommended Isotope styles */
 /**** Isotope Filtering ****/
-/* line 49, ../../../sass/site/_body.scss */
+/* line 50, ../../../sass/site/_body.scss */
 .isotope-item {
   z-index: 2; }
 
-/* line 53, ../../../sass/site/_body.scss */
+/* line 54, ../../../sass/site/_body.scss */
 .isotope-hidden.isotope-item {
   pointer-events: none;
   z-index: 1; }
 
 /**** Isotope CSS3 transitions ****/
-/* line 61, ../../../sass/site/_body.scss */
+/* line 62, ../../../sass/site/_body.scss */
 .isotope,
 .isotope .isotope-item {
   -webkit-transition-duration: 0.8s;
@@ -7470,7 +7471,7 @@ hr {
   -o-transition-duration: 0.8s;
   transition-duration: 0.8s; }
 
-/* line 69, ../../../sass/site/_body.scss */
+/* line 70, ../../../sass/site/_body.scss */
 .isotope {
   -webkit-transition-property: height, width;
   -moz-transition-property: height, width;
@@ -7478,7 +7479,7 @@ hr {
   -o-transition-property: height, width;
   transition-property: height, width; }
 
-/* line 77, ../../../sass/site/_body.scss */
+/* line 78, ../../../sass/site/_body.scss */
 .isotope .isotope-item {
   -webkit-transition-property: -webkit-transform, opacity;
   -moz-transition-property: -moz-transform, opacity;
@@ -7487,7 +7488,7 @@ hr {
   transition-property: transform, opacity; }
 
 /**** disabling Isotope CSS3 transitions ****/
-/* line 89, ../../../sass/site/_body.scss */
+/* line 90, ../../../sass/site/_body.scss */
 .isotope.no-transition,
 .isotope.no-transition .isotope-item,
 .isotope .isotope-item.no-transition {
@@ -7499,7 +7500,7 @@ hr {
 
 /* End: Recommended Isotope styles */
 /* disable CSS transitions for containers with infinite scrolling*/
-/* line 102, ../../../sass/site/_body.scss */
+/* line 103, ../../../sass/site/_body.scss */
 .isotope.infinite-scrolling {
   -webkit-transition: none;
   -moz-transition: none;
