@@ -94,17 +94,10 @@
 	</div>
 </section>
 <section id="projects-scene">
-	<div id="full-width-slider" class="royalSlider heroSlider rsDefault">
-		{hp_projects_content}
-		<div class="rsContent">
-			<img class="rsImg" src="{bg}" alt="" />
-			<div style="margin-top:60px;" class="section-banner text-center rsABlock " data-fade-effect="" data-move-offset="30" data-move-effect="top" data-speed="200">{hp_projects_banner}</div>
-			<div class="infoBlock rsABlock text-center" data-fade-effect="" data-move-offset="30" data-move-effect="left" data-speed="800">
-				<h1>{headline}</h1>
-				<p>{content}</p>			
-			</div>	
-		</div>
-		{/hp_projects_content}	
+  <div id="full-width-slider" class="royalSlider heroSlider rsDefault">
+		{home_projects}
+		{embed="pages/_home_project_slide" url_title="{home_projects:url_title}"}
+		{/home_projects}	
 	</div>
 </section>		
 <section id="participate-scene">
