@@ -27,13 +27,11 @@
 				<a
           rel="shadowbox;autoplayMovies=true"
           href="{if video:service == "vimeo"}http://player.vimeo.com/video/{video:service_id}{/if}"
-          style="background-image:url({video:img_url_hd})"
+          style="background-image:url({exp:ce_img:pair src="{video:img_url_hd}" width="230" height="140" crop="yes" allow_scale_larger="yes" filter="opacity,33" bg_color="#000"}{made}{/exp:ce_img:pair})"
           title="{video:title}"
           id="video">
             <div class="playicon"><i class="pbh-playbutton"></i></div>
         </a>
-        
-        
         {/exp:channel_videos:videos}
 			</div>				
 		</div>
