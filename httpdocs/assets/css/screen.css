@@ -7938,71 +7938,52 @@ hr {
   text-align: center;
   font-weight: bold; }
 
-/* line 79, ../../../sass/site/_other-scenes.scss */
-#about .team ul {
-  overflow: hidden;
-  list-style: none;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  /* CSS Reset */
-  max-width: 1000px;
-  /* restrict the width */
-  margin: auto;
-  /* center it */
-  margin-bottom: 2em; }
-/* line 88, ../../../sass/site/_other-scenes.scss */
-#about .team li {
-  font-size: 14px;
-  width: 25%;
-  float: left;
-  /* IMPORTANT */
-  list-style-type: none;
-  display: inline;
-  /* IMPORTANT */ }
-  /* line 89, ../../../sass/site/_other-scenes.scss */
-  #about .team li img {
-    width: 100px !important;
-    /* you can use % */
-    height: auto;
-    text-align: center; }
-/* line 101, ../../../sass/site/_other-scenes.scss */
+/* line 78, ../../../sass/site/_other-scenes.scss */
+#about .team {
+  margin-bottom: 1em; }
+  /* line 80, ../../../sass/site/_other-scenes.scss */
+  #about .team .listing {
+    min-height: 300px;
+    overflow: hidden;
+    font-size: 15px;
+    font-weight: 500; }
+/* line 87, ../../../sass/site/_other-scenes.scss */
 #about .nav {
   margin-bottom: 40px; }
-  /* line 103, ../../../sass/site/_other-scenes.scss */
+  /* line 89, ../../../sass/site/_other-scenes.scss */
   #about .nav a {
     font-size: 18px;
     font-weight: 600;
     color: #949494; }
-  /* line 109, ../../../sass/site/_other-scenes.scss */
+  /* line 95, ../../../sass/site/_other-scenes.scss */
   #about .nav .active a {
     color: white; }
-/* line 114, ../../../sass/site/_other-scenes.scss */
+/* line 100, ../../../sass/site/_other-scenes.scss */
 #about h2 {
   text-align: left; }
 
-/* line 120, ../../../sass/site/_other-scenes.scss */
+/* line 106, ../../../sass/site/_other-scenes.scss */
 .stories h3 {
   font-size: 28px; }
-/* line 121, ../../../sass/site/_other-scenes.scss */
+/* line 107, ../../../sass/site/_other-scenes.scss */
 .stories p {
   font-size: 14px;
   font-weight: regular; }
-/* line 122, ../../../sass/site/_other-scenes.scss */
+/* line 108, ../../../sass/site/_other-scenes.scss */
 .stories .block-videos {
   min-height: 2em; }
 
-/* line 129, ../../../sass/site/_other-scenes.scss */
+/* line 115, ../../../sass/site/_other-scenes.scss */
 #projects .filter {
   display: block;
   overflow: hidden;
   position: relative;
   margin-bottom: 60px; }
-  /* line 131, ../../../sass/site/_other-scenes.scss */
+  /* line 117, ../../../sass/site/_other-scenes.scss */
   #projects .filter #options {
     display: block;
     width: 100%; }
-  /* line 140, ../../../sass/site/_other-scenes.scss */
+  /* line 126, ../../../sass/site/_other-scenes.scss */
   #projects .filter ul {
     display: block;
     list-style: none;
@@ -8013,7 +7994,7 @@ hr {
     font-size: 14px;
     font-weight: 500;
     text-align: center; }
-    /* line 151, ../../../sass/site/_other-scenes.scss */
+    /* line 137, ../../../sass/site/_other-scenes.scss */
     #projects .filter ul li {
       display: inline;
       float: none;
@@ -8021,50 +8002,50 @@ hr {
       margin: 0;
       padding: 0;
       position: relative; }
-      /* line 158, ../../../sass/site/_other-scenes.scss */
+      /* line 144, ../../../sass/site/_other-scenes.scss */
       #projects .filter ul li a {
         color: #949494;
         display: inline-block;
         margin: 0 0 0 1px;
         padding: 3px 10px; }
-        /* line 163, ../../../sass/site/_other-scenes.scss */
+        /* line 149, ../../../sass/site/_other-scenes.scss */
         #projects .filter ul li a.selected, #projects .filter ul li a:hover {
           color: white;
           background: #f78f1e; }
 
-/* line 179, ../../../sass/site/_other-scenes.scss */
+/* line 165, ../../../sass/site/_other-scenes.scss */
 .modal-scene h2 {
   color: #353535;
   font-size: 36px;
   weight: bold;
   margin-top: 0; }
-/* line 186, ../../../sass/site/_other-scenes.scss */
+/* line 172, ../../../sass/site/_other-scenes.scss */
 .modal-scene h4 {
   color: #949494;
   font-size: 14px;
   line-height: 1; }
-/* line 191, ../../../sass/site/_other-scenes.scss */
+/* line 177, ../../../sass/site/_other-scenes.scss */
 .modal-scene p {
   color: #949494;
   font-size: 14px; }
-/* line 196, ../../../sass/site/_other-scenes.scss */
+/* line 182, ../../../sass/site/_other-scenes.scss */
 .modal-scene .modal-formatting h1 {
   color: #f78f1e;
   font-size: 24px;
   text-align: left;
   line-height: .5;
   text-shadow: 0px 0px 0px rgba(0, 0, 0, 0); }
-/* line 203, ../../../sass/site/_other-scenes.scss */
+/* line 189, ../../../sass/site/_other-scenes.scss */
 .modal-scene .modal-formatting h2 {
   color: #353535;
   font-weight: bold;
   font-size: 20px; }
-/* line 204, ../../../sass/site/_other-scenes.scss */
+/* line 190, ../../../sass/site/_other-scenes.scss */
 .modal-scene .modal-formatting p {
   color: #353535;
   font-size: 16px;
   font-weight: 500; }
 
-/* line 207, ../../../sass/site/_other-scenes.scss */
+/* line 193, ../../../sass/site/_other-scenes.scss */
 #iframe-video {
   margin-top: -1000px; }
