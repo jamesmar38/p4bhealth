@@ -32,13 +32,13 @@ PBH.gestureStart = ->
   PBH.viewportmeta.content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6"
   
 PBH.sizeonce = ->
-  $("section").not(".instagram").each (i, el) ->
+  $("section#projects-scene").not(".instagram").each (i, el) ->
     $(el).css
       "min-height": $(el).outerHeight()
       height: $wh
 
 PBH.sectionheights = ->
-  $("section").not(".instagram").each((i, el) ->
+  $("section#projects-scene").not(".instagram").each((i, el) ->
     $(el).height("auto").css "min-height": ""
     if $wh > $(el).outerHeight()
       $(el).css
@@ -60,9 +60,7 @@ PBH.homeSlider = ->
     controlsInside: false
     imageScaleMode: "fill"
     arrowsNavAutoHide: false
-    autoScaleSlider: false
-    autoScaleSliderWidth: false
-    autoScaleSliderHeight: false
+    autoScaleSliderHeight: 520
     controlNavigation: "bullets"
     thumbsFitInViewport: false
     navigateByClick: true
@@ -70,7 +68,7 @@ PBH.homeSlider = ->
     autoPlay:
       # autoplay options go gere
       enabled: true
-      pauseOnHover: false
+      pauseOnHover: true
       delay: 4000
 
     transitionType: "move"
@@ -81,11 +79,25 @@ PBH.homeSlider = ->
     # size of all images http://help.dimsemenov.com/kb/royalslider-jquery-plugin-faq/adding-width-and-height-properties-to-images
 
 PBH.sizeslider = ->
-  title = $(".slide-title")
-  theight = title.height()
-  sheight = $(".top-slider").outerHeight()
-  m = (sheight - theight) / 2
-  title.css marginTop: m - 120
+  # get slider instance
+  slider = $("#full-width-slider").data("royalSlider")
+
+  # change scale mode
+  slider.st.imageScaleMode = "fill"
+
+  # force updating size by adding "true" to updateSliderSize method
+  slider.updateSliderSize true
+  
+  slider.ev.on "rsAfterContentSet", (event) ->
+    banner = $("#full-width-slider .section-banner")
+    content = $("#full-width-slider .infoBlock")
+    bheight = banner.height()
+    cheight = $(".infoBlock").height()
+    sheight = $("#full-width-slider").outerHeight()
+    b = (sheight - bheight) / 2
+    c = (sheight - cheight) / 2
+    banner.css marginTop: b - c
+    content.css marginTop: c
 
 PBH.projects = ->
   $("#filter a").click ->
@@ -132,32 +144,30 @@ PBH.projects = ->
     false
 
 PBH.global = ->
-  console.log("global!")
   Shadowbox.init
     autoplayMovies: true
   
 PBH.subpages = ->
-  console.log("sub!")
   PBH.projects()
 
 PBH.init = ->
-  console.log("init!")
   PBH.global()
   
   unless $("body").hasClass("sub-page")
     PBH.homeSlider()
-    #$w.on "resize", ->
-    #  clearTimeout PBH.resizeto
-    #  PBH.resizeto = setTimeout(->
-    #    $wh = $w.height()
-    #    PBH.sectionheights()
-    #    PBH.sizeslider()
-    #  , 100)
+    $w.on "resize", ->
+      clearTimeout PBH.resizeto
+      PBH.resizeto = setTimeout(->
+        $wh = $w.height()
+        PBH.sectionheights()
+        PBH.sizeslider()
+      , 100)
 
-    #PBH.sizeonce()
-    #PBH.sectionheights()
-    #PBH.sizeslider()
+    PBH.sizeonce()
+    PBH.sectionheights()
+    PBH.sizeslider()
   else
     PBH.subpages()
-  
-PBH.init()
+
+$ ->  
+  PBH.init()

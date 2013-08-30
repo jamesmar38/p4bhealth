@@ -6005,22 +6005,7 @@ Example markup
   /* line 10, ../../../sass/responsive/_responsive-entypo.scss */
   .grid li {
     width: 100%; } }
-@media screen and (min-width: 960px) and (min-height: 660px) {
-  /* line 3, ../../../sass/responsive/_responsive-royalslider.scss */
-  .heroSlider .rsOverflow,
-  .royalSlider.heroSlider {
-    height: 520px !important; } }
-@media screen and (min-width: 960px) and (min-height: 1000px) {
-  /* line 10, ../../../sass/responsive/_responsive-royalslider.scss */
-  .heroSlider .rsOverflow,
-  .royalSlider.heroSlider {
-    height: 660px !important; } }
 @media screen and (min-width: 0px) and (max-width: 800px) {
-  /* line 16, ../../../sass/responsive/_responsive-royalslider.scss */
-  .royalSlider.heroSlider,
-  .royalSlider.heroSlider .rsOverflow {
-    height: 500px !important; }
-
   /* line 21, ../../../sass/responsive/_responsive-royalslider.scss */
   .infoBlock h1 {
     font-size: 32px; }
@@ -7836,7 +7821,7 @@ hr {
 #projects-scene {
   background-color: black;
   overflow: hidden; }
-  /* line 159, ../../../sass/site/_homepage-scenes.scss */
+  /* line 160, ../../../sass/site/_homepage-scenes.scss */
   #projects-scene .infoBlock {
     margin-top: 120px;
     margin-left: auto;
@@ -7845,7 +7830,7 @@ hr {
     padding-bottom: 0;
     overflow: hidden;
     padding: 20px 100px; }
-  /* line 168, ../../../sass/site/_homepage-scenes.scss */
+  /* line 169, ../../../sass/site/_homepage-scenes.scss */
   #projects-scene .infoBlockLeftBlack {
     color: #FFF;
     width: 700px;
@@ -7853,26 +7838,26 @@ hr {
     padding-bottom: 10px;
     margin-left: auto;
     margin-right: auto; }
-  /* line 178, ../../../sass/site/_homepage-scenes.scss */
+  /* line 179, ../../../sass/site/_homepage-scenes.scss */
   #projects-scene h1 {
     text-transform: uppercase;
     font-weight: bold; }
-  /* line 182, ../../../sass/site/_homepage-scenes.scss */
+  /* line 183, ../../../sass/site/_homepage-scenes.scss */
   #projects-scene p {
     font-size: 24px; }
 
-/* line 186, ../../../sass/site/_homepage-scenes.scss */
+/* line 187, ../../../sass/site/_homepage-scenes.scss */
 #participate-scene {
   background-color: #f78f1e;
   min-height: 600px;
   padding-top: 60px;
   padding-bottom: 60px; }
-  /* line 191, ../../../sass/site/_homepage-scenes.scss */
+  /* line 192, ../../../sass/site/_homepage-scenes.scss */
   #participate-scene h2 {
     color: white;
     margin-top: 54px;
     text-shadow: 0px 3px 0px rgba(0, 0, 0, 0.2); }
-  /* line 196, ../../../sass/site/_homepage-scenes.scss */
+  /* line 197, ../../../sass/site/_homepage-scenes.scss */
   #participate-scene .icons {
     width: 100px;
     text-align: center !important;
@@ -7882,7 +7867,7 @@ hr {
     line-height: 1em;
     text-shadow: 0px 4px 0px rgba(0, 0, 0, 0.2); }
 
-/* line 206, ../../../sass/site/_homepage-scenes.scss */
+/* line 207, ../../../sass/site/_homepage-scenes.scss */
 #spacing-scene {
   height: 200px; }
 
