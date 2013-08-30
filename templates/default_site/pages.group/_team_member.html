@@ -4,7 +4,8 @@
 <div class="col-lg-3 listing" id="team_{url_title}">
 	{embed="utils/process_image"
     src="{if team_photo}{team_photo}{if:else}/assets/img/blankface.jpg{/if}"
-    max_width='200' max_height='200'
+    width="200" height="200"
+    crop="yes"
     filename="team-member-{entry_id}"
     class="img-responsive"
   }
