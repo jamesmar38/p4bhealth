@@ -76,26 +76,12 @@
 
 #about {
 	.team {
-		ul {
+		margin-bottom: 1em;
+		.listing {
+			min-height: 300px;
 			overflow: hidden;
-			list-style: none;
-			width: 100%;
-			margin:0;padding:0; /* CSS Reset */
-			max-width: 1000px; /* restrict the width */
-			margin: auto; /* center it */
-			margin-bottom: 2em;
-		}
-		li {
-			img{
-				width:100px !important; /* you can use % */
-				height: auto;
-				text-align: center;
-			}
-			font-size: 14px;
-			width: 25%;
-			float:left; /* IMPORTANT */
-			list-style-type: none;
-			display:inline; /* IMPORTANT */
+			font-size: 15px;
+			font-weight: 500;
 		}
 	}
 	.nav {

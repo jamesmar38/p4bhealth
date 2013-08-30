@@ -1,8 +1,8 @@
 {exp:channel:entries channel="team" category="{embed:cat}" dynamic="no" sort="asc"}
-{if count == "1"}<ul>{/if}
-<li id="team_{url_title}">
-	{if team_photo}<img src="{team_photo}">{if:else}<img src="/assets/img/blankface.jpg">{/if}
+{if count == "1"}<div class="team clearfix">{/if}
+<div class="col-lg-3 listing" id="team_{url_title}">
+	{if team_photo}<img src="{team_photo}" class="img-responsive">{if:else}<img src="/assets/img/blankface.jpg" class="img-responsive">{/if}
 	<br><strong>{title}</strong><br>{team_title}
-</li>
-{if total_results == count}</ul>{/if}
+</div>
+{if total_results == count}</div>{/if}
 {/exp:channel:entries}
