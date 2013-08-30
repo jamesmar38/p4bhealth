@@ -1,4 +1,5 @@
 {exp:channel:entries channel="team" category="{embed:cat}" dynamic="no" sort="asc"}
+{exp:ce_cache:add_tag}{url_title}|{entry_id}{/exp:ce_cache:add_tag}
 {if count == "1"}<div class="team clearfix">{/if}
 <div class="col-lg-3 listing" id="team_{url_title}">
 	{if team_photo}<img src="{team_photo}" class="img-responsive">{if:else}<img src="/assets/img/blankface.jpg" class="img-responsive">{/if}

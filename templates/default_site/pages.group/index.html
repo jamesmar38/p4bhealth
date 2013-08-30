@@ -10,6 +10,7 @@
 {www_html_head_end}
 
 {exp:channel:entries channel="pages" limit="1"}
+{exp:ce_cache:add_tag}{url_title}|{entry_id}{/exp:ce_cache:add_tag}
 {embed="global/_header"
 	entry_id="{last_segment_absolute_id}"
 	url_title="{last_segment_absolute}"
