@@ -1,4 +1,4 @@
-{exp:channel:entries channel="team" category="{embed:cat}" dynamic="no" sort="asc"}
+{exp:low_reorder:entries set="{embed:cat}"}
 {exp:ce_cache:add_tag}{url_title}|{entry_id}{/exp:ce_cache:add_tag}
 {if count == "1"}<div class="team clearfix">{/if}
 <div class="col-lg-3 listing" id="team_{url_title}">
@@ -12,4 +12,4 @@
 	<br><strong>{title}</strong><br>{team_title}
 </div>
 {if total_results == count}</div>{/if}
-{/exp:channel:entries}
+{/exp:low_reorder:entries}
