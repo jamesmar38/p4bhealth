@@ -7,7 +7,7 @@ sass_dir = "sass"
 images_dir = "httpdocs/assets/images"
 javascripts_dir = "httpdocs/assets/js"
 
-output_style = :nested
+output_style = :compressed
 
 # To enable relative paths to assets via compass helper functions. Uncomment:
 # relative_assets = true
