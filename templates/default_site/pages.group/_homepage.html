@@ -23,7 +23,8 @@
 			<div class="row text-center">	
 				<h1>{hp_header_headline}</h1>
 			</div>
-			<div class="row text-center">		
+			{!-- Commented out per Ralph on Aug 30, 11:45am --}
+      {!--<div class="row text-center">		
         {exp:channel_videos:videos entry_id='{entry_id}' limit='1'}
 				<a
           rel="shadowbox;autoplayMovies=true"
@@ -31,11 +32,10 @@
           style="background-image:url({exp:ce_img:pair src="{video:img_url_hd}" width="230" height="140" crop="yes" allow_scale_larger="yes" filter="opacity,33" bg_color="#000"}{made}{/exp:ce_img:pair})"
           title="{video:title}"
           id="video">
-            {!--<div class="playicon"><i class="pbh-playbutton"></i></div>--}
-            {!-- Commented out per Ralph on Aug 30, 11:45am --}
+            <div class="playicon"><i class="pbh-playbutton"></i></div>
         </a>
         {/exp:channel_videos:videos}
-			</div>				
+			</div>--}			
 		</div>
 	</div>
 </section>
