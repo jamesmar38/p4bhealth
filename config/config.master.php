@@ -286,14 +286,14 @@ if (isset($config))
 | in. This path will override the $cache_dir variable in the plugin file,
 | and can optionally be overridden via the cache_dir= plugin parameter.
 */
-// $config['ce_image_cache_dir'] = '/assets/images/made/';
+$config['ce_image_cache_dir'] = '/images/made/';
 /*
 | The *relative path* (to your web root) of the folder to download remote
 | images. This path will override the $remote_dir variable in the plugin
 | file, and can optionally be overridden via the remote_dir= plugin
 | parameter.
 */
-// $config['ce_image_remote_dir'] = '/assets/images/remote/';
+$config['ce_image_remote_dir'] = '/images/remote/';
 /*
 | The ce_image_memory_limit sets the amount of memory (in megabytes) PHP can
 | use for the script (64 is generally sufficient). If the PHP memory_limit

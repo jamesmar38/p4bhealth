@@ -7,14 +7,14 @@
 {!-- normal version --}
 {exp:ce_img:single
   src='{embed:src}'
-  {if embed:width} width='{embed:width}'{/if}
-  {if embed:height} height='{embed:height}'{/if}
-  {if embed:max_width} width='{embed:max_width}'{/if}
-  {if embed:max_height} height='{embed:max_height}'{/if}
-  {if embed:crop} crop='{embed:crop}'{/if}
-  {if embed:url_only} url_only='{embed:url_only}'{/if}
+  width='{embed:width}'
+  height='{embed:height}'
+  width='{embed:max_width}'
+  height='{embed:max_height}'
+  crop='{embed:crop}'
+  url_only='{embed:url_only}'
   allow_scale_larger='yes'
-  filename='{embed:filename}_{embed:width}_{embed:height}'
+  filename='{embed:filename}_{embed:width}{embed:max_width}_{embed:height}{embed:max_height}'
   unique='none'
   attributes='class="{embed:class}" alt="{embed:alt}" title="{embed:title}"'
 }
@@ -22,13 +22,13 @@
 {exp:ce_img:single
   parse='inward'
   src='{embed:src}'
-  {if embed:crop} crop='{embed:crop}'{/if}
-  {if embed:height} height='{exp:stash:get name="retina-height"}'{/if}
-  {if embed:width} width='{exp:stash:get name="retina-width"}'{/if}
-  {if embed:max_width} width='{embed:max_width}'{/if}
-  {if embed:max_height} height='{embed:max_height}'{/if}
+  height='{exp:stash:get name="retina-height"}'
+  width='{exp:stash:get name="retina-width"}'
+  width='{embed:max_width}'
+  height='{embed:max_height}'
+  crop='{embed:crop}'
   allow_scale_larger='yes'
-  filename='{embed:filename}_{embed:width}_{embed:height}'
+  filename='{embed:filename}_{embed:width}{embed:max_width}_{embed:height}{embed:max_height}'
   filename_suffix='@2x'
   unique='none'
   output=' '
