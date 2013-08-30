@@ -81,6 +81,17 @@
       "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/jquery.rs.video-ck.js",
       "fileType" : 64
     },
+    "\/httpdocs\/assets\/third_party\/royalslider\/jquery.easing-1.3.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/httpdocs\/assets\/third_party\/royalslider\/jquery.easing-1.3.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/jquery.easing-1.3-ck.js",
+      "fileType" : 64
+    },
     "\/sass\/vendor\/bootstrap3\/_alerts.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -92,17 +103,6 @@
       "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_alerts.css",
       "fileType" : 4,
       "debugStyle" : 0
-    },
-    "\/httpdocs\/assets\/third_party\/royalslider\/jquery.easing-1.3.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/httpdocs\/assets\/third_party\/royalslider\/jquery.easing-1.3.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/jquery.easing-1.3-ck.js",
-      "fileType" : 64
     },
     "\/sass\/vendor\/bootstrap3\/_code.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -185,6 +185,17 @@
       "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/affix-ck.js",
       "fileType" : 64
     },
+    "\/scripts\/vendor\/jquery.royalslider.custom.min.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/scripts\/vendor\/jquery.royalslider.custom.min.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/jquery.royalslider.custom.min-ck.js",
+      "fileType" : 64
+    },
     "\/sass\/vendor\/bootstrap3\/_accordion.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -196,17 +207,6 @@
       "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_accordion.css",
       "fileType" : 4,
       "debugStyle" : 0
-    },
-    "\/scripts\/vendor\/jquery.royalslider.custom.min.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/vendor\/jquery.royalslider.custom.min.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/jquery.royalslider.custom.min-ck.js",
-      "fileType" : 64
     },
     "\/sass\/vendor\/bootstrap3\/_labels.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -243,15 +243,15 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/sass\/vendor\/bootstrap3\/_wells.scss" : {
+    "\/sass\/vendor\/bootstrap3\/_pager.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/vendor\/bootstrap3\/_wells.scss",
+      "inputAbbreviatedPath" : "\/sass\/vendor\/bootstrap3\/_pager.scss",
       "outputStyle" : 2,
       "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_wells.css",
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_pager.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -267,15 +267,15 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/sass\/vendor\/bootstrap3\/_pager.scss" : {
+    "\/sass\/vendor\/bootstrap3\/_wells.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/vendor\/bootstrap3\/_pager.scss",
+      "inputAbbreviatedPath" : "\/sass\/vendor\/bootstrap3\/_wells.scss",
       "outputStyle" : 2,
       "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_pager.css",
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_wells.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -406,15 +406,6 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/httpdocs\/assets\/third_party\/royalslider\/skins\/default-inverted\/rs-default-inverted.css" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/httpdocs\/assets\/third_party\/royalslider\/skins\/default-inverted\/rs-default-inverted.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
-    },
     "\/sass\/vendor\/bootstrap3\/_mixins.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -426,6 +417,15 @@
       "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_mixins.css",
       "fileType" : 4,
       "debugStyle" : 0
+    },
+    "\/httpdocs\/assets\/third_party\/royalslider\/skins\/default-inverted\/rs-default-inverted.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/httpdocs\/assets\/third_party\/royalslider\/skins\/default-inverted\/rs-default-inverted.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
     },
     "\/sass\/vendor\/bootstrap3\/_dropdowns.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -439,6 +439,17 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
+    "\/scripts\/vendor\/bootstrap3\/dropdown.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/scripts\/vendor\/bootstrap3\/dropdown.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/dropdown-ck.js",
+      "fileType" : 64
+    },
     "\/sass\/vendor\/bootstrap3\/_panels.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -450,17 +461,6 @@
       "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_panels.css",
       "fileType" : 4,
       "debugStyle" : 0
-    },
-    "\/scripts\/vendor\/bootstrap3\/dropdown.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/vendor\/bootstrap3\/dropdown.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/dropdown-ck.js",
-      "fileType" : 64
     },
     "\/scripts\/vendor\/jquery.isotope.js" : {
       "ignoreWasSetByUser" : 1,
@@ -544,18 +544,6 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/sass\/vendor\/bootstrap3\/_badges.scss" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/vendor\/bootstrap3\/_badges.scss",
-      "outputStyle" : 2,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_badges.css",
-      "fileType" : 4,
-      "debugStyle" : 0
-    },
     "\/scripts\/app.coffee" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -567,6 +555,18 @@
       "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/app.js",
       "outputStyle" : 0,
       "fileType" : 32
+    },
+    "\/sass\/vendor\/bootstrap3\/_badges.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/sass\/vendor\/bootstrap3\/_badges.scss",
+      "outputStyle" : 2,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_badges.css",
+      "fileType" : 4,
+      "debugStyle" : 0
     },
     "\/sass\/vendor\/slider\/royalslider.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -613,17 +613,6 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 16
     },
-    "\/scripts\/vendor\/jquery.reveal.js" : {
-      "ignoreWasSetByUser" : 1,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/vendor\/jquery.reveal.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/jquery.reveal-ck.js",
-      "fileType" : 64
-    },
     "\/httpdocs\/assets\/third_party\/royalslider\/skins\/universal\/rs-universal.css" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -642,6 +631,17 @@
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 1,
       "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/jquery.rs.fullscreen-ck.js",
+      "fileType" : 64
+    },
+    "\/scripts\/vendor\/jquery.reveal.js" : {
+      "ignoreWasSetByUser" : 1,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/scripts\/vendor\/jquery.reveal.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/jquery.reveal-ck.js",
       "fileType" : 64
     },
     "\/sass\/vendor\/bootstrap3\/_button-groups.scss" : {
@@ -703,14 +703,28 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/httpdocs\/assets\/third_party\/royalslider\/skins\/default\/rs-default.css" : {
+    "\/sass\/vendor\/bootstrap3\/_scaffolding.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/sass\/vendor\/bootstrap3\/_scaffolding.scss",
+      "outputStyle" : 2,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_scaffolding.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
+    "\/httpdocs\/assets\/third_party\/royalslider\/dev\/modules\/jquery.rs.autoplay.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/httpdocs\/assets\/third_party\/royalslider\/skins\/default\/rs-default.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
+      "inputAbbreviatedPath" : "\/httpdocs\/assets\/third_party\/royalslider\/dev\/modules\/jquery.rs.autoplay.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/jquery.rs.autoplay-ck.js",
+      "fileType" : 64
     },
     "\/sass\/vendor\/bootstrap3\/_carousel.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -721,18 +735,6 @@
       "outputStyle" : 2,
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_carousel.css",
-      "fileType" : 4,
-      "debugStyle" : 0
-    },
-    "\/sass\/vendor\/bootstrap3\/_scaffolding.scss" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/vendor\/bootstrap3\/_scaffolding.scss",
-      "outputStyle" : 2,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_scaffolding.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -747,16 +749,17 @@
       "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/jquery.rs.bullets-ck.js",
       "fileType" : 64
     },
-    "\/httpdocs\/assets\/third_party\/royalslider\/dev\/modules\/jquery.rs.autoplay.js" : {
+    "\/sass\/print.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/httpdocs\/assets\/third_party\/royalslider\/dev\/modules\/jquery.rs.autoplay.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/jquery.rs.autoplay-ck.js",
-      "fileType" : 64
+      "inputAbbreviatedPath" : "\/sass\/print.scss",
+      "outputStyle" : 2,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/print.css",
+      "fileType" : 4,
+      "debugStyle" : 0
     },
     "\/sass\/vendor\/bootstrap3\/_type.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -770,16 +773,17 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/httpdocs\/assets\/third_party\/royalslider\/jquery.royalslider.min.js" : {
+    "\/sass\/responsive\/_responsive-header.scss" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/httpdocs\/assets\/third_party\/royalslider\/jquery.royalslider.min.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/jquery.royalslider.min-ck.js",
-      "fileType" : 64
+      "inputAbbreviatedPath" : "\/sass\/responsive\/_responsive-header.scss",
+      "outputStyle" : 2,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_responsive-header.css",
+      "fileType" : 4,
+      "debugStyle" : 0
     },
     "\/httpdocs\/assets\/js\/gridloading\/AnimOnScroll.js" : {
       "ignoreWasSetByUser" : 0,
@@ -815,15 +819,15 @@
       "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/lib-ck.js",
       "fileType" : 64
     },
-    "\/httpdocs\/assets\/third_party\/royalslider\/dev\/modules\/jquery.rs.auto-height.js" : {
+    "\/httpdocs\/assets\/third_party\/royalslider\/jquery.royalslider.min.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/httpdocs\/assets\/third_party\/royalslider\/dev\/modules\/jquery.rs.auto-height.js",
+      "inputAbbreviatedPath" : "\/httpdocs\/assets\/third_party\/royalslider\/jquery.royalslider.min.js",
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/jquery.rs.auto-height-ck.js",
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/jquery.royalslider.min-ck.js",
       "fileType" : 64
     },
     "\/scripts\/vendor\/bootstrap3\/popover.js" : {
@@ -837,17 +841,16 @@
       "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/popover-ck.js",
       "fileType" : 64
     },
-    "\/sass\/site\/_footer.scss" : {
+    "\/httpdocs\/assets\/third_party\/royalslider\/dev\/modules\/jquery.rs.auto-height.js" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
+      "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/site\/_footer.scss",
-      "outputStyle" : 2,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_footer.css",
-      "fileType" : 4,
-      "debugStyle" : 0
+      "inputAbbreviatedPath" : "\/httpdocs\/assets\/third_party\/royalslider\/dev\/modules\/jquery.rs.auto-height.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/jquery.rs.auto-height-ck.js",
+      "fileType" : 64
     },
     "\/sass\/vendor\/bootstrap3\/_print.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -872,29 +875,26 @@
       "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/modal-ck.js",
       "fileType" : 64
     },
-    "\/sass\/print.scss" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/print.scss",
-      "outputStyle" : 2,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/print.css",
-      "fileType" : 4,
-      "debugStyle" : 0
-    },
-    "\/sass\/responsive\/_responsive-header.scss" : {
+    "\/sass\/site\/_footer.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/responsive\/_responsive-header.scss",
+      "inputAbbreviatedPath" : "\/sass\/site\/_footer.scss",
       "outputStyle" : 2,
       "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_responsive-header.css",
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_footer.css",
       "fileType" : 4,
       "debugStyle" : 0
+    },
+    "\/httpdocs\/assets\/third_party\/royalslider\/skins\/default\/rs-default.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/httpdocs\/assets\/third_party\/royalslider\/skins\/default\/rs-default.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
     },
     "\/sass\/vendor\/bootstrap3\/_close.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -932,17 +932,6 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/scripts\/vendor\/bootstrap3\/button.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/vendor\/bootstrap3\/button.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/button-ck.js",
-      "fileType" : 64
-    },
     "\/sass\/vendor\/gridloading\/_component.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -954,6 +943,17 @@
       "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_component.css",
       "fileType" : 4,
       "debugStyle" : 0
+    },
+    "\/scripts\/vendor\/bootstrap3\/button.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/scripts\/vendor\/bootstrap3\/button.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/button-ck.js",
+      "fileType" : 64
     },
     "\/sass\/vendor\/slider\/rs-default.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -978,17 +978,6 @@
       "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/collapse-ck.js",
       "fileType" : 64
     },
-    "\/httpdocs\/assets\/third_party\/royalslider\/dev\/jquery.royalslider.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/httpdocs\/assets\/third_party\/royalslider\/dev\/jquery.royalslider.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/jquery.royalslider-ck.js",
-      "fileType" : 64
-    },
     "\/scripts\/vendor\/bootstrap3\/alert.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -998,6 +987,17 @@
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 1,
       "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/alert-ck.js",
+      "fileType" : 64
+    },
+    "\/httpdocs\/assets\/third_party\/royalslider\/dev\/jquery.royalslider.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/httpdocs\/assets\/third_party\/royalslider\/dev\/jquery.royalslider.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/jquery.royalslider-ck.js",
       "fileType" : 64
     },
     "\/sass\/responsive\/_responsive-royalslider.scss" : {
@@ -1137,17 +1137,6 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/scripts\/library.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 1,
-      "inputAbbreviatedPath" : "\/scripts\/library.js",
-      "outputStyle" : 0,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/lib.js",
-      "fileType" : 64
-    },
     "\/scripts\/vendor\/bootstrap3\/tab.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -1157,6 +1146,17 @@
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 1,
       "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/tab-ck.js",
+      "fileType" : 64
+    },
+    "\/scripts\/library.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 1,
+      "inputAbbreviatedPath" : "\/scripts\/library.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/lib.js",
       "fileType" : 64
     },
     "\/httpdocs\/assets\/css\/screen.css" : {
@@ -1237,18 +1237,6 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/sass\/vendor\/bootstrap3\/_progress-bars.scss" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/vendor\/bootstrap3\/_progress-bars.scss",
-      "outputStyle" : 2,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_progress-bars.css",
-      "fileType" : 4,
-      "debugStyle" : 0
-    },
     "\/sass\/mixins\/_icons.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -1258,6 +1246,18 @@
       "outputStyle" : 2,
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_icons.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
+    "\/sass\/vendor\/bootstrap3\/_progress-bars.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/sass\/vendor\/bootstrap3\/_progress-bars.scss",
+      "outputStyle" : 2,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_progress-bars.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -1283,18 +1283,6 @@
       "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/jquery.rs.thumbnails-ck.js",
       "fileType" : 64
     },
-    "\/sass\/vendor\/bootstrap3\/_component-animations.scss" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/vendor\/bootstrap3\/_component-animations.scss",
-      "outputStyle" : 2,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_component-animations.css",
-      "fileType" : 4,
-      "debugStyle" : 0
-    },
     "\/sass\/vendor\/bootstrap3\/_jumbotron.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -1304,6 +1292,18 @@
       "outputStyle" : 2,
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_jumbotron.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
+    "\/sass\/vendor\/bootstrap3\/_component-animations.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/sass\/vendor\/bootstrap3\/_component-animations.scss",
+      "outputStyle" : 2,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_component-animations.css",
       "fileType" : 4,
       "debugStyle" : 0
     }

@@ -103,23 +103,25 @@ $topbar-height:			125px;
 			@include text-shadow(0px 2px 0px rgba(0, 0, 0, 0.2));
 		}
 	}
-}
-
-.nav > li {
-  padding-top: 48px;
   
-  > a {
-    padding: 10px 12px;
-  }
-}
-
-.nav > li,
-.nav-pills > li + li {
-  margin: 0 10px;
+  .nav > li {
+    padding-top: 48px;
   
-  a:hover, a:focus {
-		background:rgba(0,0,0,0.5);
+    > a {
+      padding: 10px 12px;
+    }
   }
+
+  .nav > li,
+  .nav-pills > li + li {
+    margin: 0 10px;
+  
+    a:hover, a:focus {
+  		background:rgba(0,0,0,0.5);
+    }
+  
+  }
+  
   
 }
 
