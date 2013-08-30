@@ -18,26 +18,18 @@
 	body_class="home"
 	header_image=""
 }
-	<div id="intro-scene">
-		<div class="container">
-			<div class="row text-center">	
-				<h1>{hp_header_headline}</h1>
-			</div>
-			{!-- Commented out per Ralph on Aug 30, 11:45am --}
-      {!--<div class="row text-center">		
-        {exp:channel_videos:videos entry_id='{entry_id}' limit='1'}
-				<a
-          rel="shadowbox;autoplayMovies=true"
-          href="{if video:service == "vimeo"}http://player.vimeo.com/video/{video:service_id}{/if}"
-          style="background-image:url({exp:ce_img:pair src="{video:img_url_hd}" width="230" height="140" crop="yes" allow_scale_larger="yes" filter="opacity,33" bg_color="#000"}{made}{/exp:ce_img:pair})"
-          title="{video:title}"
-          id="video">
-            <div class="playicon"><i class="pbh-playbutton"></i></div>
-        </a>
-        {/exp:channel_videos:videos}
-			</div>--}			
-		</div>
-	</div>
+</section>
+<a href="#next" class="go-to-next"><i class='entypo-triangle-down'></i></a>
+<section id="intro-scene" class="full-height">
+	<div id="intro-scene-content">
+    <div class="container">
+      <h1{if hp_header_link} class="has-link"{/if}>{hp_header_headline}</h1>
+      {if hp_header_link}<p><a href="{hp_header_link}">{hp_header_link_text} <i class="entypo-triangle-right"></i></a></p>{/if}
+    </div>
+  </div>
+  <a class='scroll-down'>
+    <span class='left-side'>Scroll</span><i class='center-down entypo-triangle-down'></i><span class='right-side'>Down<span>
+  </a>
 </section>
 <section id="vision-scene">
 	<div class="container">
@@ -95,7 +87,7 @@
 		</div>
 	</div>
 </section>
-<section id="projects-scene">
+<section id="projects-scene" class="full-height">
   <div id="full-width-slider" class="royalSlider heroSlider rsDefault">
 		{home_projects}
 		{embed="pages/_home_project_slide" url_title="{home_projects:url_title}"}

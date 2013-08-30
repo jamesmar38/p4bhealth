@@ -32,13 +32,13 @@ PBH.gestureStart = ->
   PBH.viewportmeta.content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6"
   
 PBH.sizeonce = ->
-  $("section#projects-scene").not(".instagram").each (i, el) ->
+  $("section.full-height").not(".instagram").each (i, el) ->
     $(el).css
       "min-height": $(el).outerHeight()
       height: $wh
 
 PBH.sectionheights = ->
-  $("section#projects-scene").not(".instagram").each((i, el) ->
+  $("section.full-height").not(".instagram").each((i, el) ->
     $(el).height("auto").css "min-height": ""
     if $wh > $(el).outerHeight()
       $(el).css
@@ -51,6 +51,82 @@ PBH.sectionheights = ->
     height: "auto"
     "min-height": ""
 
+PBH.scrollbutton = ->
+  $(".scroll-down").on clickevt, (e) ->
+    e.preventDefault()
+    os = $("#vision-scene").offset()
+    $("body,html").animate(scrollTop: os.top).trigger "scroll", true
+
+PBH.scrolltosection = ->
+  scrollResponder = (doitnow) ->
+    PBH.scrollcount = PBH.scrollcount + 1
+    clearTimeout PBH.scrolltimeout
+    if PBH.scrollcount > 16 or doitnow
+      sTop = $w.scrollTop()
+      PBH.scrollcount = 0
+      
+      # add in-view class to section on scroll
+      s = $.grep(sections, (el, i) ->
+        $(el).offset().top - sTop < $wh - $wh / 3
+      )
+      $(s).not(".in-view").addClass "in-view"
+    if isscrolling or $w.width() < 800 or (secmax > $wh)
+      return
+    else
+      sTop = $w.scrollTop()
+      clearTimeout PBH.scrolltimeout
+      PBH.scrolltimeout = setTimeout(scrollToSection, 800)
+  scrollToSection = ->
+    targ = $.grep($("section"), (el, i) ->
+      Math.abs($(el).offset().top - sTop) < ($(el).outerHeight() / 2)
+    )[0]
+    return false  if $(targ).is(".instagram")
+    t = $(targ).offset().top
+    isscrolling = true
+    $("html,body").animate
+      scrollTop: t
+    , 200, ->
+      isscrolling = false
+
+    s = $.grep(sections, (el, i) ->
+      $(el).offset().top - sTop < $wh - $wh / 3
+    )
+    $(s).addClass "in-view"
+    scrollResponder()
+  secmax = 0
+  sections = $("section")
+  sTop = 0
+  isscrolling = false
+  PBH.scrollcount = 0
+  sections.each (i, el) ->
+    secmax = Math.max($(el).outerHeight(), secmax)
+
+  $w.on "scroll", scrollResponder
+
+PBH.clicktonext = ->
+  $(".go-to-next").on clickevt, (e) ->
+    e.preventDefault()
+    currpos = $w.scrollTop()
+    
+    # find out what section is next
+    curr = $.grep($("section"), (el, i) ->
+      $(el).offset().top <= currpos and $(el).next("section").length and $(el).next("section").offset().top > currpos
+    )
+    next = $(curr).next()
+    if next.length
+      lessthan = 0
+      if next.is(".instagram")
+        lessthan = 130
+        if currpos >= $(".instagram").offset().top - lessthan
+          next = next.next("section")
+          lessthan = 0
+      $("html,body").animate scrollTop: next.offset().top - lessthan
+    else
+      $("html,body").animate scrollTop: $("footer.site-level").offset().top
+
+PBH.parallax = ->
+  scrolled = $(window).scrollTop()
+  $(".parallax").css "top", -(scrolled * 0.2) + "px"
 
 PBH.homeSlider = ->
   $("#full-width-slider").royalSlider
@@ -147,6 +223,27 @@ PBH.global = ->
   Shadowbox.init
     autoplayMovies: true
   
+  gotonext = $(".go-to-next").addClass("current")
+  
+  $w.on "scroll", ->
+    PBH.parallax()
+    if $w.scrollTop() > 100
+      gotonext.not(".show").addClass "show"
+    else
+      gotonext.filter(".show").removeClass "show"
+    # if $w.scrollTop() > 150 and $wh > 1024
+    #   $("#sidebar-wrap").css "padding-top", "50px"
+    # else
+    #   $("#sidebar-wrap").css "padding-top", "220px"
+    # if ($w.scrollTop() + navbottom) > ftop and $wh > 1024
+    #   $("#sidebar-nav-wrap").addClass "bottom"
+    # else
+    #   $("#sidebar-nav-wrap").removeClass "bottom"
+
+  setTimeout (->
+    $(window).trigger "scroll", true
+  ), 200
+  
 PBH.subpages = ->
   PBH.projects()
 
@@ -154,6 +251,9 @@ PBH.init = ->
   PBH.global()
   
   unless $("body").hasClass("sub-page")
+    PBH.scrolltosection()
+    PBH.scrollbutton()
+    PBH.clicktonext()
     PBH.homeSlider()
     $w.on "resize", ->
       clearTimeout PBH.resizeto

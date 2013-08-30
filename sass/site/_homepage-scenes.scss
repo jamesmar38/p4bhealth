@@ -5,54 +5,159 @@
 }
 
 
-#intro-scene {
-	margin:120px 20px;
-
-	h1 {
-		color:white;
-		font-weight:bold;
-
-		@include text-shadow(0px 3px 0px rgba(0, 0, 0, 0.2));
-	}
-	#video {
-    display: block;
-		margin:35px auto;
-		background:rgba(0,0,0,0.3);
-		width:230px;
-		height:140px;
-    text-align: center;
-    @include clearfix;
-    background-size: 100% 100%;
-    text-decoration: none;
+.go-to-next {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  display: block;
+  width: 36px;
+  height: 36px;
+  margin-left: -24px;
+  font-size: 2.4em;
+  line-height: 24px;
+  text-align: center;
+  border: 2px solid $pbh-white;
+  border-radius: 50%;
+  opacity: 0;
+  -webkit-transform: translate3d(0, 0, 0);
+  @include transition(all 0.8s);
+  
+  &:visited {
     color: $pbh-white;
-    
-    .playicon {
-      display: block;
-      margin: 25px auto 0;
-      border: 5px solid $pbh-white;
-      background-color: $pbh-orange;
-      @include border-radius(50%);
-      font-size: 80px;
-      height: 80px;
-      line-height: 80px;
-      width: 80px;
-      @include box-shadow(inset 0px 3px 0px rgba(0, 0, 0, 0.2));
-      @include transition(.2s all);
-    }
+  }
+
+  i {
+    position: relative;
+    top: 3px;
+    color: $pbh-white;
+    left: 1px;
+  }
+
+  &.show {
+    z-index: 2147483647 !important;
+    opacity: 0.8;
+  }
+
+  &:hover,
+  &:focus {
+    background: $pbh-white;
+    text-decoration: none;
+    outline: 0 none;
     i {
-      line-height: 72px;
-      @include text-shadow(0px 3px 0px rgba(0, 0, 0, 0.2));
+      color: $pbh-orange;
     }
+  }
+}
+
+
+#intro-scene {
+  margin: (-$topbar-height) 0 0;
+  
+  position: relative;
+  zoom: 1;
+  box-sizing: border-box;
+  text-align: center;
+  @include clearfix();
+  
+  #intro-scene-content {
+    display: block;
+    text-align: left;
+    margin-top: ($topbar-height + 90px);
     
-    &:hover, &:focus {
+  	h1 {
+  		color:white;
+  		font-weight:bold;
+      text-align: left;
+      padding: 0 0 25px;
+      margin: 0 0 20px;
+      display: inline-block;
+  		@include text-shadow(0px 3px 0px rgba(0, 0, 0, 0.2));
       
-      .playicon {
-        background-color: darken($pbh-orange, 5%);
+      &.has-link {
+        border-bottom: 2px solid $pbh-orange;
+      }
+      
+  	}
+    
+    p {
+      margin-top: 12px;
+      font-size: 20px;
+      
+      a {
+        padding: 18px 25px;
+        color: $pbh-white;
+        text-decoration: none;
+        background:rgba(0,0,0,0.5);
+        @include border-radius($pbh-radius);
+        
+        i {
+          font-size: 24px;
+          line-height: normal;
+        }
+        
+        &:focus,
+        &:hover {
+          color: $pbh-white;
+          outline: 0 none;
+          text-decoration: none;
+        }
       }
     }
     
+  }
+  
+  .scroll-down {
+    position: absolute;
+    bottom: 50px;
+    z-index: 999;
+    display: block;
+    width: 100%;
+    margin-left: -4.5px;
+    font-size: 1em;
+    line-height: 44px;
+    color: #fff;
+  
+    &:hover {
+      text-decoration: none;
+    }
     
-	}
+    .left-side {
+      position: relative;
+      top: 14px;
+      left: -15px;
+      //text-transform: uppercase;
+    }
+
+    .right-side {
+      position: relative;
+      top: 14px;
+      right: -15px;
+      //text-transform: uppercase;
+    }
+
+    .center-down {
+      position: relative;
+      top: 12px;
+      @include inline-block;
+      width: 36px;
+      height: 36px;
+      font-size: 2.4em;
+      line-height: 32px;
+      color: $pbh-white;
+      background: $pbh-orange;
+      border: 3px solid transparent;
+      border-radius: 50%;
+      cursor: pointer;
+    
+      &:hover {
+      color: $pbh-orange;
+      background: transparent;
+      border-color: $pbh-white;
+      }
+    }
+  }
+  
+  
 }
 #vision-scene {
 	background-color: $pbh-orange;
@@ -147,14 +252,9 @@
 	}
 }
 #projects-scene {
-//	background: url("/assets/img/site/projects-scene.jpg") no-repeat fixed center;
-//	background-size: cover;
 	background-color: black;
-//	height: 100vh;
-//	padding-top:60px;
-//	padding-bottom:60px;	
-//	width: 100%;
 	overflow: hidden;
+  @include clearfix();
   
 	.infoBlock {
 		margin-top:120px;		
@@ -166,14 +266,12 @@
 		padding: 20px 200px;
 	}
 	.infoBlockLeftBlack {		//For Semi-transparent background. Disabled for now
-	  color: #FFF;	
-	 // background: #000;
+	  color: $pbh-white;
 	  width: 700px;
 	  padding-top: 10px;
 	  padding-bottom: 10px;
 	  margin-left: auto;
 	  margin-right: auto;
-	 // background: rgba(0,0,0,0.05);	 
 	}
 	h1 {
 		text-transform: uppercase;
