@@ -15,7 +15,13 @@ $d = $(document)
 $dh = $d.height()
 ftop = undefined
 navbottom = undefined
-
+PBH.navvars = ->
+  setTimeout (->
+    # backpages, wait for active menu to expand before getting height
+    ftop = $("section.last-scene").offset().top + 75
+    navbottom = $("section.last-scene").offset().top + 75
+    # navbottom = $("#sidebar-nav-wrap").offset().top + $("#sidebar-nav-wrap").height()
+  ), 325
 
 ###
 Fix for iPhone viewport scale bug
@@ -76,6 +82,8 @@ PBH.scrolltosection = ->
       sTop = $w.scrollTop()
       clearTimeout PBH.scrolltimeout
       PBH.scrolltimeout = setTimeout(scrollToSection, 800)
+    
+    
   scrollToSection = ->
     targ = $.grep($("section"), (el, i) ->
       Math.abs($(el).offset().top - sTop) < ($(el).outerHeight() / 2)
@@ -100,7 +108,7 @@ PBH.scrolltosection = ->
   PBH.scrollcount = 0
   sections.each (i, el) ->
     secmax = Math.max($(el).outerHeight(), secmax)
-
+    
   $w.on "scroll", scrollResponder
 
 PBH.clicktonext = ->
@@ -122,7 +130,7 @@ PBH.clicktonext = ->
           lessthan = 0
       $("html,body").animate scrollTop: next.offset().top - lessthan
     else
-      $("html,body").animate scrollTop: $("footer.site-level").offset().top
+      $("html,body").animate scrollTop: $("#footer").offset().top
 
 PBH.parallax = ->
   scrolled = $(window).scrollTop()
@@ -227,19 +235,15 @@ PBH.global = ->
   
   $w.on "scroll", ->
     PBH.parallax()
+    PBH.navvars()
     if $w.scrollTop() > 100
-      gotonext.not(".show").addClass "show"
+      if (window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 200)
+        gotonext.filter(".show").removeClass "show"
+      else
+        gotonext.not(".show").addClass "show"
     else
       gotonext.filter(".show").removeClass "show"
-    # if $w.scrollTop() > 150 and $wh > 1024
-    #   $("#sidebar-wrap").css "padding-top", "50px"
-    # else
-    #   $("#sidebar-wrap").css "padding-top", "220px"
-    # if ($w.scrollTop() + navbottom) > ftop and $wh > 1024
-    #   $("#sidebar-nav-wrap").addClass "bottom"
-    # else
-    #   $("#sidebar-nav-wrap").removeClass "bottom"
-
+    
   setTimeout (->
     $(window).trigger "scroll", true
   ), 200
