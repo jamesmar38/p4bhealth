@@ -8,24 +8,21 @@
 	<section id="header">
 		<div id="topbar">
 			<div class="container">
-				<div class="pull-left">
-					<a href="/"><img class="vertical-center logo" src="/assets/img/logo.png"></a>
-				</div>
-				<div class="pull-right">
-					<nav>
-						
-						
-						<ul class="nav nav-pills">
-						{exp:structure:nav current_class="active" exclude="1" max_depth="1" include_ul="no" add_unique_ids="yes" add_span="yes"}
-						
-							<!--<li><a href="/get-involved">Get Involved</a></li>
-							<li><a href="/projects">Projects</a></li>
-							<li><a href="/stories">Success Stories</a></li>
-							<li><div class="banner"><object  data="/assets/img/vectors/banner.svg" type="image/svg+xml"></object></div><a href="/give"><span class="topper">Give</span></a></li>
-							<li><a href="/about">About Us</a></li>-->				
-						</ul>
-						
-					</nav>
-				</div>
+				<nav class="navbar navbar-default" role="navigation">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a href="/"><img class="vertical-center logo" src="/assets/img/logo.png"></a>
+            </div>
+          <div class="collapse navbar-collapse navbar-ex1-collapse">
+  					<ul class="nav navbar-nav nav-pills">
+  					{exp:structure:nav current_class="active" exclude="1" max_depth="1" include_ul="no" add_unique_ids="yes" add_span="yes"}	
+  					</ul>
+          </div>
+				</nav>
 			</div>	
 		</div>
