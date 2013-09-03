@@ -1,0 +1,60 @@
+@mixin background-image-retina($file, $type, $width, $height) {
+  background-image: url($file + '.' + $type);
+  
+  // gist.github.com/marcedwards/3446599
+  @media	only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 13/10), only screen and (min-resolution: 120dpi) {
+    & {
+      background-image: url($file + '@2x.' + $type);
+      -webkit-background-size: $width $height;           /* Safari 3.0 */
+         -moz-background-size: $width $height;           /* Gecko 1.9.2 (Firefox 3.6) */
+           -o-background-size: $width $height;           /* Opera 9.5 */
+              background-size: $width $height;           /* Gecko 2.0 (Firefox 4.0) and other CSS3-compliant browsers */
+    }
+  }
+}
+
+// Force image2x graphics on regular displays
+$image2x-debug: false !default;
+
+// Change default filename postfix
+// default: imagename_2x.png
+$image2x-postfix: '_2x' !default;
+
+// Default pixel ratio: 1.3 to support Nexus 7
+// Depending on your target, you may want to set a
+// more suitable minimum pixel ratio here:
+// http://bjango.com/articles/min-device-pixel-ratio/
+$image2x-min-pixel-ratio: 1.3 !default;
+
+@mixin image2x-abstract($image, $extension, $postfix: $image2x-postfix) {
+  $image-fullname: '#{$image}.#{$extension}';
+  $image-image2x-fullname: '#{$image}#{$postfix}.#{$extension}';
+
+  background-image: image-url($image-image2x-fullname);
+  background-size: image-width($image-fullname) image-height($image-fullname);
+}
+
+@mixin image2x($image: false, $extension: png, $postfix: $image2x-postfix) {
+  @if $image2x-debug {
+    @if $image {
+      @include image2x-abstract($image, $extension, $postfix);
+    } @else {
+      @content;
+    }
+  } @else {
+    @if $image {
+      background-image: image-url('#{$image}.#{$extension}');
+    }
+    // Inspired by:
+    // http://www.brettjankord.com/2012/11/28/cross-browser-retinahigh-resolution-media-queries/
+    @media (-webkit-min-device-pixel-ratio: $image2x-min-pixel-ratio),
+           (min-resolution: $image2x-min-pixel-ratio * 96dpi),
+           (min-resolution: $image2x-min-pixel-ratio * 1dppx) {
+      @if $image {
+        @include image2x-abstract($image, $extension, $postfix);
+      } @else {
+        @content;
+      }
+    }
+  }
+}

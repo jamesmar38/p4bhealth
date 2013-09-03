@@ -28,6 +28,19 @@
 			margin-top:$topbar-height/2 - 40px;
 		}
 	}
+  
+  @include respond-to(tablet-above) {
+    .collapse {
+      display: block;
+    }
+    .navbar-header {
+      float: left;
+    }
+    ul.nav {
+      float: right;
+    }
+  }
+  
 	nav {
     background: transparent;
     margin: 0;

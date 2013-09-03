@@ -33,7 +33,7 @@ $env_db['database'] = 'p4bhealth_ee';
 | To temporarily turn off CE Cache, you can use this option. This can be
 | useful when developing a site.
 */
-$config['ce_cache_off'] = 'yes';
+//$config['ce_cache_off'] = 'yes';
 
 
 

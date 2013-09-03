@@ -1,0 +1,56 @@
+@mixin respond-to($media) {
+  // Responsive: Phones
+  @if $media == handhelds {
+    @media only screen and (max-width: $screen-phone) { @content; }
+  }
+  
+  // Responsive: Up to landscape phone
+  @if $media == handhelds-landscape {
+    @media only screen and (max-width: $screen-phone) { @content; }
+  }
+  
+  // Responsive: Landscape phone to desktop/tablet
+  @if $media == landscape-tablet {
+    @media only screen and (max-width: $screen-phone-max) { @content; }
+  }
+  
+  // Responsive: Tablet and above
+  @if $media == tablet-above {
+    @media only screen and (min-width: $screen-tablet) { @content; }
+  }
+  
+  // Responsive: Tablet and below
+  @if $media == tablet-below {
+    @media only screen and (max-width: $screen-tablet) { @content; }
+  }
+  
+  // Responsive: Desktop and below
+  @if $media == tablet-desktop-below {
+    @media only screen and (max-width: $screen-tablet-max) { @content; }
+  }
+  
+  // Responsive: Desktop and above
+  @if $media == desktop-above {
+    @media only screen and (min-width: $screen-desktop) { @content; }
+  }
+  
+  // Responsive: Medium desktop to just below landscape tablet
+  @else if $media == medium-screens-two {
+    @media only screen and (min-width: $screen-phone-max) and (max-width: $screen-tablet-max) { @content; }
+  }
+  
+  // Responsive: Medium desktop to just below landscape tablet
+  @else if $media == medium-screens {
+    @media only screen and (min-width: $screen-desktop) and (max-width: 1023px) { @content; }
+  }
+  
+  // Responsive: Tablet to desktop
+  @if $media == tablet-desktop {
+    @media only screen and (min-width: $screen-tablet) and (max-width: $screen-desktop-max) { @content; }
+  }
+  
+  // Responsive: Extra large desktop and up
+  @else if $media == large-screens {
+    @media only screen and (min-width: $screen-lg-desktop) { @content; }
+  }
+}
