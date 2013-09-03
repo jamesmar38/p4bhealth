@@ -173,14 +173,14 @@
   
   &:hover, &:focus {
     //margin-top: 145px;
-    color: white;
-    background: $pbh-darkorange;
+    color: white !important;
+    background: $pbh-darkorange !important;
     
     a {
       background: transparent !important;
     }
     &:before, &:after {
-      border-top-color: $pbh-darkorange;
+      border-top-color: $pbh-darkorange !important;
     }
   }
   
