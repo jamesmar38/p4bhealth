@@ -158,6 +158,27 @@
 }
 
 #partners-orgs {
+  
+  h2 {
+    
+    &[class^="partner-type-"]:before,
+    &[class*=" partner-type-"]:before {
+      @include icon-Entypo();
+      color: $pbh-orange;
+      font-size: 1.5em;
+      margin-right: 8px;
+    }
+  
+    &.partner-type-17:before {@include icon-PBHVectors(); font-size: 1.33em; content: "\e001"; line-height: 1em;} // Universities
+    &.partner-type-18:before {content: '\E724';} // Cities
+    &.partner-type-19:before {} // Dept of Pub Health
+    &.partner-type-20:before {content: '\1F465';} // Not For Profits / Organizations
+    &.partner-type-21:before {content: '\1F342';} // Health Systems
+    &.partner-type-22:before {content: '\1F393';} // Students
+    &.partner-type-23:before {content: '\1F4BC';} // Businesses
+  }
+  
+  
   ul {
     list-style: none;
     margin-bottom: 0;

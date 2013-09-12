@@ -38,24 +38,21 @@ PBH.gestureStart = ->
   PBH.viewportmeta.content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6"
   
 PBH.sizeonce = ->
-  $("section.full-height").not(".instagram").each (i, el) ->
+  $("section.full-height").each (i, el) ->
     $(el).css
       "min-height": $(el).outerHeight()
       height: $wh
 
 PBH.sectionheights = ->
-  $("section.full-height").not(".instagram").each((i, el) ->
+  $("section.full-height").each((i, el) ->
     $(el).height("auto").css "min-height": ""
     if $wh > $(el).outerHeight()
       $(el).css
         "min-height": $(el).outerHeight()
         height: $wh
-
     else
       $(el).css "min-height": $(el).outerHeight()
-  ).filter(".finances").css
-    height: "auto"
-    "min-height": ""
+  )
 
 PBH.scrollbutton = ->
   $(".scroll-down").on clickevt, (e) ->
@@ -257,7 +254,7 @@ PBH.init = ->
   PBH.global()
   
   unless $("body").hasClass("sub-page")
-    PBH.scrolltosection()
+    # PBH.scrolltosection()
     PBH.scrollbutton()
     PBH.clicktonext()
     PBH.homePage()
