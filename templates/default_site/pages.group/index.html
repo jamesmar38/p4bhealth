@@ -50,8 +50,11 @@
 					<div id="main_content">
             {if body}{body}{/if}
             
-            {if segment_2 == "team"}{embed="pages/_team_listing"}{/if}
             {if segment_1 == "projects"}{embed="pages/_projects_listing"}{/if}
+            {if segment_1 == "about"}
+              {if segment_2 == "team"}{embed="pages/_team_listing"}{/if}
+              {if segment_2 == "partners-organizations"}{embed="pages/_partners_orgs_main"}{/if}
+            {/if}
 						
 						{about_content}
 							{if button_text}

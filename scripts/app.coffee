@@ -184,13 +184,13 @@ PBH.sizeslider = ->
     content.css marginTop: c
 
 PBH.projects = ->
-  $("#filter a").click ->
+  $("#projects #filter a").click ->
     selector = $(this).attr("data-filter")
     $container.isotope filter: selector
     false
   
   
-  $container = $("#container") # initialize isotope
+  $container = $("#projects #container") # initialize isotope
   $container.isotope
     itemSelector: ".project"
     layoutMode: "cellsByRow"
@@ -198,7 +198,7 @@ PBH.projects = ->
       columnWidth: 278
       rowHeight: 190
 
-  $optionSets = $("#options .option-set")
+  $optionSets = $("#projects #options .option-set")
   $optionLinks = $optionSets.find("a")
   $optionLinks.click ->
     $this = $(this)
@@ -230,6 +230,8 @@ PBH.projects = ->
 PBH.global = ->
   Shadowbox.init
     autoplayMovies: true
+
+PBH.homePage = ->
   
   gotonext = $(".go-to-next").addClass("current")
   
@@ -258,6 +260,7 @@ PBH.init = ->
     PBH.scrolltosection()
     PBH.scrollbutton()
     PBH.clicktonext()
+    PBH.homePage()
     PBH.homeSlider()
     $w.on "resize", ->
       clearTimeout PBH.resizeto

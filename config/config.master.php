@@ -201,7 +201,7 @@ if (isset($config))
 	 * 3rd Party Add-on config items as needed
 	 */
 	
-
+  $env_config['nsm_htaccess_generator_path']   = array($base_path   . '/.htaccess');
 
 
 	/**

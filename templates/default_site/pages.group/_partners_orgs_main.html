@@ -1,0 +1,9 @@
+<div id="partners-orgs">
+{exp:channel:categories channel="partners_organizations" show_empty="no" style="linear"}
+<div class="margin-top-small"> 
+  <h2>{category_name}</h2>
+  <div class="row"> 
+    {embed="pages/_partners_org_indiv" cat="{category_id}"}
+  </div>
+</div>
+{/exp:channel:categories}

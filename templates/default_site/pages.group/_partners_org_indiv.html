@@ -1,0 +1,5 @@
+{exp:columnbo:lists columns="3" open="<ul class='col col-lg-4'>" close="</ul>" delimiter="</li>"}
+  {exp:channel:entries channel="partners_organizations" category="{embed:cat}" orderby="title" sort="asc" dynamic="no"}
+    <li>{title}</li>
+  {/exp:channel:entries}
+{/exp:columnbo:lists}
