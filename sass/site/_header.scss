@@ -5,9 +5,9 @@
 	margin:0 auto;
   z-index:1;
   position: relative;
-  overflow: hidden;
   
   &.has-bg {
+    overflow: hidden;
     background-position: 50% 100%;
     background-size: cover;
   }
