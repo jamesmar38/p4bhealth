@@ -7,7 +7,10 @@
   <div class="infoBlock rsABlock text-center" data-fade-effect="" data-move-offset="30" data-move-effect="left" data-speed="800">
 		<h1>{title}</h1>
 		<p>{copy}</p>
-    {if button_link}{/if}
+    {if button_link}
+    <div class="block-btn">
+      <a href="{button_link}"><button class="btn btn-primary btn-lg btn-orange" type="button">{button_title}</button></a>
+    </div>{/if}
 	</div>	
 </div>
 {/project_homepage_content}
