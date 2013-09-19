@@ -1,6 +1,7 @@
 body{
 	background: url($fallback-bg) no-repeat fixed;	//Fallback image
 	background-size: cover;
+  background-position: 50% 100%;
 	font-family:$font-family-sans-serif;
 	min-height:100%;
 	color:$pbh-white;
