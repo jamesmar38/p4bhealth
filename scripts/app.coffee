@@ -177,7 +177,10 @@ PBH.sizeslider = ->
     sheight = $("#full-width-slider").outerHeight()
     b = (sheight - bheight) / 2
     c = (sheight - cheight) / 2
-    banner.css marginTop: b - c
+    if ($wh < 600)
+      banner.css marginTop: (b - c) / 2
+    else
+      banner.css marginTop: b - c
     content.css marginTop: c
 
 PBH.projects = ->

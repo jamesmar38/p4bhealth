@@ -37,7 +37,7 @@
 
 .rsDefault .rsArrow {
 	height: 100%;
-	width: 44*2px;
+	width: 22*2px;
 	position: absolute;
 	display: block;
 	cursor: pointer;
@@ -61,25 +61,49 @@
 .rsDefault.rsHor .rsArrowRight { right: 0; top:0; }
 
 .rsDefault .rsArrowIcn {		
-	width: 32px*3;
-	height: 32px*3;
+	width: 16px*3;
+	height: 16px*3;
 	top: 50%;
 	left: 50%;
-	margin-top:-16px;	
-	margin-left: -44px;
+	margin-top:-8px;	
+	margin-left: -22px;
 
 	position: absolute;	
 	cursor: pointer;	
 	background: url('/assets/third_party/royalslider/skins/default/arrows.png');
+  background-size: 295px 200px;
 }
 
-.rsDefault.rsHor .rsArrowLeft .rsArrowIcn { background-position: (-64px * 3) (-32px * 3); }
-.rsDefault.rsHor .rsArrowRight .rsArrowIcn { background-position: (-64px * 3) (-64px * 3); }
+.rsDefault.rsHor .rsArrowLeft .rsArrowIcn { background-position: (-32px * 3) (-16px * 3); }
+.rsDefault.rsHor .rsArrowRight .rsArrowIcn { background-position: (-32px * 3) (-32px * 3); }
 
-.rsDefault.rsVer .rsArrowLeft .rsArrowIcn { background-position: (-96px * 3) (-32px * 3); }
-.rsDefault.rsVer .rsArrowRight .rsArrowIcn { background-position: (-96px * 3) (-64px * 3); }
+.rsDefault.rsVer .rsArrowLeft .rsArrowIcn { background-position: (-48px * 3) (-16px * 3); }
+.rsDefault.rsVer .rsArrowRight .rsArrowIcn { background-position: (-48px * 3) (-32px * 3); }
 
 .rsDefault .rsArrowDisabled .rsArrowIcn { opacity: .2; filter: alpha(opacity=20);  *display: none; }
+
+
+@include respond-to(desktop-above) {
+  .rsDefault .rsArrow {
+	  width: 44*2px;
+  }
+  .rsDefault .rsArrowIcn {
+	  width: 32px*3;
+	  height: 32px*3;
+	  margin-top:-16px;	
+	  margin-left: -44px;
+    background-size: 591px 399px;
+  }
+  
+  .rsDefault.rsHor .rsArrowLeft .rsArrowIcn { background-position: (-64px * 3) (-32px * 3); }
+  .rsDefault.rsHor .rsArrowRight .rsArrowIcn { background-position: (-64px * 3) (-64px * 3); }
+
+  .rsDefault.rsVer .rsArrowLeft .rsArrowIcn { background-position: (-96px * 3) (-32px * 3); }
+  .rsDefault.rsVer .rsArrowRight .rsArrowIcn { background-position: (-96px * 3) (-64px * 3); }
+  
+}
+
+
 
 
 /***************

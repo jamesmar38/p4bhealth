@@ -63,8 +63,11 @@
     display: block;
     text-align: left;
     margin-top: ($topbar-height + 90px);
+    padding: 0 20px 120px;
+    
     
   	h1 {
+      font-size: 40px;
   		color:white;
   		font-weight:bold;
       text-align: left;
@@ -81,12 +84,13 @@
     
     p {
       margin-top: 12px;
-      font-size: 20px;
+      font-size: 16px;
       
       a {
         padding: 18px 25px;
         color: $pbh-white;
         text-decoration: none;
+        display: inline-block;
         background:rgba(0,0,0,0.5);
         @include border-radius($pbh-radius);
         
@@ -102,6 +106,18 @@
           text-decoration: none;
         }
       }
+    }
+    
+    @include respond-to(desktop-above) {
+      padding: 0;
+      
+      h1 {
+        font-size: 64px;
+      }
+      p {
+        font-size: 20px;
+      }
+      
     }
     
   }
@@ -249,6 +265,16 @@
 	#partners-btn {
 		margin-top: 105px;
 	}
+  
+  .col-sm-4:nth-child(3n+3) {  
+    clear: left;
+  }
+  @include respond-to(desktop-above) {
+    .col-sm-4:nth-child(3n+3) {  
+      clear: none;
+    }
+  }
+  
 }
 #projects-scene {
 	background-color: black;
@@ -256,13 +282,12 @@
   @include clearfix();
   
 	.infoBlock {
-		margin-top:120px;		
 		margin-left: auto;
 		margin-right: auto;
 		width: 100%;
 		padding-bottom: 0;
 		overflow: hidden;
-		padding: 20px 200px;
+		padding: 20px 58px;
 	}
 	.infoBlockLeftBlack {		//For Semi-transparent background. Disabled for now
 	  color: $pbh-white;
@@ -278,11 +303,20 @@
 	}
 	p {
 		font-size: 24px;
-    padding: 0 15%;
 	}
   
   .block-btn {
     margin-top: 20px;
+  }
+  
+  @include respond-to(desktop-above) {
+  	.infoBlock {
+  		margin-top:120px;
+  		padding: 20px 200px;
+  	}
+    p {
+      padding: 0 15%;
+  	}
   }
   
 }
