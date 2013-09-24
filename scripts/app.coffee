@@ -234,11 +234,6 @@ PBH.global = ->
     autoplayMovies: true
 
 PBH.homePage = ->
-  BV = new $.BigVideo()
-  BV.init()
-  BV.show "/assets/video/homepage-loop_dim_1200.mp4",
-    ambient: true
-  
   
   gotonext = $(".go-to-next").addClass("current")
   

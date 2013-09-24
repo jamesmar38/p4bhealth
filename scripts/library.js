@@ -13,11 +13,6 @@
     });
   };
 }(jQuery));
-//@codekit-append "vendor/jquery-ui-1.8.22.custom.min.js"
-//@codekit-append "vendor/jquery.imagesloaded.min.js"
-//@codekit-append "vendor/jquery.scrollTo.js"
-//@codekit-append "vendor/video.js"
-//@codekit-append "vendor/bigvideo.js"
 
 //@codekit-append "vendor/bootstrap3/affix.js"
 //@codekit-append "vendor/bootstrap3/button.js"
@@ -26,7 +21,7 @@
 //@codekit-append "vendor/bootstrap3/dropdown.js"
 //@codekit-append "vendor/bootstrap3/modal.js"
 //@codekit-append "vendor/bootstrap3/transition.js"
-//@codekit-append "vendor/tinynav.js"
+//@codekit-append "vendor/tinynav.min.js"
 //@codekit-append "vendor/shadowbox.js"
 //@codekit-append "vendor/jquery.reveal.js"
 //@codekit-append "vendor/jquery.isotope.js"
