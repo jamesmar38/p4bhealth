@@ -20,7 +20,7 @@ body{
 	}
   
   &.t-homepage {
-    background: url(/assets/video/homepage-loop.jpg) no-repeat fixed;	//Fallback image
+    background: none #000;	//Fallback image
     background-size: cover;
   }
   
