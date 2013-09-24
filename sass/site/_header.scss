@@ -50,6 +50,80 @@
     ul.nav {
       float: right;
     }
+    
+    nav {
+      .nav > li {
+        padding-top: 48px;
+  
+        > a {
+          padding: 10px 12px;
+        }
+      }
+    }
+    
+    
+    
+    #nav-sub-success-stories {
+      margin-right: 5px;
+    }
+
+    #nav-sub-about {
+      margin-left: 5px;
+    }
+
+    #nav-sub-give {
+      @include appearance(none);
+      @include transition(all 0.2s ease);
+      cursor: pointer;
+      border: none;
+      background: $pbh-orange;
+      height: $topbar-height;
+      width: 70px;
+      margin: 0;
+      position: relative;
+      text-align: center;
+      -webkit-filter: drop-shadow(0 1px 10px rgba(0, 0, 0, 0.5));
+      -moz-filter: drop-shadow(0 1px 10px rgba(0, 0, 0, 0.5));
+      -ms-filter: drop-shadow(0 1px 10px rgba(0, 0, 0, 0.5));
+      -o-filter: drop-shadow(0 1px 10px rgba(0, 0, 0, 0.5));
+      filter: drop-shadow(0 1px 10px rgba(0, 0, 0, 0.5));
+  
+      a {
+        padding: 10px 16px;
+      }
+  
+      &:before, &:after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        width: 0; height: 0;
+        border-top: 12px solid $pbh-orange;
+      }
+      &:before {
+        left: 0;
+        border-right: 35px solid transparent;
+      }
+      &:after {
+        right: 0;
+        border-left: 35px solid transparent;
+      }
+  
+  
+      &:hover, &:focus {
+        //margin-top: 145px;
+        color: white !important;
+        background: $pbh-darkorange !important;
+    
+        a {
+          background: transparent !important;
+        }
+        &:before, &:after {
+          border-top-color: $pbh-darkorange !important;
+        }
+      }
+  
+    }
+    
   }
   
 	nav {
@@ -82,19 +156,7 @@
 					z-index: 10;
 				}
 			}
-			#nav-sub-give {	//Add Banner for Give link
-	/*			background: url("/assets/img/vectors/banner.svg") no-repeat center;
-				
-				//position: absolute;
-				top: -5px;
-				overflow: visible;
-				display: inline;
-				width: 69.75px;
-				margin-right: 40px;
-				height: 145.75px;
-				z-index: 20;
-				line-height: $topbar-height + 22px;*/
-			}
+			
 		}
 		.nav-pills {
 			@include border-radius($pbh-radius);
@@ -131,13 +193,7 @@
 		}
 	}
   
-  .nav > li {
-    padding-top: 48px;
   
-    > a {
-      padding: 10px 12px;
-    }
-  }
 
   .nav > li,
   .nav-pills > li + li {
@@ -152,63 +208,3 @@
   
 }
 
-#nav-sub-success-stories {
-  margin-right: 5px;
-}
-
-#nav-sub-about {
-  margin-left: 5px;
-}
-
-#nav-sub-give {
-  @include appearance(none);
-  @include transition(all 0.2s ease);
-  cursor: pointer;
-  border: none;
-  background: $pbh-orange;
-  height: $topbar-height;
-  width: 70px;
-  margin: 0;
-  position: relative;
-  text-align: center;
-  -webkit-filter: drop-shadow(0 1px 10px rgba(0, 0, 0, 0.5));
-  -moz-filter: drop-shadow(0 1px 10px rgba(0, 0, 0, 0.5));
-  -ms-filter: drop-shadow(0 1px 10px rgba(0, 0, 0, 0.5));
-  -o-filter: drop-shadow(0 1px 10px rgba(0, 0, 0, 0.5));
-  filter: drop-shadow(0 1px 10px rgba(0, 0, 0, 0.5));
-  
-  a {
-    padding: 10px 16px;
-  }
-  
-  &:before, &:after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    width: 0; height: 0;
-    border-top: 12px solid $pbh-orange;
-  }
-  &:before {
-    left: 0;
-    border-right: 35px solid transparent;
-  }
-  &:after {
-    right: 0;
-    border-left: 35px solid transparent;
-  }
-  
-  
-  &:hover, &:focus {
-    //margin-top: 145px;
-    color: white !important;
-    background: $pbh-darkorange !important;
-    
-    a {
-      background: transparent !important;
-    }
-    &:before, &:after {
-      border-top-color: $pbh-darkorange !important;
-    }
-  }
-  
-}
