@@ -225,6 +225,8 @@ PBH.projects = ->
     false
 
 PBH.global = ->
+  $('html').addClass 'js'
+  
   Shadowbox.init
     autoplayMovies: true
 
@@ -248,6 +250,12 @@ PBH.homePage = ->
   ), 200
   
 PBH.subpages = ->
+  $("#nav-sub").tinyNav
+    active: "active" # String: Set the "active" class
+    header: "Navigation" # String: Specify text for "header" and show header instead of the active item
+    label: "" # String: Sets the <label> text for the <select> (if not set, no label will be added)
+  
+  
   PBH.projects()
 
 PBH.init = ->
