@@ -191,7 +191,15 @@
   }
 }
 
+.reveal-modal {
+	padding: 0;
+}
 
+@include respond-to(tablet-above) {
+	.reveal-modal {
+		padding: 30px 40px 34px;
+	}
+}
 
 .modal-scene {
 	h2 {
@@ -215,12 +223,30 @@
   		color: $pbh-orange;
   		font-size: 24px;
   		text-align:left;
-  		line-height: .5;
+  		line-height: normal;
   		@include text-shadow(0px 0px 0px rgba(0, 0, 0, 0));
   	}
   	h2 {color: $pbh-darkgray;font-weight: bold;font-size: 20px;}
   	p {color: $pbh-darkgray;font-size:16px;font-weight:500;}
 	}
+  
+  .close-reveal-modal {
+    font-size: 1.375em;
+    line-height: 1;
+    position: absolute;
+    top: 0.5em;
+    right: 0.6875em;
+    color: #aaaaaa;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10;
+    
+    &:focus, &:hover {
+      text-decoration: none;
+    }
+    
+  }
+  
 }
 #iframe-video {
 	margin-top:-1000px;

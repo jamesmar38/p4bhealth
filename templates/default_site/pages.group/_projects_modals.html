@@ -1,9 +1,9 @@
 {exp:channel:entries channel="projects" dynamic="no" sort="asc"}
 {exp:ce_cache:add_tag}{url_title}|{entry_id}{/exp:ce_cache:add_tag}
 <!-- Initiate Modal Data -->
-<section id="project-{entry_id}" class="reveal-modal xlarge modal-scene close-reveal-modal">
-	<div class="container-fluid close-reveal-modal">
-	<span class="pull right">&#215;</span>
+<section id="project-{entry_id}" class="reveal-modal xlarge modal-scene">
+	<a class="close-reveal-modal">&#215;</a>
+	<div class="row">
 		<div class="col-lg-3">
       {embed="utils/process_image"
         src="{if project_thumbnail}{project_thumbnail}{if:elseif project_image}{project_image}{if:else}{categories}{if category_image}{category_image}{/if}{/categories}{/if}"
@@ -16,15 +16,13 @@
 			<h2>City of {categories limit="1"}{category_name}{/categories}</h2>
 			<h4>{title}</h4>
 			<hr>
-			<div class="modal-formatting">
+			<div class="row modal-formatting">
 				<div class="col-lg-8">
 					{project_content1}
 				</div>
 				<div class="col-lg-4">
-					{!--<div class="row" >
-						<iframe seamless width="100%" height="200" id="iframe-video" src="{video}" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>-->
-					</div>--}
-					<div class="row">{project_content2}</div>
+						{!--<iframe seamless width="100%" height="200" id="iframe-video" src="{video}" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>--}
+            {project_content2}
 				</div>
 			</div>
 			
