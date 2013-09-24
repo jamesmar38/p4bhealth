@@ -1,3 +1,14 @@
+.has-bg {
+  background-image: none;
+  background-color: black;
+  
+  #header {
+    overflow: hidden;
+    background-position: 50% 100%;
+    background-size: cover;
+  }
+}
+
 #header {
 	width:100%;
 	//min-height:460px;
@@ -5,13 +16,6 @@
 	margin:0 auto;
   z-index:1;
   position: relative;
-  
-  &.has-bg {
-    overflow: hidden;
-    background-position: 50% 100%;
-    background-size: cover;
-  }
-  
   
 	.logo {
 	 -webkit-transition: all 0.5s ease;

@@ -1,11 +1,11 @@
-<body class="{exp:nsm_body_class return='class_attr'} {if logged_in} logged-in{/if}{if logged_out} not-logged-in{/if}" >
+<body class="{exp:nsm_body_class return='class_attr'} {if logged_in} logged-in{/if}{if logged_out} not-logged-in{/if}{if embed:header_image} has-bg{/if}">
 	<!--[if lt IE 7]>
 	<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
 	<![endif]-->
 	<!--<div id="skip-link">
 	<a href="#main-content" class="invisible focusable">Skip to main content</a>
 	</div>-->	
-	<section id="header" {if embed:header_image}class="has-bg" style="background-image: url('{exp:ce_img:pair src="{embed:header_image}" width="1200" height="500" crop="yes" filter="gaussian_blur,30"}{made}{/exp:ce_img:pair}')"{/if}>
+	<section id="header" {if embed:header_image}style="background-image: url('{exp:ce_img:pair src="{embed:header_image}" width="1200" height="500" crop="yes" filter="gaussian_blur,30"}{made}{/exp:ce_img:pair}')"{/if}>
 		<div id="topbar">
 			<div class="container">
 				<nav class="navbar navbar-default" role="navigation">
