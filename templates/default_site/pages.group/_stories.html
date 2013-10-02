@@ -1,4 +1,4 @@
-{exp:channel:entries channel="stories"}
+{exp:channel:entries channel="stories" parse="inward"}
 {embed="global/_header"
 	entry_id="{last_segment_absolute_id}"
 	url_title="{last_segment_absolute}"
@@ -18,23 +18,21 @@
 	</div>
 </section>
 <section class="yellowbar-scene"></section>
-<section class="single-scene">
+<section class="single-scene stories">
 	<div class="container">
 		<div class="row">
-      {exp:splitter blocks="2" delimiter="</div>" class="row" block_start="<div>" block_end="</div>"}
-        {exp:channel_videos:videos entry_id="{entry_id}" embed_width="100%" }			
-        <div class="col-lg-6 margin-bottom-small">
-        	<div class="stories">
-        		{video:embed_code}
-        		<h3>{video:title}</h3>
-        		<div class="block-videos">
-        			<p>{video:description}</p>
-        		</div>
-        	</div>
-        </div>
-        {/exp:channel_videos:videos}
-      {/exp:splitter}
+{exp:channel_videos:videos entry_id="{entry_id}" embed_width="100%"}			
+			<div class="col-lg-6 margin-bottom-small {exp:gwcode_alternate count="{video:count}" alternate="odd|even"}">
+				<div class="story">
+					{video:embed_code}
+					<h3>{video:title}</h3>
+					<div class="block-videos">
+						<p>{video:description}</p>
+					</div>
+				</div>
+			</div>
+			{/exp:channel_videos:videos}		
 		</div>
 	</div>
-</section>	
+</section>
 {/exp:channel:entries}
