@@ -46,11 +46,9 @@
 			<div class="{if structure:child_ids != '' OR segment_2 != ''}col-lg-9{if:else}col-lg-12{/if}">
 					{if segment_1 == "about"}<h2 style="text-align: left">{title}</h2>
 					<hr>{/if}
-					{if segment_1 == "projects"}<div class="section-banner">Filter By City</div>{/if}
 					<div id="main_content">
             {if body}{body}{/if}
             
-            {if segment_1 == "projects"}{embed="pages/_projects_listing"}{/if}
             {if segment_1 == "about"}
               {if segment_2 == "team"}{embed="pages/_team_listing"}{/if}
               {if segment_2 == "partners-organizations"}{embed="pages/_partners_orgs_main"}{/if}
@@ -69,8 +67,6 @@
 	</div>
 </section>	
 {/exp:channel:entries}
-
-{if segment_1 == "projects"}{embed="pages/_projects_modals"}{/if}
 
 {embed="global/_footer"}
 {www_js_foot}

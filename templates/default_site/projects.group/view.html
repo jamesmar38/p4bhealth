@@ -1,0 +1,87 @@
+{exp:ce_cache:it}
+{www_html_head}
+
+{www_metatags}
+
+{exp:seo_lite use_last_segment="yes"}
+
+{www_stylesheets}
+{www_js_head}
+{www_html_head_end}
+
+{exp:channel:entries channel="pages" url_title="projects" dynamic="no" limit="1"}
+{embed="global/_header"
+	entry_id="{last_segment_absolute_id}"
+	url_title="{last_segment_absolute}"
+	template="view"
+	template_group="projects"
+	channel_name="projects"
+	body_class="sub-page"
+	{if header_image}header_image="{header_image}"{/if}
+}	
+	<div id="header-scene">
+		<div class="container">
+      {embed="pages/_page_header"
+        {if header_title}
+          title="{header_title}"
+        {/if}
+        {if header_subtitle}
+          subtitle="{header_subtitle}"
+        {/if}
+      }	
+		</div>
+	</div>
+</section>
+{/exp:channel:entries}
+<section class="yellowbar-scene"></section>
+
+<section class="single-scene">
+	<div id="{segment_1}" class="container">
+    <div class="row">
+			<div class="col-lg-12">
+
+					<div id="main_content">
+            
+            {exp:channel:entries channel="projects" url_title="{segment_2}" dynamic="no" sort="asc"}
+            {exp:ce_cache:add_tag}{url_title}|{entry_id}{/exp:ce_cache:add_tag}
+            
+          	<div class="row">
+          		<div class="col-lg-3">
+                {embed="utils/process_image"
+                  src="{if project_thumbnail}{project_thumbnail}{if:elseif project_image}{project_image}{if:else}{categories}{if category_image}{category_image}{/if}{/categories}{/if}"
+                  max_width='265' max_height='165'
+                  filename="project-{entry_id}"
+                  class="img-responsive"
+                }
+          		</div>
+          		<div class="col-lg-9">
+          			<h2>City of {categories limit="1"}{category_name}{/categories}</h2>
+          			<h4>{title}</h4>
+          			<hr>
+          			<div class="row modal-formatting">
+          				<div class="col-lg-8">
+          					{project_content1}
+          				</div>
+          				<div class="col-lg-4">
+          						{!--<iframe seamless width="100%" height="200" id="iframe-video" src="{video}" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>--}
+                      {project_content2}
+          				</div>
+          			</div>
+		
+          		</div>
+            
+            {/exp:channel:entries}
+            
+            
+            
+					</div>
+			  </div>	
+      </div><!--/.row -->
+		</div>
+	</div>
+</section>
+
+{embed="global/_footer"}
+{www_js_foot}
+{www_body_html_end}
+{/exp:ce_cache:it}
