@@ -234,6 +234,13 @@ PBH.global = ->
     autoplayMovies: true
 
 PBH.homePage = ->
+  if Modernizr.touch
+    alert "touch!"
+    $("#video_background").remove
+  else
+    console.log "no touch"
+  
+  
   
   gotonext = $(".go-to-next").addClass("current")
   
