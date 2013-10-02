@@ -58,7 +58,7 @@
             		{exp:channel:entries channel="projects" dynamic="no" sort="asc"}
                 {exp:ce_cache:add_tag}{url_title}|{entry_id}{/exp:ce_cache:add_tag}
             		  <div class="project project-{entry_id} {categories backspace="1"}cat-{category_id} {/categories} {url_title}">
-                    <a href="{url_title_path='projects/index'}">
+                    <a href="{page_url}">
                       {embed="utils/process_image"
                         src="{if project_thumbnail}{project_thumbnail}{if:elseif project_image}{project_image}{if:else}{categories}{if category_image}{category_image}{/if}{/categories}{/if}"
                         max_width='265' max_height='165'
