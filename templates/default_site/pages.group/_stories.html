@@ -21,17 +21,19 @@
 <section class="single-scene">
 	<div class="container">
 		<div class="row">
-{exp:channel_videos:videos entry_id="{entry_id}" embed_width="100%" }			
-			<div class="col-lg-6 margin-bottom-small">
-				<div class="stories">
-					{video:embed_code}
-					<h3>{video:title}</h3>
-					<div class="block-videos">
-						<p>{video:description}</p>
-					</div>
-				</div>
-			</div>
-			{/exp:channel_videos:videos}		
+      {exp:splitter blocks="2" delimiter="</div>" class="row" block_start="<div>" block_end="</div>"}
+        {exp:channel_videos:videos entry_id="{entry_id}" embed_width="100%" }			
+        <div class="col-lg-6 margin-bottom-small">
+        	<div class="stories">
+        		{video:embed_code}
+        		<h3>{video:title}</h3>
+        		<div class="block-videos">
+        			<p>{video:description}</p>
+        		</div>
+        	</div>
+        </div>
+        {/exp:channel_videos:videos}
+      {/exp:splitter}
 		</div>
 	</div>
 </section>	
