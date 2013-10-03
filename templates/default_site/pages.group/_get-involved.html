@@ -33,7 +33,12 @@
 						<hr>
 						<p>{content}</p>
 						{if button_text}
-							<a href="{link}" class="btn btn-primary btn-lg btn-orange btn-entypo margin-bottom-large"><i class="entypo-download"></i> {button_text}</a>
+{!--If there's a link, show DL Icon. Otherwise, the link will open Contact modal--}
+							{if link}		
+								<a href="{link}" class="btn btn-primary btn-lg btn-orange btn-entypo margin-bottom-large"><i class="entypo-download"></i> {button_text}</a>
+							{if:else}
+								<a  href="#" data-reveal-id="show-contact-modal" class="btn btn-primary btn-lg btn-orange btn-entypo margin-bottom-large">{button_text}</a>
+							{/if}
 						{/if}
 					</div>
 				</div>	
@@ -41,4 +46,12 @@
 		</div>
 	</div>
 </section>	
+<!-- Initiate Modal Data -->
+<section id="show-contact-modal" class="reveal-modal xlarge modal-scene close-reveal-modal">
+	<div class="container-fluid close-reveal-modal">
+		<span class="pull right">&#215;</span>
+		{embed="modal_contact_form"}
+	</div>
+</section>		
+<!-- End Modal Data -->
 {/exp:channel:entries}
