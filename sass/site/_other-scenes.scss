@@ -205,7 +205,17 @@
 		padding: 30px 40px 34px;
 	}
 }
-
+.modal-formatting {
+  	h1 {
+  		color: $pbh-orange;
+  		font-size: 24px;
+  		text-align:left;
+  		line-height: normal;
+  		@include text-shadow(0px 0px 0px rgba(0, 0, 0, 0));
+  	}
+  	h2 {color: $pbh-darkgray;font-weight: bold;font-size: 20px;}
+  	p {color: $pbh-darkgray;font-size:16px;font-weight:500;}
+}
 .modal-scene {
 	h2 {
 		color: $pbh-darkgray;
@@ -223,23 +233,11 @@
 		color: $pbh-gray;
 		font-size: 14px;
 	}
-	.modal-formatting {
-  	h1 {
-  		color: $pbh-orange;
-  		font-size: 24px;
-  		text-align:left;
-  		line-height: normal;
-  		@include text-shadow(0px 0px 0px rgba(0, 0, 0, 0));
-  	}
-  	h2 {color: $pbh-darkgray;font-weight: bold;font-size: 20px;}
-  	p {color: $pbh-darkgray;font-size:16px;font-weight:500;}
-	}
-  
   .close-reveal-modal {
-    font-size: 1.375em;
+    font-size: 3.375em;
     line-height: 1;
     position: absolute;
-    top: 0.5em;
+    top: 0;
     right: 0.6875em;
     color: #aaaaaa;
     font-weight: bold;
@@ -251,7 +249,6 @@
     }
     
   }
-  
 }
 #iframe-video {
 	margin-top:-1000px;

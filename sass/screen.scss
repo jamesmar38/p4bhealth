@@ -21,11 +21,12 @@
 @import "responsive/responsive-body";
 @import "responsive/responsive-homepage";
 
-@import "site/fonts";
-@import "site/buttons";
-@import "site/body";
-@import "site/header";
-@import "site/footer";
+@import "site/fonts",
+		"site/forms",
+		"site/buttons",
+		"site/body",
+		"site/header",
+		"site/footer";
 
 @import "site/homepage-scenes";	//Styles for homepage scenes
 @import "site/other-scenes";	//Styles for every other page scenes
