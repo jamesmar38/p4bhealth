@@ -1,0 +1,115 @@
+{exp:ce_cache:it}
+{www_html_head}
+
+{www_metatags}
+
+{exp:seo_lite use_last_segment="yes"}
+
+{www_stylesheets}
+{www_js_head}
+{www_html_head_end}
+
+{exp:channel:entries channel="pages" limit="1"}
+{exp:ce_cache:add_tag}{url_title}|{entry_id}{/exp:ce_cache:add_tag}
+{embed="global/_header"
+	entry_id="{last_segment_absolute_id}"
+	url_title="{last_segment_absolute}"
+	template="index"
+	template_group="pages"
+	channel_name="pages"
+	body_class="sub-page"
+	{if header_image}header_image="{header_image}"{/if}
+}	
+	<div id="header-scene">
+		<div class="container">
+      {embed="pages/_page_header"
+        {if header_title}
+          title="{header_title}"
+        {/if}
+        {if header_subtitle}
+          subtitle="{header_subtitle}"
+        {/if}
+      }	
+		</div>
+	</div>
+</section>
+<section class="yellowbar-scene"></section>
+
+<section class="single-scene">
+	<div id="{segment_1}" class="container">
+    <div class="row">
+			<div class="col-lg-12">
+        <h2 style="text-align: left">Upload Files</h2>
+        <hr>
+					<div id="main_content">
+            <?php
+            
+          	$base_path                         = $_SERVER['DOCUMENT_ROOT'];
+          	$inc_folder                         = $base_path . '/../inc/';
+            
+            $passw = "default"; //change this to a password of your choice.
+            if ($_POST) {
+                require $inc_folder . 'DropboxUploader.php';
+                try {
+                    // Rename uploaded file to reflect original name
+                    if ($_FILES['file']['error'] !== UPLOAD_ERR_OK)
+                        throw new Exception('File was not successfully uploaded from your computer.');
+
+                    $tmpDir = uniqid('/tmp/DropboxUploader-');
+                    if (!mkdir($tmpDir))
+                        throw new Exception('Cannot create temporary directory!');
+
+                    if ($_FILES['file']['name'] === "")
+                        throw new Exception('File name not supplied by the browser.');
+
+                    $tmpFile = $tmpDir.'/'.str_replace("/\0", '_', $_FILES['file']['name']);
+                    if (!move_uploaded_file($_FILES['file']['tmp_name'], $tmpFile))
+                        throw new Exception('Cannot rename uploaded file!');
+            
+            		if ($_POST['txtPassword'] != $passw)
+                        throw new Exception('Wrong Password');
+
+                    // Upload
+            		$uploader = new DropboxUploader('you@youremail.com', 'yourpassword');// enter dropbox credentials
+                    $uploader->upload($tmpFile, $_POST['dest']);
+
+                    echo '<span style="color: green;font-weight:bold;margin-left:393px;">File successfully uploaded to my Dropbox!</span>';
+                } catch(Exception $e) {
+                    echo '<span style="color: red;font-weight:bold;margin-left:393px;">Error: ' . htmlspecialchars($e->getMessage()) . '</span>';
+                }
+
+                // Clean up
+                if (isset($tmpFile) && file_exists($tmpFile))
+                    unlink($tmpFile);
+
+                if (isset($tmpDir) && file_exists($tmpDir))
+                    rmdir($tmpDir);
+            }
+            ?>
+            
+            <div class="box" align="center">
+            		<h1>Dropbox Uploader<br>
+            		<br>
+            		&nbsp;</h1>
+            		<form method="POST" enctype="multipart/form-data">
+            		<input type="file" name="file" /><br><br>
+            		<input type="submit" value="Upload the file to my Dropbox!" />
+            		<input style="display:none" type="text" name="dest" value="shared" />
+            		<br/>
+            		<br/>
+            		Password: <input type="password" title="Enter your password" name="txtPassword" />
+            </div>
+            
+            
+					</div>
+			  </div>	
+      </div><!--/.row -->
+		</div>
+	</div>
+</section>	
+{/exp:channel:entries}
+
+{embed="global/_footer"}
+{www_js_foot}
+{www_body_html_end}
+{/exp:ce_cache:it}
