@@ -1,0 +1,121 @@
+{exp:freeform:form
+  form:id="contact" 
+  form_name="contact"
+  required="name|message"
+  inline_errors="yes"
+  {if get:recipient != ""}recipient_user_input="yes"{/if}
+}
+  {if get:recipient != ""}
+    {exp:channel:entries channel="team" url_title="{get:recipient}" limit="1" dynamic="no"}
+    <input type="hidden" name="recipient_email_user" value="{team_email}" />
+    <h4 class="recipient">This message will be directly sent to {title}</h4>
+    {/exp:channel:entries}
+  {/if}
+
+  {if freeform:general_errors}
+  <div class="errorMsg">
+    <h2>Sorry, we have some problems with sending your information. Please correct the marked information below</h2>
+    <ul>
+        {freeform:general_errors}
+        <li>{freeform:error_message}</li>
+        {/freeform:general_errors}
+    </ul>
+  </div>
+  {/if}
+
+  <div class="row">
+    <div class="col-lg-6">
+      <fieldset class="col291">
+        <label>{freeform:label:name}: </label>
+        {freeform:field:name}
+        {if freeform:error:name}
+            <span class="round alert label">
+                {freeform:error:name}
+            </span>
+        {/if}
+      </fieldset>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6">
+
+      <fieldset class="col291">
+        <label>{freeform:label:email}: </label>
+        {freeform:field:email}
+        {if freeform:error:email}
+            <span class="round alert label">
+                {freeform:error:email}
+            </span>
+        {/if}
+      </fieldset>
+    </div>
+    <div class="col-lg-6">
+      <fieldset class="col291">
+        <label>{freeform:label:phone}: </label>
+        {freeform:field:phone}
+        {if freeform:error:phone}
+            <span class="round alert label">
+                {freeform:error:phone}
+            </span>
+        {/if}
+      </fieldset>
+    </div>
+  </div>
+    <div class="row">
+    <div class="col-lg-12">
+      <fieldset class="col291">
+        <label>{freeform:label:university_title}: </label>
+        {freeform:field:university_title}
+        {if freeform:error:university_title}
+            <span class="round alert label">
+                {freeform:error:university_title}
+            </span>
+        {/if}
+      </fieldset>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <fieldset class="col600">
+        <label>Message: <br /></label>
+        <textarea name="user_message" cols="60" rows="6" id="contactMessage" class="text"></textarea>
+        {if freeform:error:user_message}
+            <span class="round alert label">
+                {freeform:error:user_message}
+            </span>
+        {/if}
+      </fieldset>
+    </div>
+  </div>
+
+  {if freeform:captcha}<div class="row">
+    <div class="col-lg-12">
+
+      <p>Please enter the word you see in the image below:</p>
+      <p>{freeform:captcha}<br />
+      <input type="text" name="captcha" style="width:140px;" /></p>
+    </div>
+  </div>{/if}
+
+  <div class="row">
+    <div class="large-12">
+      <fieldset class="contactFormButton">
+        <input name="sendButton" id="sendButton" class="stateButton" type="submit" value="Submit" alt="">
+      </fieldset>
+    </div>
+  </div>
+    
+ 
+{/exp:freeform:form}
+
+
+
+
+
+
+
+
+
+
+
