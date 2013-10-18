@@ -89,7 +89,7 @@ class Matrix_date_ft {
 		}
 
 		// get the initial input value
-		$formatted_date = $data ? $this->EE->localize->set_human_time($data) : '';
+		$formatted_date = $data ? $this->EE->localize->human_time($data) : '';
 
 		$r['data'] = form_input(array(
 			'name'  => $this->cell_name,
@@ -136,7 +136,7 @@ class Matrix_date_ft {
 
 		if (isset($params['format']))
 		{
-			$data = $this->EE->localize->decode_date($params['format'], $data);
+			$data = $this->EE->localize->format_date($params['format'], $data);
 		}
 
 		return $data;

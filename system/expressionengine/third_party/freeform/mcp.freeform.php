@@ -10,7 +10,7 @@
  * @copyright	Copyright (c) 2008-2013, Solspace, Inc.
  * @link		http://solspace.com/docs/freeform
  * @license		http://www.solspace.com/license_agreement
- * @version		4.1.2
+ * @version		4.1.3
  * @filesource	freeform/mcp.freeform.php
  */
 
@@ -598,9 +598,9 @@ class Freeform_mcp extends Module_builder_freeform
 						$value = str_replace('|', ', ', $value);
 					}
 
-					if ($key == 'field_ids' AND ! empty($value))
+					if ($key == 'field_ids')
 					{
-						$value = implode('|', $value);
+						$value =  ( ! empty($value)) ? implode('|', $value) : '';
 					}
 
 					$inputs[$key] = form_prep($value);
@@ -651,9 +651,9 @@ class Freeform_mcp extends Module_builder_freeform
 						continue;
 					}
 
-					if ($key == 'field_ids' AND ! empty($value))
+					if ($key == 'field_ids')
 					{
-						$value = implode('|', $value);
+						$value =  ( ! empty($value)) ? implode('|', $value) : '';
 					}
 
 					if ($key == 'admin_notification_email')

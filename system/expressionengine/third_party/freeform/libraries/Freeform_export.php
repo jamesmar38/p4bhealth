@@ -227,7 +227,7 @@ class Freeform_export extends Addon_builder_freeform
 				$cache_path = APPPATH . 'cache/';
 			}
 
-			$cache_path = rtrim($cache_path, '/') . '/freeform/';
+			$cache_path = rtrim($cache_path, '/') . '/' . $this->lower_name . '/';
 
 			$this->cache_path = $cache_path;
 

@@ -293,11 +293,19 @@ class Freeform_fields extends Addon_builder_freeform
 		//	default fields
 		// -------------------------------------
 
-		$default_fields	= glob(
-			$this->default_path . 'freeform_ft.{' .
-				implode(',', $this->data->defaults['default_fields']) . '}.php',
-			GLOB_BRACE
-		);
+		$default_fields = array();
+
+		foreach($this->data->defaults['default_fields'] as $default_field)
+		{
+			$potential_path = $this->addon_path .
+									'default_fields/freeform_ft.' .
+									$default_field . '.php';
+
+			if (file_exists($potential_path))
+			{
+				$default_fields[] = $potential_path;
+			}
+		}
 
 		foreach ($default_fields as $file)
 		{

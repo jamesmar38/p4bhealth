@@ -37,6 +37,10 @@
 'max_value' => 'Max Value',
 'decimals' => 'Decimals',
 
+'allowed_dirs_file' => 'Allowed file upload directories',
+'field_content_file' => 'Allowed file content type',
+//''
+
 // -------------------------------------------
 //  Field
 // -------------------------------------------
@@ -54,6 +58,7 @@
 
 'add_image' => 'Add Image',
 'select_file_error' => 'There was an error selecting your file. Please try again, or save and re-edit the entry if the problem persists.',
+'file_undo_remove' => 'Undo Remove',
 
 // -------------------------------------------
 //  Errors

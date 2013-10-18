@@ -9,7 +9,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 $plugin_info = array(
 	'pi_name'			=> 'Antenna',
-	'pi_version'		=> '1.2',
+	'pi_version'		=> '1.25',
 	'pi_author'			=> 'Matt Weinberg',
 	'pi_author_url'		=> 'http://www.VectorMediaGroup.com',
 	'pi_description'	=> 'Returns the embed code and various pieces of metadata for YouTube, Vimeo, Wistia, and Viddler Videos',
@@ -47,6 +47,8 @@ class Antenna
 			"author_name"   =>  "video_author",
 			"author_url"    =>  "video_author_url",
 			"thumbnail_url" =>  "video_thumbnail",
+			"medres_url"	=>  "video_mediumres",
+			"highres_url"	=>  "video_highres",
 			"description"   =>  "video_description"
 		);
 
@@ -85,15 +87,21 @@ class Antenna
 		$viddler_type = ($this->EE->TMPL->fetch_param('viddler_type')) ? "&type=" . $this->EE->TMPL->fetch_param('viddler_type') : "";
 		$viddler_ratio = ($this->EE->TMPL->fetch_param('viddler_ratio')) ? "&ratio=" . $this->EE->TMPL->fetch_param('viddler_ratio') : "";
 
+		// Automatically handle scheme if https
+		$is_https = false;
+		if ($this->EE->TMPL->fetch_param('force_https') == "true" || parse_url($video_url, PHP_URL_SCHEME) == 'https') {
+			$is_https = true;
+		}
+
 		// If it's not YouTube, Vimeo, Wistia, or Viddler bail
 		if (strpos($video_url, "youtube.com/") !== FALSE OR strpos($video_url, "youtu.be/") !== FALSE) {
-			$url = "http://www.youtube.com/oembed?format=xml&iframe=1&url=";
+			$url = "http://www.youtube.com/oembed?format=xml&iframe=1" . ($is_https ? '&scheme=https' : '') . "&url=";
 		} else if (strpos($video_url, "vimeo.com/") !== FALSE) {
-			$url = "http://vimeo.com/api/oembed.xml?url=";
+			$url = "http" . ($is_https ? 's' : '') . "://vimeo.com/api/oembed.xml?url=";
 		} else if (strpos($video_url, "wistia.com/") !== FALSE) {
 			$url = "http://app.wistia.com/embed/oembed.xml?url=";
 		} else if (strpos($video_url, "viddler.com/") !== FALSE) {
-			$url = "http://lab.viddler.com/services/oembed/?format=xml&url=";
+			$url = "http://www.viddler.com/oembed/?format=xml&url=";
 		} else {
 			$tagdata = $this->EE->functions->var_swap($tagdata, $video_data);
 			$this->return_data = $tagdata;
@@ -154,11 +162,36 @@ class Antenna
     	}
 
     	// Inject YouTube rel value if required
-    	if (!is_null($youtube_rel))
+    	if (!is_null($youtube_rel) && (strpos($video_url, "youtube.com/") !== FALSE OR strpos($video_url, "youtu.be/") !== FALSE))
 		{
 			preg_match('/.*?src="(.*?)".*?/', $video_info->html, $matches);
 			if (!empty($matches[1])) $video_info->html = str_replace($matches[1], $matches[1] . '&rel=' . $youtube_rel, $video_info->html);
 		}
+
+
+	// actually setting thumbnails at a reasonably consistent size, as well as getting higher-res images
+	if(strpos($video_url, "youtube.com/") !== FALSE OR strpos($video_url, "youtu.be/") !== FALSE) {
+		$video_info->highres_url = str_replace('hqdefault','maxresdefault',$video_info->thumbnail_url);
+		$video_info->medres_url = $video_info->thumbnail_url;
+		$video_info->thumbnail_url = str_replace('hqdefault','mqdefault',$video_info->thumbnail_url);
+		}
+	else if (strpos($video_url, "vimeo.com/") !== FALSE) {
+		$video_info->highres_url = str_replace('_295','_1280',$video_info->thumbnail_url);
+		$video_info->medres_url = str_replace('_295','_640',$video_info->thumbnail_url);
+		}
+	else if (strpos($video_url, "wistia.com/") !== FALSE)
+		{
+		$video_info->highres_url = str_replace('?image_crop_resized=100x60','',$video_info->thumbnail_url);
+		$video_info->medres_url = str_replace('?image_crop_resized=100x60','?image_crop_resized=640x400',$video_info->thumbnail_url);
+		$video_info->thumbnail_url = str_replace('?image_crop_resized=100x60','?image_crop_resized=240x135',$video_info->thumbnail_url);
+		}
+	else if (strpos($video_url, "viddler.com/") !== FALSE)
+		{
+		$video_info->highres_url = $video_info->thumbnail_url;
+		$video_info->medres_url = $video_info->thumbnail_url;
+		$video_info->thumbnail_url = str_replace('thumbnail_2','thumbnail_1',$video_info->thumbnail_url);
+		}
+
 
 		// Handle a single tag
 		if ($mode == "single")

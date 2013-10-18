@@ -8,7 +8,7 @@
  * @copyright	Copyright (c) 2008-2013, Solspace, Inc.
  * @link		http://solspace.com/docs/freeform
  * @license		http://www.solspace.com/license_agreement
- * @version		4.1.2
+ * @version		4.1.3
  * @filesource	freeform/data.freeform.php
  */
 
@@ -131,6 +131,8 @@ class Freeform_data extends Addon_builder_data_freeform
 		'freeform_entry_id'			=> '{freeform_entry_id}',
 		'entry_date'				=> '{entry_date format=&quot;%Y-%m-%d - %H:%i&quot;}',
 		'form_name'					=> '{form_name}',
+		'form_label'				=> '{form_label}',
+		'form_id'					=> '{form_id}',
 		'attachments'				=> "{attachments}\n\t{fileurl}\n\t{filename}\n{/attachments}",
 		'attachment_count'			=> '{attachment_count}'
 	);
