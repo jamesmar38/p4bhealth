@@ -267,6 +267,7 @@ PBH.subpages = ->
   
   
   PBH.projects()
+  $('body').responsiveVideo()
 
 PBH.init = ->
   PBH.global()
