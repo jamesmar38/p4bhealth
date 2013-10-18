@@ -11,7 +11,7 @@
 |
 */
 
-$config['app_version'] = '261';
+$config['app_version'] = "272";
 $config['install_lock'] = "";
 $config['license_number'] = 'CORE LICENSE';
 $config['debug'] = '1';
