@@ -10,7 +10,7 @@
  * @copyright	Copyright (c) 2008-2013, Solspace, Inc.
  * @link		http://solspace.com/docs/freeform
  * @license		http://www.solspace.com/license_agreement
- * @version		4.0.12
+ * @version		4.1.2
  * @filesource	freeform/act.freeform.php
  */
 
@@ -223,7 +223,7 @@ class Freeform_actions extends Addon_builder_freeform
 	 *							true if at least one file upload
 	 */
 
-	public function file_upload_present($name = '')
+	public function file_upload_present($name = '', $previous_inputs = array())
 	{
 		$result = FALSE;
 
@@ -239,8 +239,56 @@ class Freeform_actions extends Addon_builder_freeform
 			}
 		}
 
+
+		//no result means possible empty file fields posted
+		//without the file field check this would return true for
+		//all non-file fields
+		if ( ! $result && isset($_FILES[$name]) && isset($previous_inputs[$name]))
+		{
+			$result = TRUE;
+		}
+
 		return $result;
 	}
 	//END file_upload_present
+
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Format CP date
+	 *
+	 * @access	public
+	 * @param	mixed	$date	unix time
+	 * @return	string			unit time formatted to cp date formatting pref
+	 */
+
+	public function format_cp_date($date)
+	{
+		//EE 2.6+?
+		if (is_callable(array(ee()->localize, 'format_date')))
+		{
+			return ee()->localize->format_date(
+				preg_replace(
+					'/([a-zA-Z]{1})/is',
+					'%$1',
+					$this->preference('cp_date_formatting')
+				),
+				$date
+			);
+		}
+		else
+		{
+			return ee()->localize->decode_date(
+				preg_replace(
+					'/([a-zA-Z]{1})/is',
+					'%$1',
+					$this->preference('cp_date_formatting')
+				),
+				$date
+			);
+		}
+	}
+	//END format_cp_date
 }
 // END Freeform_actions Class

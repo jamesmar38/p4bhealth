@@ -5,6 +5,9 @@ table.matrix tbody.matrix td.matrix.editor-matrix {padding:0;border:none;}
 table.matrix tbody.matrix tr.matrix-last td.editor-matrix.matrix-focussed {padding:0;}
 table.matrix tbody.matrix td.editor-matrix.matrix-focussed {border:none;}
 
+.redactor_box textarea.redactor_editor, .redactor_box textarea.redactor_editor:focus {
+	background-color: #222222 !important;
+}
 
 /* IFRAME: VISUAL MODE FIX;
 

@@ -10,7 +10,7 @@
  * @copyright	Copyright (c) 2008-2013, Solspace, Inc.
  * @link		http://solspace.com/docs/freeform
  * @license		http://www.solspace.com/license_agreement
- * @version		4.0.12
+ * @version		4.1.2
  * @filesource	freeform/data.freeform.php
  */
 
@@ -107,7 +107,7 @@ class Freeform_base_ft
 	 * @return 	void
 	 */
 
-	public function pre_process_entries ($query = NULL)
+	public function pre_process_entries ($ids = array())
 	{
 		return;
 	}
@@ -338,8 +338,7 @@ class Freeform_base_ft
 			$data = implode("\n", $data);
 		}
 
-		ee()->load->helper('text');
-		return ee()->functions->encode_ee_tags(entities_to_ascii($data), TRUE);
+		return $this->encode_ee(entities_to_ascii($data));
 	}
 	//END display_email_data
 
@@ -867,7 +866,7 @@ class Freeform_base_ft
 	 * @return array 	key value array for parsing tags
 	 */
 
-	protected function multi_item_values ($input = array(), $prefix = FALSE)
+	protected function multi_item_values($input = array(), $prefix = FALSE)
 	{
 		if ( ! is_string($input) AND ! is_array($input))
 		{
@@ -929,17 +928,19 @@ class Freeform_base_ft
 
 		$data	= $this->prep_multi_item_data($data);
 
-		if ($tagdata)
+		if ( ! empty($tagdata))
 		{
 			$rows	= array();
 
-			foreach ($this->get_field_options($prefix, FALSE) as $key => $val)
+			$options = $this->get_field_options($prefix, FALSE);
+
+			foreach ($data as $key => $val)
 			{
-				if (isset($data[$key]) OR in_array($key, $data))
+				if (isset($options[$val]))
 				{
 					$rows[]	= array(
-						'freeform:data:value'	=>	$this->form_prep_encode_ee($key),
-						'freeform:data:label'	=>	$this->form_prep_encode_ee($val)
+						'freeform:data:value'	=>	$this->encode_ee($val),
+						'freeform:data:label'	=>	$this->encode_ee($options[$val])
 					);
 				}
 			}
@@ -955,7 +956,8 @@ class Freeform_base_ft
 			//	backspace?
 			// -------------------------------------
 
-			if (isset($params['backspace']) AND ctype_digit((string) $params['backspace']))
+			if (isset($params['backspace']) AND
+				ctype_digit((string) $params['backspace']))
 			{
 				$output = substr($output, 0, $params['backspace'] * -1);
 			}
@@ -968,11 +970,11 @@ class Freeform_base_ft
 
 			$options = $this->get_field_options($prefix, FALSE);
 
-			foreach ($options as $key => $val)
+			foreach ($data as $key => $val)
 			{
-				if (isset($data[$key]) OR in_array($key, $data))
+				if (isset($options[$val]))
 				{
-					$output[] = $this->form_prep_encode_ee($val);
+					$output[] = $this->encode_ee($options[$val]);
 				}
 			}
 
@@ -1105,9 +1107,9 @@ class Freeform_base_ft
 		}
 
 		// -------------------------------------
-		//	rethought the below, and users
+		//	Re-thought the below, and users
 		//	probably want data displaying
-		//	as it came in
+		//	as it came in.
 		// -------------------------------------
 
 		//sort on option order so output
@@ -1245,7 +1247,9 @@ class Freeform_base_ft
 
 			foreach ($field_options as $key => $value)
 			{
-				$prepped_field_options[$this->form_prep_encode_ee($key)] = $this->form_prep_encode_ee($value);
+				$prepped_field_options[
+					$this->form_prep_encode_ee($key)
+				] = $this->form_prep_encode_ee($value);
 			}
 
 			$field_options = $prepped_field_options;
@@ -1458,9 +1462,29 @@ class Freeform_base_ft
 
 	public function form_prep_encode_ee ($str = '')
 	{
-		return ee()->functions->encode_ee_tags(form_prep($str), TRUE);
+		return $this->encode_ee(form_prep($str));
 	}
 	//END form_prep_encode_ee
+
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Encoding of EE tags
+	 * Separated from EE function in case we ever need to replace it
+	 * or augment it.
+	 *
+	 * @access	public
+	 * @param	string $str		input string to encode
+	 * @return	string			encoded strings
+	 */
+
+	public function encode_ee ($str = '')
+	{
+		return ee()->functions->encode_ee_tags($str, TRUE);
+	}
+	//END form_prep_encode_ee
+
 
 	// --------------------------------------------------------------------
 

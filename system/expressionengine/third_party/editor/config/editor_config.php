@@ -25,6 +25,7 @@ $config['editor_defaults']['formattingtags'] = array('p', 'blockquote', 'pre', '
 $config['editor_defaults']['language'] = 'en';
 $config['editor_defaults']['css_file'] = '';
 $config['editor_defaults']['buttons'] = array();
+$config['editor_defaults']['plugins'] = array();
 
 $config['editor_defaults']['upload_service'] = 'local';
 $config['editor_defaults']['file_upload_location'] = '';

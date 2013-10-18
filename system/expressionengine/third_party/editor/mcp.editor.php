@@ -151,7 +151,17 @@ class Editor_mcp
 				if ($cat != FALSE) $allowedtags[] = $cat;
 			}
 
-			$_POST['editor']['allowedtags'] = $allowedtags;
+			// -----------------------------------------
+			// Parse Extra plugins
+			// -----------------------------------------
+			$plugins = array();
+			foreach (explode(',', $_POST['editor']['plugins']) as $cat)
+			{
+				$cat = trim($cat);
+				if ($cat != FALSE) $plugins[] = $cat;
+			}
+
+			$_POST['editor']['plugins'] = $plugins;
 
 			$this->EE->db->set('config_label', $this->EE->input->post('config_label'));
 			$this->EE->db->set('site_id', $this->site_id);

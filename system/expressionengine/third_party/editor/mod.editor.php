@@ -74,6 +74,7 @@ class Editor
 
 		$action = $this->EE->input->get('action');
 		if ($action == 'image_browser') $this->get_image_dir_json();
+		if ($action == 's3_info') $this->s3_info();
 
 
 		// -----------------------------------------
@@ -124,6 +125,9 @@ class Editor
 		$this->subdir = $this->EE->input->get_post('subdir');
 		$this->allowed = array('jpg', 'jpeg', 'png', 'gif');
 		$this->files = array();
+
+		$location['server_path'] = realpath($location['server_path']);
+		$location['server_path'] = rtrim($location['server_path'], '\\/').'/';
 
 		$files = array();
 
@@ -235,6 +239,45 @@ class Editor
 
 		//exit(print_r($this->files));
 		exit($this->EE->editor_helper->generate_json($this->files));
+	}
+
+	// ********************************************************************************* //
+
+	public function s3_info()
+	{
+		$s3 = $this->EE->input->get('s3');
+		if ($s3 == false) {
+			exit();
+		}
+
+		$s3 = base64_decode($s3);
+		$s3 = $this->EE->editor_helper->decrypt_string($s3);
+		$s3 = @unserialize($s3);
+		if ($s3 == false) {
+			exit();
+		}
+
+		$S3_KEY = $s3['aws_access_key'];
+		$S3_SECRET = $s3['aws_secret_key'];
+		$S3_BUCKET = '/' . $s3['image']['bucket']; // bucket needs / on the front
+
+		$S3_URL = 'https://s3.amazonaws.com';
+
+		// expiration date of query
+		$EXPIRE_TIME = (60 * 5); // 5 minutes
+
+		$objectName = '/' . $_GET['name'];
+
+		$mimeType = $_GET['type'];
+		$expires = time() + $EXPIRE_TIME;
+		$amzHeaders = "x-amz-acl:public-read";
+		$stringToSign = "PUT\n\n{$mimeType}\n{$expires}\n{$amzHeaders}\n{$S3_BUCKET}{$objectName}";
+
+		$sig = urldecode(base64_encode(hash_hmac('sha1', $stringToSign, $S3_SECRET, true)));
+		$url = urlencode("{$S3_URL}{$S3_BUCKET}{$objectName}?AWSAccessKeyId={$S3_KEY}&Expires={$expires}&Signature={$sig}");
+
+		echo $url;
+		exit();
 	}
 
 	// ********************************************************************************* //

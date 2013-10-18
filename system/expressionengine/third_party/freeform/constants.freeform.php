@@ -10,13 +10,13 @@
  * @copyright	Copyright (c) 2008-2013, Solspace, Inc.
  * @link		http://solspace.com/docs/freeform
  * @license		http://www.solspace.com/license_agreement
- * @version		4.0.12
+ * @version		4.1.2
  * @filesource	freeform/constants.freeform.php
  */
 
 if ( ! defined('FREEFORM_VERSION'))
 {
-	define('FREEFORM_VERSION',	'4.0.12');
+	define('FREEFORM_VERSION',	'4.1.2');
 	define('FREEFORM_DOCS_URL',	'http://solspace.com/docs/freeform/');
 
 	// Changing this to true wont give you Freeform Pro for free,
@@ -25,8 +25,8 @@ if ( ! defined('FREEFORM_VERSION'))
 	// You can purchase Freeform Pro at http://solspace.com ;).
 
 	
-	define('FREEFORM_PRO',		FALSE);
-	
 
+	
+	define('FREEFORM_PRO',		TRUE);
 	
 }

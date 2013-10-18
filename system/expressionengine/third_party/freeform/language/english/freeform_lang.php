@@ -8,7 +8,7 @@
  * @copyright	Copyright (c) 2008-2013, Solspace, Inc.
  * @link		http://solspace.com/docs/freeform
  * @license		http://www.solspace.com/license_agreement
- * @version		4.0.11
+ * @version		4.1.2
  * @filesource	freeform/language/english/freeform_lang.php
  */
 
@@ -22,10 +22,10 @@ $lang = array(
 //----------------------------------------
 
 
+
+
 "freeform_module_name" =>
-"Freeform",
-
-
+"Freeform Pro",
 
 
 'go_pro' =>
@@ -47,6 +47,16 @@ $lang = array(
 "Default",
 
 // -------------------------------------
+//	accessory
+// -------------------------------------
+
+'freeform_accessory_description' =>
+"Recent Freeform entries and short names for fields attached to forms.",
+
+'freeform_form_info' =>
+"Form Info",
+
+// -------------------------------------
 //	non pro lang
 // -------------------------------------
 
@@ -62,6 +72,15 @@ $lang = array(
 
 'choose_composer_form' =>
 "Choose a Freeform Composer Form to output:",
+
+'toggle_field_short_names' =>
+"Toggle Field Short Names",
+
+'show' =>
+"Show",
+
+'hide' =>
+"Hide",
 
 //----------------------------------------
 //  Main Menu
@@ -162,6 +181,9 @@ $lang = array(
 'notice' =>
 "Notice",
 
+'view_lower' =>
+"view",
+
 // -------------------------------------
 //	form statuses
 // -------------------------------------
@@ -202,6 +224,9 @@ $lang = array(
 
 'submissions' =>
 "Submissions",
+
+'pending_submissions' =>
+"Pending Submissions",
 
 'moderate' =>
 "Moderate",
@@ -394,6 +419,9 @@ $lang = array(
 'submit_button'=>
 "Submit Button",
 
+'submit_previous_button'=>
+"Submit Previous Button",
+
 'search_fields'=>
 "Search Fields",
 
@@ -405,6 +433,9 @@ $lang = array(
 
 'captcha' =>
 "Captcha",
+
+'sticky_controls' =>
+"Sticky Controls",
 
 'double_click_to_edit' =>
 "Double Click to Edit",
@@ -533,6 +564,12 @@ $lang = array(
 
 'submit' =>
 "Submit",
+
+'submit_previous' =>
+"Submit Previous",
+
+'previous' =>
+"Previous",
 
 'view' =>
 "View",
@@ -705,6 +742,9 @@ $lang = array(
 
 'all_fields' =>
 "All Fields",
+
+'format_dates' =>
+"Format&nbsp;Dates",
 
 // -------------------------------------
 //	multi-item rows for fields
@@ -1303,7 +1343,7 @@ $lang = array(
 "Subject",
 
 'email_subject_desc' =>
-"The subject line of the notification. The following variables are available: {my_custom_field}, {freeform_entry_id}, {entry_date}, {form_name}, {form_id}, {form_label}",
+"The subject line of the notification. The following variables are available: {my_custom_field}, {freeform_entry_id}, {entry_date}, {form_name}, {form_id}, {form_label}<br/><br/><span class='note' Check with your hosting company about maximum email subject length as it could cause emails to silently fail to send.",
 
 'notification_description' =>
 "Description",
@@ -1631,7 +1671,7 @@ Here are the details:
 "Keep Unfinished Multi-page Form Data",
 
 'keep_unfinished_multi_form_desc' =>
-"Multi-page form entries that are not completed within the above specified time range will be deleted. If you wish to prevent that automatic deletion and keep partial multi-page form submissions, uncheck this preference. <br/><br/><span class='ss_notice'>If you choose to enable this, it is STRONGLY recommended that you include, in your website's public privacy notice, that you are storing data from incomplete forms. This can have serious privacy implications.</span>",
+"Multi-page form entries that are not completed within the above specified time range will be deleted. If you wish to prevent that automatic deletion and keep partial multi-page form submissions, check this preference. <br/><br/><span class='ss_notice'>If you choose to enable this, it is STRONGLY recommended that you include, in your website's public privacy notice, that you are storing data from incomplete forms. This can have serious privacy implications.</span>",
 
 'multi_form_timeout' =>
 "Multi-page Form Completion Timeout",

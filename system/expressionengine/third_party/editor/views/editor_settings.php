@@ -289,10 +289,19 @@
 				</td>
 			</tr>
 			<tr>
-				<td><label><?=lang('ed:css_file')?></label></td>
+				<td>
+					<label><?=lang('ed:css_file')?></label><br>
+					<small><?=lang('ed:css_file:exp')?></small>
+				</td>
 				<td>
 					<input name="<?=$field_name?>[css_file]" type="text" value="<?=$css_file?>">
 					<small><?=lang('ed:css_file:help')?></small>
+				</td>
+			</tr>
+			<tr>
+				<td><label><?=lang('ed:plugins')?></label></td>
+				<td>
+					<input name="<?=$field_name?>[plugins]" type="text" value="<?=implode(',', $plugins)?>" placeholder="<?=lang('ed:plugins:exp')?>" style="margin-top:8px;">
 				</td>
 			</tr>
 		</tbody>

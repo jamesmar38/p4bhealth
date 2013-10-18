@@ -10,7 +10,6 @@
  * @copyright	Copyright (c) 2008-2013, Solspace, Inc.
  * @link		http://solspace.com/docs/freeform
  * @license		http://www.solspace.com/license_agreement
- * @version		4.0.10
  * @filesource	freeform/libraries/Freeform_cacher.php
  */
 
@@ -30,10 +29,11 @@ function thing($var)
 class Freeform_cacher
 {
 	protected static $cache;
+	protected $_cache;
 
-	protected 	$func			= '';
-	protected 	$args			= '';
-	protected 	$data_group 	= '';
+	protected $func			= '';
+	protected $args			= '';
+	protected $data_group 	= '';
 
 	// --------------------------------------------------------------------
 
@@ -65,7 +65,7 @@ class Freeform_cacher
 			self::$cache[$this->data_group] = array();
 		}
 
-		$this->cache =& self::$cache[$this->data_group];
+		$this->_cache =& self::$cache[$this->data_group];
 	}
 	//END __construct
 
@@ -115,7 +115,7 @@ class Freeform_cacher
 
 	public function is_set ()
 	{
-		return isset($this->cache[$this->func][$this->args]);
+		return isset($this->_cache[$this->func][$this->args]);
 	}
 	//END is_set
 
@@ -131,7 +131,7 @@ class Freeform_cacher
 
 	public function get ()
 	{
-		return ($this->is_set()) ? $this->cache[$this->func][$this->args] : FALSE;
+		return ($this->is_set()) ? $this->_cache[$this->func][$this->args] : FALSE;
 	}
 	//END get
 
@@ -148,8 +148,8 @@ class Freeform_cacher
 
 	public function set ($var)
 	{
-		$this->cache[$this->func][$this->args] = $var;
-		return $this->cache[$this->func][$this->args];
+		$this->_cache[$this->func][$this->args] = $var;
+		return $this->_cache[$this->func][$this->args];
 	}
 	//END set
 }

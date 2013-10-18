@@ -96,24 +96,24 @@ class Freeform_Model extends CI_Model
 
 	public $before_count				= array();
 
-	public $before_get 					= array();
-	public $after_get 					= array();
+	public $before_get					= array();
+	public $after_get					= array();
 
-	public $before_insert 				= array();
+	public $before_insert				= array();
 	public $after_insert				= array();
 
-	public $before_update 				= array();
+	public $before_update				= array();
 	public $after_update				= array();
 
-	public $before_delete 				= array();
+	public $before_delete				= array();
 	public $after_delete				= array();
 
 	// -------------------------------------
 	//	stashes
 	// -------------------------------------
 
-	public $db_stash 					= array();
-	public $db_isolated_stash 			= array();
+	public $db_stash					= array();
+	public $db_isolated_stash			= array();
 
 
 	// --------------------------------------------------------------------

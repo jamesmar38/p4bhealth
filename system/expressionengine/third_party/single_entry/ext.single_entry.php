@@ -14,16 +14,16 @@
 require_once PATH_THIRD.'single_entry/config.php';
 
 class Single_entry_ext {
-	
+
 	public $settings 		= array();
 	public $description		= 'Admin rearrangment for Single Entry Channels';
 	public $docs_url		= '';
 	public $name			= SINGLE_ENTRY_NAME;
 	public $settings_exist	= 'y';
 	public $version			= SINGLE_ENTRY_VERSION;
-	
+
 	private $EE;
-	
+
 	/**
 	 * Constructor
 	 *
@@ -36,7 +36,7 @@ class Single_entry_ext {
 		$this->EE->lang->loadfile('single_entry');
 		$this->settings = $settings;
 	}// ----------------------------------------------------------------------
-	
+
 	/**
 	 * Activate Extension
 	 *
@@ -53,7 +53,7 @@ class Single_entry_ext {
 		$this->settings = array(
 			'single_entry_nav_title' => $this->EE->lang->line('single_entry_nav_title')
 		);
-		
+
 		$data = array(
 			'class'		=> __CLASS__,
 			'method'	=> 'cp_menu_array',
@@ -63,12 +63,12 @@ class Single_entry_ext {
 			'enabled'	=> 'y'
 		);
 
-		$this->EE->db->insert('extensions', $data);			
-		
-	}	
+		$this->EE->db->insert('extensions', $data);
+
+	}
 
 	// ----------------------------------------------------------------------
-	
+
 	/**
 	 * cp_menu_array
 	 *
@@ -78,32 +78,32 @@ class Single_entry_ext {
 	public function cp_menu_array($menu)
 	{
 		$this->EE->api->instantiate('channel_structure');
-		
+
 		if ($this->EE->extensions->last_call !== FALSE)
 		{
 			$menu = $this->EE->extensions->last_call;
 		}
-		
+
 		$this->fetch_channels();
 		$this->fetch_settings();
 
 		$single_entries = array();
 
-		foreach ($this->channels as $row) 
+		foreach ($this->channels as $row)
 		{
-			
+
 		 	if( ! empty($this->settings['single_entry'][$this->EE->config->item('site_id')][$row['channel_id']]))
 			{
-				if(is_array($menu['content']['publish'])) 
+				if( ! empty($menu['content']['publish']) && is_array($menu['content']['publish']))
 				{
-					unset($menu['content']['publish'][$row['channel_title']]);	
+					unset($menu['content']['publish'][$row['channel_title']]);
 				}
-				if(is_array($menu['content']['edit'])) 
+				if( ! empty($menu['content']['edit']) && is_array($menu['content']['edit']))
 				{
 					unset($menu['content']['edit'][$row['channel_title']]);
 				}
-				
-				$this->EE->lang->language['nav_'.$row['channel_name']] = $row['channel_title'];	
+
+				$this->EE->lang->language['nav_'.$row['channel_name']] = $row['channel_title'];
 
 				$url = BASE.AMP.'C=content_publish'.AMP.'M=entry_form'.AMP.'channel_id='.$row['channel_id'];
 
@@ -132,15 +132,15 @@ class Single_entry_ext {
 			$menu['content']['edit'] = BASE.AMP.'C=content_edit';
 		}
 
-		if( ! empty($single_entries) ) 
+		if( ! empty($single_entries) )
 		{
 			$menu['content'] = array_merge(
 				array(
 					'Single Entries' => $single_entries,
 					'----'
-				), 
+				),
 				$menu['content']
-			);	
+			);
 		}
 
 		return $menu;
@@ -177,13 +177,13 @@ class Single_entry_ext {
 		{
 			return FALSE;
 		}
-	}	
-	
+	}
+
 	// ----------------------------------------------------------------------
-	
+
 	/**
 	 * settings_form
-	 * 
+	 *
 	 * @return	void
 	 */
 	public function settings_form()
@@ -202,18 +202,18 @@ class Single_entry_ext {
 	}
 
 	// --------------------------------------------------------------------
-	
+
 	/**
 	 * save_settings
-	 * 
+	 *
 	 * @return	void
 	 */
 	public function save_settings()
 	{
-		
+
 		$this->fetch_channels(TRUE);
 
-		foreach ($this->channels as $row) 
+		foreach ($this->channels as $row)
 		{
 			if( ! empty($_POST['single_entry'][$this->EE->config->item('site_id')][$row['channel_id']]))
 			{
@@ -232,10 +232,10 @@ class Single_entry_ext {
 	}
 
 	// --------------------------------------------------------------------
-	
+
 	/**
 	 * fetch_settings
-	 * 
+	 *
 	 * @return	void
 	 */
 	public function fetch_settings()
@@ -244,10 +244,10 @@ class Single_entry_ext {
 		{
 			return;
 		}
-		
+
 		$this->EE->db->select('settings');
 		$query = $this->EE->db->get_where('extensions', array('class' => __CLASS__), 1, 0);
-		
+
 		$this->settings = ($query->row('settings')) ? unserialize($query->row('settings')) : array();
 
 		unset($query);
@@ -257,7 +257,7 @@ class Single_entry_ext {
 
 		/**
 	 * fetch_channels
-	 * 
+	 *
 	 * @return	void
 	 */
 	public function fetch_channels($force_all = FALSE)
@@ -266,8 +266,8 @@ class Single_entry_ext {
 		{
 			return;
 		}
-		
-		if($force_all) 
+
+		if($force_all)
 		{
 			$query = $this->EE->db->get('channels');
 			$this->channels = $query->result_array();
@@ -276,7 +276,7 @@ class Single_entry_ext {
 			$query = $this->EE->channel_model->get_channels();
 			$this->channels = ! empty($query) ? $query->result_array() : array();
 		}
-			
+
 		unset($query);
 	}
 

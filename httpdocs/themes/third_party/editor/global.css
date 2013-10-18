@@ -68,3 +68,7 @@
 border-left: 2px solid #D7D7D7 !important;
 border-right: 2px solid #EEEEEE !important;
 }
+
+
+/* Redactor Settings, Content Elements */
+table.mainTable td .ce_settings_editor table tr td {padding:7px 9px !important}

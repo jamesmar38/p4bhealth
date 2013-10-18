@@ -53,7 +53,7 @@ class Freeform_notifications extends Addon_builder_freeform
 	 * @return	bool 	user is flagged
 	 */
 
-	public function send_notification ($options = array())
+	public function send_notification($options = array())
 	{
 		// -------------------------------------
 		//	defaults
@@ -573,7 +573,15 @@ class Freeform_notifications extends Addon_builder_freeform
 
 			ee()->email->from($from_email, $from_name);
 			ee()->email->to($email_address);
-			ee()->email->subject(entities_to_ascii($this->subject, TRUE));
+			ee()->email->subject(
+				//have to remove all newlines
+				//because godaddy barfs on this
+				preg_replace(
+					"/[\r\n]+/ms",
+					' ',
+					entities_to_ascii($this->subject, TRUE)
+				)
+			);
 			ee()->email->message($ascii_message);
 			ee()->email->send();
 

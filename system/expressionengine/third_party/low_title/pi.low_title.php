@@ -2,52 +2,35 @@
 
 $plugin_info = array(
 	'pi_name'        => 'Low Title',
-	'pi_version'     => '2.1.0',
+	'pi_version'     => '2.1.1',
 	'pi_author'      => 'Lodewijk Schutte ~ Low',
 	'pi_author_url'  => 'http://gotolow.com/software/low-title',
 	'pi_description' => 'Plugin to quickly retrieve a title from an entry, category, channel or site',
-	'pi_usage'       => Low_title::usage()
+	'pi_usage'       => 'See http://gotolow.com/software/low-title for more info'
 );
+
+/**
+ * < EE 2.6.0 backward compat
+ */
+if ( ! function_exists('ee'))
+{
+	function ee()
+	{
+		static $EE;
+		if ( ! $EE) $EE = get_instance();
+		return $EE;
+	}
+}
 
 /**
  * Low Title Plugin Class
  *
  * @package        low_title
- * @version        2.1.0
  * @author         Lodewijk Schutte ~ Low <hi@gotolow.com>
  * @link           http://gotolow.com/software/low-title
  * @license        http://creativecommons.org/licenses/by-sa/3.0/
  */
 class Low_title {
-
-	/**
-	 * Plugin return data
-	 *
-	 * @var	string
-	 */
-	public $return_data;
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * PHP4 Constructor
-	 *
-	 * @see	__construct()
-	 */
-	function Low_title()
-	{
-		$this->__construct();
-	}
-
-	/**
-	 * PHP5 Constructor
-	 */
-	function __construct()
-	{
-		$this->EE =& get_instance();
-	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Entry
@@ -56,12 +39,12 @@ class Low_title {
 	 *
 	 * @return	string
 	 */
-	function entry()
+	public function entry()
 	{
 		// -------------------------------------
 		//  Initiate parameters and vars
 		// -------------------------------------
-		
+
 		$params = array(
 			'entry_id'     => '',
 			'url_title'    => '',
@@ -74,7 +57,7 @@ class Low_title {
 			'show_error'   => '',
 			'fallback'     => ''
 		);
-		
+
 		$field_id = FALSE;
 		$sql_select = 'title';
 
@@ -84,7 +67,7 @@ class Low_title {
 
 		foreach ($params AS $key => $value)
 		{
-			$params[$key] = $this->EE->TMPL->fetch_param($key);
+			$params[$key] = ee()->TMPL->fetch_param($key);
 		}
 
 		// -------------------------------------
@@ -104,17 +87,17 @@ class Low_title {
 		{
 			$params['channel'] = $params['weblog'];
 		}
-		
+
 		// -------------------------------------
 		//  Custom field? Get its ID
 		// -------------------------------------
-		
+
 		if ($params['custom_field'])
 		{
-			$this->EE->db->select('field_id');
-			$this->EE->db->from('exp_channel_fields');
-			$this->EE->db->where('field_name', $params['custom_field']);
-			$query = $this->EE->db->get();
+			ee()->db->select('field_id');
+			ee()->db->from('exp_channel_fields');
+			ee()->db->where('field_name', $params['custom_field']);
+			$query = ee()->db->get();
 
 			if ($query->num_rows())
 			{
@@ -132,43 +115,43 @@ class Low_title {
 				}
 			}
 		}
-		
+
 		// -------------------------------------
 		//  Start composing query
 		// -------------------------------------
-		
-		$this->EE->db->select($sql_select, FALSE);
-		$this->EE->db->from('exp_channel_titles AS t');
-		$this->EE->db->join('exp_channels AS ch', 't.channel_id = ch.channel_id');
+
+		ee()->db->select($sql_select, FALSE);
+		ee()->db->from('exp_channel_titles AS t');
+		ee()->db->join('exp_channels AS ch', 't.channel_id = ch.channel_id');
 
 		// extra join if needed
 		if ($field_id)
 		{
-			$this->EE->db->join('exp_channel_data AS d', 'd.entry_id = t.entry_id');
+			ee()->db->join('exp_channel_data AS d', 'd.entry_id = t.entry_id');
 		}
-		
+
 		// sql for entry_id
 		if ($params['entry_id'])
 		{
-			$this->EE->db->where('t.entry_id', $params['entry_id']);
+			ee()->db->where('t.entry_id', $params['entry_id']);
 		}
-			
+
 		// sql for url_title
 		if ($params['url_title'])
 		{
-			$this->EE->db->where('t.url_title', $params['url_title']);
+			ee()->db->where('t.url_title', $params['url_title']);
 		}
-		
+
 		// sql for channel_id
 		if ($params['channel_id'])
 		{
-			$this->EE->db->where('t.channel_id', $params['channel_id']);
+			ee()->db->where('t.channel_id', $params['channel_id']);
 		}
-		
+
 		// sql for channel
 		if ($params['channel'])
 		{
-			$this->EE->db->where('ch.channel_name', $params['channel']);
+			ee()->db->where('ch.channel_name', $params['channel']);
 		}
 
 		// sql for pages uri
@@ -178,10 +161,10 @@ class Low_title {
 			// $params['pages_uri'] = '/' . trim($params['pages_uri'], '/') . '/';
 
 			// Get all sites pages
-			$pages = $this->EE->config->config['site_pages'];
+			$pages = ee()->config->config['site_pages'];
 
 			// Get current site_id
-			$site_id = $this->EE->config->config['site_id'];
+			$site_id = ee()->config->config['site_id'];
 
 			// Get current site pages
 			$pages = isset($pages[$site_id]) ? $pages[$site_id] : FALSE;
@@ -191,11 +174,11 @@ class Low_title {
 			{
 				$pages = array_flip($pages['uris']);
 			}
-			
+
 			// Check if given uri exists, limit query by its id
 			if (isset($pages[$params['pages_uri']]))
 			{
-				$this->EE->db->where('t.entry_id', $pages[$params['pages_uri']]);
+				ee()->db->where('t.entry_id', $pages[$params['pages_uri']]);
 			}
 			else
 			{
@@ -210,15 +193,15 @@ class Low_title {
 		}
 
 		// limit query
-		$this->EE->db->limit(1);
-		
+		ee()->db->limit(1);
+
 		// execute query
-		$query = $this->EE->db->get();
-		
+		$query = ee()->db->get();
+
 		// -------------------------------------
 		//  Return formatted or empty string
 		// -------------------------------------
-		
+
 		if ($query->num_rows())
 		{
 			$row = $query->row();
@@ -229,12 +212,12 @@ class Low_title {
 		{
 			$this->return_data = '';
 		}
-		$this->EE->TMPL->log_item("Low Title, returning ".$this->return_data);
+		ee()->TMPL->log_item("Low Title, returning ".$this->return_data);
 		return $this->return_data;
 	}
 
 	// --------------------------------------------------------------------
-	
+
 	/**
 	 * Category
 	 *
@@ -243,7 +226,7 @@ class Low_title {
 	 * @access	public
 	 * @return	string
 	 */
-	function category()
+	public function category()
 	{
 		// -------------------------------------
 		//  Initiate parameters and vars
@@ -257,7 +240,7 @@ class Low_title {
 			'show_error'	=> '',
 			'fallback'		=> ''
 		);
-		
+
 		$field_id = FALSE;
 		$sql_select = 'cat_name';
 
@@ -267,19 +250,19 @@ class Low_title {
 
 		foreach ($params AS $key => $value)
 		{
-			$params[$key] = $this->EE->TMPL->fetch_param($key);
+			$params[$key] = ee()->TMPL->fetch_param($key);
 		}
-		
+
 		// -------------------------------------
 		//  Custom field? Get its ID
 		// -------------------------------------
-		
+
 		if ($params['custom_field'])
 		{
-			$this->EE->db->select('field_id');
-			$this->EE->db->from('exp_category_fields');
-			$this->EE->db->where('field_name', $params['custom_field']);
-			$query = $this->EE->db->get();
+			ee()->db->select('field_id');
+			ee()->db->from('exp_category_fields');
+			ee()->db->where('field_name', $params['custom_field']);
+			$query = ee()->db->get();
 
 			if ($query->num_rows())
 			{
@@ -297,48 +280,48 @@ class Low_title {
 				}
 			}
 		}
-		
+
 		// -------------------------------------
 		//  Start composing query
 		// -------------------------------------
-		
-		$this->EE->db->select(($field_id ? "d.field_id_{$field_id}" : 'cat_name').' AS title', FALSE);
-		$this->EE->db->from('exp_categories AS c');
+
+		ee()->db->select(($field_id ? "d.field_id_{$field_id}" : 'cat_name').' AS title', FALSE);
+		ee()->db->from('exp_categories AS c');
 
 		// extra join if needed
 		if ($field_id)
 		{
-			$this->EE->db->join('exp_category_field_data AS d', 'd.cat_id = c.cat_id');
+			ee()->db->join('exp_category_field_data AS d', 'd.cat_id = c.cat_id');
 		}
-		
+
 		// sql for category_id
 		if ($params['category_id'])
 		{
-			$this->EE->db->where('c.cat_id', $params['category_id']);
+			ee()->db->where('c.cat_id', $params['category_id']);
 		}
-			
+
 		// sql for url_title
 		if ($params['url_title'])
 		{
-			$this->EE->db->where('c.cat_url_title', $params['url_title']);
+			ee()->db->where('c.cat_url_title', $params['url_title']);
 		}
-		
+
 		// sql for category_group
 		if ($params['category_group'])
 		{
-			$this->EE->db->where('c.group_id', $params['category_group']);
+			ee()->db->where('c.group_id', $params['category_group']);
 		}
 
 		// limit query
-		$this->EE->db->limit(1);
-		
+		ee()->db->limit(1);
+
 		// execute query
-		$query = $this->EE->db->get();
-		
+		$query = ee()->db->get();
+
 		// -------------------------------------
 		//  Return formatted or empty string
 		// -------------------------------------
-		
+
 		if ($query->num_rows())
 		{
 			$row = $query->row();
@@ -354,7 +337,7 @@ class Low_title {
 	}
 
 	// --------------------------------------------------------------------
-	
+
 	/**
 	 * Channel
 	 *
@@ -363,12 +346,12 @@ class Low_title {
 	 * @access	public
 	 * @return	string
 	 */
-	function channel()
+	public function channel()
 	{
 		// -------------------------------------
 		//  Initiate parameters and vars
 		// -------------------------------------
-		
+
 		$params = array(
 			'weblog_id'		=> '',
 			'weblog_name'	=> '',
@@ -382,7 +365,7 @@ class Low_title {
 
 		foreach ($params AS $key => $value)
 		{
-			$params[$key] = $this->EE->TMPL->fetch_param($key);
+			$params[$key] = ee()->TMPL->fetch_param($key);
 		}
 
 		// -------------------------------------
@@ -406,32 +389,32 @@ class Low_title {
 		// -------------------------------------
 		//  Start composing query
 		// -------------------------------------
-		
-		$this->EE->db->select('channel_title AS title');
-		$this->EE->db->from('exp_channels');
+
+		ee()->db->select('channel_title AS title');
+		ee()->db->from('exp_channels');
 
 		// sql for channel_id
 		if ($params['channel_id'])
 		{
-			$this->EE->db->where('channel_id', $params['channel_id']);
+			ee()->db->where('channel_id', $params['channel_id']);
 		}
-		
+
 		// sql for channel_name
 		if ($params['channel_name'])
 		{
-			$this->EE->db->where('channel_name', $params['channel_name']);
+			ee()->db->where('channel_name', $params['channel_name']);
 		}
 
 		// limit query
-		$this->EE->db->limit(1);
-		
+		ee()->db->limit(1);
+
 		// execute query
-		$query = $this->EE->db->get();
-		
+		$query = ee()->db->get();
+
 		// -------------------------------------
 		//  Return formatted or empty string
 		// -------------------------------------
-		
+
 		if ($query->num_rows())
 		{
 			$row = $query->row();
@@ -447,7 +430,7 @@ class Low_title {
 	}
 
 	// --------------------------------------------------------------------
-	
+
 	/**
 	 * Weblog
 	 *
@@ -455,13 +438,13 @@ class Low_title {
 	 *
 	 * @see		channel()
 	 */
-	function weblog()
+	public function weblog()
 	{
 		return $this->channel();
 	}
 
 	// --------------------------------------------------------------------
-	
+
 	/**
 	 * Site
 	 *
@@ -469,17 +452,17 @@ class Low_title {
 	 *
 	 * @access	public
 	 * @return	string
-	 */		
-	function site()
+	 */
+	public function site()
 	{
 		// -------------------------------------
 		//  Initiate parameters and vars
 		// -------------------------------------
-		
+
 		$params = array(
 			'site_id'	=> '',
 			'site_name'	=> ''
-		);		
+		);
 
 		// -------------------------------------
 		//  Loop through parameters, set value
@@ -487,38 +470,38 @@ class Low_title {
 
 		foreach ($params AS $key => $value)
 		{
-			$params[$key] = $this->EE->TMPL->fetch_param($key);
+			$params[$key] = ee()->TMPL->fetch_param($key);
 		}
 
 		// -------------------------------------
 		//  Start composing query
 		// -------------------------------------
-		
-		$this->EE->db->select('site_label AS title');
-		$this->EE->db->from('exp_sites');
+
+		ee()->db->select('site_label AS title');
+		ee()->db->from('exp_sites');
 
 		// sql for site_id
 		if ($params['site_id'])
 		{
-			$this->EE->db->where('site_id', $params['site_id']);
+			ee()->db->where('site_id', $params['site_id']);
 		}
-		
+
 		// sql for site_name
 		if ($params['site_name'])
 		{
-			$this->EE->db->where('site_name', $params['site_name']);
+			ee()->db->where('site_name', $params['site_name']);
 		}
 
 		// limit query
-		$this->EE->db->limit(1);
-		
+		ee()->db->limit(1);
+
 		// execute query
-		$query = $this->EE->db->get();
-		
+		$query = ee()->db->get();
+
 		// -------------------------------------
 		//  Return formatted or empty string
 		// -------------------------------------
-		
+
 		if ($query->num_rows())
 		{
 			$row = $query->row();
@@ -534,7 +517,7 @@ class Low_title {
 	}
 
 	// --------------------------------------------------------------------
-	
+
 	/**
 	 * Format
 	 *
@@ -542,56 +525,16 @@ class Low_title {
 	 *
 	 * @access	private
 	 * @return	void
-	 */		
-	function _format()
-	{
-		if ( !strlen($this->return_data) || $this->EE->TMPL->fetch_param('format') === 'no' ) return;
-		
-		$this->EE->load->library('typography');
- 		
-		$this->return_data = $this->EE->typography->format_characters($this->return_data);
-	}
-		
-	// --------------------------------------------------------------------
-	
-	/**
-	 * Usage
-	 *
-	 * Plugin Usage
-	 *
-	 * @access	public
-	 * @return	string
 	 */
-	function usage()
+	private function _format()
 	{
-		ob_start(); 
-		?>
-			Some examples:
+		if ( !strlen($this->return_data) || ee()->TMPL->fetch_param('format') === 'no' ) return;
 
-			{exp:low_title:entry entry_id="15" format="no"}
-			{exp:low_title:entry pages_uri="/{segment_1}/"}
-			{exp:low_title:entry url_title="{segment_2}" channel="default_site"}
-			{exp:low_title:entry url_title="{segment_3}" custom_field="title_{language}"}
-			{exp:low_title:entry url_title="{segment_3}" custom_field="title_{language}" fallback="yes"}
+		ee()->load->library('typography');
 
-			{exp:low_title:category category_id="18"}
-			{exp:low_title:category category_id="C24"}
-			{exp:low_title:category url_title="{segment_4}" category_group="1"}
-			{exp:low_title:category url_title="{segment_3}" custom_field="title_{language}"}
-			{exp:low_title:category url_title="{segment_3}" custom_field="title_{language}" fallback="yes"}
-
-			{exp:low_title:channel channel_id="3"}
-			{exp:low_title:channel channel_name="{segment_1}" format="no"}
-
-			{exp:low_title:site site_id="1"}
-			{exp:low_title:site site_name="{segment_1}"}
-		<?php
-		$buffer = ob_get_contents();
-	
-		ob_end_clean(); 
-
-		return $buffer;
+		$this->return_data = ee()->typography->format_characters($this->return_data);
 	}
+
 
 	// --------------------------------------------------------------------
 

@@ -120,7 +120,7 @@ class Freeform_fields extends Addon_builder_freeform
 			$cache->set($new_instance);
 		}
 
-		$instance =& $cache->get();
+		$instance = $cache->get();
 
 		$instance->form_id 		= $form_id;
 		$instance->entry_id 	= $entry_id;
@@ -158,11 +158,11 @@ class Freeform_fields extends Addon_builder_freeform
 
 		if ($use_cache AND $cache->is_set())
 		{
-			$return =& $cache->get();
+			$return = $cache->get();
 		}
 		else
 		{
-			$return =& $cache->set($this->instantiate_fieldtype($name));
+			$return = $cache->set($this->instantiate_fieldtype($name));
 		}
 
 		return $return;
@@ -361,6 +361,77 @@ class Freeform_fields extends Addon_builder_freeform
 		ee()->load->helper('directory');
 
 		$fieldtypes 			= $this->get_default_fieldtypes();
+
+		
+
+		$installed_fieldtypes	= ee()->freeform_fieldtype_model->installed_fieldtypes();
+
+		$installed_updated		= FALSE;
+
+		$third_party_fields		= directory_map(PATH_THIRD);
+
+		//each item in the path third
+		foreach ($third_party_fields as $name => $folder)
+		{
+			$file 			= 'freeform_ft.' . strtolower($name) . '.php';
+			$pkg_path		= PATH_THIRD . strtolower($name) . '/';
+
+			if (is_array($folder) AND $name !== 'freeform' AND file_exists($pkg_path . $file))
+			{
+				$ft_lower_name 	= strtolower($name); //$match[1];
+				$ft_class_name 	= ucfirst($ft_lower_name . '_freeform_ft');
+				//$pkg_path		= PATH_THIRD . strtolower($name) . '/';
+
+				include_once $pkg_path . $file;
+
+				//if we cannot even get a class, move on
+				if (class_exists($ft_class_name))
+				{
+					ee()->load->add_package_path($pkg_path);
+
+					$this->lang_autoload($name);
+
+					//new instance? YEAAAH
+					$ft_temp = new $ft_class_name;
+
+					$installed = array_key_exists($ft_lower_name, $installed_fieldtypes);
+
+					//version, description required, dog
+					$fieldtypes[$ft_lower_name] = array(
+						'name'			=> $ft_temp->info['name'],
+						'version'		=> $ft_temp->info['version'],
+						'description'	=> $ft_temp->info['description'],
+						'installed'		=> $installed,
+						'default_type'	=> FALSE,
+						'class_name'	=> $ft_class_name
+					);
+
+					//higher version number? run update
+					if ($fieldtypes[$ft_lower_name]['installed'] AND
+						$this->version_compare(
+							$fieldtypes[$ft_lower_name]['version'],
+							'>',
+							$installed_fieldtypes[$ft_lower_name]['version']
+						)
+					)
+					{
+						$ft_temp->update();
+
+						//update version number
+						ee()->freeform_fieldtype_model->update(
+							array('fieldtype_name' => $ft_lower_name),
+							array('version' => $fieldtypes[$ft_lower_name]['version'])
+						);
+					}
+
+					//mem and crap
+					unset($ft_temp);
+
+					ee()->load->remove_package_path($pkg_path);
+				}
+			}
+		}
+		//END foreach ($third_party_fields as $name => $folder)
 
 		
 
@@ -905,20 +976,23 @@ class Freeform_fields extends Addon_builder_freeform
 					{
 						$args = ee()->functions->assign_parameters($matches[1][$i]);
 
-						//Because I'm a jerkpants! That's why!
-						//Oh, and it would totally screw up saving data.
-						unset($args['attr:name'], $args['attr:value']);
-
-						//separate attr's and params
-						foreach ( $args as $key => $value)
+						if ($args)
 						{
-							if (substr($key, 0, 5) == 'attr:')
+							//Because I'm a jerkpants! That's why!
+							//Oh, and it would totally screw up saving data.
+							unset($args['attr:name'], $args['attr:value']);
+
+							//separate attr's and params
+							foreach ( $args as $key => $value)
 							{
-								$attr[substr($key, 5)] = $value;
-							}
-							else
-							{
-								$params[$key] = $value;
+								if (substr($key, 0, 5) == 'attr:')
+								{
+									$attr[substr($key, 5)] = $value;
+								}
+								else
+								{
+									$params[$key] = $value;
+								}
 							}
 						}
 					}
@@ -929,7 +1003,7 @@ class Freeform_fields extends Addon_builder_freeform
 					$t_length 			= strlen($matches[0][$i]);
 					$d_start 			= $p_start + $t_length;
 					$field_tag_open		= LD . $field_tag_name;
-					$field_tag_close	= LD . T_SLASH . $field_tag_name . RD;
+					$field_tag_close	= LD . '/' . $field_tag_name . RD;
 
 					$p_tagdata			= substr($p_tagdata, $d_start);
 

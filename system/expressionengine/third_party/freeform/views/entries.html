@@ -42,13 +42,13 @@
 
 <form method="get" action="<?=BASE?>">
 	<!-- these have to be hidden and submitted, else this wont work :| -->
-	<input type="hidden" name="S" 		value="0" />
-	<input type="hidden" name="D" 		value="cp" />
-	<input type="hidden" name="C" 		value="addons_modules" />
-	<input type="hidden" name="M" 		value="show_module_cp" />
-	<input type="hidden" name="module" 	value="freeform" />
-	<input type="hidden" name="method" 	value="<?=$method?>" />
-	<input type="hidden" name="form_id" value="<?=$form_id?>" />
+	<input type="hidden" name="S"		value="<?=$fingerprint?>" />
+	<input type="hidden" name="D"		value="cp" />
+	<input type="hidden" name="C"		value="addons_modules" />
+	<input type="hidden" name="M"		value="show_module_cp" />
+	<input type="hidden" name="module"	value="freeform" />
+	<input type="hidden" name="method"	value="<?=$method?>" />
+	<input type="hidden" name="form_id"	value="<?=$form_id?>" />
 
 	<fieldset class="search_fieldset sub_box">
 		<legend>
@@ -73,7 +73,7 @@
 
 		<select name='search_date_range' id='search_date_range' class='chzn_select_no_search'>
 			<option value='--'><?=lang('entry_date')?></option>
-			<option <?=(($search_date_range == 'today')      ?
+			<option <?=(($search_date_range == 'today')	?
 						'selected="selected"' : '')?> value='today'>
 				<?=lang('today')?>
 			</option>
@@ -325,17 +325,17 @@
 	<div id="export_dialog_holder">
 		<div id="export_dialog">
 			<form id="export_form" action="<?=$export_url?>" method="POST" autocomplete="off">
-				<input type="hidden" name="XID" 	value="<?=$XID_SECURE_HASH?>" />
+				<input type="hidden" name="XID"		value="<?=$XID_SECURE_HASH?>" />
 				<input type="hidden" name="form_id" value="<?=$form_id?>" />
 				<table>
 					<tbody>
 						<tr>
-							<td style="width:60px">
+							<td>
 								<?=lang('export')?>
 							</td>
 							<td >
-								<input 	id="export_shown_fields" 	type="radio"
-										name="export_fields" 		value="shown"
+								<input 	id="export_shown_fields"	type="radio"
+										name="export_fields"		value="shown"
 										checked="checked"/>
 								<label for="export_shown_fields">
 									<?=lang('shown_fields')?>
@@ -370,6 +370,37 @@
 								<?php
 								
 								?>
+								&nbsp;
+								&nbsp;
+								<input 	id="export_as_json" 	type="radio"
+										name="export_method" 	value="json"/>
+								<label for="export_as_json">
+									<?=lang('json')?>
+								</label>
+								&nbsp;
+								&nbsp;
+								<input 	id="export_as_xml" 		type="radio"
+										name="export_method" 	value="xml"/>
+								<label for="export_as_xml">
+									<?=lang('xml')?>
+								</label>
+								<?php
+								
+								?>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<?=lang('format_dates')?>
+							</td>
+							<td>
+								<input type="hidden" name="format_dates" />
+								<input 	id="format_dates"	type="checkbox"
+										name="format_dates"	value="y"
+										checked="checked"/>
+								<label for="format_dates">
+									<?=lang('enable')?>
+								</label>
 							</td>
 						</tr>
 					</tbody>
@@ -559,6 +590,9 @@
 				'onComplete' 			: function()
 				{
 					$('#export_form').submit(function(){
+						//refresh XID
+						$(this).find('[name="XID"]').val(EE.XID);
+
 						setTimeout(function(){
 							$.fancybox.close();
 							Freeform.jQUIDialog({
@@ -642,6 +676,9 @@
 
 				vars['current_url'] = window.location.href;
 
+				//refresh XID
+				vars['XID'] = EE.XID;
+
 				// -------------------------------------
 				//	send
 				// -------------------------------------
@@ -722,8 +759,8 @@
 			$body.delegate('.freeform_approve_button', 'click', function(e){
 				e.preventDefault();
 
-				var $that 	= $(this);
-					url  	= $that.find('a:first').attr('href');
+				var $that	= $(this);
+					url		= $that.find('a:first').attr('href');
 
 				$.post(url, function(data){
 					if(data.success)

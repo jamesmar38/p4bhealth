@@ -10,7 +10,7 @@
  * @copyright	Copyright (c) 2008-2013, Solspace, Inc.
  * @link		http://solspace.com/docs/freeform
  * @license		http://www.solspace.com/license_agreement
- * @version		4.0.12
+ * @version		4.1.2
  * @filesource	freeform/upd.freeform.php
  */
 
@@ -43,7 +43,7 @@ class Freeform_upd extends Module_builder_freeform
 		//  Module Actions
 		// --------------------------------------------
 
-		$this->module_actions 	= array(
+		$this->module_actions	= array(
 			'save_form'
 		);
 
@@ -51,7 +51,7 @@ class Freeform_upd extends Module_builder_freeform
 		//  Extension Hooks
 		// --------------------------------------------
 
-		$default 				= array(
+		$default				= array(
 			'class'			=> $this->extension_name,
 			'settings'		=> '',
 			'priority'		=> 10,
@@ -59,14 +59,7 @@ class Freeform_upd extends Module_builder_freeform
 			'enabled'		=> 'y'
 		);
 
-		$this->hooks 			= array(
-			//	array_merge($default,
-			//		array(
-			//			'method'		=> 'sessions_end',
-			//			'hook'			=> 'sessions_end'
-			//		)
-			//	),
-		);
+		$this->hooks			= array();
 	}
 	// END Freeform_updater_base()
 

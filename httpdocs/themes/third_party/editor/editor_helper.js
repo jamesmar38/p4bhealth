@@ -1,5 +1,7 @@
 var Editor = Editor ? Editor : {};
 Editor.matrixColConfigs = {};
+Editor.contentElementsConfig = {};
+Editor.gridConfig = {};
 // ********************************************************************************* //
 
 jQuery(document).ready(function(){
@@ -45,3 +47,5 @@ Editor.TriggerRedactorCleanup = function(redactor) {
 };
 
 // ********************************************************************************* //
+
+

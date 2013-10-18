@@ -10,7 +10,7 @@
  * @copyright	Copyright (c) 2008-2013, Solspace, Inc.
  * @link		http://solspace.com/docs/
  * @license		http://www.solspace.com/license_agreement/
- * @version		1.4.1
+ * @version		1.4.4
  * @filesource 	addon_builder/extension_builder.php
  */
 

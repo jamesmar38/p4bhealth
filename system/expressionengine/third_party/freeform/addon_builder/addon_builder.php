@@ -4,14 +4,14 @@
  * Addon Builder - Base Class
  *
  * A class that helps with the building of ExpressionEngine Add-Ons
- * Supports EE 2.3.1+
+ * Supports EE 2.4.0+
  *
  * @package		Solspace:Addon Builder
  * @author		Solspace, Inc.
  * @copyright	Copyright (c) 2008-2013, Solspace, Inc.
  * @link		http://solspace.com/docs/
  * @license		http://www.solspace.com/license_agreement/
- * @version		1.4.1
+ * @version		1.4.4
  * @filesource 	addon_builder/addon_builder.php
  */
 
@@ -36,7 +36,7 @@ class Addon_builder_freeform
 	 *
 	 * @var string
 	 */
-	static $class_version		= '1.4.0';
+	static $class_version		= '1.4.4';
 
 	/**
 	 * Current EE version
@@ -280,6 +280,13 @@ class Addon_builder_freeform
 	 */
 	protected $test_mock;
 
+	/**
+	 * Sites array in site_id => site_label form
+	 *
+	 * @var array
+	 * @see get_sites
+	 */
+	protected $sites;
 
 	// --------------------------------------------------------------------
 
@@ -373,6 +380,20 @@ class Addon_builder_freeform
 		//--------------------------------------------
 
 		$this->addon_path = PATH_THIRD . $this->lower_name . '/';
+
+		// -------------------------------------
+		//	package path loaded?
+		// -------------------------------------
+		//	Sometimes our package path isn't
+		//	auto loaded in the Install Wiz *sigh*
+		// -------------------------------------
+
+		$paths = ee()->load->get_package_paths();
+
+		if ( ! in_array($this->addon_path, $paths))
+		{
+			ee()->load->add_package_path($this->addon_path);
+		}
 
 		//--------------------------------------------
 		// Language auto load
@@ -1300,7 +1321,7 @@ class Addon_builder_freeform
 	 * @return	null
 	 */
 
-	public function build_crumbs ()
+	public function build_crumbs()
 	{
 		if ( is_string($this->crumbs))
 		{
@@ -1367,7 +1388,7 @@ class Addon_builder_freeform
 	 * @return	string|array
 	 */
 
-	function output ($item)
+	public function output($item)
 	{
 		if (is_array($item))
 		{
@@ -1404,7 +1425,7 @@ class Addon_builder_freeform
 	 * @return	string|array
 	 */
 
-	function cycle ($items)
+	public function cycle($items)
 	{
 		if ( ! is_array($items))
 		{
@@ -1439,7 +1460,7 @@ class Addon_builder_freeform
 	 * @return	array
 	 */
 
-	public function column_exists ( $column, $table, $cache = TRUE )
+	public function column_exists($column, $table, $cache = TRUE)
 	{
 		if ($cache === TRUE AND isset($this->cache['column_exists'][$table][$column]))
 		{
@@ -1478,7 +1499,7 @@ class Addon_builder_freeform
 	 * @return bool						Success or failure.  Data result stored in $this->remote_data
 	 */
 
-	public function retrieve_remote_file ($url, $cache_length = 24, $path='', $file='')
+	public function retrieve_remote_file($url, $cache_length = 24, $path='', $file='')
 	{
 		$path		= ($path == '') ? PATH_CACHE.'addon_builder/' : rtrim($path, '/').'/';
 		$file		= ($file == '') ? md5($url).'.txt' : $file;
@@ -1765,7 +1786,7 @@ class Addon_builder_freeform
 	 * @return	bool
 	 */
 
-	function write_file ($file, $data)
+	public function write_file($file, $data)
 	{
 		$temp_file = $file.'.tmp';
 
@@ -1830,7 +1851,7 @@ class Addon_builder_freeform
 	 */
 
 
-	public function is_really_writable ($file, $remove = FALSE)
+	public static function is_really_writable($file, $remove = FALSE)
 	{
 		// is_writable() returns TRUE on Windows servers
 		// when you really can't write to the file
@@ -2074,10 +2095,12 @@ EOT;
 	 * Global Error Message Routine
 	 *
 	 * @access	public
-	 * @param	mixed
-	 * @return	bool
+	 * @param	mixed	$message	error string or array of error strings
+	 * @param	bool	$restore	optional restore XID on error
+	 * @return	mixed				void if not unit test
 	 */
-	public function show_error($message = '')
+
+	public function show_error($message = '', $restore = true)
 	{
 		if ($this->unit_test_mode)
 		{
@@ -2087,9 +2110,47 @@ EOT;
 				array($message)
 			);
 		}
+		//EL is wanting to deprecate output->show_user_error for CP
+		//removed deprecation in EE 2.7, but its coming back i suppose
+		else if (REQ == 'CP')
+		{
+			// -------------------------------------
+			//	auto restore XID? (ee 2.7 only)
+			// -------------------------------------
+
+			if (version_compare($this->ee_version, '2.7', '>='))
+			{
+				$errors = is_array($message) ? $message : array($message);
+
+				foreach($errors as $error)
+				{
+					foreach (array(
+							lang('not_authorized'),
+							lang('unauthorized_access'),
+							lang('invalid_action')
+						) as $exception
+					)
+					{
+						if (strpos($error, $exception) !== FALSE)
+						{
+							$restore = false;
+						}
+					}
+				}
+
+				if ($restore)
+				{
+					ee()->security->restore_xid();
+				}
+			}
+
+			return show_error($message);
+		}
 		else
 		{
-			show_error($message);
+			$type = ( ! empty($_POST)) ? 'submission' : 'general';
+
+			return ee()->output->show_user_error($type, $message);
 		}
 	}
 	// END show_error()
@@ -2973,7 +3034,7 @@ EOT;
 	 * @param	string	sql to query
 	 * @return	object	query object
 	 */
-	public function cacheless_query ($sql)
+	public function cacheless_query($sql)
 	{
 		$reset = FALSE;
 
@@ -3032,7 +3093,7 @@ EOT;
 
 	public function prepare_keyed_result ( $query, $key = '', $val = '' )
 	{
-		if ( ! is_object( $query )  OR $key == '' ) return FALSE;
+		if ( ! is_object( $query )  OR $key == '' ){ return FALSE; }
 
 		// --------------------------------------------
 		//  Loop through query
@@ -3042,7 +3103,7 @@ EOT;
 
 		foreach ( $query->result_array() as $row )
 		{
-			if ( isset( $row[$key] ) === FALSE ) continue;
+			if ( isset( $row[$key] ) === FALSE ){ continue; }
 
 			$data[ $row[$key] ]	= ( $val != '' AND isset( $row[$val] ) ) ? $row[$val]: $row;
 		}
@@ -3070,17 +3131,17 @@ EOT;
 			//if so, we need to be test for type
 			if ( is_array($test))
 			{
-				if ( ! in_array($arg, $test, TRUE) ) return $arg;
+				if ( ! in_array($arg, $test, TRUE) ){ return $arg; }
 			}
 			//is it implicit false?
 			elseif ($test)
 			{
-				if ($arg !== FALSE) return $arg;
+				if ($arg !== FALSE){ return $arg; }
 			}
 			//else just test for falsy
 			else
 			{
-				if ($arg) return $arg;
+				if ($arg){ return $arg; }
 			}
 		}
 
@@ -3098,7 +3159,7 @@ EOT;
 	 * @param	mixed	any number of arguments consisting of variables to be returned false
 	 * @return	mixed
 	 */
-	public function either_or ()
+	public function either_or()
 	{
 		$args = func_get_args();
 
@@ -3116,7 +3177,7 @@ EOT;
 	 * @param	mixed	any number of arguments consisting of variables to be returned false
 	 * @return	mixed
 	 */
-	public function either_or_strict ()
+	public function either_or_strict()
 	{
 		$args = func_get_args();
 
@@ -3135,7 +3196,7 @@ EOT;
 	 * @return	void
 	 */
 
-	public function add_right_link ($text, $link)
+	public function add_right_link($text, $link)
 	{
 		//no funny business
 		if (REQ != 'CP') return;
@@ -3153,7 +3214,7 @@ EOT;
 	 * @return	(null)
 	 */
 
-	public function build_right_links ()
+	public function build_right_links()
 	{
 		//no funny business
 		if (REQ != 'CP' OR empty($this->right_links)) return;
@@ -3172,7 +3233,7 @@ EOT;
 	 *	@return		string
 	 */
 
-	public function mfields ()
+	public function mfields()
 	{
 		return $this->mfields = $this->data->get_member_fields();
 	}
@@ -3191,13 +3252,14 @@ EOT;
 
 	public function has_hooks ()
 	{
-		//is it there? is it array? is it empty? Such are life's unanswerable questions, until now.
+		//is it there? is it array? is it empty?
+		//Such are life's unanswerable questions, until now.
 		if ( ! $this->updater() OR
-			 ((! isset($this->updater()->hooks) 	OR
-			  ! is_array($this->updater->hooks))	AND
-			 (! isset($this->hooks) 				OR
-			  ! is_array($this->hooks))) 			OR
-			 (empty($this->hooks) AND empty($this->updater->hooks))
+			((! isset($this->updater()->hooks)		OR
+				! is_array($this->updater->hooks))	AND
+			(! isset($this->hooks)					OR
+				! is_array($this->hooks)))			OR
+			(empty($this->hooks) AND empty($this->updater->hooks))
 		)
 		{
 			return FALSE;
@@ -3224,7 +3286,8 @@ EOT;
 		{
 			$class		= $this->class_name . '_upd';
 
-			$update_file 	= $this->addon_path . 'upd.' . $this->lower_name . '.php';
+			$update_file 	= $this->addon_path .
+								'upd.' . $this->lower_name . '.php';
 
 			if (! class_exists($class))
 			{
@@ -3424,7 +3487,8 @@ EOT;
 	 *
 	 *	@access		public
 	 *	@param		string|array
-	 *	@return		array  $vars - Contains two keys good/bad of, what else, good and bad emails
+	 *	@return		array  $vars - Contains two keys good/bad of,
+	 *								what else, good and bad emails
 	 */
 	public function validate_emails ($emails)
 	{
@@ -3433,7 +3497,10 @@ EOT;
 		if ( is_string($emails))
 		{
 			// Remove all white space and replace with commas
-			$email	= trim(preg_replace("/\s*(\S+)\s*/s", "\\1,", trim($emails)), ',');
+			$email	= trim(
+				preg_replace("/\s*(\S+)\s*/s", "\\1,", trim($emails)),
+				','
+			);
 
 			// Remove duplicate commas
 			$email	= str_replace(',,', ',', $email);
@@ -3480,12 +3547,10 @@ EOT;
 
 	public function get_action_url ($method_name)
 	{
-		$action_q	= ee()->db->where(
-			array(
-				'class' 	=> $this->class_name,
-				'method' 	=> $method_name
-			)
-		)->get('actions');
+		$action_q	= ee()->db->where(array(
+			'class'		=> $this->class_name,
+			'method'	=> $method_name
+		))->get('actions');
 
 		if ($action_q->num_rows() == 0)
 		{
@@ -3494,7 +3559,8 @@ EOT;
 
 		$action_id = $action_q->row('action_id');
 
-		return ee()->functions->fetch_site_index(0, 0) . QUERY_MARKER . 'ACT=' . $action_id;
+		return ee()->functions->fetch_site_index(0, 0) .
+					QUERY_MARKER . 'ACT=' . $action_id;
 	}
 	//END get_action_url
 
@@ -3514,7 +3580,7 @@ EOT;
 	 * @return  bool
 	 */
 
-	public function is_positive_intlike ($num, $threshold = 1)
+	public function is_positive_intlike($num, $threshold = 1)
 	{
 		//without is_numeric, bools return positive
 		//because preg_match auto converts to string
@@ -3537,7 +3603,7 @@ EOT;
 	 * @return	int 	returns 0 if the get/post is not present or numeric or above 0
 	 */
 
-	public function get_post_or_zero ($name)
+	public function get_post_or_zero($name)
 	{
 		$name = ee()->input->get_post($name);
 		return ($this->is_positive_intlike($name) ? $name : 0);
@@ -3673,9 +3739,9 @@ EOT;
 		if ( ! empty($old_hooks))
 		{
 			ee()->db
-					->where_in('method', $old_hooks)
-					->where('class', $this->extension_name)
-					->delete('extensions');
+				->where_in('method', $old_hooks)
+				->where('class', $this->extension_name)
+				->delete('extensions');
 		}
 	}
 	// END update_extension_hooks()
@@ -3695,8 +3761,8 @@ EOT;
 	public function remove_extension_hooks()
 	{
 		ee()->db
-				->where('class', $this->extension_name)
-				->delete('extensions');
+			->where('class', $this->extension_name)
+			->delete('extensions');
 
 		// --------------------------------------------
 		//  Remove from $EE->extensions->extensions array
@@ -3712,8 +3778,7 @@ EOT;
 						$class == $this->extension_name)
 					{
 						unset(
-							$this->EE
-								->extensions
+							ee()->extensions
 								->extensions[$hook][$priority][$class]
 						);
 					}
@@ -3908,7 +3973,9 @@ EOT;
 
 		if ($do_actions &&
 			! preg_match("/_actions$/", get_class($this)) &&
-			$this->actions())
+			$this->actions() &&
+			is_callable(array($this->actions(), 'setup_unit_test_mode'))
+		)
 		{
 			$this->actions()->setup_unit_test_mode($test_mock, FALSE);
 		}
@@ -4084,7 +4151,11 @@ EOT;
 
 		$offset		= 0;
 		$timezones	= timezones();
-		$timezone	= ee()->config->item('server_timezone');
+		$timezone	= $this->either_or(
+			ee()->config->item('default_site_timezone'),
+			ee()->config->item('server_timezone'),
+			date_default_timezone_get()
+		);
 
 		// Check legacy timezone formats
 		if (isset($timezones[$timezone]))
@@ -4104,6 +4175,167 @@ EOT;
 
 		return $offset;
 	}
-	//END _timezone_offset
+	//END timezone_offset
+
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Get Sites
+	 *
+	 * @access	public
+	 * @return	array	site data
+	 */
+
+	protected function get_sites()
+	{
+		if ( ! empty($this->sites))
+		{
+			return $this->sites;
+		}
+
+		if (isset(ee()->session) AND
+			is_object(ee()->session) AND
+			isset(ee()->session->userdata['group_id']) AND
+			ee()->session->userdata['group_id'] == 1 AND
+			isset(ee()->session->userdata['assigned_sites']) AND
+			is_array(ee()->session->userdata['assigned_sites']))
+		{
+			$this->sites = ee()->session->userdata['assigned_sites'];
+			return $this->sites;
+		}
+
+		//--------------------------------------------
+		// Perform the Actual Work
+		//--------------------------------------------
+
+		ee()->db
+			->select('site_id, site_label')
+			->from('exp_sites');
+
+		if (ee()->config->item('multiple_sites_enabled') == 'y')
+		{
+			ee()->db->order_by('site_label');
+		}
+		else
+		{
+			ee()->db->where('site_id', 1);
+		}
+
+		$sites_query = ee()->db->get();
+
+		//no need to check here, EE won't even start without
+		//these present in the DB
+		$this->sites = $this->prepare_keyed_result(
+			$sites_query,
+			'site_id',
+			'site_label'
+		);
+
+		return $this->sites;
+	}
+	//END get_sites
+
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Class Lib Loader
+	 *
+	 * Lib loader that cuts down on obnoxious lines like
+	 * ee()->load->library('my_addon_name_class_name');
+	 * ee()->my_addon_name_class_name->run_long_name();
+	 * and turns it to $this->class_lib('lib_name')->method();
+	 *
+	 * This turns out visually as long as StaticC::autoLoadHelper()
+	 * and lets us reuse more code because the class name is auto generated.
+	 *
+	 * This assumes the root addon name as a prefix and then the name
+	 * of what the class is. E,g, Super_Search_notifications would be
+	 * $this->lib('notifications')->method();
+	 *
+	 * @access	public
+	 * @param	string $name	singular table name from full model name
+	 * @return	object			model instance from EE instance
+	 */
+
+	public function lib($name)
+	{
+		$full_name = $this->lower_name . '_' . $name;
+
+		return $this->_lib_mod_loader($full_name, 'library');
+	}
+	//END lib
+
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Model
+	 *
+	 * Model loader that cuts down on obnoxious lines like
+	 * ee()->load->model('my_addon_name_table_name_model');
+	 * ee()->my_addon_name_table_name_model->run_long_name();
+	 * and turns it to $this->model('table_name')->method();
+	 *
+	 * This turns out visually as long as StaticC::autoLoadHelper()
+	 * and lets us reuse more code because the class name is auto generated.
+	 *
+	 * This assumes the root addon name as a prefix and '_model' as a postfix
+	 * for all model classnames. We should be doing that anyway really to
+	 * prevent collision with other addons. There are a lot out there.
+	 *
+	 * @access	public
+	 * @param	string $name	singular table name from full model name
+	 * @return	object			model instance from EE instance
+	 */
+
+	public function model($name = '')
+	{
+		$full_name = $this->lower_name . '_' . $name . '_model';
+
+		return $this->_lib_mod_loader($full_name, 'model');
+	}
+	//END model
+
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Helper function for library and model loaders
+	 *
+	 * @access	public
+	 * @param	string $name	singular table name from full model name
+	 * @param	string $type	type of object for EE to load. model or library
+	 * @return	object			model instance from EE instance
+	 */
+
+	protected function _lib_mod_loader($object_name, $type = 'library')
+	{
+				//get out quick if possible
+		if (isset(ee()->$object_name))
+		{
+			return ee()->$object_name;
+		}
+		else
+		{
+			ee()->load->$type($object_name);
+		}
+
+		//run isset again in cause load fails but doesn't fire
+		//a fatal error
+		if (isset(ee()->$object_name))
+		{
+			return ee()->$object_name;
+		}
+		else
+		{
+			trigger_error(
+				'No ' . ucfirst($type) . ' named "' . $object_name . '" found',
+				E_USER_NOTICE
+			);
+		}
+	}
+	//END _lib_mod_loader
 }
 // END Addon_builder Class

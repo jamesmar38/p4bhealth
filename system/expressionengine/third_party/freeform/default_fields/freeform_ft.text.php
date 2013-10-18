@@ -141,7 +141,7 @@ class Text_freeform_ft extends Freeform_base_ft
 	 * @return	string
 	 */
 
-	public function display_settings ($data)
+	public function display_settings ($data = array())
 	{
 		$form_radios 	= '';
 

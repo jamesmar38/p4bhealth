@@ -53,8 +53,8 @@ class Freeform_param_model extends Freeform_Model
 		//----------------------------------------
 
 		$this->insert(array(
-			'entry_date' 	=> $this->localize->now,
-			'data' 			=> $params
+			'entry_date'	=> $this->localize->now,
+			'data'			=> $params
 		));
 
 		//----------------------------------------

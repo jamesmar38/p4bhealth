@@ -14,6 +14,8 @@ require_once PATH_THIRD.'editor/config.php';
  */
 class Editor_helper
 {
+	private $ekey = 'SADFo92jzVnzXj39IUYGvi6eL8h6RvJV8CytUiouV547vCytDyUFl76R';
+
 	/**
      * Module Short Name
      *
@@ -354,7 +356,9 @@ class Editor_helper
 			if ($css_file != FALSE)
 			{
 				$js->iframe = TRUE;
-				$js->css = trim($settings['css_file']);
+
+				$js_css = json_encode(explode(',', $settings['css_file']));
+				$js->css = new Zend_Json_Expr($js_css);
 			}
 		}
 
@@ -439,58 +443,19 @@ class Editor_helper
 		// S3
 		if (isset($settings['upload_service']) === TRUE && $settings['upload_service'] == 's3')
 		{
-			$js->uploadCrossDomain = TRUE;
-			$js->fileUploadCallback = new Zend_Json_Expr('Editor.UploadCallback');
-			$js->uploadFields = new stdClass();
-			$js->uploadFields->key = '${filename}'; //$random.'_key';
-			$js->uploadFields->acl = 'public-read';
+			$js->s3 = $act_url.'&action=s3_info';
+			$string = base64_encode($this->encrypt_string(serialize($settings['s3'])));
 
-			$bucket = '';
-
-			if (isset($settings['s3']['file']['bucket']) === TRUE && $settings['s3']['file']['bucket'] != FALSE)
-			{
-				$js->fileUpload = 'https://'.$settings['s3']['file']['bucket'].'.s3.amazonaws.com/';
-				$bucket = $settings['s3']['file']['bucket'];
-			}
-
-			if (isset($settings['s3']['image']['bucket']) === TRUE && $settings['s3']['image']['bucket'] != FALSE)
-			{
-				$js->imageUpload = 'https://'.$settings['s3']['image']['bucket'].'.s3.amazonaws.com/';
-				$bucket = $settings['s3']['image']['bucket'];
-			}
-
-			$js->uploadFields->success_action_redirect = $this->EE->editor_helper->getRouterUrl('url', 'ACT_file_upload');
-			$js->uploadFields->AWSAccessKeyId = $settings['s3']['aws_access_key']; // $random.'_awskey';
-
-			if (isset($config_override['s3']['aws_access_key']) === TRUE && $config_override['s3']['aws_access_key'] != FALSE)
-			{
-				$js->uploadFields->AWSAccessKeyId = $config_override['s3']['aws_access_key'];
-			}
-
-			// Generate Policy
-			$pol = '{	"expiration": "'.date('Y-m-d', strtotime('+1 week')).'T12:00:00.000Z",
-						"conditions": [
-							{"acl": "public-read"},
-							{"bucket": "'.$bucket.'"},
-							["starts-with", "$key", ""],
-							{"success_action_redirect": "'.$this->EE->editor_helper->getRouterUrl('url', 'ACT_file_upload').'" }
-						]
-					}';
-			$js->uploadFields->policy = base64_encode(trim($pol));
-
-			// Get AWS Secret Key
-			$secret = trim($settings['s3']['aws_secret_key']);
-
-			if (isset($config_override['s3']['aws_secret_key']) === TRUE && $config_override['s3']['aws_secret_key'] != FALSE)
-			{
-				$secret = trim($config_override['s3']['aws_secret_key']);
-			}
-
-			$js->uploadFields->signature = base64_encode(hash_hmac('sha1', $js->uploadFields->policy, $secret, TRUE));
+			$js->s3 .= "&s3={$string}&";
 		}
 
 		// Plugins
-		$js->plugins = array('dd_keyboard_shortcuts');
+		if (isset($settings['plugins']) === false || empty($settings['plugins'])) {
+			$settings['plugins'] = array();
+		}
+		$settings['plugins'][] = 'dd_keyboard_shortcuts';
+
+		$js->plugins = $settings['plugins'];
 
 		//$this->EE->firephp->log($js);
 
@@ -521,8 +486,6 @@ class Editor_helper
 		$buttons[] = 'file';
 		$buttons[] = 'table';
 		$buttons[] = 'link';
-		$buttons[] = 'fontcolor';
-		$buttons[] = 'backcolor';
 		$buttons[] = 'alignleft';
 		$buttons[] = 'aligncenter';
 		$buttons[] = 'alignright';
@@ -1026,6 +989,36 @@ class Editor_helper
 		}
 
 		return $data;
+	}
+
+	// ********************************************************************************* //
+
+	public function encrypt_string($string)
+	{
+		$this->EE->load->library('encrypt');
+		if (function_exists('mcrypt_encrypt')) $this->EE->encrypt->set_cipher(MCRYPT_BLOWFISH);
+
+		$string = $this->EE->encrypt->encode($string, substr(sha1(base64_encode($this->ekey)),0, 56));
+
+		// Set it back
+		if (function_exists('mcrypt_encrypt')) $this->EE->encrypt->set_cipher(MCRYPT_RIJNDAEL_256);
+
+		return $string;
+	}
+
+	// ********************************************************************************* //
+
+	public function decrypt_string($string)
+	{
+		$this->EE->load->library('encrypt');
+		if (function_exists('mcrypt_decrypt')) $this->EE->encrypt->set_cipher(MCRYPT_BLOWFISH);
+
+		$string = $this->EE->encrypt->decode($string, substr(sha1(base64_encode($this->ekey)),0, 56));
+
+		// Set it back
+		if (function_exists('mcrypt_encrypt')) $this->EE->encrypt->set_cipher(MCRYPT_RIJNDAEL_256);
+
+		return $string;
 	}
 
 	// ********************************************************************************* //

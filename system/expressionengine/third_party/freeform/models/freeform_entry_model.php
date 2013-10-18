@@ -18,15 +18,15 @@ if ( ! class_exists('Freeform_Model'))
 
 class Freeform_entry_model extends Freeform_Model
 {
-	protected 	$fmh_table 				= 'freeform_multipage_hashes';
+	protected	$fmh_table				= 'freeform_multipage_hashes';
 
 	//intentional because we will need to set every incoming table
-	public 		$_table					= '';
-	public 		$inclusive  			= TRUE;
-	public 		$include_columns 		= TRUE;
-	private 	$form_ids				= array();
+	public		$_table					= '';
+	public		$inclusive				= TRUE;
+	public		$include_columns		= TRUE;
+	private		$form_ids				= array();
 
-	public 		$after_get				= array('add_form_data');
+	public		$after_get				= array('add_form_data');
 
 	// --------------------------------------------------------------------
 
@@ -161,7 +161,9 @@ class Freeform_entry_model extends Freeform_Model
 
 		$this->wheres($where);
 
-		$query = $this->db->query($this->build_query(TRUE));
+		$sql = $this->build_query(TRUE);
+
+		$query = $this->db->query($sql);
 		$count = $query->row('count');
 
 		if ($cleanup)
@@ -194,7 +196,9 @@ class Freeform_entry_model extends Freeform_Model
 		//we don't want any wheres
 		//the local reset undones _table and we don't want that
 		parent::reset();
-		$query = $this->db->query($this->build_query(TRUE));
+		$sql = $this->build_query(TRUE);
+
+		$query = $this->db->query($sql);
 		$count = $query->row('count');
 
 		if ($cleanup)
@@ -270,7 +274,9 @@ class Freeform_entry_model extends Freeform_Model
 
 		$this->wheres($where);
 
-		$query = $this->db->query($this->build_query());
+		$sql = $this->build_query();
+
+		$query = $this->db->query($sql);
 
 		//so at the bottom, getting the first result is also empty
 		$rows = array(array());
@@ -415,9 +421,9 @@ class Freeform_entry_model extends Freeform_Model
 		{
 			if (isset($rows['form_id']))
 			{
-				$row_form 					= $forms[$row['form_id']];
-				$row['form_name'] 			= $row_form['form_name'];
-				$row['form_description'] 	= $row_form['form_description'];
+				$row_form					= $forms[$row['form_id']];
+				$row['form_name']			= $row_form['form_name'];
+				$row['form_description']	= $row_form['form_description'];
 			}
 		}
 
@@ -547,15 +553,15 @@ class Freeform_entry_model extends Freeform_Model
 		//	vars
 		// -------------------------------------
 
-		$stash 			= ($this->isolated) ? 'db_isolated_stash' : 'db_stash';
-		$where 			= '';
-		$order_by 		= array();
-		$selects 		= array();
-		$distinct 		= '';
-		$limit 			= 0;
-		$offset 		= 0;
-		$and 			= "\nAND ";
-		$or 			= "\nOR ";
+		$stash			= ($this->isolated) ? 'db_isolated_stash' : 'db_stash';
+		$where			= '';
+		$order_by		= array();
+		$selects		= array();
+		$distinct		= '';
+		$limit			= 0;
+		$offset			= 0;
+		$and			= "\nAND ";
+		$or				= "\nOR ";
 
 		//this will prefix all columns for the entry tables so
 		//sql for it doesn't get flagged as ambiguous
@@ -572,9 +578,9 @@ class Freeform_entry_model extends Freeform_Model
 							")\b/";
 
 		//for joining the member data table
-		$author_find 	= '/m\.member_id|m\.screen_name|m\.username/';
-		$author_str 	= "IF (m.screen_name = '', m.username, m.screen_name)";
-		$author_select  = $author_str . ' as author';
+		$author_find	= '/m\.member_id|m\.screen_name|m\.username/';
+		$author_str		= "IF (m.screen_name = '', m.username, m.screen_name)";
+		$author_select	= $author_str . ' as author';
 
 		// -------------------------------------
 		//	build where strings from stored stash
@@ -799,8 +805,15 @@ class Freeform_entry_model extends Freeform_Model
 			$this->freeform_form_model->default_form_table_columns
 		);
 
+		$starting_where = $where;
+
 		foreach ($forms_data as $form)
 		{
+			//need to restore this each time
+			//because we are affecting it with each loop
+			//and each set is possibly different.
+			$where = $starting_where;
+
 			// -------------------------------------
 			//	table name
 			// -------------------------------------
@@ -1015,16 +1028,54 @@ class Freeform_entry_model extends Freeform_Model
 			//and we just have to select NULL
 			if ( ! empty($where_replace))
 			{
-				$form_sql .= preg_replace(
+				$where = preg_replace(
 					'/(\s+)((`?)(' . implode('|', $where_replace) . ')\\3\s+)/',
 					' NULL ',
 					$where
 				);
 			}
-			else
+
+			// -------------------------------------
+			//	fix missing fields in count clauses
+			// -------------------------------------
+			//	this replaces:
+			//		WHERE missing_field LIKE '%search%'
+			//	with
+			//		WHERE '' LIKE '%search%'
+			//	because you can't fire a where clause
+			//	on a
+			//		SELECT NULL AS missing_field
+			//	and we want a blank string so searches
+			//	return NOT LIKE and LIKE correctly
+			//	as tables without said field
+			//	would all need to return positive
+			//	reactions to that result but
+			//		NULL NOT LIKE '%thing%'
+			//	always results in a negative where as
+			//		'' NOT LIKE '%thing%'
+			//	results positive
+			// -------------------------------------
+
+			foreach ($all_field_ids as $id)
 			{
-				$form_sql .= $where;
+				$col_name = $this->form_field_prefix . $id;
+				//missing field?
+
+				if ( ! in_array($id, $form['field_ids']))
+				{
+					$where = preg_replace(
+						"/\b" . $col_name . '\b/ms',
+						"''",
+						$where
+					);
+				}
 			}
+
+			// -------------------------------------
+			//	add where
+			// -------------------------------------
+
+			$form_sql .= $where;
 
 			// -------------------------------------
 			//	end (orderby and sort go outside)
@@ -1068,6 +1119,7 @@ class Freeform_entry_model extends Freeform_Model
 
 			$sqls[] = $form_sql;
 		}
+		//END foreach ($forms_data as $form)
 
 		//With multi-tables you have to add all counts and not UNION
 		if ($count)

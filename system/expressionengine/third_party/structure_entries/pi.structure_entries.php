@@ -4,12 +4,12 @@
  Author: Peter Lewis - peter@peteralewis.com
  http://www.peteralewis.com
 ====================================================================================================
- This file must be placed in the /system/expressionengine/third_party/structure_entries folder
- package            Structure Entries
- version            Version 1.3.4
- copyright          Copyright (c) 2012 Peter Lewis
- license            Attribution No Derivative Works 3.0: http://creativecommons.org/licenses/by-nd/3.0/
- Last Update        October 2012
+ This file must be placed in the /system/plugins/ folder in your ExpressionEngine installation.
+ package 		Structure Entries
+ version 		Version 1.2.8
+ copyright 		Copyright (c) 2011 Peter Lewis
+ license 		Attribution No Derivative Works 3.0: http://creativecommons.org/licenses/by-nd/3.0/
+ Last Update	April 2011
 ----------------------------------------------------------------------------------------------------
  Purpose: Extends the Structure Module with a powerful tag pair allowing html markup freedom
 ====================================================================================================
@@ -45,55 +45,22 @@ v1.2.6 Fixed bug with Matrix integration
         Disabled Matrix integration due ot user issues
 v1.2.7 Minor fixes including multiple parents & include_parent bug (with depth)
 v1.2.8 Matrix support re-introduced
-v1.2.9 Fix to parent="current" parameter
-v1.3.0 Internal and test release
-v1.3.1 Added file based caching to improve performance thanks to Bryant - new parameters: cache_name & refresh_cache
-       Added parsing of hide_from_nav variable new variable: {nav} & new parameter hide_from_nav="yes"
-       [feature] Matrix parsing re-written to allow for any third party fieldtype
-       [feature] updated documentation and example code
-       [feature] Added multiple categories
-       [bug] setting any paramater to false resulted in php errors
-       [bug] Issues with EE v2.4.0 and closing root tags.
-v1.3.2  Ryan Blenis - Added detection for custom fields to decrease database querying monstrosities
-        Ryan Blenis - Moved the additional (full) querying to after a match has been determined via quick data
-        Ryan Blenis - Added structure_quick_data call to minize further database queries.
-        Ryan Blenis - Rewrote get_parent and within_category to reference structure_quick_data results
-        [bug] Mixed trailing "/" and no "/" in site_pages when identifying parent param as a URL
-        [bug] Compare for current page with and without "/"
-        Removed file based caching as already supported with native EE tag caching
-        [bug] close_markup tag pair variables weren't allowing for hide_from_nav for totals and counters
-v1.3.3  Added site_id paramter to override MSM site used for output
-v1.3.4  Added exclusion category functionality. New parameter = exclude_category_id. Either single ID or ID's separated by pipe characters "|"
-        New conditional around parentage variables to prevent PHP errors with mis-matched parent/child matching not outputting
-
 */
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 $plugin_info = array(
-                    'pi_name'           => 'Structure Entries',
-                    'pi_version'        => '1.3.4',
-                    'pi_author'         => 'Peter Lewis',
-                    'pi_author_url'     => 'http://www.peteralewis.com/',
-                    'pi_description'    => 'Extends the Structure Module with a tag pair allowing html markup freedom, supports all EE standard and custom fields, categories and P&T Matrix.',
-                    'pi_usage'          => Structure_entries::usage()
-                    );
+						'pi_name'			=> 'Structure Entries',
+						'pi_version'		=> '1.2.8',
+						'pi_author'			=> 'Peter Lewis',
+						'pi_author_url'		=> 'http://www.peteralewis.com/',
+						'pi_description'	=> 'Extends the Structure Module with a tag pair allowing html markup freedom, supports all EE standard and custom fields, categories and P&T Matrix.',
+						'pi_usage'			=> Structure_entries::usage()
+					);
 
 class Structure_entries {
 
-    var $return_data;
-    var $site_id;
-    var $page_uri;
-    var $fieldtypes;
-    var $custom_vars = false;
-    public $cache_name = false;
-    public $refresh_cache = 0;			// in mintues (default is 0) 1 week = 10080
-    public $cache_expired = FALSE;
-    public $cache_folder = "structure_entries";
-
-
-
-
+	var $return_data;
 
 	//###
 	//###   Template tag pair to loop through relevant Structure managed entries allowing for custom markup   ###
@@ -105,254 +72,169 @@ class Structure_entries {
 	//###	Returns: true or false, or string containing error
 	//###
 	function Structure_entries() {
-        //###   Get EE Super Global   ###
-        $this->EE =& get_instance();
+		//###   Get EE Super Global   ###
+		$this->EE =& get_instance();
 
-        //###   General Variables   ###
-        $this->site_id = $this->EE->config->item('site_id');
-        $this->page_uri = $this->EE->uri->uri_string();
+		//###   Get Site ID for SQL   ###
+		$site_id = $this->EE->config->item('site_id');
 
-        //###   Load EE Typography Class   ###
-        $this->EE->load->library('typography');
-        $this->EE->typography->initialize();
+		//###   Load EE Typography Class   ###
+		$this->EE->load->library('typography');
+		$this->EE->typography->initialize();
 
-        //###   Get Caching   ###
-        $this->refresh_cache = $this->EE->TMPL->fetch_param('refresh_cache');
-        $this->cache_name = $this->EE->TMPL->fetch_param('cache_name');
+		//###   Get initial URL path (e.g. /index.php)   ###
+		$tempIndexArray = explode("/", str_replace(array("http://","https://"), "", $this->EE->functions->fetch_site_index()) );
+		array_shift($tempIndexArray);
 
-        //###   Get initial URL path (e.g. /index.php)   ###
-        $orginialSiteIndex = $this->EE->functions->fetch_site_index();
-        $tempIndexArray = explode("/", str_replace(array("http://","https://"), "", $orginialSiteIndex) );
-        array_shift($tempIndexArray);
+		$siteIndex = implode("/", $tempIndexArray);
+		if (substr($siteIndex, -1, 1) == "/")
+			$siteIndex = substr($siteIndex, 0, -1);
+		if (substr($siteIndex, 0, 1) != "/" && strlen($siteIndex) > 0)
+			$siteIndex = "/" . $siteIndex;
 
-        $siteIndex = implode("/", $tempIndexArray);
-        if (substr($siteIndex, -1, 1) == "/")
-                $siteIndex = substr($siteIndex, 0, -1);
-        if (substr($siteIndex, 0, 1) != "/" && strlen($siteIndex) > 0)
-                $siteIndex = "/" . $siteIndex;
+		$site_pages = $this->get_site_pages();
+		if ($site_pages === false)
+			return;
 
-        $site_pages = $this->get_site_pages();
-        if ($site_pages === false)
-                return;
+		$output = "";
 
-        $output = "";
+		//###   Setup the Cache   ###
+		if(!isset($this->EE->session->cache)) $this->EE->session->cache = array();
+		if(!isset($this->EE->session->cache['structure_entries'])) $this->EE->session->cache['structure_entries'] = array();
 
-        //###   Setup the Template Cache   ###
-        if(!isset($this->EE->session->cache)) $this->EE->session->cache = array();
-        if(!isset($this->EE->session->cache['structure_entries'])) $this->EE->session->cache['structure_entries'] = array();
+		//###   Get the upload folder paths   ###
+//		$this->EE->load->library('typography');
+//		$this->EE->typography->initialize();
+//		$folderPaths = $this->EE->typography->file_paths;
+		
+		//###   Get Template Tags   ###
+		$parentURL = "";
+		$parentID = 0;
+		$catID = 0;
+		$depth = 0;
 
-        //if cache_name and refresh_cache are set lets try and pull the output from the cache file
-        if ($this->cache_name && $this->refresh_cache) {
-            if ($cache = $this->check_cache($this->cache_name)) {
-                $this->return_data = $cache[0];
-                return;
-            }
-        }
+		//###   Parent URL or entry_id   ###
+		$param = html_entity_decode($this->EE->TMPL->fetch_param('parent'));
+		if ($param == "current") {
+			$parentURL = $this->EE->functions->fetch_current_uri();
+		} else if (substr($param, 0, 1) == "/" || substr($param, 0, 7) == "http://") {
+			$parentURL = $param;
+			if (substr($parentURL, -1, 1) !== "/")
+				$parentURL = $parentURL . "/";
+		} else {
+			$parentID = preg_replace("/[^0-9\|]/", '', $param);
+			if (strpos($parentID, "|"))
+				$parentID = explode("|", $parentID);
+		}
+		if (empty($parentID) && !empty($parentURL))
+			$parentID = array_search($parentURL, $site_pages['uris']);
+		if (empty($parentID))
+			$parentID = 0;
 
-        //###   Get Template Tags   ###
-        $parentURL = "";
-        $parentID = 0;
-        $catID = 0;
-        $depth = 0;
-        $hideFromNav = false;
-        $matchParent = false;
-
-        //###   Parent URL or entry_id   ###
-        $param = html_entity_decode($this->EE->TMPL->fetch_param('parent'));
-        if ($param == "current") {
-            $parentURL = $this->EE->functions->fetch_current_uri();
-            //###   Strip Site Index & domain from URL   ###
-            $findPos = strpos($parentURL, $orginialSiteIndex);
-            if ($findPos !== false)
-                $parentURL = substr($parentURL, strlen($orginialSiteIndex));
-            if (substr($parentURL, 0, 1) !== "/")
-                $parentURL = "/" . $parentURL;
-
-        } else if (substr($param, 0, 1) == "/" || substr($param, 0, 7) == "http://") {
-            $parentURL = $param;
-
-        } else {
-            $parentID = preg_replace("/[^0-9\|]/", '', $param);
-            if (strpos($parentID, "|"))
-                $parentID = explode("|", $parentID);
-        }
-
-        if (!empty($parentURL)) {
-            if (substr($parentURL, -1, 1) == "/")
-                $parentURL = substr($parentURL, 0, -1);
-            if (empty($parentID)) {
-                $parentID = array_search($parentURL, $site_pages['uris']);
-                if (empty($parentID))
-                    $parentID = array_search($parentURL."/", $site_pages['uris']);
-            }
-            //###   Prevent invalid parent URL specified triggering the root menu   ###
-            if (empty($parentID))
-                return;
-        }
-        if (empty($parentID)) {
-            $parentID = 0;
-            $matchParent = true;
-        }
-
-        //###   Debug Output   ###
-        $this->EE->TMPL->log_item("structure_entries: Set Parent. Parent URL=".$parentURL." Site Index=".$siteIndex." Parent ID=".$parentID );
-
-        //###   category ID   ###
-        $param = $this->EE->TMPL->fetch_param('category_id');
-        $catID = preg_replace("/[^0-9]\|/", '', $param);
-        if (empty($catID)) {
-            $catID = 0;
-        } else {
-            $catArray = explode("|", $catID);
-            if (count($catArray) > 1) {
-                $catID = $catArray;
-            }
-        }
-
-        //###   category ID   ###
-        $param = $this->EE->TMPL->fetch_param('exclude_category_id');
-        $notCatID = preg_replace("/[^0-9]\|/", '', $param);
-        if (empty($notCatID)) {
-            $notCatID = 0;
-        } else {
-            $catArray = explode("|", $notCatID);
-            if (count($catArray) > 1) {
-                $notCatID = $catArray;
-            }
-        }
+		//###   category ID   ###
+		$param = $this->EE->TMPL->fetch_param('category_id');
+		$catID = preg_replace("/[^0-9]/", '', $param);
+		if (empty($catID))
+			$catID = 0;
 
 //TO DO - HANDLE Multiple categories and "NOT" (excluding categories)
 //TO DO - weblog parameter, restricting weblog - include the NOT option and multiples
 
-        //###   Child/Parent Depth   ###
-        $param = $this->EE->TMPL->fetch_param('depth');
-        $depth = preg_replace("/[^0-9]/", '', $param);
-        if (empty($depth))
-            $depth = 0;
+		//###   Child/Parent Depth   ###
+		$param = $this->EE->TMPL->fetch_param('depth');
+		$depth = preg_replace("/[^0-9]/", '', $param);
+		if (empty($depth))
+			$depth = 0;
 
-        //###   Limit the amount of returns   ###
-        $param = $this->EE->TMPL->fetch_param('limit');
-        $limit = preg_replace("/[^0-9]/", '', $param);
+		//###   Limit the amount of returns   ###
+		$param = $this->EE->TMPL->fetch_param('limit');
+		$limit = preg_replace("/[^0-9]/", '', $param);
 
-        //###   Check if Status is restricted   ###
-        $param = $this->EE->TMPL->fetch_param('status');
-        $param = $this->EE->db->escape_str($param);
-        $restrictStatus = $this->EE->security->xss_clean($param);
+		//###   Check if Status is restricted   ###
+		$param = $this->EE->TMPL->fetch_param('status');
+		$param = $this->EE->db->escape_str($param);
+		$restrictStatus = $this->EE->security->xss_clean($param);
 
-        //###   Debug! - no longer used   ###
-        $debug = false;
-        if( $param = $this->EE->TMPL->fetch_param('debug') )
-            $debug = $this->check_boolean($param, true);
+		//###   Debug!   ###
+		$debug = false;
+		if( $param = $this->EE->TMPL->fetch_param('debug') )
+			if (strtolower($param) === "true" || strtolower($param) === "t" || strtolower($param) === "yes" || strtolower($param) === "y" || strtolower($param) === "1")
+				$debug = true;
 
-                //###   Override Site ID   ###
-        $param = $this->EE->TMPL->fetch_param('site_id');
-        $param = preg_replace("/[^0-9]/", '', $param);
-        if (!empty($param))
-            $this->site_id = $param;
+		//###   Randomise the entries returned   ###
+		$random = false;
+		if( $param = $this->EE->TMPL->fetch_param('random') )
+			if (strtolower($param) === "true" || strtolower($param) === "t" || strtolower($param) === "yes" || strtolower($param) === "y" || strtolower($param) === "1")
+				$random = true;
 
-        //###   Randomise the entries returned   ###
-        $random = false;
-        if( $param = $this->EE->TMPL->fetch_param('random') )
-            $random = $this->check_boolean($param, true);
+		//###   Convert html entities?   ###
+		$convertHTML = false;
+		if( $param = $this->EE->TMPL->fetch_param('convert_html') )
+			if (strtolower($param) === "true" || strtolower($param) === "t" || strtolower($param) === "yes" || strtolower($param) === "y" || strtolower($param) === "1")
+				$convertHTML = true;
 
-            //###   Disable third-party fieldtype parsing?   ###
-            $parseFieldtypes = true;
-            if( $param = $this->EE->TMPL->fetch_param('exclude_fieldtypes') )
-                if ($this->check_boolean($param, false))
-                    $parseFieldtypes = false;
+		//###   Include the parent in the output?   ###
+		$matchParent = false;
+		if( $param = $this->EE->TMPL->fetch_param('include_parents') )
+			if (strtolower($param) === "true" || strtolower($param) === "t" || strtolower($param) === "yes" || strtolower($param) === "y" || strtolower($param) === "1")
+				$matchParent = true;
+		if( $param = $this->EE->TMPL->fetch_param('include_parent') )
+			if (strtolower($param) === "true" || strtolower($param) === "t" || strtolower($param) === "yes" || strtolower($param) === "y" || strtolower($param) === "1")
+				$matchParent = true;
 
-            //###   Convert html entities?   ###
-            $convertHTML = false;
-            if( $param = $this->EE->TMPL->fetch_param('convert_html') )
-                $convertHTML = $this->check_boolean($param, true);
+		//###   Add Matrix Field Support   ###
+		if ( file_exists(APPPATH . 'third_party/matrix/ext.matrix'.EXT) ) {
+			if (!class_exists('Matrix_ext'))
+				require_once(APPPATH . 'third_party/matrix/ext.matrix'.EXT);
+			$Matrix = new Matrix_ext();	//###   Matrix Class   ###
 
-            //###   Include the parent in the output?   ###
-            if( $param = $this->EE->TMPL->fetch_param('include_parents') )
-                    $matchParent = $this->check_boolean($param, true);
-            if( $param = $this->EE->TMPL->fetch_param('include_parent') )
-                    $matchParent = $this->check_boolean($param, true);
+			if (!class_exists('EE_Fieldtype'))
+				require_once PATH_THIRD.'../fieldtypes/EE_Fieldtype'.EXT;
 
-            if( $param = $this->EE->TMPL->fetch_param('hide_from_nav') )
-                    $hideFromNav = $this->check_boolean($param, true);
+			if (!class_exists('Matrix_ft'))
+				require_once PATH_THIRD.'matrix/ft.matrix'.EXT;
+		}
 
-            if ($parseFieldtypes) {
-                //###   Add Fieldtype Support (e.g. Matrix)   ###
-                $this->EE->load->library('api');
-                $this->EE->api->instantiate('channel_fields');
-                $this->get_fieldtypes();
-                $this->EE->api->instantiate('channel_structure');
-                $channelInfo = array();
-            }
+		if (!class_exists('Structure'))
+			require_once(APPPATH . 'third_party/structure/mod.structure'.EXT);
+		$Structure = new Structure();	//###   Structure Class   ###
 
-            //###   Load the Structure class to access it's functions   ###
-            if (!class_exists('Structure'))
-                require_once(APPPATH . 'third_party/structure/mod.structure'.EXT);
-            $Structure = new Structure();	//###   Structure Class   ###
-            $structureBasicData = $this->get_quick_data($catID, $restrictStatus);
-            $structureData = $this->get_structure_data();
+		$sqlStructure = $this->get_structure_data();
 
-            //###   Get Field Titles   ###
-            $sql = "SELECT field_id, field_name
-                            FROM exp_channel_fields
-                            WHERE site_id = ".$this->site_id;
-            $sqlFields = $this->EE->db->query($sql);
+		//###   Get Field Titles   ###
+		$sql = "SELECT field_id, field_name
+				FROM exp_channel_fields
+				WHERE site_id = ".$site_id;
+		$sqlFields = $this->EE->db->query($sql);
 
-            $matchCounter = 0;			//###   Counts matched entries (for output tag)   ###
-            $switchCounter = 0;			//###   Counts each time switch is used   ###
-            $siblingCounter = array();	//###   Counts siblings (for output tag)   ###
-            $structureArray = array();
+		$matchCounter = 0;			//###   Counts matched entries (for output tag)   ###
+		$switchCounter = 0;			//###   Counts each time switch is used   ###
+		$siblingCounter = array();	//###   Counts siblings (for output tag)   ###
+		$structureArray = array();
 
-            $this->custom_vars = $this->check_custom_vars();
+		//###   Debug Output   ###
+		$this->EE->TMPL->log_item("structure_entries: Starting main loop through entries. Total rows from DB=".$sqlStructure->num_rows() );
 
-            //###   Debug Output   ###
-            $this->EE->TMPL->log_item("structure_entries: Starting main loop through entries. Total rows from DB=".$structureData->num_rows() );
+		foreach ($sqlStructure->result_array() as $structureField) {
+			$entry_id = $structureField['entry_id'];
+			$status = $structureField['status'];
+			if (!empty($entry_id) && ($status != "closed" || $restrictStatus == "closed")) {
+				$entryURL = $siteIndex . $site_pages['uris'][$entry_id];
 
-            foreach ($structureData->result_array() as $structureField) {
-                $entry_id = $structureField['entry_id'];
-                $status = $structureField['status'];
-                if (!empty($entry_id) && isset($site_pages['uris'][$entry_id]) && ($status != "closed" || $restrictStatus == "closed") && ($hideFromNav == false || ($hideFromNav && $structureField['hidden'] == "n")) ) {
-                    $entryURL = $siteIndex . $site_pages['uris'][$entry_id];
-
-                    //###   Get specific entry information   ###
-                    if (isset($this->EE->session->cache['structure_entries']['entryData'.$entry_id])) {
-                        $EntryDetails = $this->EE->session->cache['structure_entries']['entryData'.$entry_id];
-
-                    } else {
-                        if (!$this->custom_vars) {
-                            // only using basic data tags? great, no need to query everything! -RB
-                            $EntryDetails = $structureBasicData[$entry_id];
-
-                        } else {
-                            $sql = "SELECT exp_channel_data.*, exp_channel_titles.*, exp_channels.channel_name
-                                      FROM exp_channel_data, exp_channel_titles, exp_channels
-                                     WHERE exp_channel_data.entry_id = ".$entry_id."
-                                       AND exp_channel_titles.entry_id = ".$entry_id."
-                                       AND exp_channels.channel_id = exp_channel_titles.channel_id
-                                     LIMIT 1";
-                            $sqlEntryResult = $this->EE->db->query($sql);
-                            $EntryDetails = $sqlEntryResult->result_array();
-                            $EntryDetails = $EntryDetails[0];
-                            $this->EE->session->cache['structure_entries']['entryData'.$entry_id] = $EntryDetails;
-                        }
-                    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+				//###   Get specific entry information   ###
+				if (isset($this->EE->session->cache['structure_entries']['entryData'.$entry_id])) {
+					$sqlEntryResult = $this->EE->session->cache['structure_entries']['entryData'.$entry_id];
+				} else {
+					$sql = "SELECT exp_channel_data.*, exp_channel_titles.*, exp_channels.channel_name
+							  FROM exp_channel_data, exp_channel_titles, exp_channels
+							 WHERE exp_channel_data.entry_id = ".$entry_id."
+							   AND exp_channel_titles.entry_id = ".$entry_id."
+							   AND exp_channels.channel_id = exp_channel_titles.channel_id
+							 LIMIT 1";
+					$sqlEntryResult = $this->EE->db->query($sql);
+					$this->EE->session->cache['structure_entries']['entryData'.$entry_id] = $sqlEntryResult;
+				}
+				$EntryDetails = $sqlEntryResult->result_array();
 
 				//###   Bug in Structure with ability to map an entry to be it's own parent   ###
 				if ($structureField['parent_id'] == $structureField['entry_id'])
@@ -399,35 +281,8 @@ class Structure_entries {
 					$match = false;
 
 				//###   Check Category   ###
-				if (!empty($catID) && $match == true) {
-                    if (is_array($catID)) {
-                        $match = false;
-                        foreach ($catID as $individualID) {
-                            if ($this->within_category($entry_id, $individualID)) {
-                                $match = true;
-                                break;
-                            }
-                        }
-
-                    } else {
-                        $match = $this->within_category($entry_id, $catID);
-                    }
-				}
-
-                //###   Check for exclusion Category   ###
-				if (!empty($notCatID) && $match == true) {
-                    if (is_array($notCatID)) {
-                        $match = false;
-                        foreach ($notCatID as $individualID) {
-                            if ($this->within_category($entry_id, $individualID)) {
-                                $match = false;
-                                break;
-                            }
-                        }
-
-                    } else if ($this->within_category($entry_id, $notCatID)) {
-                        $match = false;
-                    }
+				if ($catID > 0 && $match == true) {
+					$match = $this->within_category($entry_id, $catID);
 				}
 
 				if ($match) {
@@ -441,64 +296,32 @@ class Structure_entries {
 					//###   Increment sibling counter   ###
 					$matchCounter++;
 					if (!isset($siblingCounter[$thisParentID]))
-                                            $siblingCounter[$thisParentID] = 1;
+						$siblingCounter[$thisParentID] = 1;
 					else
-                                            $siblingCounter[$thisParentID]++;
+						$siblingCounter[$thisParentID]++;
 
 					$parentMatch = false;
-					foreach ($structureData->result_array() as $structureRow) {
-                        //###   Get total siblings   ###
-                        if ($structureRow['parent_id'] === $thisParentID) {
-                            //###   Matching Parents   ###
-                            $parentMatch = true;
-                            if (!empty($catID))
-                                if (is_array($catID)) {
-                                    $parentMatch = false;
-                                    foreach ($catID as $individualID) {
-                                        if ($this->within_category($structureRow['entry_id'], $individualID)) {
-                                            $parentMatch = true;
-                                            break;
-                                        }
-                                    }
-                                } else {
-                                    $parentMatch = $this->within_category($structureRow['entry_id'], $catID);
-                                }
+					foreach ($sqlStructure->result_array() as $structureData) {
+						//###   Get total siblings   ###
+						if ($structureData['parent_id'] === $thisParentID) {
+							//###   Matching Parents   ###
+							$parentMatch = true;
+							if ($catID > 0)
+								$parentMatch = $this->within_category($structureData['entry_id'], $catID);
 
-                            if ($parentMatch) {
-                                if ($hideFromNav) {
-                                    if ($structureField['hidden'] == "n")
-                                        $siblings++;
-                                } else {
-                                    $siblings++;
-                                }
-                            }
-                        }
+							if ($parentMatch)
+								$siblings++;
+						}
 
 						//###   Get total children   ###
-						if ($structureRow['parent_id'] === $entry_id) {
-                                                    if (!empty($catID))
-                                                        if (is_array($catID)) {
-                                                            $parentMatch = false;
-                                                            foreach ($catID as $individualID) {
-                                                                if ($this->within_category($structureRow['entry_id'], $individualID)) {
-                                                                    $parentMatch = true;
-                                                                    break;
-                                                                }
-                                                            }
-                                                        } else {
-                                                            $parentMatch = $this->within_category($structureRow['entry_id'], $catID);
-                                                        }
+						if ($structureData['parent_id'] === $entry_id) {
+							if ($catID > 0)
+								$parentMatch = $this->within_category($structureData['entry_id'], $catID);
 
-                                                if ($parentMatch) {
-                                                    if ($hideFromNav) {
-                                                        if ($structureField['hidden'] == "n")
-                                                            $children++;
-                                                    } else {
-                                                        $children++;
-                                                    }
-                                                }
-                                            }
-					} //###   End of foreach $structureData->result
+							if ($parentMatch)
+								$children++;
+						}
+					} //###   End of foreach $sqlStructure->result
 
 					$slug = $Structure->page_slug($entry_id);
 
@@ -508,59 +331,20 @@ class Structure_entries {
 					$structureArray[$entry_id]['slug'] = $slug;
 					$structureArray[$entry_id]['depth'] = $depthCount;
 					$structureArray[$entry_id]['sibling_count'] = $siblingCounter[$thisParentID];
-					$structureArray[$entry_id]['nav'] = $structureField['hidden'];
 
 					$output .= $this->EE->TMPL->tagdata;
 
 //###   Debug Output   ###
-//$this->EE->TMPL->log_item("structure_entries: tagdata=".$this->EE->TMPL->tagdata );
+$this->EE->TMPL->log_item("structure_entries: tagdata=".$this->EE->TMPL->tagdata );
 
-                    if ($parseFieldtypes) {
-					    //###   Get EE Channel Field Settings   ###
-//					    $allFieldSettings = $this->EE->api_channel_fields->setup_entry_settings($EntryDetails["channel_id"], "",false);
+					//###   Parse Matrix Fields   ###
+					if (!empty($Matrix)) {
+						//###   Legacy Matrix requires this to be unset   ###
+						unset($this->EE->extensions->last_call);
 
-                        //###   Get Channel Settings   ###
-                        if (empty($channelInfo[$EntryDetails["channel_id"]])) {
-                            $channelInfo[$EntryDetails["channel_id"]] = $this->EE->api_channel_structure->get_channel_info($EntryDetails["channel_id"])->result();
-                            $channelInfo[$EntryDetails["channel_id"]] = $channelInfo[$EntryDetails["channel_id"]][0];
-                        }
-//echo "<pre>";var_dump($channelInfo[$EntryDetails["channel_id"]]);echo "</pre>";
-
-                        foreach($this->fieldtypes as $fieldtypeName => $fieldtype) {
-                            //###   Loop through all third_party Fieldtypes   ###
-
-                            foreach($fieldtype as $name => $fieldDetails) {
-                                if (strpos($output, '{'.$name) !== FALSE) {
-                                    $fieldSettings = array(
-                                        "row" => array_merge($EntryDetails, (array) $channelInfo[$EntryDetails["channel_id"]]),
-                                        "field_id" => $fieldDetails['field_id'],
-                                        "field_type" => $fieldDetails['field_type'],
-                                        "field_name" => $name,
-                                        "entry_id" => $entry_id);
-
-                                    if (isset($allFieldSettings["field_id_".$fieldDetails['field_id']]["field_settings"]))
-                                        $fieldSettings["settings"] = array_merge($EntryDetails, (array) $channelInfo[$EntryDetails["channel_id"]], unserialize(base64_decode( $allFieldSettings["field_id_".$fieldDetails['field_id']]["field_settings"] )) );
-                                    else
-                                        $fieldSettings["settings"] = array_merge($EntryDetails, (array) $channelInfo[$EntryDetails["channel_id"]]);
-
-
-
-                                    $this->EE->api_channel_fields->setup_handler($fieldtypeName);
-                                    $datatest = $this->EE->api_channel_fields->apply('pre_process', array($fieldDetails['field_id']));
-                                    $this->EE->api_channel_fields->apply('_init', array($fieldSettings));
-
-                                    //###   Specific Fieldtype tags   ###
-                                    if ($fieldDetails['field_type'] == "matrix") {
-                                        $matrixRows = $this->EE->api_channel_fields->apply('replace_total_rows', array("", array(), $output));
-                                        $output = preg_replace("/\{$name:total_rows\}/s", $matrixRows, $output);
-                                    }
-
-                                    //###   Call Fieldtype parser   ###
-                                    $output = preg_replace_callback("/\{({$name}(\s+.*?)?)\}(.*?)\{\/{$name}\}/s", array(&$this, 'parse_fieldtype'), $output);
-                                }
-                            }//###   End of foreach   ###
-                        }//###   End of foreach   ###
-                    }
+						//###   Legacy Matrix required third parameter (from v2.1.4 or thereabouts it doesn't)   ###
+						$output = $Matrix->channel_entries_tagdata($output, array("entry_id" => $entry_id, "entry_site_id" => $site_id), $EntryDetails[0]["channel_name"]);
+					}
 
 					//###   Loop through all the pair variables from template   ###
 					foreach ($this->EE->TMPL->var_pair as $key => $val) {
@@ -570,71 +354,47 @@ class Structure_entries {
 
 							//###   Loop through each pair   ###
 							for ($pairLoop = 0; $pairLoop < $totalPairs; $pairLoop++) {
-                                                        $pairOutput = "";
+								$pairOutput = "";
 
-                                                        if ($children == 0 || $depth == $depthCount) {
-                                                            //###   This entry has no Children - so lowest depth (only time closing markup will be output)   ###
+								if ($children == 0 || $depth == $depthCount) {
+									//###   This entry has no Children - so lowest depth (only time closing markup will be output)   ###
 
-                                                            //###   Set the initial LookupID to this entry   ###
-                                                            $lookupID = $entry_id;
+									//###   Set the LookupID to this entry   ###
+									$lookupID = $entry_id;
 
-                                                            //###   Loop through all ancestory for current entry   ###
-                                                            for ($depthLoop = $depthCount; $depthLoop > ($matchParent?0:1); $depthLoop--) {
-                                                                if (isset($structureArray[$lookupID])) {
-                                                                    //###   Replace variables and generate tag pair content   ###
-                                                                    $buildOutput = str_replace(LD."depth".RD, $depthLoop, $pairMatch[1][$pairLoop]);
-                                                                    $buildOutput = str_replace(LD."restricted_depth".RD, $depth, $buildOutput);
-                                                                    $buildOutput = str_replace(LD."parent_id".RD, $structureArray[$lookupID]['parentID'], $buildOutput);
-                                                                    $buildOutput = str_replace(LD."sibling_total".RD, $structureArray[$lookupID]['siblings'], $buildOutput);
-                                                                    $buildOutput = str_replace(LD."siblings_total".RD, $structureArray[$lookupID]['siblings'], $buildOutput);
-                                                                    $buildOutput = str_replace(LD."total_siblings".RD, $structureArray[$lookupID]['siblings'], $buildOutput);
-                                                                    $buildOutput = str_replace(LD."total_sibling".RD, $structureArray[$lookupID]['siblings'], $buildOutput);
-                                                                    $buildOutput = str_replace(LD."children_total".RD, $structureArray[$lookupID]['children'], $buildOutput);
-                                                                    $buildOutput = str_replace(LD."total_children".RD, $structureArray[$lookupID]['children'], $buildOutput);
-                                                                    $buildOutput = str_replace(LD."nav".RD, $structureArray[$lookupID]['nav'], $buildOutput);
-                                                                    $buildOutput = str_replace(LD."page_url".RD, $structureArray[$lookupID]['slug'], $buildOutput);
-                                                                    $buildOutput = str_replace(LD."sibling_count".RD, $structureArray[$lookupID]['sibling_count'], $buildOutput);
-                                                                    if ($structureArray[$lookupID]['sibling_count'] == $structureArray[$lookupID]['siblings']) {
-                                                                        $buildOutput = str_replace(LD."last_sibling".RD, "1", $buildOutput);
-                                                                    } else {
-                                                                            $buildOutput = str_replace(LD."last_sibling".RD, "0", $buildOutput);
-                                                                    }
+									//###   Loop through all ancestory for current entry   ###
+									for ($depthLoop = $depthCount; $depthLoop > ($matchParent?0:1); $depthLoop--) {
+										//###   Replace variables and generate tag pair content   ###
+										$buildOutput = str_replace(LD."depth".RD, $depthLoop, $pairMatch[1][$pairLoop]);
+										$buildOutput = str_replace(LD."restricted_depth".RD, $depth, $buildOutput);
+										$buildOutput = str_replace(LD."parent_id".RD, $structureArray[$lookupID]['parentID'], $buildOutput);
+										$buildOutput = str_replace(LD."sibling_total".RD, $structureArray[$lookupID]['siblings'], $buildOutput);
+										$buildOutput = str_replace(LD."siblings_total".RD, $structureArray[$lookupID]['siblings'], $buildOutput);
+										$buildOutput = str_replace(LD."total_siblings".RD, $structureArray[$lookupID]['siblings'], $buildOutput);
+										$buildOutput = str_replace(LD."total_sibling".RD, $structureArray[$lookupID]['siblings'], $buildOutput);
+										$buildOutput = str_replace(LD."children_total".RD, $structureArray[$lookupID]['children'], $buildOutput);
+										$buildOutput = str_replace(LD."total_children".RD, $structureArray[$lookupID]['children'], $buildOutput);
+										$buildOutput = str_replace(LD."page_url".RD, $structureArray[$lookupID]['slug'], $buildOutput);
+										$buildOutput = str_replace(LD."sibling_count".RD, $structureArray[$lookupID]['sibling_count'], $buildOutput);
+										//if ($structureArray[$lookupID]['sibling_count'] == $structureArray[$lookupID]['siblings'])
+										if ($structureArray[$lookupID]['sibling_count'] == $structureArray[$structureArray[$lookupID]['parentID']]['siblings'])
+											$buildOutput = str_replace(LD."last_sibling".RD, "1", $buildOutput);
+//										else
+//											$buildOutput = str_replace(LD."last_sibling".RD, "1", $buildOutput);
 
-                                                                    $parentURL = explode("/", rtrim($entryURL, "/"));
-                                                                    array_splice($parentURL, -1, $depthCount - $depthLoop);
-                                                                    $pageURL = implode("/", $parentURL);
-                                                                    array_pop($parentURL);
-                                                                    $parentURL = implode("/", $parentURL);
-                                                                    $parentActive = 0;
-                                                                    if (!empty($parentURL) && $parentURL != $compareIndex) {
-                                                                        if (strpos($compareIndex ."/". $this->EE->uri->uri_string(), $parentURL) !== false && $entryURL !== $compareIndex ."/". $this->EE->uri->uri_string() && $entryURL !== "/")
-                                                                            $parentActive = 1;
-                                                                    }
-                                                                    $buildOutput = str_replace(LD."page_uri".RD, $pageURL, $buildOutput);
-                                                                    $buildOutput = str_replace(LD."parent_uri".RD, $parentURL, $buildOutput);
-                                                                    $buildOutput = str_replace(LD."parent_active".RD, $parentActive, $buildOutput);
+										$pairOutput .= $buildOutput;
 
-                                                                    $pairOutput .= $buildOutput;
+										$lookupID = $structureArray[$lookupID]['parentID'];
+									} //###   End of for loop
 
-                                                                    if ($structureArray[$lookupID]['sibling_count'] < $structureArray[$lookupID]['siblings'])
-                                                                        break;
-
-                                        //###   change the LookupID to this entry   ###
-                                                                    $lookupID = $structureArray[$lookupID]['parentID'];
-
-                                                                } else {
-                                                                    break;
-                                                                }
-                                                            } //###   End of for loop
-
-//                                                          } else {
-//								$output = preg_replace( "/".LD.$key."(.*?)".$key.RD."/s", "", $output);
-                                                        }
+//								} else {
+//									$output = preg_replace( "/".LD.$key."(.*?)".$key.RD."/s", "", $output);
+								}
 
 								$output = str_replace( $pairMatch[0][$pairLoop], $pairOutput, $output );
 							} //###   End of for loop
 						}
-
+						
 					} //###   End of foreach ($this->EE->TMPL->var_pair)
 
 					//###   Debug Output   ###
@@ -647,7 +407,7 @@ class Structure_entries {
 							$output = $this->EE->TMPL->swap_var_single($fieldName, $entryURL, $output);
 
 						} else if ($fieldName == "channel" || $fieldName == "channel_title") {
-							$output = $this->EE->TMPL->swap_var_single($fieldName, $EntryDetails["channel_name"], $output);
+							$output = $this->EE->TMPL->swap_var_single($fieldName, $EntryDetails[0]["channel_name"], $output);
 
 						} else if ($fieldName == "depth") {
 							$output = $this->EE->TMPL->swap_var_single($fieldName, $depthCount, $output);
@@ -666,8 +426,6 @@ class Structure_entries {
 
 						} else if ($fieldName == "sibling_count") {
 							$output = $this->EE->TMPL->swap_var_single($fieldName, $siblingCounter[$thisParentID], $output);
-						} else if ($fieldName == "nav") {
-							$output = $this->EE->TMPL->swap_var_single($fieldName, $structureArray[$entry_id]['nav'], $output);
 
 						} else if ($fieldName == "last_sibling" || $fieldName == "last_child") {
 							if ($siblingCounter[$thisParentID] == $siblings)
@@ -690,12 +448,12 @@ class Structure_entries {
 							}
 							$output = $this->EE->TMPL->swap_var_single($fieldName, $switchOption, $output);
 
-						} else if (isset($EntryDetails[$fieldName])) {
+						} else if (isset($EntryDetails[0][$fieldName])) {
 							//###   Replace any built-in EE fields   ###
 							if ($convertHTML)
-								$newContent = htmlentities($EntryDetails[$fieldName], ENT_QUOTES, "UTF-8");
+								$newContent = htmlentities($EntryDetails[0][$fieldName], ENT_QUOTES, "UTF-8");
 							else
-								$newContent = $EntryDetails[$fieldName];
+								$newContent = $EntryDetails[0][$fieldName];
 //							$output = $this->EE->TMPL->swap_var_single($fieldName, $newContent, $output);
 							$output = $this->EE->TMPL->parse_variables_row($output, array($fieldName => $newContent));
 //TO DO: Parse variables correctly with EE, including format parameter
@@ -709,9 +467,9 @@ class Structure_entries {
 							//###   Find Field Reference   ###
 							if ($field['field_name'] === $fieldName) {
 								if ($convertHTML)
-									$newContent = htmlentities($EntryDetails["field_id_".$field['field_id']], ENT_QUOTES, "UTF-8");
+									$newContent = htmlentities($EntryDetails[0]["field_id_".$field['field_id']], ENT_QUOTES, "UTF-8");
 								else
-									$newContent = $EntryDetails["field_id_".$field['field_id']];
+									$newContent = $EntryDetails[0]["field_id_".$field['field_id']];
 								$output = $this->EE->TMPL->swap_var_single($fieldName, $newContent, $output);
 								break;
 							}
@@ -722,10 +480,10 @@ class Structure_entries {
 //###   Debug Output   ###
 $this->EE->TMPL->log_item("structure_entries: current_parent variable: Actual URL=".$compareIndex ."/".$this->EE->uri->uri_string()." Structure page_uri=".$entryURL);
 
-                                                    if (strpos($compareIndex ."/".$this->EE->uri->uri_string(), $entryURL) !== false && $entryURL !== $compareIndex ."/". $this->EE->uri->uri_string() && $entryURL !== $compareIndex && $entryURL !== "/")
-                                                        $output = $this->EE->TMPL->swap_var_single($fieldName, 1, $output);
-                                                    else
-                                                        $output = $this->EE->TMPL->swap_var_single($fieldName, 0, $output);
+							if (strpos($compareIndex ."/".$this->EE->uri->uri_string(), $entryURL) !== false && $entryURL !== $compareIndex ."/". $this->EE->uri->uri_string() && $entryURL !== $compareIndex && $entryURL !== "/")
+								$output = $this->EE->TMPL->swap_var_single($fieldName, 1, $output);
+							else
+								$output = $this->EE->TMPL->swap_var_single($fieldName, 0, $output);
 						}
 						if ($fieldName == "parent_active") {
 //echo "#".$compareIndex . $this->EE->uri->uri_string() ." ~ ". $entryURL."#<br />";
@@ -756,9 +514,9 @@ $this->EE->TMPL->log_item("structure_entries: current_page variable: Actual URL=
 							if ($slug == $Structure->page_slug() && $this->EE->uri->segment(2) === FALSE) {
 								//###   Page URL (Slug) is identical, and at root level in URL (no segment 2)   ###
 								$output = $this->EE->TMPL->swap_var_single($fieldName, 1, $output);
-							} else if ($siteIndex."/".$this->EE->uri->uri_string()."/" == $entryURL || $siteIndex."/".$this->EE->uri->uri_string() == $entryURL) {
-                                                            //###   Full URL match   ###
-                                                            $output = $this->EE->TMPL->swap_var_single($fieldName, 1, $output);
+							} else if ($siteIndex."/".$this->EE->uri->uri_string()."/" == $entryURL) {
+								//###   Full URL match   ###
+								$output = $this->EE->TMPL->swap_var_single($fieldName, 1, $output);
 							} else {
 								$output = $this->EE->TMPL->swap_var_single($fieldName, 0, $output);
 							}
@@ -800,7 +558,7 @@ $this->EE->TMPL->log_item("structure_entries: current_page variable: Actual URL=
 							if($sqlCatLookup->num_rows() > 0) {
 								//###   Get list of categories   ###
 								$sql = "SELECT * FROM exp_categories
-										 WHERE site_id = $this->site_id
+										 WHERE site_id = $site_id
 										   AND cat_id = ".$catLookup[0]['cat_id']."
 										 LIMIT 1";
 								$sqlCategories = $this->EE->db->query($sql);
@@ -832,51 +590,31 @@ $this->EE->TMPL->log_item("structure_entries: current_page variable: Actual URL=
 						if ($limit != 0 && $limit <= $matchCounter)
 							break;
 
+
 				} //###   End of $match IF
+
+ 
 			}
-		} //###   End of foreach ($structureData->result)
+		} //###   End of foreach ($sqlStructure->result)
 
+		//###   Parse directory variables   ###
+		$output = $this->EE->typography->parse_file_paths($output);
+
+		//###   Replace all occurances of total_results variable (now we know it's value)
+		$output = str_replace(LD."total_results".RD, $matchCounter, $output);
+
+		//###   If no results, need to get any no_results conditional   ###
 		if ($matchCounter == 0) {
-            //###   If no results, output no_results conditional   ###
-            $output = $this->EE->TMPL->no_results();
+			$output .= $this->EE->TMPL->tagdata;
 
-        } else {
-            //###   Parse directory variables   ###
-            $output = $this->EE->typography->parse_file_paths($output);
-
-    //TO DO - Parse Structure URLs from StructureFrame fieldtype (page_x) vars
-
-            //###   Replace all occurances of total_results variable (now we know it's value)
-            $output = str_replace(LD."total_results".RD, $matchCounter, $output);
+			$output = str_replace(LD."no_results".RD, 1, $output);
+		} else {
+			$output = str_replace(LD."no_results".RD, 0, $output);
 		}
-
-        if ($this->cache_name && $this->refresh_cache) {
-            //if cache_name and refresh_cache are set lets write the output
-            if ($this->cache_name && $this->refresh_cache) {
-                $cache_arr = array($output);
-                $this->write_cache($this->cache_name, $cache_arr);
-            }
-        }
 
 		$this->return_data = $output;
 
 	} //###   End of Structure_entries function
-
-
-
-    function parse_fieldtype($parseTags) {
-		$fieldParams = array();
-        $totalMatches = preg_match_all('/\s+([\w-:]+)\s*=\s*([\'\"])([^\2]*)\2/sU', $parseTags[2], $matchArray);
-		if (isset($parseTags[2]) && $parseTags[2] && $totalMatches) {
-			for ($i = 0; $i < $totalMatches; $i++)
-				$fieldParams[$matchArray[1][$i]] = $matchArray[3][$i];
-		}
-		$fieldParams["entry_site_id"] = $this->site_id;
-
-		$tagdata = isset($parseTags[3]) ? $parseTags[3] : '';
-
-        return $this->EE->api_channel_fields->apply('replace_tag', array("", $fieldParams, $tagdata));
-    }
 
 
 
@@ -923,26 +661,26 @@ $this->EE->TMPL->log_item("structure_entries: current_page variable: Actual URL=
 	//###
 	//###   Added by Peter Lewis - www.peteralewis.com - 12 February 2011
 	//###
-	function get_site_pages() {
+	private function get_site_pages() {
 		//###   Setup the Cache   ###
 		if(!isset($this->EE->session->cache)) $this->EE->session->cache = array();
 		if(!isset($this->EE->session->cache['structure_entries'])) $this->EE->session->cache['structure_entries'] = array();
 
 		//###   Get Site ID for SQL   ###
-		$this->site_id = $this->EE->config->item('site_id');
+		$site_id = $this->EE->config->item('site_id');
 
-		if (isset($this->EE->session->cache['structure_entries']['site_pages'.$this->site_id])) {
-			$site_pages = $this->EE->session->cache['structure_entries']['site_pages'.$this->site_id];
+		if (isset($this->EE->session->cache['structure_entries']['site_pages'.$site_id])) {
+			$site_pages = $this->EE->session->cache['structure_entries']['site_pages'.$site_id];
 		} else {
 			$this->EE->db->select('site_pages');
-			$this->EE->db->where('site_id', $this->site_id);
+			$this->EE->db->where('site_id', $site_id);
 			$query = $this->EE->db->get('sites');
 
 			$site_pages = unserialize(base64_decode($query->row('site_pages')));
-			$site_pages = $site_pages[$this->site_id];
+			$site_pages = $site_pages[$site_id];
 
 			//###   Save result to page-load Session   ###
-			$this->EE->session->cache['structure_entries']['site_pages'.$this->site_id] = $site_pages;
+			$this->EE->session->cache['structure_entries']['site_pages'.$site_id] = $site_pages;
 
 			if (empty($site_pages)) {
 				//###   Debug Output   ###
@@ -973,21 +711,16 @@ $this->EE->TMPL->log_item("structure_entries: current_page variable: Actual URL=
 	//###
 	//###   Added by Peter Lewis - www.peteralewis.com - 12 February 2011
 	//###
-	function get_structure_data($dbListingTable = false) {
+	private function get_structure_data() {
 		//###   Setup the Cache   ###
 		if(!isset($this->EE->session->cache)) $this->EE->session->cache = array();
 		if(!isset($this->EE->session->cache['structure_entries'])) $this->EE->session->cache['structure_entries'] = array();
 
 		//###   Get Site ID for SQL   ###
-		$this->site_id = $this->EE->config->item('site_id');
+		$site_id = $this->EE->config->item('site_id');
 
-		if ($dbListingTable)
-			$dbTable = "exp_structure_listings";
-		else
-			$dbTable = "exp_structure";
-
-//		if (isset($this->EE->session->cache['structure_entries']['structure_data'.$this->site_id])) {
-//			$structureData = $this->EE->session->cache['structure_entries']['structure_data'.$this->site_id];
+//		if (isset($this->EE->session->cache['structure_entries']['structure_data'.$site_id])) {
+//			$sqlStructure = $this->EE->session->cache['structure_entries']['structure_data'.$site_id];
 
 //		} else {
 			//###   Check if Status is restricted   ###
@@ -1006,127 +739,26 @@ $this->EE->TMPL->log_item("structure_entries: current_page variable: Actual URL=
 			$sql = "SELECT node.*,
 						   expt.title,
 						   expt.status
-					  FROM $dbTable AS node
+					  FROM exp_structure AS node
 				INNER JOIN exp_channel_titles AS expt
 						ON node.entry_id = expt.entry_id
-					 WHERE node.site_id = $this->site_id
-						   $statusSQL
-				  GROUP BY node.entry_id";
-			if (!$dbListingTable)
-				$sql .= " ORDER BY node.lft";
-
-			$structureData = $this->EE->db->query($sql);
-			if($structureData->num_rows() < 0) {
+					 WHERE node.site_id = $site_id
+						   ".$statusSQL."
+				  GROUP BY node.entry_id
+				  ORDER BY node.lft";
+			$sqlStructure = $this->EE->db->query($sql);
+			if($sqlStructure->num_rows() < 0) {
 				//###   Debug Output   ###
 				$this->EE->TMPL->log_item("structure_entries: No Structure data was returned - check Structure is installed correctly");
 				return false;
 			}
-
+			
 			//###   Save result to page-load Session   ###
-//			$this->EE->session->cache['structure_entries']['structure_data'.$this->site_id] = $structureData;
+//			$this->EE->session->cache['structure_entries']['structure_data'.$site_id] = $sqlStructure;
 //		}
 
-		return $structureData;
+		return $sqlStructure;
 	} //###   End of get_structure_data function
-
-
-
-        /*
-	 * Function to get basic page details for everything in the Structure database to reduce queries later on
-	 * Added By: Ryan Blenis - 4 Apr 2012.
-	 */
-	function get_quick_data($catID, $restrictStatus) {
-		$site_id = $this->EE->config->item('site_id');
-		//###   Check Status - default is not closed   ###
-		$statusSQL = "";
-		if ( ! empty($restrictStatus) )
-		{
-			if (strpos($restrictStatus, '|') !== FALSE)
-			{
-				$statusSQL = "AND expt.status IN ('".implode("', '", explode('|', $restrictStatus))."') ";
-			}
-			else
-			{
-				$statusSQL = "AND expt.status = '$restrictStatus' ";
-			}
-		}
-		else
-			$statusSQL = "AND expt.status != 'closed'";
-
-		$and_weblog_sql 	= '';
-		$select_weblog_sql 	= '';
-		$join_weblog_sql	= '';
-
-		if (!empty($catID)) {
-                    $join_weblog_sql .= 'LEFT JOIN exp_category_posts AS catp
-                                                ON catp.entry_id = expt.entry_id';
-                    $select_weblog_sql .= ', GROUP_CONCAT(DISTINCT(catp.cat_id)) as cgroup';
-                }
-
-		$other_where = $other_join = '';
-		$struc_data_sql = "SELECT node.*, (COUNT(parent.entry_id) - 1) AS depth, GROUP_CONCAT(parent.entry_id ORDER BY parent.lft) as pgroup, expt.title, expt.status, cdata.channel_name
-				".$select_weblog_sql."
-				FROM exp_structure AS node
-				INNER JOIN exp_structure AS parent
-					ON node.lft BETWEEN parent.lft AND parent.rgt
-				INNER JOIN exp_channel_titles AS expt
-					ON node.entry_id = expt.entry_id
-				INNER JOIN exp_channels cdata ON expt.channel_id = cdata.channel_id
-				".$join_weblog_sql."
-				".$other_join."
-				WHERE parent.lft > 1
-				AND node.site_id = ".$site_id."
-				AND parent.site_id = ".$site_id."
-				".$statusSQL."
-				".$and_weblog_sql."
-				".$other_where."
-				GROUP BY node.entry_id
-				ORDER BY node.lft";
-				//if (isset($_GET['x'])) echo $struc_data_sql;
-		$struc_data_res = $this->EE->db->query($struc_data_sql);
-		$struc_data = array();
-		foreach ($struc_data_res->result_array() as $sdata)
-		{
-			$struc_data[$sdata['entry_id']] = $sdata;
-			if (!isset($struc_data[$sdata['entry_id']]['children']))
-				$struc_data[$sdata['entry_id']]['children'] = array();
-
-			$struc_data[$sdata['parent_id']]['children'][] = $sdata['entry_id'];
-
-		}
-		unset($struc_data_res);
-
-                if (empty($struc_data))
-                    $struct_data = array();
-
-//		$this->EE->session->cache['structure']['struc_data'] = $struc_data;
-		return $struc_data;
-	}
-
-
-	function get_fieldtypes() {
-	    //$this->EE->load->library('api');
-            //$this->EE->api->instantiate('channel_fields');
-            $installedFieldtypes = $this->EE->api_channel_fields->fetch_installed_fieldtypes();
-
-            $this->EE->db->select('field_id, field_type, field_name, field_settings');
-            $this->EE->db->where('site_id', $this->site_id);
-            $query = $this->EE->db->get('channel_fields');
-            $fields = $query->result_array();
-
-            foreach ($fields as $key => &$field) {
-                if ($field['field_type'] != "select" || $field['field_type'] != "text" || $field['field_type'] != "textarea" || $field['field_type'] != "date" || $field['field_type'] != "file" || $field['field_type'] != "multi_select" || $field['field_type'] != "checkboxes" || $field['field_type'] != "radio" || $field['field_type'] != "rel") {
-                    $field['field_settings'] = unserialize(base64_decode($field['field_settings']));
-                    if (array_key_exists($field['field_type'], $installedFieldtypes))
-                        $this->fieldtypes[$field['field_type']][$field['field_name']] = $field;
-                }
-            }
-
-            return $fields;
-	} //###   End of get_fieldtypes function
-
-
-
 
 
 	//###   Function to get the details for the next page - tag pair or single tag
@@ -1154,7 +786,7 @@ $this->EE->TMPL->log_item("structure_entries: current_page variable: Actual URL=
 	//###
 	//###   Added by Peter Lewis - www.peteralewis.com - 23 February 2011
 	//###
-	function getClosestPage($entry_id = 0, $direction) {
+	private function getClosestPage($entry_id = 0, $direction) {
 		//###   Get EE Super Global   ###
 		$this->EE =& get_instance();
 
@@ -1162,7 +794,7 @@ $this->EE->TMPL->log_item("structure_entries: current_page variable: Actual URL=
 		$Structure = new Structure();	//###   Structure Class   ###
 
 		//###   Get Site ID for SQL   ###
-		$this->site_id = $this->EE->config->item('site_id');
+		$site_id = $this->EE->config->item('site_id');
 
 		$output = '';
 
@@ -1185,18 +817,12 @@ $this->EE->TMPL->log_item("structure_entries: current_page variable: Actual URL=
 		$param = $this->EE->TMPL->fetch_param('status');
 		$param = $this->EE->db->escape_str($param);
 		$restrictStatus = $this->EE->security->xss_clean($param);
-
+		
 		//###   Convert html entities?   ###
 		$convertHTML = false;
 		if( $param = $this->EE->TMPL->fetch_param('convert_html') )
 			if (strtolower($param) === "true" || strtolower($param) === "t" || strtolower($param) === "yes" || strtolower($param) === "y" || strtolower($param) === "1")
 				$convertHTML = true;
-
-		//###   Pagination of Listing entries rather than Page entries   ###
-		$listingEntries = false;
-		if( $param = $this->EE->TMPL->fetch_param('listing') )
-			if (strtolower($param) === "true" || strtolower($param) === "t" || strtolower($param) === "yes" || strtolower($param) === "y" || strtolower($param) === "1")
-				$listingEntries = true;
 
 		$param = $this->EE->TMPL->fetch_param('page_uri');
 		$param = $this->EE->db->escape_str($param);
@@ -1218,18 +844,18 @@ $this->EE->TMPL->log_item("structure_entries: current_page variable: Actual URL=
 
 		if (empty($currentPageURI)) {
 			//###   Debug Output   ###
-			$this->EE->TMPL->log_item("structure_entries (Next/Previous): No page specified and no URI found?!?: Actual URL=".$actualURI);
+			$this->EE->TMPL->log_item("structure_entries (Next): No page specified and no URI found?!?: Actual URL=".$actualURI);
 			return;
 		}
 
-		$structureData = $this->get_structure_data($listingEntries);
+		$sqlStructure = $this->get_structure_data();
 
 		$foundMatch = false;
 
 		//###   Debug Output   ###
-		$this->EE->TMPL->log_item("structure_entries (Next/Previous): Starting main loop through entries. Total rows from DB=".$structureData->num_rows() );
+		$this->EE->TMPL->log_item("structure_entries (Next): Starting main loop through entries. Total rows from DB=".$sqlStructure->num_rows() );
 
-		foreach ($structureData->result_array() as $structureField) {
+		foreach ($sqlStructure->result_array() as $structureField) {
 			$entry_id = $structureField['entry_id'];
 			$status = $structureField['status'];
 			$entryURL = $siteIndex . $site_pages['uris'][$entry_id];
@@ -1257,7 +883,6 @@ $this->EE->TMPL->log_item("structure_entries: current_page variable: Actual URL=
 					$this->EE->session->cache['structure_entries']['entryData'.$entry_id] = $sqlEntryResult;
 				}
 				$EntryDetails = $sqlEntryResult->result_array();
-				$EntryDetails = $EntryDetails[0];
 
 
 				//###   Debug Output   ###
@@ -1314,12 +939,12 @@ $this->EE->TMPL->log_item("structure_entries: current_page variable: Actual URL=
 							//###   This is the individual segment URL (not the full URL)
 							$output = $this->EE->TMPL->swap_var_single($fieldName, $Structure->page_slug($entry_id), $output);
 
-						} else if (isset($EntryDetails[$fieldName])) {
+						} else if (isset($EntryDetails[0][$fieldName])) {
 							//###   Replace any built-in EE fields   ###
 							if ($convertHTML)
-								$newContent = htmlentities($EntryDetails[$fieldName], ENT_QUOTES, "UTF-8");
+								$newContent = htmlentities($EntryDetails[0][$fieldName], ENT_QUOTES, "UTF-8");
 							else
-								$newContent = $EntryDetails[$fieldName];
+								$newContent = $EntryDetails[0][$fieldName];
 							$output = $this->EE->TMPL->swap_var_single($fieldName, $newContent, $output);
 						}
 					} //###   End of foreach
@@ -1332,10 +957,10 @@ $this->EE->TMPL->log_item("structure_entries: current_page variable: Actual URL=
 				}
 			} //###   End of Status conditional
 
-			$previousPageData = $EntryDetails;
+			$previousPageData = $EntryDetails[0];
 			$previousPageData["entryURL"] = $entryURL;
 			$previousPageData["page_slug"] = $Structure->page_slug($entry_id);
-		} //###   End of foreach ($structureData->result)
+		} //###   End of foreach ($sqlStructure->result)
 
 	} //###   End of getClosestPage function
 
@@ -1350,7 +975,7 @@ $this->EE->TMPL->log_item("structure_entries: current_page variable: Actual URL=
 
 		if (empty($entry_id))
 			return;
-
+		
 		//###   Setup the Cache   ###
 		if(!isset($this->EE->session->cache)) $this->EE->session->cache = array();
 		if(!isset($this->EE->session->cache['structure_entries'])) $this->EE->session->cache['structure_entries'] = array();
@@ -1363,9 +988,9 @@ $this->EE->TMPL->log_item("structure_entries: current_page variable: Actual URL=
 				FROM exp_structure
 				WHERE entry_id = $entry_id
 				LIMIT 1";
-		$structureDataParent = $this->EE->db->query($sql);
-		if($structureDataParent->num_rows() > 0) {
-			$ParentArray = $structureDataParent->result_array();
+		$sqlStructureParent = $this->EE->db->query($sql);
+		if($sqlStructureParent->num_rows() > 0) {
+			$ParentArray = $sqlStructureParent->result_array();
 			$parentID = $ParentArray[0]['parent_id'];
 
 			//###   Cache Entry's parent for later use
@@ -1377,7 +1002,7 @@ $this->EE->TMPL->log_item("structure_entries: current_page variable: Actual URL=
 		return $parentID;
 	} //###   End of GET_PARENT function
 
-
+	
 	//###
 	//###   Internal function to check if the given entry_id is within the specified category
 	//###	Returns: true or false
@@ -1386,187 +1011,26 @@ $this->EE->TMPL->log_item("structure_entries: current_page variable: Actual URL=
 	//###
 	function within_category($entry_id, $catID) {
 
-            $match = false;
-            if (isset($this->EE->session->cache['structure_entries']['catLookup'.$entry_id])) {
-                $catLookup = $this->EE->session->cache['structure_entries']['catLookup'.$entry_id];
-            } else {
-                $sql = "SELECT cat_id
-                                  FROM exp_category_posts
-                                 WHERE entry_id = $entry_id";
-                $catLookup = $this->EE->db->query($sql);
-                $this->EE->session->cache['structure_entries']['catLookup'.$entry_id] = $catLookup;
-            }
-
-            foreach ($catLookup->result_array() as $category) {
-                if ($category['cat_id'] == $catID) {
-                    $match = true;
-                    break;
-                }
-            }
-
-            return $match;
-	} //###   End of WITHIN_CATEGORY function
-
-
-
-	/**
-	 * Check Cache
-	 *
-	 * Check to see if cache data exists
-	 *
-	 * @access	public
-	 * @param       string
-	 * @return	boolean - string if pulling from cache, false if not
-	 */
-	function check_cache($type){
-/*            //check for cache directory
-            $dir = APPPATH.'cache/'.$this->cache_folder.'/';
-
-            if (!@is_dir($dir))
-                return FALSE;}
-
-            // Check for existance of cache file and if we can open it
-            $file = $dir.md5($this->site_id . $this->page_uri . $type);
-            if ( !file_exists($file) OR !($fp = @fopen($file, 'rb')))
-                return FALSE;
-
-            //get file contents
-            flock($fp, LOCK_SH);
-            $cache = @fread($fp, filesize($file));
-            flock($fp, LOCK_UN);
-            fclose($fp);
-
-            //Grab the timestamp from the first line and get real cache contents
-            $eol = strpos($cache, "\n");
-            $timestamp = substr($cache, 0, $eol);
-            $cache = trim((substr($cache, $eol)));
-
-            if ( time() > ($timestamp + ($this->refresh_cache * 60)) ) {
-                $this->cache_expired = TRUE;
-                return FALSE;
-            }
-
-            if ($real_data = unserialize($cache)) {
-                return $real_data;
-            } else {
-                return $cache;
-            } */
-	}
-
-
-	/**
-	 * Write Cache
-	 *
-	 * Write the cached data
-	 *
-	 * @access	public
-	 * @param string
-	 * @param	string
-	 * @return	boolean - true if writing cache was successful, false if not
-	 */
-	function write_cache($type, $data) {
-            //Check for cache directory
-/*            $dir = APPPATH.'cache/'.$this->cache_folder.'/';
-
-            //check for directory, if doesn't exist make one
-            if (!@is_dir($dir)) {
-                if (!@mkdir($dir, 0777)) {
-                    return FALSE;
-                }
-                @chmod($dir, 0777);
-            }
-
-            //serialize data
-            if (is_array($data) || is_object($data)) {
-                $data = serialize($data);
-            }
-
-            //add a timestamp to the top of the file
-            $data = time()."\n".$data;
-
-            //file name we are writing to
-            $file = $dir.md5($this->site_id . $this->page_uri . $type);
-
-            //attempt to open cache file
-            if (!$fp = @fopen($file, 'wb')) {
-                return FALSE;
-            }
-
-            //write to the file
-            flock($fp, LOCK_EX);
-            fwrite($fp, $data);
-            flock($fp, LOCK_UN);
-            fclose($fp);
-
-            @chmod($file, 0777);
-
-            return TRUE; */
-	}
-
-
-        function check_custom_vars() {
-            // "Safe" tags we won't need to parse custom fields for. -RB
-            $defaultVars = array(
-		'close_markup',
-		'depth',
-		'restricted_depth',
-		'parent_id',
-		'sibling_total',
-		'siblings_total',
-		'total_siblings',
-		'total_sibling',
-		'children_total',
-		'total_children',
-		'page_url',
-		'sibling_count',
-		'last_sibling',
-		'page_uri',
-		'channel',
-		'channel_title',
-		'count',
-		'counter',
-		'last_child',
-		'title',
-		'entry_id'
-            );
-
-            //###   Loop through the template looking for vars   ###
-            foreach ($this->EE->TMPL->var_single as $key => $fieldName) {
-                if (!in_array($key, $defaultVars)) {
-                    //###   Check for segment variables   ###
-                    if (strpos($key, 'segment_') === FALSE) {
-                        $this->EE->TMPL->log_item("structure_entries: full query required based on the presence of ".$key);
-                        return TRUE;
-                    }
-                }
-            }
-
-            return FALSE;
-        }
-
-
-	function check_boolean($var = false, $check = true) {
-		$returnVal = false;
-
-		if ($check !== false)
-			$check = true;
-
-		if (empty($var)) {
-			//###   No variable has been passed or is empty, so will return default (false), unless checking for false   ###
-			if (!$check)
-				$returnVal = true;
-
+		$match = false;
+		if (isset($this->EE->session->cache['structure_entries']['catLookup'.$entry_id])) {
+			$catLookup = $this->EE->session->cache['structure_entries']['catLookup'.$entry_id];
 		} else {
-			if ($check)
-				if (strtolower($var) === "true" || strtolower($var) === "t" || strtolower($var) === "yes" || strtolower($var) === "y" || $var === "1")
-					$returnVal = true;
-			else
-				if (strtolower($var) === "false" || strtolower($var) === "f" || strtolower($var) === "no" || strtolower($var) === "n" || $var === "0")
-					$returnVal = true;
+			$sql = "SELECT cat_id
+					  FROM exp_category_posts
+					 WHERE entry_id = $entry_id";
+			$catLookup = $this->EE->db->query($sql);
+			$this->EE->session->cache['structure_entries']['catLookup'.$entry_id] = $catLookup;
 		}
 
-		return $returnVal;
-	} //###   End of check_boolean function
+		foreach ($catLookup->result_array() as $category) {
+			if ($category['cat_id'] == $catID) {
+				$match = true;
+				break;
+			}
+		}
+
+		return $match;
+	} //###   End of WITHIN_CATEGORY function
 
 
 // ----------------------------------------
@@ -1671,26 +1135,33 @@ Example 2:
 This displays pages 2 levels deep with custom markup based on a category.
 
 Example 3:
-<ul><!-- Structure Entries Start -->
-    {exp:structure_entries}
-    	{if no_results}No Structure{/if}
-        {if {depth} > 1 && {sibling_count} == 1}{!-- Children & First child --}
-            <ul class="level{depth}">
-        {/if}
-                <li{if {current_parent}} class="current"{/if}{if {current_page}} class="active"{/if}>
-                    <a href="{page_uri}">{title} Depth={depth} Parent={parent_id}</a>
+<ul>
+{exp:structure_entries}
+{if {depth} == 1}{!-- Top Level --}
+	<li {if {current_parent}}class="current"{/if}{if {current_page}}class="active"{/if}>
+		<a href="{page_uri}">{title} Depth={depth} Parent={parent_id}</a>
+  {if {children_total} == 0}{!-- No Children - so close markup --}
+	</li>
+  {/if}
 
-        {close_markup}
-            {if {total_children} == 0 || {depth} == {restricted_depth}}
-                </li>
-            {/if}
-            {if {last_sibling} && {sibling_count} == {sibling_total}}
-                    </ul><!-- End of level{depth} -->
-                </li>
-            {/if}
-        {/close_markup}
-    {/exp:structure_entries}
-</ul><!-- Structure Entries End -->
+{if:else}{!-- Children (not top level) --}
+  {if {sibling_count} == 1}{!-- First child - so open markup --}
+		<ul class="level{depth}">
+  {/if}
+			<li {if {current_parent}}class="current"{/if}{if {current_page}}class="active"{/if}>
+				<a href="{page_uri}">{title} Depth={depth} Parent={parent_id}</a>
+  {close_markup}
+    {if {total_children} == 0 || {depth} == {restricted_depth}}
+                    </li>
+    {/if}
+    {if {last_sibling} && {sibling_count} == {sibling_total}}
+                </ul><!-- End of level{depth} closing tags -->
+        </li>
+    {/if}
+  {/close_markup}
+{/if}
+{/exp:structure_entries}
+</ul>
 
 This will output any level of page depth with correct opening and closing of the list markup
 
@@ -1720,7 +1191,7 @@ Support and more help can be found here: http://www.getsatisfaction.com/twobelow
 
 	<?php
 	$buffer = ob_get_contents();
-
+	
 	ob_end_clean();
 
 	return $buffer;

@@ -8,7 +8,7 @@
  * @copyright	Copyright (c) 2008-2013, Solspace, Inc.
  * @link		http://solspace.com/docs/freeform
  * @license		http://www.solspace.com/license_agreement
- * @version		4.0.12
+ * @version		4.1.2
  * @filesource	freeform/data.freeform.php
  */
 
@@ -39,6 +39,16 @@ class Freeform_data extends Addon_builder_data_freeform
 		'wordwrap'					=> 'y',
 		'allow_html'				=> 'n',
 		'default_fields'			=> array(
+			
+			"checkbox",
+			"checkbox_group",
+			"country_select",
+			"hidden",
+			"multiselect",
+			"province_select",
+			"radio",
+			"select",
+			"state_select",
 			
 			"file_upload",
 			"mailinglist",
@@ -79,15 +89,23 @@ class Freeform_data extends Addon_builder_data_freeform
 
 	//default pref values with type of input
 	public $default_preferences			= array(
-		'default_show_all_site_data' 	=> array('type' => 'y_or_n',	'value' => 'n'),
+		'default_show_all_site_data'	=> array('type' => 'y_or_n',	'value' => 'n'),
 		'use_solspace_mcp_style'		=> array('type' => 'y_or_n',	'value' => 'y'),
 		//'censor_using_ee_word_list' 	=> array('type' => 'y_or_n',	'value' => 'n'),
+
+		'spam_keyword_ban_enabled'		=> array('type' => 'y_or_n',	'value' => 'n'),
+		'spam_keywords'					=> array('type' => 'textarea',	'value' => "viagra\ncialis"),
+		'spam_keyword_ban_message'		=> array('type' => 'text',		'value' => 'invalid entry data'),
+		'form_statuses'					=> array('type' => 'list',		'value' => array()),
 
 		'max_user_recipients'			=> array('type' => 'int',		'value' => 10),
 		'enable_spam_prevention'		=> array('type' => 'y_or_n',	'value' => 'y'),
 		'spam_count'					=> array('type' => 'int',		'value' => 30),
 		'spam_interval'					=> array('type' => 'int',		'value' => 60),
 		//'allow_user_field_layout'		=> array('type' => 'y_or_n',	'value' => 'y'),
+
+		'multi_form_timeout'			=> array('type' => 'int',		'value' => 7200),
+		'keep_unfinished_multi_form'	=> array('type' => 'y_or_n',	'value' => 'n'),
 
 		'cp_date_formatting'			=> array('type' => 'text',		'value' => 'Y-m-d - H:i'),
 		'hook_data_protection'			=> array('type' => 'y_or_n',	'value' => 'y'),
@@ -108,13 +126,13 @@ class Freeform_data extends Addon_builder_data_freeform
 	);
 
 	public $standard_notification_tags	= array(
-		'all_form_fields' 			=> "{all_form_fields}\n\t{field_label}\n\t{field_data}\n{/all_form_fields}",
+		'all_form_fields'			=> "{all_form_fields}\n\t{field_label}\n\t{field_data}\n{/all_form_fields}",
 		'all_form_fields_string'	=> '{all_form_fields_string}',
-		'freeform_entry_id' 		=> '{freeform_entry_id}',
-		'entry_date' 				=> '{entry_date format=&quot;%Y-%m-%d - %H:%i&quot;}',
-		'form_name' 				=> '{form_name}',
-		'attachments' 				=> "{attachments}\n\t{fileurl}\n\t{filename}\n{/attachments}",
-		'attachment_count' 			=> '{attachment_count}'
+		'freeform_entry_id'			=> '{freeform_entry_id}',
+		'entry_date'				=> '{entry_date format=&quot;%Y-%m-%d - %H:%i&quot;}',
+		'form_name'					=> '{form_name}',
+		'attachments'				=> "{attachments}\n\t{fileurl}\n\t{filename}\n{/attachments}",
+		'attachment_count'			=> '{attachment_count}'
 	);
 
 	public $msm_enabled					= FALSE;
@@ -122,7 +140,8 @@ class Freeform_data extends Addon_builder_data_freeform
 	public $allowed_html_tags			= array(
 		'p','br','a','strong','b','i','em',
 		'dl','dd','dt','ul','ol','li', 'a',
-		'h1', 'h2', 'h3', 'h4', 'h5', 'h6'
+		'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+		'address'
 	);
 
 	private $show_all_sites;
@@ -142,9 +161,9 @@ class Freeform_data extends Addon_builder_data_freeform
 	 * @return	null
 	 */
 
-	public function __construct()
+	public function __construct($obj = null)
 	{
-		parent::__construct();
+		parent::__construct($obj);
 
 		$this->msm_enabled = $this->check_yes(
 			ee()->config->item('multiple_sites_enabled')
@@ -199,6 +218,18 @@ class Freeform_data extends Addon_builder_data_freeform
 		foreach ($this->form_statuses as $status)
 		{
 			$statuses[$status] = lang($status);
+		}
+
+
+
+		$pref_statuses = $this->preference('form_statuses');
+
+		if ($pref_statuses)
+		{
+			foreach ($pref_statuses as $status)
+			{
+				$statuses[form_prep($status)] = form_prep($status);
+			}
 		}
 
 
@@ -520,7 +551,7 @@ class Freeform_data extends Addon_builder_data_freeform
 		//	Are we in 4.x yet?
 		// -------------------------------------
 
-		if ($this->version_compare($this->database_version(), '<', '4.0.0.d1'))
+		if ($this->version_compare($this->database_version(), '<', '4.0.0'))
 		{
 			return $prefs;
 		}
@@ -578,7 +609,7 @@ class Freeform_data extends Addon_builder_data_freeform
 		//	Are we in 4.x yet?
 		// -------------------------------------
 
-		if ($this->version_compare($this->database_version(), '<', '4.0.0.d1'))
+		if ($this->version_compare($this->database_version(), '<', '4.0.0'))
 		{
 			//best not set the cache here in case we need it after we upgrade
 			return $prefs;

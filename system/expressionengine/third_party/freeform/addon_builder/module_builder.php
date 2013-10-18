@@ -10,7 +10,7 @@
  * @copyright	Copyright (c) 2008-2013, Solspace, Inc.
  * @link		http://solspace.com/docs/
  * @license		http://www.solspace.com/license_agreement/
- * @version		1.4.1
+ * @version		1.4.4
  * @filesource 	addon_builder/module_builder.php
  */
 
@@ -297,59 +297,65 @@ class Module_builder_freeform extends Addon_builder_freeform
 
 	public function update_module_actions()
 	{
-		$exists	= array();
+		// -------------------------------------
+		//	delete actions
+		// -------------------------------------
 
-		$query	= ee()->db
-					->select('method')
-					->where('class', $this->class_name)
-					->get('actions');
-
-		foreach ( $query->result_array() AS $row )
-		{
-			$exists[] = $row['method'];
-		}
+		ee()->db
+			->where('class', $this->class_name)
+			->delete('actions');
 
 		// --------------------------------------------
 		//  Actions of Module Actions
 		// --------------------------------------------
 
-		$actions = ( is_array($this->module_actions) AND
-					 count($this->module_actions) > 0) ?
-						$this->module_actions :
-						array();
+		$actions = (
+			isset($this->module_actions) &&
+			is_array($this->module_actions) &&
+			count($this->module_actions) > 0
+		) ?
+			$this->module_actions :
+			array();
+
+		$csrf_exempt_actions = (
+			isset($this->csrf_exempt_actions) &&
+			is_array($this->csrf_exempt_actions) &&
+			count($this->csrf_exempt_actions) > 0
+		) ?
+			$this->csrf_exempt_actions :
+			array();
 
 		// --------------------------------------------
 		//  Add Missing Actions
 		// --------------------------------------------
 
-		foreach(array_diff($actions, $exists) as $method)
+		$batch = array();
+
+		foreach($actions as $method)
 		{
-			ee()->db->insert(
-				'exp_actions',
-				array(
-					'class'		=> $this->class_name,
-					'method'	=> $method
-				)
+			$data = array(
+				'class'		=> $this->class_name,
+				'method'	=> $method
 			);
+
+			//is this action xid exempt? (typically for non-essential ajax)
+			if (version_compare($this->ee_version, '2.7', '>='))
+			{
+				$data['csrf_exempt'] = in_array(
+					$method,
+					$csrf_exempt_actions
+				) ? 1 : 0;
+			}
+
+			$batch[] = $data;
 		}
 
-		// --------------------------------------------
-		//  Delete No Longer Existing Actions
-		// --------------------------------------------
-
-		$leftovers = array_diff($exists, $actions);
-
-		if( ! empty($leftovers))
+		if ( ! empty($batch))
 		{
-
-			ee()->db
-				->where('class', $this->class_name)
-				->where_in('method',$leftovers)
-				->delete('actions');
+			ee()->db->insert_batch('actions', $batch);
 		}
 	}
 	// END update_module_actions()
-
 
 	// --------------------------------------------------------------------
 

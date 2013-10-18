@@ -63,6 +63,13 @@ class Editor_ft extends EE_Fieldtype
 
 	// ********************************************************************************* //
 
+	public function accepts_content_type($name)
+	{
+		return ($name == 'channel' || $name == 'grid');
+	}
+
+	// ********************************************************************************* //
+
 	/**
 	 * Display the field in the publish form
 	 *
@@ -112,13 +119,150 @@ class Editor_ft extends EE_Fieldtype
 
 		$data = $this->_parse_variables($data, TRUE);
 
-		$html = $this->EE->editor_helper->get_editor_button_html();
-		$css_js = $this->EE->editor_helper->get_editor_css_js($settings, $textarea_id);
-		$this->EE->cp->add_to_foot($css_js.$html);
+		if ($this->EE->extensions->active_hook('editor_before_display'))
+		{
+			$data = $this->EE->extensions->call('editor_before_display', $this, $data);
+		}
+
+		if (isset($this->settings['grid_field_id'])) {
+			$css_js = $this->EE->editor_helper->get_editor_css_js($settings, $this->field_name);
+			$json = $this->EE->editor_helper->get_editor_json($settings);
+			$this->EE->cp->add_to_foot($css_js);
+
+			$random_key = $this->EE->functions->random('md5');
+			$this->EE->editor_helper->addMcpAssets('js', 'editor_grid.js?v='.EDITOR_VERSION, 'editor', 'grid');
+			$this->EE->cp->add_to_foot("<script type='text/javascript'>Editor.gridConfig['{$random_key}'] = {$json};</script>");
+
+			return "
+			<div class='editor'>
+				<textarea name='{$this->field_name}' class='redactor_editor' data-config_key='{$random_key}'>{$data}</textarea>
+			</div>
+			";
+
+		} else {
+			$html = $this->EE->editor_helper->get_editor_button_html();
+			$css_js = $this->EE->editor_helper->get_editor_css_js($settings, $textarea_id);
+			$this->EE->cp->add_to_foot($css_js.$html);
+
+			return "
+				<div class='editor'>
+					<textarea id='{$textarea_id}' name='{$this->field_name}' class='redactor_editor'>{$data}</textarea>
+				</div>
+			";
+		}
+
+	}
+
+	// ********************************************************************************* //
+
+	public function display_var_field($data)
+	{
+		// -----------------------------------------
+		// Settings
+		// -----------------------------------------
+		if (isset($this->settings['editor']) === FALSE) $this->settings = array('editor' => array());
+		$settings = $this->EE->editor_helper->parse_editor_settings($this->settings['editor']);
+		$this->custom_settings = $settings;
+
+		/*
+		if (isset($this->settings['editor']) === FALSE) $this->settings = array('editor' => array());
+		$settings = $this->EE->editor_helper->array_extend($settings, $this->settings['editor']);
+		 */
+
+		return $this->display_field($data);
+	}
+
+	// ********************************************************************************* //
+
+	public function display_cell($data)
+	{
+		// -----------------------------------------
+		// Settings
+		// -----------------------------------------
+		if (isset($this->settings['editor']) === FALSE) $this->settings = array('editor' => array());
+		$settings = $this->EE->editor_helper->parse_editor_settings($this->settings['editor']);
+
+		//----------------------------------------
+		// Add Global JS & CSS & JS Scripts
+		//----------------------------------------
+		$this->EE->editor_helper->addMcpAssets('gjs');
+        $this->EE->editor_helper->addMcpAssets('css', 'redactor/redactor.css?v='.EDITOR_VERSION, 'redactor', 'main');
+        $this->EE->editor_helper->addMcpAssets('css', 'editor.css?v='.EDITOR_VERSION, 'editor', 'main');
+        $this->EE->editor_helper->addMcpAssets('css', 'editor_buttons.css?v='.EDITOR_VERSION, 'editor', 'buttons');
+        $this->EE->editor_helper->addMcpAssets('js', 'redactor/redactor.min.js?v='.EDITOR_VERSION, 'redactor', 'main');
+        $this->EE->editor_helper->addMcpAssets('js', 'editor_helper.js?v='.EDITOR_VERSION, 'editor', 'helper');
+        $this->EE->editor_helper->addMcpAssets('js', 'editor_buttons.js?v='.EDITOR_VERSION, 'editor', 'buttons');
+
+		// Do we need to load an additional Language?
+		if (isset($settings['language']) === TRUE && $settings['language'] != 'en')
+		{
+			$this->EE->editor_helper->addMcpAssets('js', 'redactor/lang/'.$settings['language'].'.js?v='.EDITOR_VERSION, 'redactor', 'lang');
+		}
+
+		$data = $this->_parse_variables($data, TRUE);
+
+		if ($this->EE->extensions->active_hook('editor_before_display'))
+		{
+			$data = $this->EE->extensions->call('editor_before_display', $this, $data);
+		}
+
+		$css_js = $this->EE->editor_helper->get_editor_css_js($settings, $this->cell_name);
+		$json = $this->EE->editor_helper->get_editor_json($settings);
+		$this->EE->cp->add_to_foot($css_js);
+		$this->EE->cp->add_to_foot("<script type='text/javascript'>Editor.matrixColConfigs.col_id_{$this->col_id} = {$json};</script>");
 
 		return "
 		<div class='editor'>
-			<textarea id='{$textarea_id}' name='{$this->field_name}' class='redactor_editor'>{$data}</textarea>
+			<textarea name='{$this->cell_name}' class='redactor_editor'>{$data}</textarea>
+		</div>
+		";
+	}
+
+	// ********************************************************************************* //
+
+	public function display_element($data='')
+	{
+		// -----------------------------------------
+		// Settings
+		// -----------------------------------------
+		if (isset($this->settings['editor']) === FALSE) $this->settings = array('editor' => array());
+		$settings = $this->EE->editor_helper->parse_editor_settings($this->settings['editor']);
+
+		//----------------------------------------
+		// Add Global JS & CSS & JS Scripts
+		//----------------------------------------
+		$this->EE->editor_helper->addMcpAssets('gjs');
+        $this->EE->editor_helper->addMcpAssets('css', 'redactor/redactor.css?v='.EDITOR_VERSION, 'redactor', 'main');
+        $this->EE->editor_helper->addMcpAssets('css', 'editor.css?v='.EDITOR_VERSION, 'editor', 'main');
+        $this->EE->editor_helper->addMcpAssets('css', 'editor_buttons.css?v='.EDITOR_VERSION, 'editor', 'buttons');
+        $this->EE->editor_helper->addMcpAssets('js', 'redactor/redactor.min.js?v='.EDITOR_VERSION, 'redactor', 'main');
+        $this->EE->editor_helper->addMcpAssets('js', 'editor_helper.js?v='.EDITOR_VERSION, 'editor', 'helper');
+        $this->EE->editor_helper->addMcpAssets('js', 'editor_buttons.js?v='.EDITOR_VERSION, 'editor', 'buttons');
+
+		// Do we need to load an additional Language?
+		if (isset($settings['language']) === TRUE && $settings['language'] != 'en')
+		{
+			$this->EE->editor_helper->addMcpAssets('js', 'redactor/lang/'.$settings['language'].'.js?v='.EDITOR_VERSION, 'redactor', 'lang');
+		}
+
+		$data = $this->_parse_variables($data, TRUE);
+
+		if ($this->EE->extensions->active_hook('editor_before_display'))
+		{
+			$data = $this->EE->extensions->call('editor_before_display', $this, $data);
+		}
+
+		$css_js = $this->EE->editor_helper->get_editor_css_js($settings, $this->field_name);
+		$json = $this->EE->editor_helper->get_editor_json($settings);
+		$this->EE->cp->add_to_foot($css_js);
+
+		$random_key = $this->EE->functions->random('md5');
+		$this->EE->editor_helper->addMcpAssets('js', 'editor_content_elements.js?v='.EDITOR_VERSION, 'editor', 'content_elements');
+		$this->EE->cp->add_to_foot("<script type='text/javascript'>Editor.contentElementsConfig['{$random_key}'] = {$json};</script>");
+
+		return "
+		<div class='editor'>
+			<textarea name='{$this->field_name}' class='redactor_editor' data-config_key='{$random_key}'>{$data}</textarea>
 		</div>
 		";
 	}
@@ -167,6 +311,10 @@ class Editor_ft extends EE_Fieldtype
 	{
 		$data = trim($data);
 
+		// Remove the first and the last empty <p>
+		$data = preg_replace('/^<p><\/p>/s', '', $data);
+		$data = preg_replace('/<p><\/p>$/s', '', $data);
+
 		// Clear out if just whitespace
 		if (! $data || preg_match('/^\s*(<\w+>\s*(&nbsp;)*\s*<\/\w+>|<br \/>)?\s*$/s', $data))
 		{
@@ -199,6 +347,12 @@ class Editor_ft extends EE_Fieldtype
 
 		// Does it contain emptyness?
 		if ($data == '<p><br></p>') $data = '';
+
+
+		if ($this->EE->extensions->active_hook('editor_before_save'))
+		{
+			$data = $this->EE->extensions->call('editor_before_save', $this, $data);
+		}
 
 		return $data;
 	}
@@ -237,6 +391,8 @@ class Editor_ft extends EE_Fieldtype
 
 	private function _display_settings($settings=array())
 	{
+		$this->EE->load->add_package_path(PATH_THIRD . 'editor/');
+
 		// -----------------------------------------
 		// Settings
 		// -----------------------------------------
@@ -244,6 +400,8 @@ class Editor_ft extends EE_Fieldtype
 		{
 			$settings = $settings['editor'];
 		}
+
+		//$this->EE->firephp->log($settings);
 
 		$data = $this->EE->editor_helper->parse_editor_settings($settings);
 
@@ -299,6 +457,8 @@ class Editor_ft extends EE_Fieldtype
 		// -----------------------------------------
 		$row = $this->EE->load->view('editor_settings', $data, TRUE);
 
+		//$this->EE->firephp->log($row);
+
 		return $row;
 	}
 
@@ -336,12 +496,35 @@ class Editor_ft extends EE_Fieldtype
 
 	// ********************************************************************************* //
 
-	private function _save_settings($settings=array(), $matrix=FALSE)
+	public function display_element_settings($settings=array())
 	{
-		if (isset($_POST['editor']) === TRUE && $matrix == FALSE)
+		$row = $this->_display_settings($settings);
+		return array( array($row) );
+	}
+
+	// ********************************************************************************* //
+
+	public function grid_display_settings($settings=array())
+	{
+		$row = $this->_display_settings($settings);
+		//return array( array('', $row) );
+
+		return array($this->grid_settings_row('', $row, true));
+	}
+
+	// ********************************************************************************* //
+
+	private function _save_settings($settings=array(), $ignore_post=FALSE)
+	{
+		if (isset($this->settings['grid_field_id'])) {
+			$ignore_post = true;
+		}
+
+		if (isset($_POST['editor']) === TRUE && $ignore_post == FALSE)
 		{
 			$settings['editor'] = $_POST['editor'];
 		}
+
 
 		// -----------------------------------------
 		// Parse allowed_tags
@@ -354,6 +537,18 @@ class Editor_ft extends EE_Fieldtype
 		}
 
 		$settings['editor']['allowedtags'] = $allowedtags;
+
+		// -----------------------------------------
+		// Parse plugins
+		// -----------------------------------------
+		$plugins = array();
+		foreach (explode(',', $settings['editor']['plugins']) as $cat)
+		{
+			$cat = trim($cat);
+			if ($cat != FALSE) $plugins[] = $cat;
+		}
+
+		$settings['editor']['plugins'] = $plugins;
 
 
 
@@ -411,6 +606,7 @@ class Editor_ft extends EE_Fieldtype
 
 		//exit(print_r($settings));
 
+
 		return $settings;
 	}
 
@@ -454,8 +650,35 @@ class Editor_ft extends EE_Fieldtype
 	 */
 	public function replace_tag($data, $params=array(), $tagdata = FALSE)
 	{
+		if ($this->EE->extensions->active_hook('editor_before_replace'))
+		{
+			$data = $this->EE->extensions->call('editor_before_replace', $this, $data);
+		}
 
 		return $data;
+	}
+
+	// ********************************************************************************* //
+
+	/**
+	 * Replace Tag - Replace the field tag on the frontend.
+	 *
+	 * @param mixed $data - data stored in the element
+	 * @param array $params - parameters taken from the used tag
+	 * @param string $tagdata - HTML markup to be replaced with output
+	 * @return string           template data
+	 */
+	public function replace_element_tag($data, $params = array(), $tagdata)
+	{
+		if ($this->EE->extensions->active_hook('editor_before_replace'))
+		{
+			$data = $this->EE->extensions->call('editor_before_replace', $this, $data);
+		}
+
+		return $this->EE->elements->parse_variables($tagdata, array(array(
+						"value" => $data,
+						"element_name" => $this->element_name,
+						)));
 	}
 
 	// ********************************************************************************* //
@@ -510,65 +733,7 @@ class Editor_ft extends EE_Fieldtype
 
 	// ********************************************************************************* //
 
-	public function display_var_field($data)
-	{
-		// -----------------------------------------
-		// Settings
-		// -----------------------------------------
-		if (isset($this->settings['editor']) === FALSE) $this->settings = array('editor' => array());
-		$settings = $this->EE->editor_helper->parse_editor_settings($this->settings['editor']);
-		$this->custom_settings = $settings;
 
-		/*
-		if (isset($this->settings['editor']) === FALSE) $this->settings = array('editor' => array());
-		$settings = $this->EE->editor_helper->array_extend($settings, $this->settings['editor']);
-		 */
-
-		return $this->display_field($data);
-	}
-
-	// ********************************************************************************* //
-
-	public function display_cell($data)
-	{
-		// -----------------------------------------
-		// Settings
-		// -----------------------------------------
-		if (isset($this->settings['editor']) === FALSE) $this->settings = array('editor' => array());
-		$settings = $this->EE->editor_helper->parse_editor_settings($this->settings['editor']);
-
-		//----------------------------------------
-		// Add Global JS & CSS & JS Scripts
-		//----------------------------------------
-		$this->EE->editor_helper->addMcpAssets('gjs');
-        $this->EE->editor_helper->addMcpAssets('css', 'redactor/redactor.css?v='.EDITOR_VERSION, 'redactor', 'main');
-        $this->EE->editor_helper->addMcpAssets('css', 'editor.css?v='.EDITOR_VERSION, 'editor', 'main');
-        $this->EE->editor_helper->addMcpAssets('css', 'editor_buttons.css?v='.EDITOR_VERSION, 'editor', 'buttons');
-        $this->EE->editor_helper->addMcpAssets('js', 'redactor/redactor.min.js?v='.EDITOR_VERSION, 'redactor', 'main');
-        $this->EE->editor_helper->addMcpAssets('js', 'editor_helper.js?v='.EDITOR_VERSION, 'editor', 'helper');
-        $this->EE->editor_helper->addMcpAssets('js', 'editor_buttons.js?v='.EDITOR_VERSION, 'editor', 'buttons');
-
-		// Do we need to load an additional Language?
-		if (isset($settings['language']) === TRUE && $settings['language'] != 'en')
-		{
-			$this->EE->editor_helper->addMcpAssets('js', 'redactor/lang/'.$settings['language'].'.js?v='.EDITOR_VERSION, 'redactor', 'lang');
-		}
-
-		$data = $this->_parse_variables($data, TRUE);
-
-		$css_js = $this->EE->editor_helper->get_editor_css_js($settings, $this->cell_name);
-		$json = $this->EE->editor_helper->get_editor_json($settings);
-		$this->EE->cp->add_to_foot($css_js);
-		$this->EE->cp->add_to_foot("<script type='text/javascript'>Editor.matrixColConfigs.col_id_{$this->col_id} = {$json};</script>");
-
-		return "
-		<div class='editor'>
-			<textarea name='{$this->cell_name}' class='redactor_editor'>{$data}</textarea>
-		</div>
-		";
-	}
-
-	// ********************************************************************************* //
 
 	private function _parse_variables($data='', $var_to_val=TRUE)
 	{

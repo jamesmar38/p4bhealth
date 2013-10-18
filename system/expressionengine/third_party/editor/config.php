@@ -15,7 +15,7 @@ if ( ! defined('EDITOR_NAME'))
 {
 	define('EDITOR_NAME',         'Editor');
 	define('EDITOR_CLASS_NAME',   'editor');
-	define('EDITOR_VERSION',      '3.1.4');
+	define('EDITOR_VERSION',      '3.1.9');
 }
 
 $config['name'] 	= EDITOR_NAME;

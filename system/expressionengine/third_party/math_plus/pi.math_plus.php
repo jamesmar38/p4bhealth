@@ -20,7 +20,7 @@
 
 $plugin_info = array(
 						'pi_name'			=> 'Math Plus',
-						'pi_version'		=> '1.1.1',
+						'pi_version'		=> '1.1.2',
 						'pi_author'			=> 'Laisvunas',
 						'pi_author_url'		=> 'http://devot-ee.com/developers/ee/laisvunas/',
 						'pi_description'	=> 'Provides support for mathematical operations 
@@ -66,11 +66,12 @@ class Math_plus {
     {
       $param_names[$i] = 'var'.$i;
       ${$param_names[$i]} = $this->EE->TMPL->fetch_param('var'.$i);
-      if (${$param_names[$i]} != FALSE)
+      if (${$param_names[$i]} !== FALSE)
       {
         if (is_numeric(${$param_names[$i]}))
         {
           $calculate = str_replace(LD.'var'.$i.RD, ${$param_names[$i]}, $calculate);
+          
         }
         else
         {

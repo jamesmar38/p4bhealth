@@ -550,7 +550,7 @@ class File_upload_freeform_ft extends Freeform_base_ft
 	 * @return 	void
 	 */
 
-	public function pre_process_entries ($entry_ids)
+	public function pre_process_entries ($entry_ids = array())
 	{
 		if ( ! empty($entry_ids))
 		{
@@ -1609,7 +1609,7 @@ class File_upload_freeform_ft extends Freeform_base_ft
 	 * @return	string 	output data
 	 */
 
-	public function display_email_data ($data, $noti_obj)
+	public function display_email_data ($data, $notification_obj = null)
 	{
 		$form_id = $this->form_id;
 		$entry_id = $this->entry_id;
@@ -1639,7 +1639,7 @@ class File_upload_freeform_ft extends Freeform_base_ft
 		$lang_upload_count 	= lang('upload_count');
 
 		//add to the over all count
-		$noti_obj->variables['attachment_count'] += $attachment_count;
+		$notification_obj->variables['attachment_count'] += $attachment_count;
 
 		$output = array();
 
@@ -1652,10 +1652,10 @@ class File_upload_freeform_ft extends Freeform_base_ft
 			$output[] = $file_data['filename'];
 
 			//attach woo!
-			$noti_obj->email->attach($full_path);
+			$notification_obj->email->attach($full_path);
 
 			//this will be an array tag pair
-			$noti_obj->variables['attachments'][] = array(
+			$notification_obj->variables['attachments'][] = array(
 				'fileurl' 	=> $url,
 				'filename'	=> $file_data['filename']
 			);

@@ -55,6 +55,8 @@ $lang = array(
 'ed:allowedtags_custom'		=>	'Custom Allowed Tags (separate by comma)',
 'ed:default'	=>	'Default',
 'ed:custom'		=>	'Custom',
+'ed:plugins' => 'Extra Plugins',
+'ed:plugins:exp' => 'Example: fontcolor (separate by comma)',
 
 'ed:convert_entries'	=>	'Convert previous entries?',
 'ed:convert_entries_exp'	=>	'Editor can convert your previous entries field data to HTML',
@@ -79,6 +81,7 @@ $lang = array(
 'ed:formattingtags' =>  'Formatting Tags',
 'ed:language' => 'Language',
 'ed:css_file'   =>  'Custom CSS File',
+'ed:css_file:exp'   =>  'Separate multiple by a comma',
 'ed:css_file:help' => 'Supply a URL to a valid CSS File. This option will force redactor.js to run in an iframe (initial loading is a tiny bit slower)',
 
 'ed:buttons'       =>   'Buttons',
@@ -98,8 +101,6 @@ $lang = array(
 'ed:btn:file'           => 'File',
 'ed:btn:table'          => 'Table',
 'ed:btn:link'           => 'Link',
-'ed:btn:fontcolor'      => 'Font Color',
-'ed:btn:backcolor'      => 'Back Color',
 'ed:btn:alignleft'      => 'Align Left',
 'ed:btn:aligncenter'    => 'Align Center',
 'ed:btn:alignright'     => 'Align Right',

@@ -23,23 +23,8 @@ unset($__parent_folder);
 class Freeform_export extends Addon_builder_freeform
 {
 	public $cache_path;
-	public $export_chunk_size = 100;
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Constructor
-	 *
-	 * @access	public
-	 * @return	object this
-	 */
-
-	public function __construct()
-	{
-		parent::__construct('freeform');
-	}
-	//END __construct
-
+	public $export_chunk_size	= 100;
+	public $format_dates		= TRUE;
 
 	// --------------------------------------------------------------------
 
@@ -58,16 +43,16 @@ class Freeform_export extends Addon_builder_freeform
 		// -------------------------------------
 
 		$defaults = array(
-			'method' 			=> 'csv',
-			'form_id' 			=> 0,
-			'form_name' 		=> '',
-			'output' 			=> 'string',
-			'rows' 				=> array(),
-			'model' 			=> NULL,
-			'fields' 			=> '*',
+			'method'			=> 'csv',
+			'form_id'			=> 0,
+			'form_name'			=> '',
+			'output'			=> 'string',
+			'rows'				=> array(),
+			'model'				=> NULL,
+			'fields'			=> '*',
 			'remove_entry_id'	=> FALSE,
 			'header_labels'		=> array(),
-			'total_entries' 	=> 0
+			'total_entries'		=> 0
 		);
 
 		foreach ($defaults as $key => $value)
@@ -117,13 +102,13 @@ class Freeform_export extends Addon_builder_freeform
 			}
 
 			return $this->$method(array(
-				'form_id' 			=> $form_id,
-				'rows' 				=> $rows,
+				'form_id'			=> $form_id,
+				'rows'				=> $rows,
 				'remove_entry_id'	=> $remove_entry_id,
 				'header_labels'		=> $header_labels,
-				'chunk' 			=> $chunk,
+				'chunk'				=> $chunk,
 				'chunk_start'		=> $chunk_start,
-				'chunk_end' 		=> $chunk_end
+				'chunk_end'			=> $chunk_end
 			));
 		}
 		//force a file download
@@ -163,13 +148,13 @@ class Freeform_export extends Addon_builder_freeform
 					$model->limit($this->export_chunk_size, $i * $this->export_chunk_size);
 
 					$data = $this->$method(array(
-						'form_id' 			=> $form_id,
+						'form_id'			=> $form_id,
 						'remove_entry_id'	=> $remove_entry_id,
 						'header_labels'		=> $header_labels,
-						'rows' 				=> $model->get(array(), FALSE),
-						'chunk' 			=> TRUE,
-						'chunk_start' 		=> $i == 0,
-						'chunk_end' 		=> $i == ($chunk_size - 1)
+						'rows'				=> $model->get(array(), FALSE),
+						'chunk'				=> TRUE,
+						'chunk_start'		=> $i == 0,
+						'chunk_end'			=> $i == ($chunk_size - 1)
 					));
 
 					write_file($filepath, $data, 'a+');
@@ -196,13 +181,13 @@ class Freeform_export extends Addon_builder_freeform
 				}
 
 				$data = $this->$method(array(
-					'form_id' 			=> $form_id,
-					'rows' 				=> $rows,
+					'form_id'			=> $form_id,
+					'rows'				=> $rows,
 					'remove_entry_id'	=> $remove_entry_id,
 					'header_labels'		=> $header_labels,
-					'chunk' 			=> $chunk,
+					'chunk'				=> $chunk,
 					'chunk_start'		=> $chunk_start,
-					'chunk_end' 		=> $chunk_end
+					'chunk_end'			=> $chunk_end
 				));
 
 				if ($data)
@@ -256,6 +241,7 @@ class Freeform_export extends Addon_builder_freeform
 	}
 	//END cache_file_path
 
+
 	// --------------------------------------------------------------------
 
 	/**
@@ -299,16 +285,16 @@ class Freeform_export extends Addon_builder_freeform
 	function csv ($options = array())
 	{
 		$defaults = array(
-			'form_id' 			=> 0,
+			'form_id'			=> 0,
 			'rows'				=> NULL,
 			'remove_entry_id'	=> FALSE,
-			'header_labels' 	=> array(),
-			'delim' 			=> ",",
-			'newline' 			=> "\n",
-			'enclosure' 		=> '"',
-			'chunk' 			=> FALSE,
-			'chunk_start' 		=> FALSE,
-			'chunk_end' 		=> FALSE,
+			'header_labels'		=> array(),
+			'delim'				=> ",",
+			'newline'			=> "\n",
+			'enclosure'			=> '"',
+			'chunk'				=> FALSE,
+			'chunk_start'		=> FALSE,
+			'chunk_end'			=> FALSE,
 		);
 
 		foreach ($defaults as $key => $value)
@@ -323,9 +309,8 @@ class Freeform_export extends Addon_builder_freeform
 
 		unset($defaults, $options);
 
-		$out = '';
-
-		$first 			= ( ! $chunk OR ($chunk AND $chunk_start));
+		$out	= '';
+		$first	= ( ! $chunk OR ($chunk AND $chunk_start));
 
 		// -------------------------------------
 		//	build labels
@@ -367,13 +352,15 @@ class Freeform_export extends Addon_builder_freeform
 		foreach ($rows as $row)
 		{
 			$output_parse = ee()->freeform_fields->apply_field_method(array(
-				'method' 			=> 'export',
-				'form_id' 			=> $form_id,
+				'method'			=> 'export',
+				'form_id'			=> $form_id,
 				'field_input_data'	=> $row,
-				'export_type' 		=> 'csv'
+				'export_type'		=> 'csv'
 			));
 
 			$row = array_merge($row, $output_parse['variables']);
+
+			$row = $this->parse_dates($row);
 
 			if ($remove_entry_id)
 			{
@@ -426,5 +413,299 @@ class Freeform_export extends Addon_builder_freeform
 	//END txt
 
 	
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Generate XML data from a query result object
+	 *
+	 * @access	public
+	 * @param	array	Any preferences
+	 * @return	string
+	 */
+
+	public function xml ($options = array())
+	{
+		$defaults = array(
+			'form_id'			=> 0,
+			'rows'				=> array(),
+			'remove_entry_id'	=> FALSE,
+			'delim'				=> ",",
+			'newline'			=> "\n",
+			'enclosure'			=> '"',
+			'header_labels'		=> array(),
+			'chunk'				=> FALSE,
+			'chunk_start'		=> FALSE,
+			'chunk_end'			=> FALSE,
+		);
+
+		foreach ($defaults as $key => $value)
+		{
+			if (isset($options[$key]))
+			{
+				$defaults[$key] = $options[$key];
+			}
+		}
+
+		extract($defaults);
+
+		unset($defaults, $options);
+
+		$first 			= ( ! $chunk OR ($chunk AND $chunk_start));
+		$last 			= ( ! $chunk OR ($chunk AND $chunk_end));
+		$tag_root 		= 'root';
+		$tag_rows 		= 'rows';
+		$tag_labels 	= 'labels';
+		$tag_element 	= 'entry';
+		$newline 		= "\n";
+		$tab 			= "\t";
+		$xml 			= "";
+
+		ee()->load->helper('xml');
+
+		// -------------------------------------
+		//	if this is the first in the chunk
+		//	or only time we are running
+		//	built the beginning
+		// -------------------------------------
+
+		if ($first)
+		{
+			$xml .= "<?xml version='1.0' ?>" . $newline;
+			$xml .= "<{$tag_root}>" . $newline;
+
+			// -------------------------------------
+			//	labels
+			// -------------------------------------
+
+			$xml .= $tab ."<{$tag_labels}>" . $newline;
+
+			foreach ($rows[0] as $key => $val)
+			{
+				if (($remove_entry_id AND $key == 'entry_id') OR
+					$key == 'form_id')
+				{
+					continue;
+				}
+
+				$label_item = isset($header_labels[$key]) ?
+								$header_labels[$key] : '';
+
+				$xml .= $tab . $tab .
+						"<{$key}>" . xml_convert($label_item) .	"</{$key}>" .
+						$newline;
+			}
+
+			$xml .= $tab . "</{$tag_labels}>" . $newline;
+
+			//start entry rows
+			$xml .= $tab . "<{$tag_rows}>" . $newline;
+		}
+
+		// -------------------------------------
+		//	build entries
+		// -------------------------------------
+
+		foreach ($rows as $row)
+		{
+			$xml .= $tab . $tab . "<{$tag_element}>" . $newline;
+
+			$output_parse = ee()->freeform_fields->apply_field_method(array(
+				'method' 			=> 'export',
+				'form_id' 			=> $form_id,
+				'field_input_data'	=> $row,
+				'export_type' 		=> 'xml'
+			));
+
+			$row = array_merge($row, $output_parse['variables']);
+
+			$row = $this->parse_dates($row);
+
+			if ($remove_entry_id)
+			{
+				unset($row['entry_id']);
+			}
+
+			unset($row['form_id']);
+
+			foreach ($row as $key => $val)
+			{
+				$xml .= $tab . $tab . $tab .
+						"<{$key}>" . xml_convert($val) . "</{$key}>" .
+						$newline;
+			}
+
+			$xml .= $tab . $tab . "</{$tag_element}>" . $newline;
+		}
+
+		if ($chunk AND ! $last)
+		{
+			return $xml;
+		}
+
+		$xml .= $tab . "</{$tag_rows}>" . $newline;
+		$xml .= "</{$tag_root}>" . $newline;
+
+		return $xml;
+	}
+	//END xml
+
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Generate json data from a query result object
+	 *
+	 * @access	public
+	 * @param	array	Any preferences
+	 * @return	string
+	 */
+
+	public function json ($options = array())
+	{
+		$defaults = array(
+			'form_id'			=> 0,
+			'rows'				=> array(),
+			'remove_entry_id'	=> FALSE,
+			'header_labels'		=> array(),
+			'chunk'				=> FALSE,
+			'chunk_start'		=> FALSE,
+			'chunk_end'			=> FALSE,
+		);
+
+		foreach ($defaults as $key => $value)
+		{
+			if (isset($options[$key]))
+			{
+				$defaults[$key] = $options[$key];
+			}
+		}
+
+		extract($defaults);
+
+		unset($defaults, $options);
+
+		$output			= array();
+
+		$show_labels	= array();
+
+		$first			= ( ! $chunk OR ($chunk AND $chunk_start));
+
+		// -------------------------------------
+		//	build lables
+		// -------------------------------------
+
+		if ($first)
+		{
+			foreach ($rows[0] as $key => $value)
+			{
+				if (($remove_entry_id AND $key == 'entry_id') OR
+					$key == 'form_id')
+				{
+					continue;
+				}
+
+				$show_labels[$key] = isset($header_labels[$key]) ?
+										$header_labels[$key] : '';
+			}
+		}
+
+		// -------------------------------------
+		//	parse rows
+		// -------------------------------------
+
+		foreach ($rows as $row)
+		{
+			$output_parse = ee()->freeform_fields->apply_field_method(array(
+				'method'			=> 'export',
+				'form_id'			=> $form_id,
+				'field_input_data'	=> $row,
+				'export_type'		=> 'json'
+			));
+
+			$row = array_merge($row, $output_parse['variables']);
+
+			$row = $this->parse_dates($row);
+
+			if ($remove_entry_id)
+			{
+				unset($row['entry_id']);
+			}
+
+			unset($row['form_id']);
+
+			$output[] = $row;
+		}
+
+		// -------------------------------------
+		//	returns
+		// -------------------------------------
+
+		if ( ! $chunk)
+		{
+			$return = $this->json_encode(array(
+				'labels'	=> $show_labels,
+				'rows'		=> $output
+			));
+		}
+		else if ($chunk AND $first)
+		{
+			$return = rtrim($this->json_encode(array(
+				'labels'	=> $show_labels,
+				'rows'		=> $output
+			)));
+
+			//remove the ending ']}' so we can add
+			$return = substr($return, 0, -2);
+		}
+		else if ($chunk AND $chunk_end)
+		{
+			//remove array wrappers and add the ending items for the whole schmere
+			$return = ',' . trim(trim($this->json_encode($output)), '[]') . ']}';
+		}
+		else if ($chunk)
+		{
+			//we are just addong rows to the 'rows' array so preceding comma
+			//remove array wrappers
+			$return = ',' . trim(trim($this->json_encode($output)), '[]');
+		}
+
+		return $return;
+	}
+	//END json
+
+	
+
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Parse and convert Dates
+	 *
+	 * @access	public
+	 * @param	array	$row	row array input
+	 * @return	array			row array output with dates fixed
+	 */
+
+	public function parse_dates($row = array())
+	{
+		if ( ! $this->format_dates)
+		{
+			return $row;
+		}
+
+		if (isset($row['entry_date']) && $this->is_positive_intlike($row['entry_date']))
+		{
+			$row['entry_date'] = $this->actions()->format_cp_date($row['entry_date']);
+		}
+
+		if (isset($row['edit_date']) && $this->is_positive_intlike($row['edit_date']))
+		{
+			$row['edit_date'] = $this->actions()->format_cp_date($row['edit_date']);
+		}
+
+		return $row;
+	}
+	//END parse_dates
 }
 //END Freeform_export
