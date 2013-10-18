@@ -14,12 +14,7 @@
 			<div class="row text-center">	
 				<h1>{give_header_headline}</h1>
 				<p>{give_header_content}</p>					
-			</div>
-			<div class="row text-center">		
-				<div id="button">
-						<button type="button" class="btn btn-primary btn-lg btn-orange">Give Now</button>
-				</div>
-			</div>				
+			</div>			
 		</div>
 	</div>
 </section>
@@ -29,19 +24,53 @@
 		<div class="section-banner">{give_body_headline}</div>
 		{give_content}
 			<div class="row margin-top-large">
-				<div class="col-lg-4">
-          {embed="utils/process_image"
-            src="{img}"
-            max_width="370" max_height="260"
-            filename="give-{row_id}"
-            class="img-responsive margin-bottom-small"
-          }
-				</div>
-				<div class="col-lg-8">
-					<h2>{headline}</h2>
-					<p>{content}</p>
-					<a href="{link}"><button type="button" class="btn btn-primary btn-lg btn-orange">Give Now</button></a>
-				</div>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+          <input type="hidden" name="business" value="ralph@maven20.com">
+          <input type="hidden" name="lc" value="US">
+          <input type="hidden" name="currency_code" value="USD">
+          <input type="hidden" name="no_note" value="0">
+          
+          <input type="hidden" name="item_name" value="{headline}">
+          {if pricing_type == "f"}
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="button_subtype" value="services">
+            <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHostedGuest">
+            <input type="hidden" name="amount" value="{price}">
+            {if tracking_id}<input type="hidden" name="item_number" value="{tracking_id}">{/if}
+            {if shipping}<input type="hidden" name="shipping" value="{shipping}">{/if}
+          {/if}
+          {if pricing_type == "v"}
+            <input type="hidden" name="cmd" value="_donations">
+            <input type="hidden" name="item_name" value="Partners for Better Health">
+            <input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest">
+          {/if}
+  				
+          <div class="col-lg-4">
+            {embed="utils/process_image"
+              src="{img}"
+              width="370"
+              filename="give-{row_id}"
+              class="img-responsive margin-bottom-small"
+            }
+  				</div>
+  				<div class="col-lg-8">
+  					<h2>{headline}</h2>
+  					<p>{content}</p>
+            {if pricing_type == "f"}
+            <p><strong>Price:</strong> {price}
+            {/if}
+          	<div class="product-info-buttons">
+              {if pricing_type == "f"}
+                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+              {/if}
+              {if pricing_type == "v"}
+                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+              {/if}
+              <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+          	</div>
+  				</div>
+          
+        </form>
 			</div>
 		{/give_content}
 	</div>
