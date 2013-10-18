@@ -35,7 +35,7 @@
 						{if button_text}
 {!--If there's a link, show DL Icon. Otherwise, the link will open Contact modal--}
 							{if link}		
-								<a href="{link}" class="btn btn-primary btn-lg btn-orange btn-entypo margin-bottom-large"><i class="entypo-download"></i> {button_text}</a>
+								<a href="{link}" class="btn btn-primary btn-lg btn-orange btn-entypo margin-bottom-large" target="_blank"><i class="entypo-download"></i> {button_text}</a>
 							{if:else}
 								<a  href="#" data-reveal-id="show-contact-modal" class="btn btn-primary btn-lg btn-orange btn-entypo margin-bottom-large">{button_text}</a>
 							{/if}
