@@ -22,10 +22,11 @@
 <section class="single-scene">
 	<div class="container">
 		<div class="section-banner">{give_body_headline}</div>
+    {exp:stash:set name="paypal"}{paypal_email}{/exp:stash:set}
 		{give_content}
 			<div class="row margin-top-large">
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-          <input type="hidden" name="business" value="{paypal_email}">
+          <input type="hidden" name="business" value="{exp:stash:get name='paypal'}">
           <input type="hidden" name="lc" value="US">
           <input type="hidden" name="currency_code" value="USD">
           <input type="hidden" name="no_note" value="0">
