@@ -1,4 +1,4 @@
-<body class="{exp:nsm_body_class return='class_attr'} {if logged_in} logged-in{/if}{if logged_out} not-logged-in{/if}{if embed:header_image} has-bg{/if}">
+<body class="{exp:nsm_body_class return='class_attr'} {if logged_in} logged-in{/if}{if logged_out} not-logged-in{/if}{if embed:header_image} has-bg{/if} {if '{exp:detect_mobile:ismobile}'}mobile mobile-{exp:detect_mobile:type} {if '{exp:detect_mobile:isios}'}mobile-ios{/if} {if '{exp:detect_mobile:isandroidos}'}mobile-android{/if}{/if}">
 	<!--[if lt IE 7]>
 	<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
 	<![endif]-->
