@@ -1,6 +1,6 @@
 {
   "CodeKitInfo" : "This is a CodeKit project configuration file. It is designed to sync project settings across multiple machines. Modifying the contents of this file can be a poor life decision if you don't know what you're doing. This file is not useful unless accompanied by the project that created it in CodeKit. For more information, see: http:\/\/incident57.com\/codekit",
-  "creatorBuild" : "8326",
+  "creatorBuild" : "8348",
   "files" : {
     "\/sass\/responsive\/_responsive-homepage.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -673,6 +673,18 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
+    "\/sass\/vendor\/_dropzone.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/sass\/vendor\/_dropzone.scss",
+      "outputStyle" : 2,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_dropzone.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
     "\/scripts\/vendor\/bootstrap3\/popover.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -802,6 +814,17 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
+    "\/scripts\/vendor\/bootstrap3\/collapse.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/scripts\/vendor\/bootstrap3\/collapse.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/collapse-ck.js",
+      "fileType" : 64
+    },
     "\/scripts\/vendor\/bootstrap3\/alert.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -813,15 +836,15 @@
       "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/alert-ck.js",
       "fileType" : 64
     },
-    "\/scripts\/vendor\/bootstrap3\/collapse.js" : {
+    "\/scripts\/vendor\/dropzone.min.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/vendor\/bootstrap3\/collapse.js",
+      "inputAbbreviatedPath" : "\/scripts\/vendor\/dropzone.min.js",
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/collapse-ck.js",
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/dropzone.min-ck.js",
       "fileType" : 64
     },
     "\/sass\/responsive\/_responsive-royalslider.scss" : {
@@ -928,18 +951,6 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/sass\/responsive\/_responsive-entypo.scss" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/responsive\/_responsive-entypo.scss",
-      "outputStyle" : 2,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_responsive-entypo.css",
-      "fileType" : 4,
-      "debugStyle" : 0
-    },
     "\/sass\/responsive\/_responsive-body.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -952,6 +963,17 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
+    "\/scripts\/library.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 1,
+      "inputAbbreviatedPath" : "\/scripts\/library.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/lib.js",
+      "fileType" : 64
+    },
     "\/scripts\/vendor\/bootstrap3\/tab.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -963,16 +985,17 @@
       "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/tab-ck.js",
       "fileType" : 64
     },
-    "\/scripts\/library.js" : {
+    "\/sass\/responsive\/_responsive-entypo.scss" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
-      "outputPathIsSetByUser" : 1,
-      "inputAbbreviatedPath" : "\/scripts\/library.js",
-      "outputStyle" : 0,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/lib.js",
-      "fileType" : 64
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/sass\/responsive\/_responsive-entypo.scss",
+      "outputStyle" : 2,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_responsive-entypo.css",
+      "fileType" : 4,
+      "debugStyle" : 0
     },
     "\/sass\/vendor\/bootstrap3\/_breadcrumbs.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -1157,6 +1180,7 @@
       "trailing" : 1,
       "nonew" : 1,
       "es3" : 0,
+      "freeze" : 1,
       "yui" : 0,
       "mootools" : 0,
       "proto" : 0,
@@ -1192,6 +1216,7 @@
       "unused" : 1,
       "debug" : 0,
       "bitwise" : 1,
+      "notypeof" : 1,
       "white" : 0,
       "browser" : 1,
       "worker" : 0,
@@ -1218,7 +1243,6 @@
       "newcap" : 0,
       "sloppy" : 0,
       "closure" : 0,
-      "es5" : 0,
       "browser" : 1,
       "properties" : 0,
       "plusplus" : 0,

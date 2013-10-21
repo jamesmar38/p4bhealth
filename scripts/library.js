@@ -27,3 +27,4 @@
 //@codekit-append "vendor/jquery.isotope.js"
 //@codekit-append "vendor/jquery.royalslider.custom.min.js"
 //@codekit-append "vendor/jquery.responsiveVideo.js"
+//@codekit-append "vendor/dropzone.min.js"

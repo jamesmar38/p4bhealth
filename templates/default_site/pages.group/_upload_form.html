@@ -1,0 +1,14 @@
+{exp:channel:entries channel="private_content" url_title="{embed:dbpw}" dynamic="off" limit="1"}
+
+ {if no_results}<p>Your password is incorrect. Would you like to
+    <a href="{path='private'}">try again</a>?</p>{/if}
+
+    <form action="/upload.php" method="post" enctype="multipart/form-data" class="dropzone">
+  		<input type="hidden" name="dest" value="PBH Uploads" />
+      <div class="fallback">
+  		  <input type="file" name="file" />
+  		  <input type="submit" value="Upload" />
+      </div>
+    </form>
+
+{/exp:channel:entries}
