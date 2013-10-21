@@ -17,7 +17,7 @@ $env_db['database'] = 'p4bhealth_ee';
 
 // Sample global variable for Production only
 // Can be used in templates like "{global:google_analytics}"
-$env_global['global:google_analytics'] = 'UA-XXXXXXX-XX';
+$env_global['global:google_analytics'] = 'UA-40717070-4';
 
 /* End of file config.prod.php */
 /* Location: ./config/config.prod.php */

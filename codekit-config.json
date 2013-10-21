@@ -121,17 +121,6 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/scripts\/vendor\/bootstrap3\/affix.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/vendor\/bootstrap3\/affix.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/affix-ck.js",
-      "fileType" : 64
-    },
     "\/sass\/vendor\/bootstrap3\/_accordion.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -153,6 +142,17 @@
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 1,
       "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/jquery.royalslider.custom.min-ck.js",
+      "fileType" : 64
+    },
+    "\/scripts\/vendor\/bootstrap3\/affix.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/scripts\/vendor\/bootstrap3\/affix.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/affix-ck.js",
       "fileType" : 64
     },
     "\/sass\/vendor\/bootstrap3\/_labels.scss" : {
@@ -262,18 +262,6 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/sass\/vendor\/bootstrap3\/_navbar.scss" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/vendor\/bootstrap3\/_navbar.scss",
-      "outputStyle" : 2,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_navbar.css",
-      "fileType" : 4,
-      "debugStyle" : 0
-    },
     "\/sass\/vendor\/bootstrap3\/_navs.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -283,6 +271,18 @@
       "outputStyle" : 2,
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_navs.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
+    "\/sass\/vendor\/bootstrap3\/_navbar.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/sass\/vendor\/bootstrap3\/_navbar.scss",
+      "outputStyle" : 2,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_navbar.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -342,15 +342,15 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/sass\/vendor\/bootstrap3\/_panels.scss" : {
+    "\/sass\/vendor\/bootstrap3\/_dropdowns.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/vendor\/bootstrap3\/_panels.scss",
+      "inputAbbreviatedPath" : "\/sass\/vendor\/bootstrap3\/_dropdowns.scss",
       "outputStyle" : 2,
       "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_panels.css",
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_dropdowns.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -365,15 +365,15 @@
       "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/dropdown-ck.js",
       "fileType" : 64
     },
-    "\/sass\/vendor\/bootstrap3\/_dropdowns.scss" : {
+    "\/sass\/vendor\/bootstrap3\/_panels.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/vendor\/bootstrap3\/_dropdowns.scss",
+      "inputAbbreviatedPath" : "\/sass\/vendor\/bootstrap3\/_panels.scss",
       "outputStyle" : 2,
       "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_dropdowns.css",
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_panels.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -755,15 +755,15 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/sass\/vendor\/_entypo.scss" : {
+    "\/sass\/vendor\/gridloading\/_component.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/vendor\/_entypo.scss",
+      "inputAbbreviatedPath" : "\/sass\/vendor\/gridloading\/_component.scss",
       "outputStyle" : 2,
       "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_entypo.css",
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_component.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -790,15 +790,15 @@
       "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/button-ck.js",
       "fileType" : 64
     },
-    "\/sass\/vendor\/gridloading\/_component.scss" : {
+    "\/sass\/vendor\/_entypo.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/vendor\/gridloading\/_component.scss",
+      "inputAbbreviatedPath" : "\/sass\/vendor\/_entypo.scss",
       "outputStyle" : 2,
       "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_component.css",
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_entypo.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
