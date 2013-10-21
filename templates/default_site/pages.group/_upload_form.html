@@ -1,7 +1,6 @@
 {exp:channel:entries channel="private_content" url_title="{embed:dbpw}" dynamic="off" limit="1"}
 
- {if no_results}<p>Your password is incorrect. Would you like to
-    <a href="{path='private'}">try again</a>?</p>{/if}
+ {if no_results}<div class="alert alert-danger">Invalid password. <a href="/upload">Try again.</a></div>{/if}
 
     <form action="/upload.php" method="post" enctype="multipart/form-data" class="dropzone">
   		<input type="hidden" name="dest" value="PBH Uploads" />
