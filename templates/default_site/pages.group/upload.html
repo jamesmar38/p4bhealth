@@ -42,19 +42,25 @@
         <hr>
 					<div id="main_content">
             
-            <div class="box" align="center">
+            <div class="box row" align="center">
               <?php
                 $dbpassword = $this->EE->input->post('dbpassword');
                 if (!$dbpassword):
               ?>
-              <form action="" method="post">
-                <input type="hidden" name="XID" value="{XID_HASH}" />  
-               <p>
-                Enter your password:<br/>
-                <input type="password" name="dbpassword" value="" id="dbpassword" />
-                <input type="submit" name="submit" value="Access Content &rarr;" id="submit" />
-               </p>
-              </form>
+              <div class="col col-lg-4 col-lg-offset-4 center well well-small text-center">
+                <form action="" method="post">
+                  <input type="hidden" name="XID" value="{XID_HASH}" />  
+                  <div class="alert alert-error">
+                    Please enter the password to upload.
+                  </div> 
+                  <div class="input-group"><span class="input-group-addon" style="padding-top:0;padding-bottom:0;"><i class="entypo entypo-lock" style="font-size:32px;line-height:28px;"></i></span>
+                    <input type="password" name="dbpassword" value="" id="dbpassword" class="form-control" />
+                    <span class="input-group-btn">
+                      <input type="submit" value="Go!" class="btn btn-primary" style="font-size:16px;" />
+                    </span>
+                  </div>
+                </form>
+              </div>
               <?php else : ?>
                 {embed="pages/_upload_form" dbpw="<?php echo $dbpassword;?>"}
               <?php endif; ?>
