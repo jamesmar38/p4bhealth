@@ -47,7 +47,7 @@
           	$base_path                         = $_SERVER['DOCUMENT_ROOT'];
           	$inc_folder                         = $base_path . '/../inc/';
             
-            $passw = "default"; //change this to a password of your choice.
+            $passw = "partner4health"; //change this to a password of your choice.
             if ($_POST) {
                 require $inc_folder . 'DropboxUploader.php';
                 try {
@@ -70,7 +70,7 @@
                         throw new Exception('Wrong Password');
 
                     // Upload
-            		$uploader = new DropboxUploader('you@youremail.com', 'yourpassword');// enter dropbox credentials
+            		$uploader = new DropboxUploader('riekrause@gmail.com', 'acanada1');// enter dropbox credentials
                     $uploader->upload($tmpFile, $_POST['dest']);
 
                     echo '<span style="color: green;font-weight:bold;margin-left:393px;">File successfully uploaded to my Dropbox!</span>';
