@@ -55,10 +55,14 @@ PBH.sectionheights = ->
   )
 
 PBH.scrollbutton = ->
-  $(".scroll-down").on clickevt, (e) ->
-    e.preventDefault()
-    os = $("#vision-scene").offset()
-    $("body,html").animate(scrollTop: os.top).trigger "scroll", true
+  if Modernizr.touch
+    $(".scroll-down").remove()
+  else
+    $(".scroll-down").on clickevt, (e) ->
+      e.preventDefault()
+      os = $("#vision-scene").offset()
+      $("body,html").animate(scrollTop: os.top).trigger "scroll", true
+  
 
 PBH.scrolltosection = ->
   scrollResponder = (doitnow) ->
@@ -109,25 +113,23 @@ PBH.scrolltosection = ->
   $w.on "scroll", scrollResponder
 
 PBH.clicktonext = ->
-  $(".go-to-next").on clickevt, (e) ->
-    e.preventDefault()
-    currpos = $w.scrollTop()
+  if Modernizr.touch
+    $(".go-to-next").remove()
+  else
+    $(".go-to-next").on clickevt, (e) ->
+      e.preventDefault()
+      currpos = $w.scrollTop()
     
-    # find out what section is next
-    curr = $.grep($("section"), (el, i) ->
-      $(el).offset().top <= currpos and $(el).next("section").length and $(el).next("section").offset().top > currpos
-    )
-    next = $(curr).next()
-    if next.length
-      lessthan = 0
-      if next.is(".instagram")
-        lessthan = 130
-        if currpos >= $(".instagram").offset().top - lessthan
-          next = next.next("section")
-          lessthan = 0
-      $("html,body").animate scrollTop: next.offset().top - lessthan
-    else
-      $("html,body").animate scrollTop: $("#footer").offset().top
+      # find out what section is next
+      curr = $.grep($("section"), (el, i) ->
+        $(el).offset().top <= currpos and $(el).next("section").length and $(el).next("section").offset().top > currpos
+      )
+      next = $(curr).next()
+      if next.length
+        lessthan = 0
+        $("html,body").animate scrollTop: next.offset().top - lessthan
+      else
+        $("html,body").animate scrollTop: $("#footer").offset().top
 
 PBH.parallax = ->
   scrolled = $(window).scrollTop()
@@ -234,14 +236,6 @@ PBH.global = ->
     autoplayMovies: true
 
 PBH.homePage = ->
-  if Modernizr.touch
-    alert "touch!"
-    $("#video_background").remove
-  else
-    console.log "no touch"
-  
-  
-  
   gotonext = $(".go-to-next").addClass("current")
   
   $w.on "scroll", ->
