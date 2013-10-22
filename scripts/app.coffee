@@ -230,7 +230,6 @@ PBH.projects = ->
     false
 
 PBH.global = ->
-  $.mobile.orientationChangeEnabled = false
   $('html').addClass 'js'
   
   Shadowbox.init
@@ -287,5 +286,7 @@ PBH.init = ->
   else
     PBH.subpages()
 
-$ ->  
+$(document).bind "mobileinit", (event) ->
+  $.mobile.orientationChangeEnabled = false
+$ ->
   PBH.init()
