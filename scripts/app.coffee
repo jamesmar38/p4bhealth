@@ -230,6 +230,7 @@ PBH.projects = ->
     false
 
 PBH.global = ->
+  $.mobile.orientationChangeEnabled = false
   $('html').addClass 'js'
   
   Shadowbox.init
@@ -275,14 +276,6 @@ PBH.init = ->
     PBH.sizeonce()
     PBH.sectionheights()
     PBH.sizeslider()
-    
-    $w.on "orientationchange", ->
-      clearTimeout PBH.resizeto
-      PBH.resizeto = setTimeout(->
-        $wh = $w.height()
-        PBH.sectionheights()
-        PBH.sizeslider()
-      , 100)
     $w.on "resize", ->
       clearTimeout PBH.resizeto
       PBH.resizeto = setTimeout(->

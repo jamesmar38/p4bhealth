@@ -109,15 +109,15 @@
       "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/shadowbox-ck.js",
       "fileType" : 64
     },
-    "\/sass\/vendor\/bootstrap3\/_accordion.scss" : {
+    "\/sass\/ie.scss" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
+      "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/vendor\/bootstrap3\/_accordion.scss",
+      "inputAbbreviatedPath" : "\/sass\/ie.scss",
       "outputStyle" : 2,
       "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_accordion.css",
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/ie.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -132,6 +132,18 @@
       "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/affix-ck.js",
       "fileType" : 64
     },
+    "\/sass\/vendor\/bootstrap3\/_accordion.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/sass\/vendor\/bootstrap3\/_accordion.scss",
+      "outputStyle" : 2,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_accordion.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
     "\/scripts\/vendor\/jquery.royalslider.custom.min.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -142,18 +154,6 @@
       "syntaxCheckerStyle" : 1,
       "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/jquery.royalslider.custom.min-ck.js",
       "fileType" : 64
-    },
-    "\/sass\/ie.scss" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/ie.scss",
-      "outputStyle" : 2,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/ie.css",
-      "fileType" : 4,
-      "debugStyle" : 0
     },
     "\/sass\/vendor\/bootstrap3\/_labels.scss" : {
       "ignoreWasSetByUser" : 0,
