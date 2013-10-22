@@ -272,6 +272,17 @@ PBH.init = ->
     PBH.clicktonext()
     PBH.homePage()
     PBH.homeSlider()
+    PBH.sizeonce()
+    PBH.sectionheights()
+    PBH.sizeslider()
+    
+    $w.on "orientationchange", ->
+      clearTimeout PBH.resizeto
+      PBH.resizeto = setTimeout(->
+        $wh = $w.height()
+        PBH.sectionheights()
+        PBH.sizeslider()
+      , 100)
     $w.on "resize", ->
       clearTimeout PBH.resizeto
       PBH.resizeto = setTimeout(->
@@ -280,9 +291,6 @@ PBH.init = ->
         PBH.sizeslider()
       , 100)
 
-    PBH.sizeonce()
-    PBH.sectionheights()
-    PBH.sizeslider()
   else
     PBH.subpages()
 
