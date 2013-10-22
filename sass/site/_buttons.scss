@@ -6,8 +6,10 @@
    color:$pbh-orange;
    font-size:18px;
    font-weight:700;
-   padding-left:45px;
-   padding-right:45px;
+   @include respond-to(desktop-above) {
+     padding-left:45px;
+     padding-right:45px;
+   }
 }
 .btn-gray {
    @include box-shadow(0px 4px 0px rgba(0, 0, 0, 0.2));
@@ -31,8 +33,10 @@
    color:$pbh-white;
    font-size:18px;
    font-weight:700;
-   padding-left:45px;
-   padding-right:45px;
+   @include respond-to(desktop-above) {
+     padding-left:45px;
+     padding-right:45px;
+   }
 }
 .btn-entypo {
 	height: 2.5em;

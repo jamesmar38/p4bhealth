@@ -170,9 +170,10 @@
 			
 		}
 	}
+
 	#header-scene {
-		margin:120px 20px;
-    
+		margin:30px 20px;
+  
 		h1 {
 			color:white;
 			font-weight:bold;
@@ -181,7 +182,7 @@
 		#button {
 			margin:35px auto;
 			width:230px;
-			
+		
 		}
 		p {
 			width: 50%;
@@ -192,6 +193,12 @@
 			@include text-shadow(0px 2px 0px rgba(0, 0, 0, 0.2));
 		}
 	}
+
+	@include respond-to(desktop-above) {
+  	#header-scene {
+  		margin:120px 20px;
+  	}
+  }
   
   
 

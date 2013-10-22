@@ -121,6 +121,17 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
+    "\/scripts\/vendor\/bootstrap3\/affix.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/scripts\/vendor\/bootstrap3\/affix.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/affix-ck.js",
+      "fileType" : 64
+    },
     "\/sass\/vendor\/bootstrap3\/_accordion.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -142,17 +153,6 @@
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 1,
       "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/jquery.royalslider.custom.min-ck.js",
-      "fileType" : 64
-    },
-    "\/scripts\/vendor\/bootstrap3\/affix.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/vendor\/bootstrap3\/affix.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/affix-ck.js",
       "fileType" : 64
     },
     "\/sass\/vendor\/bootstrap3\/_labels.scss" : {
@@ -286,17 +286,6 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/scripts\/vendor\/bootstrap3\/carousel.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/vendor\/bootstrap3\/carousel.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/carousel-ck.js",
-      "fileType" : 64
-    },
     "\/sass\/site\/_buttons.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -308,6 +297,17 @@
       "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_buttons.css",
       "fileType" : 4,
       "debugStyle" : 0
+    },
+    "\/scripts\/vendor\/bootstrap3\/carousel.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/scripts\/vendor\/bootstrap3\/carousel.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/carousel-ck.js",
+      "fileType" : 64
     },
     "\/inc\/DropboxUploader.php" : {
       "ignoreWasSetByUser" : 0,
@@ -459,6 +459,18 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
+    "\/sass\/vendor\/bootstrap3\/_normalize.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/sass\/vendor\/bootstrap3\/_normalize.scss",
+      "outputStyle" : 2,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_normalize.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
     "\/sass\/vendor\/bootstrap3\/_badges.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -482,18 +494,6 @@
       "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/app.js",
       "outputStyle" : 0,
       "fileType" : 32
-    },
-    "\/sass\/vendor\/bootstrap3\/_normalize.scss" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/vendor\/bootstrap3\/_normalize.scss",
-      "outputStyle" : 2,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_normalize.css",
-      "fileType" : 4,
-      "debugStyle" : 0
     },
     "\/sass\/vendor\/slider\/royalslider.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -661,18 +661,6 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/sass\/vendor\/_dropzone.scss" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/vendor\/_dropzone.scss",
-      "outputStyle" : 2,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_dropzone.css",
-      "fileType" : 4,
-      "debugStyle" : 0
-    },
     "\/sass\/site\/_header.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -682,6 +670,18 @@
       "outputStyle" : 2,
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_header.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
+    "\/sass\/vendor\/_dropzone.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/sass\/vendor\/_dropzone.scss",
+      "outputStyle" : 2,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_dropzone.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -755,15 +755,15 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/sass\/vendor\/gridloading\/_component.scss" : {
+    "\/sass\/vendor\/_entypo.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/vendor\/gridloading\/_component.scss",
+      "inputAbbreviatedPath" : "\/sass\/vendor\/_entypo.scss",
       "outputStyle" : 2,
       "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_component.css",
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_entypo.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -790,15 +790,15 @@
       "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/button-ck.js",
       "fileType" : 64
     },
-    "\/sass\/vendor\/_entypo.scss" : {
+    "\/sass\/vendor\/gridloading\/_component.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/vendor\/_entypo.scss",
+      "inputAbbreviatedPath" : "\/sass\/vendor\/gridloading\/_component.scss",
       "outputStyle" : 2,
       "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_entypo.css",
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_component.css",
       "fileType" : 4,
       "debugStyle" : 0
     },

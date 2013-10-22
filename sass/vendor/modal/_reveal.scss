@@ -15,10 +15,16 @@
 	
 	.reveal-modal {
 		visibility: hidden;
-		top: 50px; 
-		left: 50%;
-		margin-left: -300px;
-		width: 520px;
+    width: 100%;
+    top: 0;
+    
+    @include respond-to(desktop-above) {
+		  top: 50px;
+      width: 520px;
+		  left: 50%;
+		  margin-left: -300px;
+    }
+    
 		//background: #eee url(modal-gloss.png) no-repeat -200px -80px;
 		background: #FFFFFF;
 		background: rgba(255,255,255,.92);
@@ -34,10 +40,13 @@
 		-box-shadow: 0 0 10px rgba(0,0,0,.4);
 		}
 		
-	.reveal-modal.small 		{ width: 200px; margin-left: -140px;}
-	.reveal-modal.medium 		{ width: 400px; margin-left: -240px;}
-	.reveal-modal.large 		{ width: 600px; margin-left: -340px;}
-	.reveal-modal.xlarge 		{ width: 100%; margin-left: -50%;}
+	
+  @include respond-to(desktop-above) {
+    .reveal-modal.small 		{ width: 200px; margin-left: -140px;}
+  	.reveal-modal.medium 		{ width: 400px; margin-left: -240px;}
+  	.reveal-modal.large 		{ width: 600px; margin-left: -340px;}
+  	.reveal-modal.xlarge 		{ width: 100%; margin-left: -50%;}
+  }
 	
 	.reveal-modal .close-reveal-modal {
 		

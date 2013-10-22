@@ -1,6 +1,12 @@
 #show-contact-modal {
 	color: #949494;
-	input, textarea {
+  padding: 20px;
+  
+  @include respond-to(desktop-above) {
+    padding: 0;
+  }
+  
+  input, textarea {
 		position:relative;
 		-webkit-transition: all 0.2s ease-in-out 0s;
 		-moz-transition: all 0.2s ease-in-out 0s;
