@@ -1,3 +1,6 @@
+@import "compass/css3/transform";
+@import "compass/css3/transition";
+
 #footer {
 	font-size: 12px;
 	padding-top: 30px;
@@ -10,4 +13,11 @@
 	a, a:visited {
 		color: $pbh-orange !important;
 	}
+  .img-enlarge {
+    margin-left: 5px;
+    @include single-transition(all, 0.1s, ease, 0s);
+    &:hover {
+      @include scale(1.1);
+    }
+  }
 }

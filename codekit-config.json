@@ -286,6 +286,17 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
+    "\/scripts\/vendor\/bootstrap3\/carousel.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/scripts\/vendor\/bootstrap3\/carousel.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/carousel-ck.js",
+      "fileType" : 64
+    },
     "\/sass\/site\/_buttons.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -297,17 +308,6 @@
       "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_buttons.css",
       "fileType" : 4,
       "debugStyle" : 0
-    },
-    "\/scripts\/vendor\/bootstrap3\/carousel.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/vendor\/bootstrap3\/carousel.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/carousel-ck.js",
-      "fileType" : 64
     },
     "\/inc\/DropboxUploader.php" : {
       "ignoreWasSetByUser" : 0,
@@ -342,15 +342,15 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/sass\/vendor\/bootstrap3\/_dropdowns.scss" : {
+    "\/sass\/vendor\/bootstrap3\/_panels.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/vendor\/bootstrap3\/_dropdowns.scss",
+      "inputAbbreviatedPath" : "\/sass\/vendor\/bootstrap3\/_panels.scss",
       "outputStyle" : 2,
       "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_dropdowns.css",
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_panels.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -365,15 +365,15 @@
       "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/dropdown-ck.js",
       "fileType" : 64
     },
-    "\/sass\/vendor\/bootstrap3\/_panels.scss" : {
+    "\/sass\/vendor\/bootstrap3\/_dropdowns.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/sass\/vendor\/bootstrap3\/_panels.scss",
+      "inputAbbreviatedPath" : "\/sass\/vendor\/bootstrap3\/_dropdowns.scss",
       "outputStyle" : 2,
       "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_panels.css",
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_dropdowns.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -412,6 +412,17 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
+    "\/scripts\/vendor\/tinynav.min.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/scripts\/vendor\/tinynav.min.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/tinynav.min-ck.js",
+      "fileType" : 64
+    },
     "\/sass\/vendor\/bootstrap3\/_pagination.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -423,17 +434,6 @@
       "outputAbbreviatedPath" : "\/httpdocs\/assets\/css\/_pagination.css",
       "fileType" : 4,
       "debugStyle" : 0
-    },
-    "\/scripts\/vendor\/tinynav.min.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/vendor\/tinynav.min.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/httpdocs\/assets\/js\/tinynav.min-ck.js",
-      "fileType" : 64
     },
     "\/sass\/vendor\/modal\/_reveal.scss" : {
       "ignoreWasSetByUser" : 0,
