@@ -20,4 +20,47 @@
       @include scale(1.1);
     }
   }
+  .upload-btn {
+    
+    .btn {
+      display: block;
+    }
+    
+    @include respond-to(tablet-above){
+      text-align: right;
+      
+      .btn {
+        display: inline-block;
+      }
+    }
+  }
+  
+  .footer-text {
+    @include clearfix;
+    
+    p {
+      float: left;
+      margin: 0;
+      width: 70%;
+    }
+    @include respond-to(tablet-above){
+      line-height: 32px;
+      
+      p {
+        width: auto;
+      }
+    }
+  }
+  
+  .maven {
+    margin-left: 40px;
+    
+    span {
+      display: none;
+      @include respond-to(tablet-above){
+        display: inline;
+      }
+    }
+  }
+  
 }
