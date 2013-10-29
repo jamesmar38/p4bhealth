@@ -3,6 +3,10 @@ html.touch {
   overflow: hidden;
 }
 
+h1, h2, h3, h4, h5, h6, strong, .btn, button, input, select, textarea, button, html input[type="button"], input[type="reset"], input[type="submit"], ul, ol, li, em, i, b {
+  -webkit-font-smoothing: antialiased;
+}
+
 body {
 	background: url($fallback-bg) no-repeat fixed transparent;	//Fallback image
 	background-size: cover;
@@ -10,7 +14,7 @@ body {
   height:100%;
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
-  
+  -webkit-font-smoothing: antialiased;
 	font-family:$font-family-sans-serif;
 	min-height:100%;
 	color:$pbh-white;
