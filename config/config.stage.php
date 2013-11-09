@@ -15,6 +15,8 @@ $env_db['username'] = 'db-p4bhealth';
 $env_db['password'] = 'KJRwUhg6wE8tLj';
 $env_db['database'] = 'p4bhealth_ee';
 
+$config['newrelic_app_name'] = 'PBH Staging';
+
 
 /* End of file config.stage.php */
 /* Location: ./config/config.stage.php */

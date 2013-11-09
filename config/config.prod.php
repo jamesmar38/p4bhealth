@@ -19,5 +19,7 @@ $env_db['database'] = 'p4bhealth_ee';
 // Can be used in templates like "{global:google_analytics}"
 $env_global['global:google_analytics'] = 'UA-40717070-4';
 
+$config['newrelic_app_name'] = 'PBH Production';
+
 /* End of file config.prod.php */
 /* Location: ./config/config.prod.php */
