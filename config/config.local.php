@@ -15,7 +15,7 @@
 // Local db
 $env_db['hostname'] = 'localhost';
 $env_db['username'] = 'root';
-$env_db['password'] = 'root';
+$env_db['password'] = 'asdf';
 $env_db['database'] = 'pbh_ee';
 
 /**
@@ -24,10 +24,12 @@ $env_db['database'] = 'pbh_ee';
  * Putting this below the local settings allows us to easily uncomment the
  * lines to connect to a secondary connection, overriding the first settings
  */
+/*
 $env_db['hostname'] = '64.207.152.11';
 $env_db['username'] = 'db-p4bhealth';
 $env_db['password'] = 'KJRwUhg6wE8tLj';
 $env_db['database'] = 'p4bhealth_ee';
+*/
 
 /*
 | To temporarily turn off CE Cache, you can use this option. This can be
