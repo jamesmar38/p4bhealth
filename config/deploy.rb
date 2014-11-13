@@ -9,7 +9,12 @@ set :server_root, "/var/www/vhosts/p4bhealth.org"
 set :deploy_via, :remote_cache
 default_run_options[:pty] = true
 
-set :ssh_options, { :keys => ['~/.ssh/id_rsa'], :forward_agent => true, :user => "root" }
+set :ssh_options, {
+  :keys => ['~/.ssh/id_rsa'],
+  :forward_agent => true,
+  :user => "deploy",
+  config: false
+}
 set :scm, :git
 set :use_sudo, false
 set :keep_releases, 5
