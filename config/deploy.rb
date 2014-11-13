@@ -3,7 +3,7 @@ set :stages, %w(development staging production)
 set :default_stage, 'staging' 
 require 'capistrano/ext/multistage'
 
-set :repository,  "git@github.com:maven20/PBH.git"
+set :repository,  "git@git.maven20.com:pbh/website.git"
 set :server_root, "/var/www/vhosts/p4bhealth.org"
 
 set :deploy_via, :remote_cache
