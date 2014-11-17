@@ -15,7 +15,7 @@
 // Local db
 $env_db['hostname'] = '127.0.0.1';
 $env_db['username'] = 'root';
-$env_db['password'] = 'asdf';
+$env_db['password'] = 'root';
 $env_db['database'] = 'pbh_ee';
 
 /**
