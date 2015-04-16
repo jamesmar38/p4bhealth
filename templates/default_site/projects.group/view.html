@@ -60,11 +60,13 @@
           			<hr>
           			<div class="row modal-formatting">
           				<div class="col-lg-8">
-          					{project_content1}
+										{exp:channel_videos:videos entry_id="{entry_id}"}<div class="project-video" data-video-service="{video:service}" data-video-id="{video:service_id}" data-video-user="{video:username}" data-video-length="{video:duration_secs}" style="margin:20px 0;">
+											{video:embed_code_hd}
+										</div>{/exp:channel_videos:videos}
+										{project_content1}
           				</div>
           				<div class="col-lg-4">
-          						{!--<iframe seamless width="100%" height="200" id="iframe-video" src="{video}" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>--}
-                      {project_content2}
+										{project_content2}
           				</div>
           			</div>
 		
